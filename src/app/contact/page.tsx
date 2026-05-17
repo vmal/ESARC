@@ -6,7 +6,6 @@ import { Border } from '@/components/Border'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import { Offices } from '@/components/Offices'
 import { PageIntro } from '@/components/PageIntro'
 import { SocialMedia } from '@/components/SocialMedia'
 
@@ -35,58 +34,66 @@ function TextInput({
   )
 }
 
-function RadioInput({
+function TextArea({
   label,
   ...props
-}: React.ComponentPropsWithoutRef<'input'> & { label: string }) {
+}: React.ComponentPropsWithoutRef<'textarea'> & { label: string }) {
+  let id = useId()
+
   return (
-    <label className="flex gap-x-3">
-      <input
-        type="radio"
+    <div className="group relative z-0 transition-all focus-within:z-10">
+      <textarea
+        id={id}
+        rows={4}
         {...props}
-        className="h-6 w-6 flex-none appearance-none rounded-full border border-neutral-950/20 outline-none checked:border-[0.5rem] checked:border-neutral-950 focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:ring-offset-2"
+        placeholder=" "
+        className="peer block w-full resize-y border border-neutral-300 bg-transparent px-6 pb-4 pt-12 text-base/6 text-neutral-950 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5 group-first:rounded-t-2xl group-last:rounded-b-2xl"
       />
-      <span className="text-base/6 text-neutral-950">{label}</span>
-    </label>
+      <label
+        htmlFor={id}
+        className="pointer-events-none absolute left-6 top-8 origin-left text-base/6 text-neutral-500 transition-all duration-200 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:font-semibold peer-focus:text-neutral-950 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:text-neutral-950"
+      >
+        {label}
+      </label>
+    </div>
   )
 }
 
 function ContactForm() {
   return (
     <FadeIn className="lg:order-last">
-      <form>
+      <form action="/api/contact" method="POST">
         <h2 className="font-display text-base font-semibold text-neutral-950">
-          Work inquiries
+          Tell us about the engagement
         </h2>
+        <p className="mt-2 text-sm text-neutral-600">
+          We reply within one business day. If you need to move faster, book
+          a 30-minute intro directly.
+        </p>
         <div className="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
-          <TextInput label="Name" name="name" autoComplete="name" />
+          <TextInput label="Name" name="name" autoComplete="name" required />
           <TextInput
-            label="Email"
+            label="Work email"
             type="email"
             name="email"
             autoComplete="email"
+            required
           />
           <TextInput
             label="Company"
             name="company"
             autoComplete="organization"
           />
-          <TextInput label="Phone" type="tel" name="phone" autoComplete="tel" />
-          <TextInput label="Message" name="message" />
-          <div className="border border-neutral-300 px-6 py-8 first:rounded-t-2xl last:rounded-b-2xl">
-            <fieldset>
-              <legend className="text-base/6 text-neutral-500">Budget</legend>
-              <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
-                <RadioInput label="$25K – $50K" name="budget" value="25" />
-                <RadioInput label="$50K – $100K" name="budget" value="50" />
-                <RadioInput label="$100K – $150K" name="budget" value="100" />
-                <RadioInput label="More than $150K" name="budget" value="150" />
-              </div>
-            </fieldset>
-          </div>
+          <TextInput
+            label="Role / title"
+            name="role"
+            autoComplete="organization-title"
+          />
+          <TextArea label="What are you trying to ship?" name="message" required />
         </div>
+        {/* TODO: wire /api/contact -> Resend, per Decision #6 */}
         <Button type="submit" className="mt-10">
-          Let’s work together
+          Send
         </Button>
       </form>
     </FadeIn>
@@ -97,41 +104,42 @@ function ContactDetails() {
   return (
     <FadeIn>
       <h2 className="font-display text-base font-semibold text-neutral-950">
-        Our offices
+        Book a 30-min intro
       </h2>
       <p className="mt-6 text-base text-neutral-600">
-        Prefer doing things in person? We don’t but we have to list our
-        addresses here for legal reasons.
+        Fastest path. We&rsquo;ll talk through the problem, the stack, and what
+        a senior + agent fleet could ship for you in the first 30 days.
       </p>
-
-      <Offices className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2" />
+      <Button
+        href="https://calendly.com/vbvmalhotra/vaibhav-interview"
+        className="mt-8"
+      >
+        Book on Calendly
+      </Button>
 
       <Border className="mt-16 pt-16">
         <h2 className="font-display text-base font-semibold text-neutral-950">
-          Email us
+          What happens next
         </h2>
-        <dl className="mt-6 grid grid-cols-1 gap-8 text-sm sm:grid-cols-2">
-          {[
-            ['For More Information', 'vbvmalhotra@gmail.com'],
-          ].map(([label, email]) => (
-            <div key={email}>
-              <dt className="font-semibold text-neutral-950">{label}</dt>
-              <dd>
-                <Link
-                  href={`mailto:${email}`}
-                  className="text-neutral-600 hover:text-neutral-950"
-                >
-                  {email}
-                </Link>
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <ol className="mt-6 space-y-4 text-base text-neutral-600">
+          <li>
+            <span className="font-semibold text-neutral-950">1. Intro call.</span>{' '}
+            Thirty minutes. We figure out if this is something we should take on.
+          </li>
+          <li>
+            <span className="font-semibold text-neutral-950">2. Scoping.</span>{' '}
+            A short written proposal: outcome, approach, team shape, timeline.
+          </li>
+          <li>
+            <span className="font-semibold text-neutral-950">3. Kickoff.</span>{' '}
+            Principal in your repo and Slack inside a week.
+          </li>
+        </ol>
       </Border>
 
       <Border className="mt-16 pt-16">
         <h2 className="font-display text-base font-semibold text-neutral-950">
-          Follow us
+          Elsewhere
         </h2>
         <SocialMedia className="mt-6" />
       </Border>
@@ -140,15 +148,19 @@ function ContactDetails() {
 }
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Let’s work together. We can’t wait to hear from you.',
+  title: 'Contact',
+  description:
+    'Tell us about the engagement, or book a 30-minute intro call. ESARC pairs a principal engineer with a fleet of in-house AI agents.',
 }
 
 export default function Contact() {
   return (
     <>
-      <PageIntro eyebrow="Contact us" title="Let’s work together">
-        <p>We can’t wait to hear from you.</p>
+      <PageIntro eyebrow="Contact" title="Let&rsquo;s talk about what you&rsquo;re shipping.">
+        <p>
+          Send a note or book a 30-minute intro. Either works. We reply same
+          day on weekdays.
+        </p>
       </PageIntro>
 
       <Container className="mt-24 sm:mt-32 lg:mt-40">

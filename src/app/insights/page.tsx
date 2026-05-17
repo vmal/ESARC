@@ -12,20 +12,21 @@ import { formatDate } from '@/lib/formatDate'
 import { loadArticles } from '@/lib/mdx'
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Insights',
   description:
-    'Stay up-to-date with the latest industry news as our marketing teams finds new ways to re-purpose old CSS tricks articles.',
+    'Notes from the field on shipping production AI: agent design, evals, voice, infra, and the messy details between a demo and a live system.',
 }
 
-export default async function Blog() {
+export default async function Insights() {
   let articles = await loadArticles()
 
   return (
     <>
-      <PageIntro eyebrow="Blog" title="The latest articles and news">
+      <PageIntro eyebrow="Insights" title="Notes from the field">
         <p>
-          Stay up-to-date with the latest industry news as our marketing teams
-          finds new ways to re-purpose old CSS tricks articles.
+          What we learn building production AI for startups and enterprises.
+          Agent design, evals, voice, infra, and the messy details between a
+          demo and a live system.
         </p>
       </PageIntro>
 
