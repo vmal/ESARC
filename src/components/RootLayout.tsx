@@ -18,7 +18,6 @@ import { Container } from '@/components/Container'
 import { Footer } from '@/components/Footer'
 import { GridPattern } from '@/components/GridPattern'
 import { Logo, Logomark } from '@/components/Logo'
-import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
 
 const RootLayoutContext = createContext<{
@@ -143,12 +142,16 @@ function Navigation() {
   return (
     <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
-        <NavigationItem href="/work">Our Work</NavigationItem>
-        <NavigationItem href="/about">About Us</NavigationItem>
+        <NavigationItem href="/work">Work</NavigationItem>
+        <NavigationItem href="/services">Services</NavigationItem>
       </NavigationRow>
       <NavigationRow>
-        <NavigationItem href="/process">Our Process</NavigationItem>
-        <NavigationItem href="/blog">Blog</NavigationItem>
+        <NavigationItem href="/about">About</NavigationItem>
+        <NavigationItem href="/process">Process</NavigationItem>
+      </NavigationRow>
+      <NavigationRow>
+        <NavigationItem href="/insights">Insights</NavigationItem>
+        <NavigationItem href="/contact">Contact</NavigationItem>
       </NavigationRow>
     </nav>
   )
@@ -233,16 +236,27 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
                   <div>
                     <h2 className="font-display text-base font-semibold text-white">
-                      Our offices
+                      Talk to us
                     </h2>
-                    <Offices
-                      invert
-                      className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
-                    />
+                    <p className="mt-6 text-base text-neutral-300">
+                      Tell us what you&rsquo;re shipping, or grab a 30-minute
+                      intro on the calendar.
+                    </p>
+                    <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                      <Button href="/contact" invert>
+                        Contact us
+                      </Button>
+                      <Link
+                        href="https://calendly.com/vbvmalhotra/vaibhav-interview"
+                        className="text-sm font-semibold text-white underline-offset-4 hover:underline"
+                      >
+                        Book a 30-min intro &rarr;
+                      </Link>
+                    </div>
                   </div>
                   <div className="sm:border-l sm:border-transparent sm:pl-16">
                     <h2 className="font-display text-base font-semibold text-white">
-                      Follow us
+                      Elsewhere
                     </h2>
                     <SocialMedia className="mt-6" invert />
                   </div>

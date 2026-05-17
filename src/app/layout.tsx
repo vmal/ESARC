@@ -4,16 +4,66 @@ import { RootLayout } from '@/components/RootLayout'
 
 import '@/styles/tailwind.css'
 
+const SITE_URL = 'https://esarc.dev'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    template: '%s - ESARC',
-    default: 'ESARC - Award winning developer studio based in Vancouver',
+    template: '%s — ESARC',
+    default: 'ESARC — AI engineering consultancy. Senior engineers + in-house agents.',
   },
+  description:
+    'ESARC is an AI engineering consultancy. Principal engineers paired with an in-house fleet of AI agents. Ship production AI in weeks, not quarters, at a fraction of Big-4 cost.',
+  openGraph: {
+    type: 'website',
+    siteName: 'ESARC',
+    title: 'ESARC — AI engineering consultancy',
+    description:
+      'Principal engineers + in-house AI agents. Production AI in weeks, not quarters.',
+    url: SITE_URL,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ESARC — AI engineering consultancy',
+    description:
+      'Principal engineers + in-house AI agents. Production AI in weeks, not quarters.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'ESARC',
+  url: SITE_URL,
+  description:
+    'AI engineering consultancy. Principal engineers paired with an in-house fleet of AI agents.',
+  founder: {
+    '@type': 'Person',
+    name: 'Vaibhav Malhotra',
+    sameAs: [
+      'https://www.linkedin.com/in/mvaibhav/',
+      'https://github.com/vmal',
+    ],
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/mvaibhav/',
+    'https://github.com/vmal',
+  ],
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="h-full bg-neutral-950 text-base antialiased">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <RootLayout>{children}</RootLayout>
       </body>

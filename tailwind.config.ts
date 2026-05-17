@@ -21,6 +21,21 @@ export default {
       borderRadius: {
         '4xl': '2.5rem',
       },
+      colors: {
+        accent: {
+          DEFAULT: '#2C39FF',
+          50: '#EEF0FF',
+          100: '#DCE0FF',
+          200: '#B8C1FF',
+          300: '#94A2FF',
+          400: '#7083FF',
+          500: '#2C39FF',
+          600: '#1F29D9',
+          700: '#161DA6',
+          800: '#0E1373',
+          900: '#070940',
+        },
+      },
       fontFamily: {
         sans: ['Mona Sans', ...defaultTheme.fontFamily.sans],
         display: [

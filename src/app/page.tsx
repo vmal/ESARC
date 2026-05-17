@@ -1,220 +1,163 @@
 import { type Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 
+import { Button } from '@/components/Button'
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
-import { List, ListItem } from '@/components/List'
-import { SectionIntro } from '@/components/SectionIntro'
-import { StylizedImage } from '@/components/StylizedImage'
-import { Testimonial } from '@/components/Testimonial'
-import logoBrightPath from '@/images/clients/bright-path/logo-light.svg'
-import logoFamilyFund from '@/images/clients/family-fund/logo-light.svg'
-import logoGreenLife from '@/images/clients/green-life/logo-light.svg'
-import logoHomeWork from '@/images/clients/home-work/logo-light.svg'
-import logoMailSmirk from '@/images/clients/mail-smirk/logo-light.svg'
-import logoNorthAdventures from '@/images/clients/north-adventures/logo-light.svg'
-import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
-import logoPhobiaLight from '@/images/clients/phobia/logo-light.svg'
-import logoUnseal from '@/images/clients/unseal/logo-light.svg'
-import imageLaptop from '@/images/laptop.jpg'
-import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
 
-const clients = [
-  ['Phobia', logoPhobiaLight],
-  ['Family Fund', logoFamilyFund],
-  ['Unseal', logoUnseal],
-  ['Mail Smirk', logoMailSmirk],
-  ['Home Work', logoHomeWork],
-  ['Green Life', logoGreenLife],
-  ['Bright Path', logoBrightPath],
-  ['North Adventures', logoNorthAdventures],
-]
+export const metadata: Metadata = {
+  description:
+    'AI engineering consultancy. Senior engineers paired with an in-house fleet of AI agents. Production AI in weeks, not quarters, at a fraction of Big-4 cost.',
+}
 
-function Clients() {
+function Hero() {
   return (
-    <div className="mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56">
+    <div className="relative isolate mt-24 sm:mt-32 md:mt-40">
       <Container>
-        <FadeIn className="flex items-center gap-x-8">
-          <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
-            We’ve worked with hundreds of amazing people
-          </h2>
-          <div className="h-px flex-auto bg-neutral-800" />
+        <FadeIn className="max-w-4xl">
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-accent">
+            <span className="inline-block h-2 w-2 translate-y-[-2px] bg-accent align-middle" />{' '}
+            AI engineering consultancy
+          </p>
+          <h1 className="mt-6 font-display text-5xl font-semibold tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
+            Senior engineers,{' '}
+            <span className="text-accent">in-house AI agents</span>. Ship in
+            weeks, not quarters.
+          </h1>
+          <p className="mt-8 max-w-2xl text-xl text-neutral-600">
+            ESARC pairs principal engineers with a fleet of in-house AI agents
+            so a small team can outship a large one — at a fraction of Big-4
+            cost.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Button href="/work">See our work</Button>
+            <Link
+              href="https://calendly.com/vbvmalhotra/vaibhav-interview"
+              className="text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
+            >
+              Book a 30-min intro &rarr;
+            </Link>
+          </div>
         </FadeIn>
-        <FadeInStagger faster>
-          <ul
-            role="list"
-            className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4"
-          >
-            {clients.map(([client, logo]) => (
-              <li key={client}>
-                <FadeIn>
-                  <Image src={logo} alt={client} unoptimized />
-                </FadeIn>
-              </li>
-            ))}
-          </ul>
-        </FadeInStagger>
       </Container>
     </div>
   )
 }
 
-function CaseStudies({
-  caseStudies,
-}: {
-  caseStudies: Array<MDXEntry<CaseStudy>>
-}) {
+const pillars = [
+  {
+    eyebrow: '01',
+    title: 'Senior-only',
+    body: 'No junior offshore pyramid. Principal engineers in your repo, your Slack, your standups — leading the build, not handing it off.',
+  },
+  {
+    eyebrow: '02',
+    title: 'AI-native',
+    body: 'Our in-house agent fleet writes, reviews, and tests code alongside our principals. The result is throughput a 10-person team would charge for.',
+  },
+  {
+    eyebrow: '03',
+    title: 'Production-grade',
+    body: 'Evals, observability, security, rollback. We ship systems that survive contact with real traffic, not demos that fall over on Monday.',
+  },
+]
+
+function Pillars() {
   return (
-    <>
-      <SectionIntro
-        title="Harnessing technology for a brighter future"
-        className="mt-24 sm:mt-32 lg:mt-40"
-      >
-        <p>
-          We believe technology is the answer to the world’s greatest
-          challenges. It’s also the cause, so we find ourselves in bit of a
-          catch 22 situation.
+    <Container className="mt-24 sm:mt-32 lg:mt-40">
+      <FadeIn>
+        <h2 className="font-display text-base font-semibold tracking-wider text-neutral-950">
+          How we&rsquo;re different
+        </h2>
+        <p className="mt-4 max-w-2xl font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
+          Three things make this engagement model possible.
         </p>
-      </SectionIntro>
-      <Container className="mt-16">
-        <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {caseStudies.map((caseStudy) => (
-            <FadeIn key={caseStudy.href} className="flex">
-              <article className="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50 sm:p-8">
-                <h3>
-                  <Link href={caseStudy.href}>
-                    <span className="absolute inset-0 rounded-3xl" />
-                    <Image
-                      src={caseStudy.logo}
-                      alt={caseStudy.client}
-                      className="h-16 w-16"
-                      unoptimized
-                    />
-                  </Link>
-                </h3>
-                <p className="mt-6 flex gap-x-2 text-sm text-neutral-950">
-                  <time
-                    dateTime={caseStudy.date.split('-')[0]}
-                    className="font-semibold"
-                  >
-                    {caseStudy.date.split('-')[0]}
-                  </time>
-                  <span className="text-neutral-300" aria-hidden="true">
-                    /
-                  </span>
-                  <span>Case study</span>
-                </p>
-                <p className="mt-6 font-display text-2xl font-semibold text-neutral-950">
-                  {caseStudy.title}
-                </p>
-                <p className="mt-4 text-base text-neutral-600">
-                  {caseStudy.description}
-                </p>
-              </article>
-            </FadeIn>
-          ))}
-        </FadeInStagger>
-      </Container>
-    </>
+      </FadeIn>
+      <FadeInStagger className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 lg:grid-cols-3">
+        {pillars.map((pillar) => (
+          <FadeIn key={pillar.eyebrow}>
+            <div className="relative border-t border-neutral-950/10 pt-8">
+              <span className="absolute -top-px left-0 h-px w-12 bg-accent" />
+              <p className="font-mono text-sm font-semibold tracking-wider text-accent">
+                {pillar.eyebrow}
+              </p>
+              <h3 className="mt-4 font-display text-2xl font-semibold text-neutral-950">
+                {pillar.title}
+              </h3>
+              <p className="mt-4 text-base text-neutral-600">{pillar.body}</p>
+            </div>
+          </FadeIn>
+        ))}
+      </FadeInStagger>
+    </Container>
   )
 }
 
-function Services() {
+function EngagementShapes() {
+  const shapes = [
+    {
+      name: 'AI Sprint',
+      body: 'One thing, shipped in weeks. LLM feature, voice POC, agent workflow, eval harness.',
+    },
+    {
+      name: 'Fractional Principal',
+      body: 'Dedicated principal embedded in your repo and Slack. Multi-month builds, clean handoff.',
+    },
+    {
+      name: 'AI Audit & Roadmap',
+      body: 'Two-week deep dive. Written report, prioritized roadmap, exec readout.',
+    },
+    {
+      name: 'Enterprise Program',
+      body: 'Principal lead, agent fleet, on-demand specialists with SLAs.',
+    },
+  ]
+
   return (
-    <>
-      <SectionIntro
-        eyebrow="Services"
-        title="Empowering Innovations, Building Futures"
-        className="mt-24 sm:mt-32 lg:mt-40"
-      >
-        <p>
-          Your vision, whether a startup concept, a small business digital upgrade,
-          or a corporate innovation, deserves a crafted technological foundation.
-          We are here to bring your ideas to life.
-        </p>
-      </SectionIntro>
-      <Container className="mt-16">
-        <div className="lg:flex lg:items-center lg:justify-end">
-          <div className="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
-            <FadeIn className="w-[33.75rem] flex-none lg:w-[45rem]">
-              <StylizedImage
-                src={imageLaptop}
-                sizes="(min-width: 1024px) 41rem, 31rem"
-                className="justify-center lg:justify-end"
-              />
-            </FadeIn>
-          </div>
-          <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
-            <ListItem title="Web/Mobile App development">
-              Elevate your online presence with our integrated web and mobile app development services. We build responsive,
-              user-centric applications for all platforms, using cutting-edge technologies like Next.js, React for web apps,
-              and delivering seamless mobile experiences on iOS and Android.
-              From initial design to final deployment, our development process is streamlined to bring
-              your business to the forefront of digital innovation.
-            </ListItem>
-            <ListItem title="AI & Machine Learning Integration">
-              Step into the future with our AI development services. We design sophisticated chatbots,
-              implement computer vision, and create personalized AI solutions using the latest technologies from
-              OpenAI, Google Cloud, and AWS. Whether its enhancing user interaction through intelligent conversational agents
-              or providing deep insights with advanced analytics, our AI services are tailored to elevate your
-              business in the smartest way possible.
-            </ListItem>
-            <ListItem title="MVP and Prototyping">
-              Transform your startup idea into a tangible product with our MVP and prototyping services.
-              We help you test the waters with a lean yet impactful version of your product, ready to scale.
-            </ListItem>
-            <ListItem title="Legacy Repurposing">
-              Your outdated systems hold untapped potential.
-              We specialize in modernizing and repurposing existing projects,
-              giving them a new lease on life and aligning them with current market demands.
-            </ListItem>
-          </List>
-        </div>
-      </Container>
-    </>
+    <div className="relative mt-24 sm:mt-32 lg:mt-40">
+      <div className="rounded-4xl bg-neutral-950 py-20 sm:py-32">
+        <Container>
+          <FadeIn className="max-w-2xl">
+            <h2 className="font-display text-sm font-semibold tracking-wider text-white">
+              Four ways we engage
+            </h2>
+            <p className="mt-4 font-display text-3xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-4xl">
+              Pick the shape that matches your problem.
+            </p>
+          </FadeIn>
+          <FadeInStagger className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {shapes.map((shape) => (
+              <FadeIn key={shape.name}>
+                <div className="border-t border-white/10 pt-6">
+                  <h3 className="font-display text-lg font-semibold text-white">
+                    {shape.name}
+                  </h3>
+                  <p className="mt-3 text-sm text-neutral-300">{shape.body}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </FadeInStagger>
+          <FadeIn className="mt-12">
+            <Link
+              href="/services"
+              className="text-sm font-semibold text-white underline-offset-4 hover:underline"
+            >
+              See the full breakdown &rarr;
+            </Link>
+          </FadeIn>
+        </Container>
+      </div>
+    </div>
   )
 }
 
-export const metadata: Metadata = {
-  description:
-    'We are a development studio working at the intersection of design and technology.',
-}
-
-export default async function Home() {
-  let caseStudies = (await loadCaseStudies()).slice(0, 3)
-
+export default function Home() {
   return (
     <>
-      <Container className="mt-24 sm:mt-32 md:mt-56">
-        <FadeIn className="max-w-3xl">
-          <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            Award-winning software development agency based in Vancouver.
-          </h1>
-          <p className="mt-6 text-xl text-neutral-600">
-            We are a forward-thinking development agency where design meets innovation.
-            At the heart of the tech revolution, our dedicated team crafts
-            digital solutions that resonate with your audience and stand the test of time.
-          </p>
-        </FadeIn>
-      </Container>
-
-      <Clients />
-
-      <CaseStudies caseStudies={caseStudies} />
-
-      <Testimonial
-        className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Phobia', logo: logoPhobiaDark }}
-      >
-        We were thoroughly impressed with how ESARC transformed our customer service portal. Their integration of an AI-powered chatbot that
-        intelligently categorizes customer queries and suggests solutions has drastically improved our response times.
-        The fact that it was implemented with such a natural user interface, avoiding any cumbersome installation or complex navigation for users, was nothing short of remarkable.
-      </Testimonial>
-
-      <Services />
-
+      <Hero />
+      <Pillars />
+      <EngagementShapes />
       <ContactSection />
     </>
   )
