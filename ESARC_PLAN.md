@@ -247,23 +247,25 @@ Track each phase as a PR off `esarc/v1` worktree branch. **No PR is merged witho
 - [x] Master tracker written
 - [ ] **Vic approves plan** ⬅ blocking gate
 
-### Phase 1 — Repo prep
+### Phase 1 — Repo prep ✅ (merged to main 2026-05-18, commit `6a9c6b7`)
 - [x] Create worktree `esarc/v1` under `Projects/Agency/ESARC/.claude/worktrees/`
 - [x] Branch off `main`
 - [x] Rename `/blog` → `/insights` (folder move + 308 redirect in `next.config.mjs`)
 - [x] Scaffold `/services` (TODO stub) and `/contact` (form skeleton)
-- [ ] Move stock content under `_template/` (or just delete; we have git history)
-- [ ] Wire up `humanizer` skill in repo (note in CLAUDE.md if we add one)
-- [ ] Update `package.json` name → `esarc-dev`
-- [ ] Add `.nvmrc` (`20`)
+- [ ] Move stock content under `_template/` (or just delete; we have git history) — deferred; handled implicitly as pages get rewritten
+- [ ] Wire up `humanizer` skill in repo (note in CLAUDE.md if we add one) — Phase 4 prereq
+- [ ] Update `package.json` name → `esarc-dev` — Phase 6 cleanup
+- [ ] Add `.nvmrc` (`20`) — Phase 6 cleanup
 
-### Phase 2 — Brand & shell
+### Phase 2 — Brand & shell ✅ (merged to main 2026-05-18, commits `6a9c6b7` + `dc2511c`)
 - [x] Replace Logo.tsx (ESARC wordmark + accent square mark)
 - [x] Pick + apply accent color in `tailwind.config.ts` (`#2C39FF` electric cobalt)
 - [x] Update default metadata in `layout.tsx` (+ `Organization` JSON-LD)
 - [x] Footer rewrite (no fake offices; LinkedIn + GitHub + Calendly only)
 - [x] Header/nav order = Work / Services / About / Process / Insights / Contact (Contact = CTA)
 - [x] Homepage hero + 3 pillars + 4 engagement shapes rewritten (no stock laptop image, no fake clients/testimonials)
+- [x] Client logos committed to `public/logos/` (7 brands)
+- [x] Founder photo committed to `public/vaibhav.jpg`
 - [ ] Replace remaining stock images on case-study + about + process pages (Phase 3+)
 
 ### Phase 3 — Content pages (no case studies yet)
