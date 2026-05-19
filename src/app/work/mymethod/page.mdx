@@ -1,0 +1,61 @@
+import logo from '@/images/clients/mymethod/logo.png'
+
+export const caseStudy = {
+  client: 'MyMethod',
+  title: 'Voice AI agents on Vapi, with the eval and observability work to back them',
+  description:
+    'Multi-tenant voice AI for client organizations. Vapi orchestration, call routing, transcript pipelines into Supabase, and the eval harness that keeps quality from drifting between releases.',
+  summary: [
+    'MyMethod runs voice AI agents for client organizations. ESARC has been a senior engineer on the platform, owning the orchestration layer, the routing logic, the eval pipeline, and the transcript-to-analytics path.',
+    'The work is multi-tenant by design. Each client org gets its own agent persona, prompts, and routing rules, sharing the underlying infra and the same eval rigor.',
+  ],
+  logo,
+  image: { src: logo },
+  date: '2026-02',
+  service: 'Voice AI, Vapi orchestration, eval pipelines, Supabase',
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## The problem
+
+Voice AI on a real phone line is a different animal from a chat demo. Latency shows up as awkward silence. Misroutes show up as a customer hanging up. A model that hallucinates in chat is a bad answer. A model that hallucinates on a call is a refund. MyMethod's product sits on real phone numbers for real client businesses, and the bar is "would you let this agent talk to your mother."
+
+When I came in, the system worked but it didn't scale across clients without a lot of manual tuning. Every new org meant a fresh round of prompt babysitting, a new set of edge cases, and a long tail of "the agent did something weird on a Tuesday and we don't know why." The asks were a multi-tenant architecture that didn't collapse under the variance, a transcript pipeline that turned every call into a queryable artifact, and an eval harness that could catch regressions before they hit production calls.
+
+## What we shipped
+
+A few things, in rough order of how they got built:
+
+A Vapi-based orchestration layer that handles call routing, transfers, and tool calls. Each client org gets its own configured agent, but the routing primitives and tool implementations are shared. When we needed to add a new tool, like "look up an appointment in this client's calendar," we added it once and exposed it per-org with the right credentials.
+
+A transcript pipeline that pulls every completed call into Supabase, normalizes the shape across Vapi's evolving payloads, and exposes a queryable schema for product and ops to slice however they want. The dashboard URLs use internal call IDs, not Vapi's, so the support team can deep-link into any call without exposing vendor specifics.
+
+An eval harness that replays synthetic and real (anonymized) calls against new agent versions and scores them on a small set of dimensions we care about: did it route correctly, did it call the right tool, did it stay in character, did it hand off cleanly. The harness runs on PRs that touch agent config or prompts. Bad changes get caught before the merge button is available.
+
+A latency budget enforced at the orchestration layer. Tools that exceed their budget fall back. The agent narrates a brief filler instead of going silent. None of this is fancy. It's just discipline applied to a real-time system that people forget is real-time.
+
+## How we built it
+
+Multi-tenancy first. Every shared piece of code asks "which org" before it does anything. Credentials, prompts, tools, and routing rules are all org-scoped. We use Supabase's row-level security on the data side and a thin service-layer pattern on the orchestration side. New clients onboard by adding rows, not by forking config.
+
+For Vapi specifically, the lesson I keep relearning is to keep your own seam in the middle. Vapi changes payloads, adds features, deprecates fields. If your code reaches into their response shape from a hundred places, you're going to have a bad week. We normalize at one boundary and the rest of the system speaks our schema.
+
+The eval harness was the highest-leverage thing I built here. Before it, every release was nerve-racking. After it, releases are boring, which is the goal. The harness scores deterministically where it can (tool was called, route was correct) and uses an LLM judge with a tight rubric where it can't (did the persona stay in character). The LLM judge agrees with humans about 80% of the time, which is good enough to catch regressions, not good enough to make irreversible decisions on its own.
+
+Transcripts live in Supabase. Each call gets a row with summary, dimensions, tool calls, and a link to the raw Vapi artifact. The ops team writes SQL against this. So do I when I'm debugging a weird call.
+
+## Outcome
+
+The platform now runs multiple client orgs through the same orchestration layer without per-client engineering for routine onboarding. Eval gates catch the bulk of bad changes before they ship. The transcript pipeline turned "we have no idea why this customer hung up" into "we have a transcript, the tool call log, and the score."
+
+Quantitatively, the ones I'm comfortable putting on the page: agent regression incidents in production dropped sharply once the eval harness landed. Time-to-onboard a new client org went from "engineer-week" to "config and ship."
+
+## What I'd do differently
+
+Built the transcript schema before the orchestration layer, not after. We backfilled a lot of calls into the new schema and it would have been cheaper to be picky about shape from the start. Same lesson as Springhouse, just in a different room: the boring data plumbing should land first.
+
+The other thing I'm less sure about: how much LLM-as-judge to trust in the eval harness. We're conservative right now and lean on deterministic checks where we can. That feels right for a voice product. I'd want to revisit it as the underlying models keep getting better.
