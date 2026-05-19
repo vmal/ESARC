@@ -1,0 +1,458 @@
+# ESARC — Full Content Dump
+
+> Full text of all primary pages on esarc.dev, concatenated for LLM ingestion. Source of truth lives at the URLs noted in each section.
+
+Site: https://esarc.dev
+Last updated: 2026-05-18
+
+---
+
+## Page: Home
+URL: https://esarc.dev/
+
+AI engineering, with the receipts.
+
+Vaibhav Malhotra runs ESARC. Nine years engineering at Amazon, Scrubs Co-Pilot, Stuf Storage, and now Meta Superintelligence Labs. One principal in your repo, an in-house fleet of AI agents doing the rest, output on the order of a much bigger team. Two or three engagements at a time, never more.
+
+What we build: voice AI agents on Vapi and ElevenLabs. Multi-agent backends on Pydantic AI and FastAPI. RAG over regulated data, including EPIC-integrated clinical workflows. Eval and observability harnesses for production AI. AI audits and 90-day roadmaps for teams that are mid-build.
+
+---
+
+## Page: About
+URL: https://esarc.dev/about
+
+One principal. A fleet of agents.
+
+ESARC is a small, senior-only AI engineering shop. Vaibhav Malhotra runs it. He built it because the math on AI-native teams changed last year, and most consultancies haven't noticed yet.
+
+Vaibhav has been an engineer for 9 years. Amazon for four (shipping pricing services at 1M requests a day, $100K saved on a data map rewrite, half the latency on the cart pipeline). Scrubs Co-Pilot for two (RAG over EHR data, EPIC integration, live in 5+ clinics). Stuf Storage for one (Sidney Voice AI, an autonomous sales agent that books leads on inbound calls).
+
+Today he is embedded with Meta's AI Pathfinding team inside Meta Superintelligence Labs. Tool-using agents on Llama and Claude. A multi-agent pipeline that writes, tests, and iterates VR game logic from a product spec.
+
+Five operating rules:
+1. Senior-only. Every line that ships is reviewed by a principal.
+2. AI-native. Agents draft, test, and review. The principal sets direction and owns the call.
+3. Receipts over slides. Pull requests, not status decks. Every claim has a commit.
+4. Async-first. Loom over Zoom. Notion over meetings.
+5. Clean handoff. Runbook, evals, on-call notes. 30 days of post-engagement on-call, then we are out.
+
+---
+
+## Page: Services
+URL: https://esarc.dev/services
+
+Four ways we engage. Every engagement is led by a principal engineer and backed by our in-house AI agent fleet. The shape changes with the problem.
+
+### AI Sprint — $25-40K, 4-6 weeks
+Ship one thing that moves a real number. LLM feature, voice POC, agent workflow, or eval harness. For you if you have a concrete AI feature in mind and want it in production this quarter, not next year.
+
+### Fractional Principal — $15-25K/month, 3 month minimum
+A principal embedded in your team, week in, week out. Multi-month builds with a clean handoff. For you if you have ongoing AI work, no senior engineer to own it, and you do not want to hire one in a panic.
+
+### AI Audit & Roadmap — $5-15K, 2 weeks
+A two-week deep dive. We read the code, talk to the team, then tell you what to ship and what to kill. A written audit (20-40 pages), prioritized 90-day roadmap, recorded exec readout.
+
+### Enterprise AI Program — $150K+, 6+ months
+Principal lead, agent fleet, on-demand specialists, SLAs. For programs that touch production data and real users. Regulated industries, public companies, Series C+ with material AI exposure.
+
+### FAQ
+
+Q: Who owns the IP? A: You do. Standard work-for-hire, signed before the first PR. Code, prompts, evals, weights you fine-tune on your data, all yours.
+
+Q: Where do the agents run? A: Two options. Default: in our cloud, against your repo via a scoped GitHub app and a tight allowlist. Enterprise: inside your VPC, on your provider, with your audit logs.
+
+Q: What models do you use? A: Whatever fits the job. Claude Opus and Sonnet for code and reasoning, GPT-4o and 4.1 for general work, Llama for self-hosted, ElevenLabs for voice.
+
+Q: How does the handoff work? A: Last two weeks of any engagement are handoff. Runbook, evals checked into your repo, on-call playbook, a recorded walkthrough. We stay on call for 30 days after we leave, no extra cost.
+
+Q: What about security and compliance? A: We sign MSAs, NDAs, and BAAs where applicable. SOC 2 documentation is in progress. We have shipped against EPIC, HIPAA-scoped data, and AWS production at Amazon-scale.
+
+Q: What time zone do you work in? A: Pacific Time, Vancouver, BC. We cover 9-5 PT and overlap with most of North America and Europe.
+
+Q: How many engagements do you run at once? A: Two or three at a time, never more.
+
+Q: What if it does not work out? A: Sprints have a kill clause at week two. Fractional and Enterprise have 30-day notice.
+
+---
+
+## Page: Process
+URL: https://esarc.dev/process
+
+How an engagement runs. Five phases, written down, predictable. No black box. You see the PRs, the evals, and the dashboards in real time.
+
+### 01. Discovery (3-5 days)
+The principal reads your code and talks to the people closest to the problem. Engineers, PMs, customer support, whoever has the receipts. Deliverable: a one-pager — problem statement, current state, three options with rough sizing.
+
+### 02. Scope (2-5 days)
+We pick an option together and write it down. Hard scope, soft scope, explicit non-goals. A draft eval suite so we agree on what success means before we write a line of code. Deliverable: signed scope doc, draft eval set, target metrics, fixed quote.
+
+### 03. Sprint (2-6 weeks)
+Principal plus agent fleet in your repo. Daily PRs against a feature branch. A 5-line update every morning: what landed, what is in review, what is blocked. Deliverable: a working build behind a feature flag, green eval suite, real latency and cost numbers.
+
+### 04. Ship (3-7 days)
+Staged rollout. Internal users first, then 1%, 10%, 50%, 100%. Observability dashboards wired, rollback path tested, on-call rotation set. Deliverable: feature in production, dashboards in your tool of choice, written go-live note.
+
+### 05. Handoff (1-2 weeks)
+Last phase is for your team, not ours. Runbook walkthrough, recorded code tour, eval suite explanation, a list of known gaps and follow-ups. 30 days of post-engagement on-call, no extra invoice.
+
+---
+
+## Page: Contact
+URL: https://esarc.dev/contact
+
+Let's talk about what you're shipping. Send a note or book a 30-minute intro. Either works. Same-day reply on weekdays.
+
+Calendly: https://calendly.com/vbvmalhotra/vaibhav-interview
+
+What happens next:
+1. Intro call. Thirty minutes. We figure out if this is something we should take on.
+2. Scoping. A short written proposal: outcome, approach, team shape, timeline.
+3. Kickoff. Principal in your repo and Slack inside a week.
+
+---
+
+## Page: Work
+URL: https://esarc.dev/work
+
+Selected work. AI systems that earned their keep. A few of the things shipped, with the engineering decisions that mattered. Some engagements are public. Others can be described in a call. Where a study reads short, the work was real and the details are under NDA.
+
+---
+
+## Case Study: amazon-shipping-ai
+URL: https://esarc.dev/work/amazon-shipping-ai
+
+## The problem
+
+Shipping cost calculation is one of those quiet load-bearing systems inside Amazon. Every cart, every checkout, every shipping options page hits it. At a million-plus requests per day on the slice I worked on, even small improvements in latency or cost compound into real money and a noticeably better customer experience.
+
+When I joined the team, the systems worked, but two things were nagging. The shipping cost path was making more round trips to upstream data sources than it needed to. And the model that predicted shipping prices for certain edge cases lived in a stack that nobody was excited to maintain.
+
+## What we shipped
+
+Three pieces. They're separate efforts and they happened over a few years, but they're the ones I'd put on a resume because they're the ones the team kept benefiting from after I left.
+
+A data-map for shipping cost calculations that consolidated several upstream lookups into a single derived structure. Same correctness guarantees, far fewer round trips. Latency on the affected paths dropped by roughly half, and the cost savings came out to $100K-plus annualized once the infra team did the math on the upstream services we were no longer hammering. Not glamorous engineering. Just careful inventory of what data we actually needed at request time and what we could precompute.
+
+A shipping price prediction pipeline in Python. The previous model lived behind a service that was painful to update. We ported the model and the training pipeline into something the team could actually iterate on. The model itself wasn't novel. The maintenance story being sane was the win.
+
+A migration of a legacy cart-building service to Native AWS. Cart build time dropped 50% on the surfaces we migrated. The interesting part of the migration was not the move itself. It was the decision to be aggressive about killing config and code that was dead weight, instead of doing a like-for-like port. Migrations are the rare moment when the political cost of deletion is lowest. We used that.
+
+## How we built it
+
+For the data-map, the approach was almost entirely about reading. I spent the first month understanding which upstream calls were made on every request, which were cacheable, which were genuinely per-request, and which were "we made this call in 2017 and nobody ever questioned it." Then we drew the new shape on a whiteboard, validated the math on a few high-traffic categories, and shipped behind a feature flag with shadow-mode comparisons against the old path. We ramped to 100% over a couple of weeks. The infra graphs were the cleanest part of the whole thing.
+
+The price prediction pipeline was a model-port plus a tooling rewrite. The old service had a one-off training harness that nobody wanted to touch. We rebuilt it on the team's standard Python tooling, with a model registry, a deterministic training reproduction, and integration tests that ran against frozen request fixtures. The model accuracy was roughly flat. The team's velocity on it went up by an order of magnitude.
+
+The Native AWS migration was the work I learned the most from. The codebase had two of everything. Two retry strategies. Two config systems. Two competing ideas about where caching belonged. The honest review of which ones to keep and which ones to delete is what produced the latency win. Native AWS gave us better defaults. The 50% cart-build reduction came from picking the right defaults and removing what fought them.
+
+## Outcome
+
+The numbers, which were team-reported and stand up:
+
+- 1M+ requests per day handled on the services I was on-call for.
+- $100K+ in annualized savings from the data-map redesign.
+- Latency cut in half on the affected shipping cost paths.
+- 50% reduction in cart building time after the Native AWS migration.
+
+The career outcome is that I spent three years at Amazon learning how to operate systems at scale, and most of what I do now in AI infra (latency budgets, retries, observability, careful migrations) comes from that period. The model has gotten flashier. The discipline is the same.
+
+## What I'd do differently
+
+I would have started talking to customers of the price prediction model earlier. The model lived in a backend service, but its consumers were product teams who had opinions about edge cases I never knew existed until late in the project. The closer you can get to the people who'll use your work, the less time you spend optimizing the wrong thing.
+
+The other thing I'd do differently is be louder about the data-map work. It's the kind of project that's easy to undersell because the change is "we made it smaller and faster." Internally, those are the projects worth shouting about. Externally too.
+
+---
+
+## Case Study: clearprop
+URL: https://esarc.dev/work/clearprop
+
+## The problem
+
+Pilot logbooks are a paperwork tax on an otherwise great hobby. Every flight produces a row of fields. Date, aircraft, tail number, departure, destination, total time, pilot-in-command time, dual time, instrument time, landings (day and night), approaches. Most apps in this market are either too rigid for the way real pilots fly, or they're so flexible they make a simple flight take five minutes to enter. Neither is what I want at 9pm after a long day at the field.
+
+I started ClearProp because nothing on my phone got the flow right. I'd rather build the tool than keep being annoyed by the tools that exist.
+
+## What we shipped
+
+A working app I use for my own flying, with the boring fundamentals done well first:
+
+- Fast entry. The most common flight types are one-tap presets. The rare ones still have a path, but they don't get in the way of the common case.
+- Correct currency math. Day and night currency, instrument currency with the six-month and twelve-month rules, biennial flight review tracking. The math is unit-tested against a small library of real scenarios because the rules have edge cases and the cost of getting them wrong is "you find out at the worst possible moment."
+- Export. CSV for tax season. The exact format my flight school wanted for proof of recent experience. PDF for anyone who needs a sharable summary.
+- Sync without surprises. Local-first storage, sync to a backend when there's a connection, conflict resolution that prefers the more recent edit. No screens of "merge changes" dialogs.
+
+What I haven't shipped yet, and where the commercial plans go, is the part where ClearProp talks to other systems. Aircraft maintenance schedules. School-side dashboards for instructors to see student currency. Insurance-friendly summaries. Those are the features I want to charge for. The free version is the logbook I'd already pay for.
+
+## How I built it
+
+This is a solo project, so the technology choices are entirely about velocity and longevity. I use the stack I know well rather than reaching for whatever's new this month. The backend pieces share patterns with what I ship to clients, just with no committee in the way.
+
+The mobile flow is the heart of the product. I prototype every new screen on my phone, in the wild, before I write the data model behind it. If I can't enter a flight in under a minute with one thumb, the design is wrong. That rule has killed more "neat ideas" than I can count.
+
+Currency tracking is the part I'm proudest of. I wrote a small rules engine that takes a set of completed flights and answers questions like "am I current for night passenger carriage today, and when do I lose currency next." The rules are codified once and tested against scenarios drawn from FAA examples. When the rules change (and they do), I update them in one place and the rest of the app reflects it.
+
+I treat the codebase the same way I'd treat a client codebase. Typed end-to-end, tested where the math gets thorny, boring where it can be boring. That discipline is the thing that makes ClearProp a useful proving ground for ESARC. When I want to try a new pattern (typed agents, a new sync primitive, a new way to handle background tasks), it lands here first.
+
+## Outcome
+
+I use it. That's the first outcome. My logbook is in ClearProp, not in a spreadsheet, and not in the app I was using before. A handful of pilots in my circle use it too, mostly people who got tired of hearing me complain about the alternatives.
+
+Commercial outcomes are a Phase 2 problem. The plan is to start charging once the differentiator features (maintenance, instructor dashboards) are mature enough to be worth a subscription. Until then, ClearProp earns its keep as a personal tool and as the place I prototype before client work.
+
+## What I'd do differently
+
+Spent less time picking the stack at the start. I went back and forth between a couple of choices for a few weeks that didn't matter. The right answer for a solo project is "the stack you can move fastest on." I knew that. I still let myself shop. Lesson re-learned.
+
+---
+
+## Case Study: mcgraw-hill
+URL: https://esarc.dev/work/mcgraw-hill
+
+## The problem
+
+Education publishing has a lot of high-quality content sitting in formats that pre-date the LLM era. Textbooks, problem sets, instructor guides, the long tail of supplementary materials. The opportunity is to make that content useful in new ways: as the source of truth for tutoring assistants, as the corpus behind retrieval-augmented learning tools, as the raw material for adaptive content. The risk, from a publisher's seat, is putting any of that into systems that hallucinate, drift, or fail to cite back to the source. The trust bar is high for good reasons.
+
+## What we shipped
+
+Senior consulting hours on the parts of the problem where I could help. The pattern I bring into engagements like this is the same one I bring to every AI project. Decide where the model gets to be creative and where it has to call a tool. Pin the model to verifiable sources. Build the eval rubric before you build the third feature. Treat the integration points as the actual product, not the demo.
+
+Specifics on scope, deliverables, and outcomes are something I'm happy to walk through under NDA. I'd rather keep a careful page than a flattering one.
+
+## Outcome
+
+The engagement was a successful one from a consulting standpoint. The team got senior AI engineering input at a point in their roadmap where the stakes were "make a decision we won't regret in 18 months," and the decisions held up.
+
+If you're at an education company or a publisher and you're trying to figure out where LLMs fit into your content stack, that's a conversation I'm happy to have. I've now done some version of it more than once.
+
+---
+
+## Case Study: meta-superintelligence
+URL: https://esarc.dev/work/meta-superintelligence
+
+## The problem
+
+Frontier labs hire researchers to push capability and engineers to keep that capability honest. The honest part is where I sit. When a model can call tools, browse, plan, and respond conversationally, the surface area of "did it actually do the right thing" gets large fast. Manual review doesn't scale. Static benchmarks rot the day you ship them. The teams I work with need evaluation and tooling that catch regressions in days instead of weeks, and that they can trust without babysitting.
+
+The hiring conversation was short. They had a backlog of applied engineering work behind a research roadmap, and not enough hands inside the lab who think about it as production software. I came in as a senior IC, embedded directly with the team, with a contract through ESARC.
+
+## What we shipped
+
+I'm deliberately keeping this section thin. The work touches conversational AI surfaces, tool-calling behavior, MCP-style integrations, and the evaluation harnesses that ride alongside them. Most of what I've built so far is internal tooling other engineers use daily. Some of it is plumbing for evaluations that block release decisions. The rest is the unglamorous "this code path is wrong and it took two days to prove it" kind of work.
+
+What I can say at this level of generality:
+
+- The team gets faster, more reliable signal on agent behavior than they did before I joined.
+- Tool-calling code paths have tighter contracts and better traces.
+- Evaluation runs are reproducible from a single command, with artifacts that survive the model swap that's coming next month.
+
+If you want the actual architecture, the model details, or the eval taxonomy, those are conversations I can have under NDA. Not on a marketing page.
+
+## How I work inside the lab
+
+Embedded, not contracted-at-arm's-length. I'm in the same Slack channels, the same code reviews, the same on-call rotation when something I shipped breaks. The interesting parts of frontier work happen in the hallway conversations and the half-finished docs, not in the JIRA tickets. Trying to ship anything serious from outside that loop is a waste of everyone's time.
+
+A few things I've tried to bring with me from running production systems elsewhere:
+
+Engineering instincts about latency, retries, and observability translate directly to agent systems, just with a fuzzier definition of "correct." A tool call that times out 1% of the time is still a 1% bug. A response that's "vibes-correct" but factually wrong is a P0 you can't grep for. Evaluation has to assume both.
+
+Speed of iteration matters more than perfection. The model under the agent is going to change in three weeks. Don't over-fit your eval harness to behavior that's about to disappear. Build the harness to survive the change.
+
+Write the boring layer. Logging, traces, replay tools, deterministic seeds. These are the things researchers don't want to write and the things that make every downstream task ten times faster.
+
+## Outcome
+
+Concretely, what's measurable on my end: faster eval turnaround, more confident release decisions, fewer "is this real or noise" debates in review meetings. I'm not going to put a number on it here because the team's success metrics are theirs to publish, not mine.
+
+What I'll say is that the work continues, the surface area is expanding, and the lab keeps asking for more hours. That's the only honest "outcome" metric a contractor has.
+
+## What I'd do differently
+
+Ramped up faster on the evaluation history. I spent the first two weeks reading recent PRs and not enough time reading the evals that had been quietly broken for months. Some of those broken evals were the most informative artifacts in the repo, just nobody was looking at them.
+
+Otherwise the engagement has been one of the cleanest of my career. Senior engineers, clear scope, NDA boundaries everyone understands, and the kind of problems where doing the work right is its own reward.
+
+If you're a frontier lab or applied AI team that needs an IC who'll ship and respect the wall, get in touch.
+
+---
+
+## Case Study: mymethod
+URL: https://esarc.dev/work/mymethod
+
+## The problem
+
+Voice AI on a real phone line is a different animal from a chat demo. Latency shows up as awkward silence. Misroutes show up as a customer hanging up. A model that hallucinates in chat is a bad answer. A model that hallucinates on a call is a refund. MyMethod's product sits on real phone numbers for real client businesses, and the bar is "would you let this agent talk to your mother."
+
+When I came in, the system worked but it didn't scale across clients without a lot of manual tuning. Every new org meant a fresh round of prompt babysitting, a new set of edge cases, and a long tail of "the agent did something weird on a Tuesday and we don't know why." The asks were a multi-tenant architecture that didn't collapse under the variance, a transcript pipeline that turned every call into a queryable artifact, and an eval harness that could catch regressions before they hit production calls.
+
+## What we shipped
+
+A few things, in rough order of how they got built:
+
+A Vapi-based orchestration layer that handles call routing, transfers, and tool calls. Each client org gets its own configured agent, but the routing primitives and tool implementations are shared. When we needed to add a new tool, like "look up an appointment in this client's calendar," we added it once and exposed it per-org with the right credentials.
+
+A transcript pipeline that pulls every completed call into Supabase, normalizes the shape across Vapi's evolving payloads, and exposes a queryable schema for product and ops to slice however they want. The dashboard URLs use internal call IDs, not Vapi's, so the support team can deep-link into any call without exposing vendor specifics.
+
+An eval harness that replays synthetic and real (anonymized) calls against new agent versions and scores them on a small set of dimensions we care about: did it route correctly, did it call the right tool, did it stay in character, did it hand off cleanly. The harness runs on PRs that touch agent config or prompts. Bad changes get caught before the merge button is available.
+
+A latency budget enforced at the orchestration layer. Tools that exceed their budget fall back. The agent narrates a brief filler instead of going silent. None of this is fancy. It's just discipline applied to a real-time system that people forget is real-time.
+
+## How we built it
+
+Multi-tenancy first. Every shared piece of code asks "which org" before it does anything. Credentials, prompts, tools, and routing rules are all org-scoped. We use Supabase's row-level security on the data side and a thin service-layer pattern on the orchestration side. New clients onboard by adding rows, not by forking config.
+
+For Vapi specifically, the lesson I keep relearning is to keep your own seam in the middle. Vapi changes payloads, adds features, deprecates fields. If your code reaches into their response shape from a hundred places, you're going to have a bad week. We normalize at one boundary and the rest of the system speaks our schema.
+
+The eval harness was the highest-leverage thing I built here. Before it, every release was nerve-racking. After it, releases are boring, which is the goal. The harness scores deterministically where it can (tool was called, route was correct) and uses an LLM judge with a tight rubric where it can't (did the persona stay in character). The LLM judge agrees with humans about 80% of the time, which is good enough to catch regressions, not good enough to make irreversible decisions on its own.
+
+Transcripts live in Supabase. Each call gets a row with summary, dimensions, tool calls, and a link to the raw Vapi artifact. The ops team writes SQL against this. So do I when I'm debugging a weird call.
+
+## Outcome
+
+The platform now runs multiple client orgs through the same orchestration layer without per-client engineering for routine onboarding. Eval gates catch the bulk of bad changes before they ship. The transcript pipeline turned "we have no idea why this customer hung up" into "we have a transcript, the tool call log, and the score."
+
+Quantitatively, the ones I'm comfortable putting on the page: agent regression incidents in production dropped sharply once the eval harness landed. Time-to-onboard a new client org went from "engineer-week" to "config and ship."
+
+## What I'd do differently
+
+Built the transcript schema before the orchestration layer, not after. We backfilled a lot of calls into the new schema and it would have been cheaper to be picky about shape from the start. Same lesson as Springhouse, just in a different room: the boring data plumbing should land first.
+
+The other thing I'm less sure about: how much LLM-as-judge to trust in the eval harness. We're conservative right now and lean on deterministic checks where we can. That feels right for a voice product. I'd want to revisit it as the underlying models keep getting better.
+
+---
+
+## Case Study: scrubs-co-pilot
+URL: https://esarc.dev/work/scrubs-co-pilot
+
+## The problem
+
+Clinicians type. A lot. The administrative load on a working doctor or nurse practitioner is one of the most cited drivers of burnout in the field, and the math is grim. A 15-minute consult often turns into 20 minutes of documentation afterward. Multiply by a day of patients and you've spent more time at a keyboard than with people.
+
+The market had voice transcription tools and a few early ambient-AI products. What it didn't have, at the price point and quality bar that worked for small practices, was a co-pilot that produced a structured note a clinician trusted enough to sign without rewriting the whole thing. That trust gap was the actual problem. Anyone can transcribe. Producing a SOAP note that doesn't need surgical edits is the hard part.
+
+## What we shipped
+
+A web app built on Next.js, Node, and Postgres, with the LLM and audio pipeline behind a typed API. The flow:
+
+1. Clinician hits record (or uploads audio after a session).
+2. Whisper transcribes, with diarization to separate clinician from patient.
+3. An LLM pipeline structures the transcript into the clinician's preferred note format. Most of our users wanted SOAP, some wanted a more narrative style. The format is a parameter, not a fork.
+4. A RAG layer pulls in the patient's prior visit context and any relevant clinical references, so the note isn't generated in a vacuum.
+5. The clinician reviews in a side-by-side view: transcript on the left, structured note on the right. Edits are tracked. The signed-off note becomes part of the patient record.
+
+The structured-note step is where most of the engineering went. Naive prompting gave us hallucinated symptoms and invented dosages, which is unacceptable here. We constrained the output to fields that had to be present in the transcript, and we made the model cite its source span in the transcript for every claim. If the model couldn't cite, it had to leave the field blank. That single rule eliminated most of the dangerous failure modes.
+
+## How we built it
+
+Small team. Fast moves. The first version was up in about six weeks because we were ruthless about scope. No EMR integrations at launch. No fancy billing. Just the core "record, transcribe, structure, sign" loop, plus enough authentication and audit logging that a small practice could try it without getting fired.
+
+Audio handling was the first thing that bit us. Browser audio is a mess of codecs, sample rates, and microphone gain levels. We standardized on a server-side normalization step before Whisper even sees the file. Diarization went from "kind of works" to "reliable enough to ship" once we tuned segment lengths to the rhythm of an actual consultation, not the rhythm of a podcast.
+
+The RAG layer started ambitious and ended pragmatic. Early versions tried to pull from a broad clinical reference corpus. It turned out that the most useful context, by a wide margin, was just the patient's own prior visits. So we cut the corpus aggressively and leaned on the practice's own data. Better results, faster responses, less to maintain.
+
+On the LLM side, we used OpenAI through the whole arc. We considered self-hosting for cost reasons. The math never quite worked out at our scale, and the engineering load of running our own inference would have killed velocity. That decision aged well.
+
+## Outcome
+
+100+ monthly active users within three months of launch. Most of those users came through word of mouth in small-practice networks, not through a paid funnel. That was the most validating signal we got. Clinicians told other clinicians.
+
+The qualitative outcome that mattered more: the people who used it daily told us they were getting evenings back. That's the metric the product was actually optimizing for, and the one we couldn't easily put on a dashboard.
+
+## What I'd do differently
+
+Pushed harder on EMR integration earlier. We resisted it as scope creep, and we were right for the MVP, but it became the single biggest friction point once users committed. The next time I build something in a clinical workflow, the integration question gets asked on day one, not month six.
+
+I also wish we'd been more disciplined about the eval rubric for note quality. We had clinicians spot-check, which is fine for a small user base, and it's a bottleneck the day you grow. A structured rubric that catches "hallucinated dosage" before a human sees it would have given us more confidence to iterate quickly on the prompts.
+
+The company isn't what I work on day to day anymore, but the lessons from it sit underneath almost every AI product I've built since.
+
+---
+
+## Case Study: springhouse
+URL: https://esarc.dev/work/springhouse
+
+## The problem
+
+Food planning is a deceptively hard product. A user says "I want healthy dinners this week, my partner doesn't eat pork, I have salmon in the freezer, and I'm trying to hit around 2,000 calories." Every clause in that sentence is a constraint the model needs to honor across seven meals, fourteen if you count lunches, and the answer has to feel like a real meal plan a person would actually cook, not a CSV.
+
+The first generation of the product leaned on a single big prompt. It worked until it didn't. The plans were generic, the macros were vibes-based, and the recipes were hallucinated more often than anyone wanted to admit. When the team asked ESARC to come in, the asks were specific. Make the macros real. Make the recipes pull from a verifiable corpus. Make the system explain itself when a user pushes back. And do all of this without the latency blowing up to the point where the app feels broken.
+
+## What we shipped
+
+A multi-agent backend on Pydantic AI, talking to a FastAPI surface, backed by Postgres. The shape of it:
+
+- A planner agent that owns the week-level structure and constraint satisfaction. It doesn't generate recipes itself. It calls a recipe-search tool against our own ingested corpus.
+- A nutrition agent that computes per-meal and per-day macros against a USDA-derived ingredient table. The LLM doesn't do the arithmetic. It calls a deterministic tool.
+- A substitution agent that handles "I don't have shiitakes, what should I use" without breaking the plan's macro budget.
+- An ingestion pipeline that parses public recipes into a typed Pydantic schema, with ingredient normalization against the same ingredient table the nutrition agent uses.
+
+Pydantic AI is doing a lot of the heavy lifting here. Typed outputs at every boundary mean the planner can't hand the nutrition agent a half-baked meal object. When the model hallucinates a field that doesn't fit the schema, the call fails loudly instead of poisoning the database. That alone killed an entire class of bugs we'd been chasing.
+
+## How we built it
+
+I started by drawing the boundaries on a napkin. Where does the LLM get to be creative, and where does it have to call a tool? The rule of thumb I keep coming back to: if the answer needs to be reproducible across two runs, it's not an LLM job. So macros are arithmetic, ingredient matching is a database lookup, and the planner only gets to make decisions about composition and variety.
+
+The ingestion pipeline was the unglamorous half of the work. Recipes on the open web are a disaster. JSON-LD when you're lucky, free-text when you're not, and ingredient strings like "1/2 cup parmesan, freshly grated (or pecorino in a pinch)." We parse, normalize, deduplicate against the ingredient table, and only then is a recipe eligible to enter the corpus. The first pass was rule-based with an LLM fallback for the hard cases. After a few weeks of tuning, the LLM fallback rate dropped enough that we could afford to run the slow path on the whole backlog.
+
+On the API side, FastAPI is doing what FastAPI is good at. Pydantic schemas at every endpoint, no surprise serialization. The agents stream tokens to the client, but tool calls are buffered and emitted as discrete events the frontend can render as "Springhouse is checking your fridge" or "computing macros." That kind of feedback turned out to matter more for trust than the latency win we got from streaming itself.
+
+Postgres holds the recipe corpus, the ingredient table, user plans, and a vector index for recipe similarity. Nothing exotic. We considered a separate vector DB and decided we didn't need one until the corpus gets ten times bigger.
+
+## Outcome
+
+The qualitative shift is what the team cared about. Meal plans now reference real recipes from our own corpus, not invented ones. Macros are arithmetic, so they're correct or they're a bug, never "approximately." Substitutions don't break the plan because the substitution agent has the same nutrition tool the planner uses.
+
+On the engineering side, the typed-output discipline cut our "the model returned garbage" incident rate to roughly zero. When something goes wrong now, it's a logic bug, not a parsing bug. That's a much better class of problem to have.
+
+## What I'd do differently
+
+Pushed harder on observability earlier. We added structured agent traces about a month in, and I wish we'd had them from day one. Half the time you don't know which agent is the slow one or the wrong one until you can replay a session end-to-end. If you're starting a multi-agent project, build the trace viewer before you build the third agent.
+
+Otherwise, the architecture has held up. The team is shipping features on top of it without ESARC in the loop for every change, which is the metric I actually care about.
+
+---
+
+## Case Study: stuf-sidney-ai
+URL: https://esarc.dev/work/stuf-sidney-ai
+
+## The problem
+
+Self-storage is a phone-heavy business that doesn't want to be. Calls come in all day. Most of them are the same five questions. Hours, unit sizes, climate control, price ranges, whether you take Bitcoin. The good callers convert. The rest are repetitive, and the staff time spent on them is time not spent with customers walking through the door.
+
+Stuf wanted a voice agent that could take the boring calls, qualify leads, book tours, and only hand off to a human when the call actually needed one. The bar was high. A bad voice agent reflects on the brand on every call. A good one is invisible.
+
+The other dimension was internal. Stuf had thousands of historical sales calls sitting in storage, and nobody had time to listen to them. There were patterns in there. Coaching gold, missed objections, repeated wins. The asks were two products in one. Sidney, the customer-facing voice agent, and Sidney GPT, the internal analyst that mined the call archive.
+
+## What we shipped
+
+Sidney Voice AI, the customer-facing agent. The full pipeline from inbound call to lead record to operator handoff, with a NestJS and Prisma backend doing the CRUD, integrations, and post-call automations. The dialogue management uses an async-graph state machine on top of LLM turns, which let us reason about "where are we in the conversation" the same way you would in a traditional IVR, but with all the natural-language flexibility of a model. That's the design choice that produced most of the wins.
+
+Sidney GPT, the internal analyst. It runs SQL and NLP over 3,000+ archived sales calls to surface patterns the operations team could act on. Things like which objections come up most often per location, which callers convert, what time of day produces the longest tail of dropped leads. The output is a dashboard the ops team actually reads, not a quarterly slide deck.
+
+The booth at ISS Vegas, which was less of a "ship" and more of a "this had to work in front of an entire industry." We had Sidney taking live demo calls from attendees walking the floor. The booth caught the kind of traffic you only get at the biggest show in your industry, and Sidney handled it.
+
+## How we built it
+
+Boring infrastructure first. NestJS for the API, Prisma against Postgres for persistence, queue-backed automations for the things that didn't need to run inline with the call. None of this is the interesting part, and that's the point. The interesting part is voice, and voice is unforgiving. You don't want to be debugging your own ORM when the model is talking to a customer.
+
+The async-graph dialogue manager was the architectural bet. Pure-LLM dialogue control is brittle. You get a model that wanders, repeats itself, or forgets the user's last constraint. Pure IVR dialogue is rigid and feels like 2010. The graph approach gave us nodes with explicit goals (greet, qualify, book, escalate) and the LLM handled the language within each node. Transitions were rule-augmented LLM decisions, not raw LLM decisions, so the system was easy to debug and easy to extend. Demo success went up 25% after we landed this pattern, and fallback prompts (the model giving up and asking the user to repeat) dropped 60%.
+
+Sidney GPT was a quieter project but high-leverage. The call archive had been sitting in S3 doing nothing. We transcribed what wasn't transcribed yet, ran a lightweight NLP pipeline for objection extraction and topic clustering, and put the structured output behind a SQL schema. From there, an LLM front-end let the ops team ask questions in plain English. The first month, the team found half a dozen things they immediately changed about how the human reps were trained.
+
+## Outcome
+
+The numbers, which Stuf is comfortable having on a marketing page:
+
+- 150+ qualified leads from ISS Vegas, generated by Sidney handling demo calls at the booth.
+- 25% improvement in demo success on real customer calls after the dialogue-graph refactor.
+- 60% reduction in fallback prompts on the same surface.
+- 3,000+ sales calls analyzed through Sidney GPT, with concrete coaching insights surfaced to the operations team.
+
+The other outcome that doesn't show up cleanly in numbers: the team got their phones back. The volume of staff hours spent on repetitive inbound calls dropped to the point where the storage operators could focus on the work that actually moves the business.
+
+## What I'd do differently
+
+Started the eval harness sooner. We had spot-check workflows for a long time before we had anything like a proper eval suite, and it cost us in iteration speed once the agent got non-trivial. The pattern I now bring into every voice project (and applied to MyMethod after this) is to build the eval loop before you build the third dialogue node.
+
+Otherwise the team and the product hit the milestones we set, the trade show was a win, and Sidney is still picking up calls.
+

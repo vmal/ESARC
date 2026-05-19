@@ -1,0 +1,41 @@
+# ESARC
+
+> ESARC is a one-principal AI engineering consultancy run by Vaibhav Malhotra. One senior engineer paired with an in-house fleet of AI coding agents, shipping production AI systems for companies that want senior accountability without a Big-4 invoice.
+
+ESARC takes a small number of engagements per year. Every line that ships is reviewed by a principal engineer. The agent fleet drafts, tests, and reviews under that direction. Output is measured in PRs, evals, and dashboards — not slide decks.
+
+## Services
+
+- [AI Sprint](https://esarc.dev/services#ai-sprint): Ship one AI feature in 4-6 weeks. $25-40K fixed.
+- [Fractional Principal](https://esarc.dev/services#fractional-principal): Embedded principal engineer, 3-month minimum. $15-25K/month.
+- [AI Audit & Roadmap](https://esarc.dev/services#ai-audit): Two-week written audit and 90-day roadmap. $5-15K.
+- [Enterprise AI Program](https://esarc.dev/services#enterprise): Multi-surface AI programs with SLAs and named specialists. $150K+, 6+ months.
+
+## Case studies
+
+- [Meta Superintelligence Labs](https://esarc.dev/work/meta-superintelligence): Applied AI engineering inside Meta's Superintelligence Labs. Tool-calling, MCP integration, agent evaluation for next-gen conversational AI.
+- [Amazon](https://esarc.dev/work/amazon-shipping-ai): SDE work on Amazon's shipping cost pipeline. 1M+ requests per day, $100K+ annualized savings, 50% latency cut on cart building.
+- [Scrubs Co-Pilot](https://esarc.dev/work/scrubs-co-pilot): Clinical documentation co-pilot. Whisper transcription plus LLM+RAG pipeline producing structured doctor notes a clinician signs off on.
+- [Stuf Storage — Sidney Voice AI](https://esarc.dev/work/stuf-sidney-ai): Voice AI for self-storage operations. 150+ qualified leads at ISS Vegas, +25% demo success, -60% fallback prompts.
+- [MyMethod](https://esarc.dev/work/mymethod): Multi-tenant voice AI agents on Vapi with the eval and observability work to keep quality from drifting between releases.
+- [Springhouse](https://esarc.dev/work/springhouse): Multi-agent food planning backend on Pydantic AI, FastAPI, and Postgres. Recipe ingest, calorie math, household constraints.
+- [McGraw Hill](https://esarc.dev/work/mcgraw-hill): Senior AI engineering consulting for an education publisher. Scope details under NDA.
+- [ClearProp](https://esarc.dev/work/clearprop): A full-stack pilot logbook app built as an own product. ESARC's internal proving ground for new patterns before they show up on client work.
+
+## About
+
+- [About ESARC](https://esarc.dev/about): Vaibhav Malhotra. 9 years engineering at Amazon, Scrubs Co-Pilot, Stuf Storage, and now Meta Superintelligence Labs. Why one principal plus a fleet of agents ships what a team of six used to ship.
+
+## Process
+
+- [How an engagement runs](https://esarc.dev/process): Five phases — discovery, scope, sprint, ship, handoff. Daily PRs, written deliverables, no Friday surprises.
+
+## Contact
+
+- [Contact ESARC](https://esarc.dev/contact): Send a note or book a 30-minute intro call. Same-day reply on weekdays.
+
+## Optional
+
+- [Sitemap](https://esarc.dev/sitemap.xml)
+- [Founder LinkedIn](https://www.linkedin.com/in/mvaibhav)
+- [Founder GitHub](https://github.com/vmal)
