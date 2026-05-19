@@ -243,16 +243,25 @@ const featuredWork = [
     title: 'Voice AI for self-storage',
     client: 'Stuf Storage',
     tag: 'Sidney Voice AI',
+    href: '/work/stuf-sidney-ai',
+    blurb:
+      'Sidney books, reschedules, and answers tenants 24/7 across Stuf locations. Built on Vapi with our own eval harness.',
   },
   {
     title: 'Clinical RAG over EHR data',
     client: 'Scrubs Co-Pilot',
-    tag: 'RAG + EPIC integration',
+    tag: 'RAG + EHR integration',
+    href: '/work/scrubs-co-pilot',
+    blurb:
+      'A RAG system clinicians actually trust. Cites the chart, not the model. Built for the realities of EHR data.',
   },
   {
     title: 'Multi-agent VR pipeline',
     client: 'Meta Superintelligence Labs',
     tag: 'Agent orchestration',
+    href: '/work/meta-superintelligence',
+    blurb:
+      'A multi-agent pipeline for VR content production. Shipped under NDA inside Meta Superintelligence Labs.',
   },
 ]
 
@@ -278,28 +287,27 @@ function FeaturedWork() {
       <FadeInStagger className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {featuredWork.map((work) => (
           <FadeIn key={work.title}>
-            <div className="group relative overflow-hidden rounded-3xl border border-neutral-950/10 bg-neutral-50">
+            <Link
+              href={work.href}
+              className="group relative block overflow-hidden rounded-3xl border border-neutral-950/10 bg-neutral-50 transition hover:border-neutral-950/30"
+            >
               <div className="aspect-[4/3] w-full bg-gradient-to-br from-neutral-100 to-neutral-200">
-                <div className="flex h-full items-center justify-center">
-                  <div className="space-y-3 px-8">
-                    <div className="h-2 w-24 rounded-full bg-neutral-300" />
-                    <div className="h-2 w-32 rounded-full bg-neutral-300" />
-                    <div className="h-2 w-20 rounded-full bg-neutral-300" />
-                  </div>
+                <div className="flex h-full items-center justify-center px-8">
+                  <p className="font-display text-xl font-medium text-neutral-700 [text-wrap:balance]">
+                    {work.title}
+                  </p>
                 </div>
               </div>
               <div className="border-t border-neutral-950/10 p-6">
                 <p className="font-mono text-xs uppercase tracking-wider text-accent">
-                  Case study coming
-                </p>
-                <h3 className="mt-2 font-display text-lg font-semibold text-neutral-950">
-                  {work.title}
-                </h3>
-                <p className="mt-1 text-sm text-neutral-600">
                   {work.client} &middot; {work.tag}
                 </p>
+                <p className="mt-3 text-sm text-neutral-600">{work.blurb}</p>
+                <p className="mt-4 text-sm font-semibold text-neutral-950 underline-offset-4 group-hover:underline">
+                  Read case study &rarr;
+                </p>
               </div>
-            </div>
+            </Link>
           </FadeIn>
         ))}
       </FadeInStagger>
