@@ -275,18 +275,18 @@ Track each phase as a PR off `esarc/v1` worktree branch. **No PR is merged witho
 - [x] Process (`/process`) — five-phase engagement breakdown
 - [x] Contact (`/contact`) — form + Calendly link + /api/contact via Resend
 
-### Phase 4 — Case studies (one PR each, or batched 2–3 per PR)
-- [ ] `/work/meta-superintelligence` (subject to NDA review)
-- [ ] `/work/springhouse`
-- [ ] `/work/mymethod`
-- [ ] `/work/scrubs-co-pilot`
-- [ ] `/work/stuf-sidney-ai`
-- [ ] `/work/amazon-shipping-ai`
-- [ ] `/work/clearprop`
-- [ ] `/work/mcgraw-hill` (scope TBD)
-- [ ] `/work` index page rewritten to show real case studies
-- [ ] Every case study run through `humanizer` skill
-- [ ] Every case study reviewed manually by Vic ⬅ blocking gate per study
+### Phase 4 — Case studies ✅ (merged to main 2026-05-18, commits 8916833 → 22526da)
+- [x] `/work/meta-superintelligence` (subject to NDA review)
+- [x] `/work/springhouse`
+- [x] `/work/mymethod`
+- [x] `/work/scrubs-co-pilot`
+- [x] `/work/stuf-sidney-ai`
+- [x] `/work/amazon-shipping-ai`
+- [x] `/work/clearprop`
+- [x] `/work/mcgraw-hill` (scope TBD)
+- [x] `/work` index page rewritten to show real case studies
+- [x] Every case study run through `humanizer` skill
+- [ ] Every case study reviewed manually by Vic ⬅ blocking gate per study (post-launch)
 
 ### Phase 5 — SEO / AEO pass
 - [ ] Sitemap + robots
