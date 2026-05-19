@@ -71,6 +71,14 @@ Booted local server on `:3000` and walked every nav entry + every case study via
 
 Contact form: filled all fields (name, email, company, role, message) and submitted. In dev the POST to `/api/contact` 500s without a Resend API key — the form UI submits cleanly, validation works, and on production with a real key the success state (`?sent=1` → "Got it. We'll reply within one business day.") renders as designed in `src/app/contact/page.tsx`.
 
+## Vercel deployment
+
+Live on Vercel (personal team `vaibhav-malhotras-projects-ef440d56`) as of 2026-05-19.
+
+- Production URL: https://esarc-peach.vercel.app
+- GitHub: https://github.com/vmal/ESARC (push to `main` triggers auto-deploy)
+- Project linked via `vercel link`; `.vercel/project.json` checked in locally only.
+
 ## TODOs Vic owns before launch
 
 - [ ] **DNS cutover** — point `esarc.dev` and `www.esarc.dev` at the Vercel project (A/CNAME or Vercel nameservers). Verify both apex and www resolve and that HTTPS cert provisions.
