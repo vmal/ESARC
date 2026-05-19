@@ -68,12 +68,8 @@ export default async function Insights() {
                       <p className="mt-6 max-w-2xl text-base text-neutral-600">
                         {article.description}
                       </p>
-                      <Button
-                        href={article.href}
-                        aria-label={`Read more: ${article.title}`}
-                        className="mt-8"
-                      >
-                        Read more
+                      <Button href={article.href} className="mt-8">
+                        Read <span className="sr-only">{article.title}</span>
                       </Button>
                     </div>
                   </div>

@@ -38,7 +38,7 @@ function Hero() {
   return (
     <div className="relative isolate mt-24 sm:mt-32 md:mt-40">
       <Container>
-        <FadeIn className="max-w-4xl">
+        <div className="max-w-4xl">
           <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-accent">
             <span className="inline-block h-2 w-2 translate-y-[-2px] bg-accent align-middle" />{' '}
             AI engineering consultancy
@@ -62,7 +62,7 @@ function Hero() {
               Book a 30-min intro &rarr;
             </Link>
           </div>
-        </FadeIn>
+        </div>
       </Container>
     </div>
   )
@@ -96,7 +96,7 @@ function ClientLogos() {
               <Image
                 src={logo}
                 alt={name}
-                unoptimized
+                sizes="(min-width:1024px) 140px, (min-width:640px) 220px, 160px"
                 className="max-h-10 w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
               />
             </div>

@@ -87,7 +87,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mb-20 mt-24 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-neutral-950/10 pt-12">
-          <Link href="/" aria-label="Home">
+          <Link href="/" aria-label="ESARC home">
             <Logo className="h-8" fillOnHover />
           </Link>
           <SocialMedia />

@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import { FadeIn } from '@/components/FadeIn'
 
 export function PageIntro({
   eyebrow,
@@ -18,7 +17,7 @@ export function PageIntro({
     <Container
       className={clsx('mt-24 sm:mt-32 lg:mt-40', centered && 'text-center')}
     >
-      <FadeIn>
+      <div>
         <h1>
           <span className="block font-display text-base font-semibold text-neutral-950">
             {eyebrow}
@@ -41,7 +40,7 @@ export function PageIntro({
         >
           {children}
         </div>
-      </FadeIn>
+      </div>
     </Container>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useId, useMemo, useState } from 'react'
 
 const HOURS_PER_WEEK = 40
 const BIG_FOUR_HEADCOUNT = 6
@@ -124,10 +124,14 @@ function Slider({
   suffix: string
   onChange: (n: number) => void
 }) {
+  const id = useId()
   return (
     <div>
       <div className="flex items-baseline justify-between">
-        <label className="font-display text-sm font-semibold text-neutral-950">
+        <label
+          htmlFor={id}
+          className="font-display text-sm font-semibold text-neutral-950"
+        >
           {label}
         </label>
         <span className="font-mono text-sm text-neutral-950">
@@ -135,6 +139,7 @@ function Slider({
         </span>
       </div>
       <input
+        id={id}
         type="range"
         min={min}
         max={max}
