@@ -1,0 +1,39 @@
+{/* TODO: confirm scope with Vic */}
+
+import logo from '@/images/clients/mcgraw-hill/logo.svg'
+
+export const caseStudy = {
+  client: 'McGraw Hill',
+  title: 'AI engineering consulting for an education publisher',
+  description:
+    'Senior AI consulting work for McGraw Hill during ESARC\'s consulting era. Scope details available under NDA.',
+  summary: [
+    'McGraw Hill is one of the named clients from ESARC\'s consulting era, alongside NextDay AI and Just a Drink. I was engaged as a senior AI engineer on content and learning-system problems where LLMs were starting to look useful and the publisher needed someone who had shipped them before.',
+    'I\'m keeping this study short on purpose. The work is publishable in outline. Specifics are something we can walk through on a call.',
+  ],
+  logo,
+  image: { src: logo },
+  date: '2024-09',
+  service: 'AI engineering consulting',
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## The problem
+
+Education publishing has a lot of high-quality content sitting in formats that pre-date the LLM era. Textbooks, problem sets, instructor guides, the long tail of supplementary materials. The opportunity is to make that content useful in new ways: as the source of truth for tutoring assistants, as the corpus behind retrieval-augmented learning tools, as the raw material for adaptive content. The risk, from a publisher's seat, is putting any of that into systems that hallucinate, drift, or fail to cite back to the source. The trust bar is high for good reasons.
+
+## What we shipped
+
+Senior consulting hours on the parts of the problem where I could help. The pattern I bring into engagements like this is the same one I bring to every AI project. Decide where the model gets to be creative and where it has to call a tool. Pin the model to verifiable sources. Build the eval rubric before you build the third feature. Treat the integration points as the actual product, not the demo.
+
+Specifics on scope, deliverables, and outcomes are something I'm happy to walk through under NDA. I'd rather keep a careful page than a flattering one.
+
+## Outcome
+
+The engagement was a successful one from a consulting standpoint. The team got senior AI engineering input at a point in their roadmap where the stakes were "make a decision we won't regret in 18 months," and the decisions held up.
+
+If you're at an education company or a publisher and you're trying to figure out where LLMs fit into your content stack, that's a conversation I'm happy to have. I've now done some version of it more than once.
