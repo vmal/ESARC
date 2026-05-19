@@ -19,27 +19,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     loadArticles(),
   ])
 
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${SITE_URL}/`, priority: 1.0, changeFrequency: 'monthly' },
-    { url: `${SITE_URL}/about`, priority: 0.9, changeFrequency: 'monthly' },
-    { url: `${SITE_URL}/services`, priority: 0.9, changeFrequency: 'monthly' },
-    { url: `${SITE_URL}/process`, priority: 0.8, changeFrequency: 'monthly' },
-    { url: `${SITE_URL}/work`, priority: 0.9, changeFrequency: 'weekly' },
-    { url: `${SITE_URL}/insights`, priority: 0.7, changeFrequency: 'weekly' },
-    { url: `${SITE_URL}/contact`, priority: 0.8, changeFrequency: 'yearly' },
-  ].map((route) => ({ ...route, lastModified: DEFAULT_LASTMOD }))
+  const staticRoutes: MetadataRoute.Sitemap = (
+    [
+      { url: `${SITE_URL}/`, priority: 1.0, changeFrequency: 'monthly' },
+      { url: `${SITE_URL}/about`, priority: 0.9, changeFrequency: 'monthly' },
+      { url: `${SITE_URL}/services`, priority: 0.9, changeFrequency: 'monthly' },
+      { url: `${SITE_URL}/process`, priority: 0.8, changeFrequency: 'monthly' },
+      { url: `${SITE_URL}/work`, priority: 0.9, changeFrequency: 'weekly' },
+      { url: `${SITE_URL}/insights`, priority: 0.7, changeFrequency: 'weekly' },
+      { url: `${SITE_URL}/contact`, priority: 0.8, changeFrequency: 'yearly' },
+    ] satisfies MetadataRoute.Sitemap
+  ).map((route) => ({ ...route, lastModified: DEFAULT_LASTMOD }))
 
   const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies.map((study) => ({
     url: `${SITE_URL}${study.href}`,
     lastModified: toIsoDate(study.date),
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
 
   const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
     url: `${SITE_URL}${article.href}`,
     lastModified: toIsoDate(article.date),
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
 

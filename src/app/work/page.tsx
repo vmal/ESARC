@@ -120,7 +120,21 @@ export default async function Work() {
           A few of the things I&apos;ve shipped, with the engineering decisions
           that mattered. Some engagements are public. Others I can describe in
           a call. Where a study reads short, the work was real and the details
-          are under NDA.
+          are under NDA. See the{' '}
+          <Link
+            href="/services"
+            className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+          >
+            engagement shapes
+          </Link>{' '}
+          if you&rsquo;re looking for similar work, or read{' '}
+          <Link
+            href="/process"
+            className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+          >
+            how an engagement runs
+          </Link>
+          .
         </p>
       </PageIntro>
 

@@ -1,4 +1,5 @@
 import { type Metadata } from 'next'
+import Link from 'next/link'
 
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
@@ -45,6 +46,10 @@ const services = [
     ],
     scope:
       'Single feature, single surface. Voice agent, RAG search, LLM-assisted workflow, model eval. We turn down work outside that scope.',
+    relatedWork: [
+      { slug: 'stuf-sidney-ai', label: 'Stuf — Sidney Voice AI' },
+      { slug: 'scrubs-co-pilot', label: 'Scrubs Co-Pilot' },
+    ],
   },
   {
     slug: 'fractional-principal',
@@ -63,6 +68,10 @@ const services = [
     ],
     scope:
       'Owning a real product surface. Voice, agents, RAG, evals, infra. You set priority, we set sequence.',
+    relatedWork: [
+      { slug: 'mymethod', label: 'MyMethod' },
+      { slug: 'springhouse', label: 'Springhouse' },
+    ],
   },
   {
     slug: 'ai-audit',
@@ -81,6 +90,7 @@ const services = [
     ],
     scope:
       'Architecture, model choice, eval coverage, latency, cost, security, team gaps. We don’t write code on this engagement.',
+    relatedWork: [{ slug: 'mcgraw-hill', label: 'McGraw Hill' }],
   },
   {
     slug: 'enterprise',
@@ -100,6 +110,10 @@ const services = [
     ],
     scope:
       'Multi-surface programs. Voice agents at call-center scale, multi-agent orchestration, RAG over regulated data, custom evals.',
+    relatedWork: [
+      { slug: 'meta-superintelligence', label: 'Meta Superintelligence Labs' },
+      { slug: 'amazon-shipping-ai', label: 'Amazon' },
+    ],
   },
 ]
 
@@ -160,6 +174,24 @@ function Services() {
                         </ul>
                       </dd>
                     </div>
+                    {s.relatedWork && s.relatedWork.length > 0 && (
+                      <div className="sm:col-span-2">
+                        <dt className="font-display text-sm font-semibold text-neutral-950">
+                          Related work
+                        </dt>
+                        <dd className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                          {s.relatedWork.map((w) => (
+                            <Link
+                              key={w.slug}
+                              href={`/work/${w.slug}`}
+                              className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+                            >
+                              {w.label}
+                            </Link>
+                          ))}
+                        </dd>
+                      </div>
+                    )}
                   </dl>
                 </div>
               </div>

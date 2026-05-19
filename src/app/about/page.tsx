@@ -85,15 +85,41 @@ function Founder() {
               that used to take a full team.
             </p>
             <p>
-              I&rsquo;ve been an engineer for 9 years. Amazon for four
-              (shipping pricing services at 1M requests a day, $100K saved on a
-              data map rewrite, half the latency on the cart pipeline). Scrubs
-              Co-Pilot for two (RAG over EHR data, EPIC integration, live in
-              5+ clinics). Stuf Storage for one (Sidney Voice AI, an
-              autonomous sales agent that books leads on inbound calls).
+              I&rsquo;ve been an engineer for 9 years.{' '}
+              <Link
+                href="/work/amazon-shipping-ai"
+                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+              >
+                Amazon
+              </Link>{' '}
+              for four (shipping pricing services at 1M requests a day, $100K
+              saved on a data map rewrite, half the latency on the cart
+              pipeline).{' '}
+              <Link
+                href="/work/scrubs-co-pilot"
+                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+              >
+                Scrubs Co-Pilot
+              </Link>{' '}
+              for two (RAG over EHR data, EPIC integration, live in 5+
+              clinics).{' '}
+              <Link
+                href="/work/stuf-sidney-ai"
+                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+              >
+                Stuf Storage
+              </Link>{' '}
+              for one (Sidney Voice AI, an autonomous sales agent that books
+              leads on inbound calls).
             </p>
             <p>
-              Today I&rsquo;m embedded with Meta&rsquo;s AI Pathfinding team
+              Today I&rsquo;m embedded with{' '}
+              <Link
+                href="/work/meta-superintelligence"
+                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+              >
+                Meta&rsquo;s AI Pathfinding team
+              </Link>{' '}
               inside Meta Superintelligence Labs. Tool-using agents on Llama
               and Claude. A multi-agent pipeline that writes, tests, and
               iterates VR game logic from a product spec.
@@ -107,8 +133,21 @@ function Founder() {
             <p>
               That&rsquo;s what ESARC is. Senior engineer in your repo, agent
               fleet doing the rest, output on the order of a much bigger team.
-              I take a small number of engagements a year so each one gets the
-              real attention.
+              I take a small number of{' '}
+              <Link
+                href="/services"
+                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+              >
+                engagements
+              </Link>{' '}
+              a year so each one gets the real attention. See the{' '}
+              <Link
+                href="/work"
+                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+              >
+                recent work
+              </Link>{' '}
+              for the receipts.
             </p>
             <div className="pt-4">
               <Button href="/contact">Work with me</Button>
