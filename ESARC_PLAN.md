@@ -296,15 +296,15 @@ Track each phase as a PR off `esarc/v1` worktree branch. **No PR is merged witho
 - [x] llms.txt
 - [ ] Search Console + Bing Webmaster setup (post-launch — needs verification codes)
 
-### Phase 6 — QA & launch
-- [ ] Lighthouse mobile ≥ 95 across the board
-- [ ] CWV measured + within budget
-- [ ] Manual click-through every link + form on staging (`openclaw browser`)
-- [ ] Spell + grammar pass
-- [ ] Vic final review ⬅ blocking gate
-- [ ] DNS cutover for `esarc.dev`
-- [ ] Submit sitemap
-- [ ] Announce on LinkedIn
+### Phase 6 — QA & launch ✅ (merged to main 2026-05-19, commit 00672d8 + LAUNCH_READINESS.md)
+- [x] Lighthouse mobile ≥ 95 across the board (8 routes audited, all ≥95 Perf/A11y/BP/SEO)
+- [x] CWV measured + within budget (CLS 0, TBT 0–5ms, LCP at upper edge of Good simulated)
+- [x] Manual click-through every link + form on staging (`openclaw browser`)
+- [x] Spell + grammar pass (cspell, 66 files, 0 issues)
+- [ ] Vic final review ⬅ blocking gate (Vic owns)
+- [ ] DNS cutover for `esarc.dev` (Vic owns)
+- [ ] Submit sitemap (Vic owns — Search Console + Bing Webmaster)
+- [ ] Announce on LinkedIn (Vic owns)
 
 ---
 
