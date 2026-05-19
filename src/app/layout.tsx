@@ -1,9 +1,20 @@
 import { type Metadata } from 'next'
+import localFont from 'next/font/local'
 
 import { JsonLd } from '@/components/JsonLd'
 import { RootLayout } from '@/components/RootLayout'
 
 import '@/styles/tailwind.css'
+
+const monaSans = localFont({
+  src: '../fonts/Mona-Sans.var.woff2',
+  variable: '--font-mona-sans',
+  display: 'swap',
+  weight: '200 900',
+  style: 'normal',
+  preload: true,
+  adjustFontFallback: 'Arial',
+})
 
 const SITE_URL = 'https://esarc.dev'
 
@@ -67,7 +78,10 @@ const websiteJsonLd = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full bg-neutral-950 text-base antialiased">
+    <html
+      lang="en"
+      className={`${monaSans.variable} h-full bg-neutral-950 text-base antialiased`}
+    >
       <head>
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />

@@ -7,11 +7,18 @@ const FadeInStaggerContext = createContext(false)
 
 const viewport = { once: true, margin: '0px 0px -200px' }
 
-export function FadeIn(
-  props: React.ComponentPropsWithoutRef<typeof motion.div>,
-) {
+export function FadeIn({
+  priority = false,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof motion.div> & {
+  priority?: boolean
+}) {
   let shouldReduceMotion = useReducedMotion()
   let isInStaggerGroup = useContext(FadeInStaggerContext)
+
+  if (priority) {
+    return <motion.div {...props} />
+  }
 
   return (
     <motion.div

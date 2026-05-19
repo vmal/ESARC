@@ -253,7 +253,7 @@ function ClientLogos() {
               <Image
                 src={logo}
                 alt={name}
-                unoptimized
+                sizes="(min-width:1024px) 140px, (min-width:640px) 220px, 160px"
                 className="max-h-10 w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
               />
             </div>

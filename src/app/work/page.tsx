@@ -34,8 +34,8 @@ function CaseStudies({
                     <Image
                       src={caseStudy.logo}
                       alt=""
-                      className="h-16 w-16 flex-none"
-                      unoptimized
+                      sizes="64px"
+                      className="h-16 w-16 flex-none object-contain"
                     />
                     <h3 className="mt-6 text-sm font-semibold text-neutral-950 sm:mt-0 lg:mt-8">
                       {caseStudy.client}

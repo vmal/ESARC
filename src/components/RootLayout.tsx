@@ -64,7 +64,7 @@ function Header({
       <div className="flex items-center justify-between">
         <Link
           href="/"
-          aria-label="Home"
+          aria-label="ESARC home"
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
