@@ -1,0 +1,65 @@
+import logo from '@/images/clients/meta-superintelligence/logo.svg'
+
+export const caseStudy = {
+  client: 'Meta (Superintelligence Labs)',
+  title: 'Applied AI engineering inside Meta Superintelligence Labs',
+  description:
+    'Senior IC work on conversational AI surfaces for next-gen models. NDA scope, so this study covers role and domain, not internals.',
+  summary: [
+    'I joined Meta Superintelligence Labs as a contract AI software engineer through ESARC. My remit sits across tool-calling, MCP integration, and agent evaluation workflows for next-gen conversational AI.',
+    'A lot of this work is under NDA. What I can say is that it lives where research meets product, and the bar is "ship something other engineers will rely on next quarter."',
+  ],
+  logo,
+  image: { src: logo },
+  date: '2025-12',
+  service: 'Applied AI engineering, agent evaluation, tool-calling',
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## The problem
+
+Frontier labs hire researchers to push capability and engineers to keep that capability honest. The honest part is where I sit. When a model can call tools, browse, plan, and respond conversationally, the surface area of "did it actually do the right thing" gets large fast. Manual review doesn't scale. Static benchmarks rot the day you ship them. The teams I work with need evaluation and tooling that catch regressions in days instead of weeks, and that they can trust without babysitting.
+
+The hiring conversation was short. They had a backlog of applied engineering work behind a research roadmap, and not enough hands inside the lab who think about it as production software. I came in as a senior IC, embedded directly with the team, with a contract through ESARC.
+
+## What we shipped
+
+I'm deliberately keeping this section thin. The work touches conversational AI surfaces, tool-calling behavior, MCP-style integrations, and the evaluation harnesses that ride alongside them. Most of what I've built so far is internal tooling other engineers use daily. Some of it is plumbing for evaluations that block release decisions. The rest is the unglamorous "this code path is wrong and it took two days to prove it" kind of work.
+
+What I can say at this level of generality:
+
+- The team gets faster, more reliable signal on agent behavior than they did before I joined.
+- Tool-calling code paths have tighter contracts and better traces.
+- Evaluation runs are reproducible from a single command, with artifacts that survive the model swap that's coming next month.
+
+If you want the actual architecture, the model details, or the eval taxonomy, those are conversations I can have under NDA. Not on a marketing page.
+
+## How I work inside the lab
+
+Embedded, not contracted-at-arm's-length. I'm in the same Slack channels, the same code reviews, the same on-call rotation when something I shipped breaks. The interesting parts of frontier work happen in the hallway conversations and the half-finished docs, not in the JIRA tickets. Trying to ship anything serious from outside that loop is a waste of everyone's time.
+
+A few things I've tried to bring with me from running production systems elsewhere:
+
+Engineering instincts about latency, retries, and observability translate directly to agent systems, just with a fuzzier definition of "correct." A tool call that times out 1% of the time is still a 1% bug. A response that's "vibes-correct" but factually wrong is a P0 you can't grep for. Evaluation has to assume both.
+
+Speed of iteration matters more than perfection. The model under the agent is going to change in three weeks. Don't over-fit your eval harness to behavior that's about to disappear. Build the harness to survive the change.
+
+Write the boring layer. Logging, traces, replay tools, deterministic seeds. These are the things researchers don't want to write and the things that make every downstream task ten times faster.
+
+## Outcome
+
+Concretely, what's measurable on my end: faster eval turnaround, more confident release decisions, fewer "is this real or noise" debates in review meetings. I'm not going to put a number on it here because the team's success metrics are theirs to publish, not mine.
+
+What I'll say is that the work continues, the surface area is expanding, and the lab keeps asking for more hours. That's the only honest "outcome" metric a contractor has.
+
+## What I'd do differently
+
+Ramped up faster on the evaluation history. I spent the first two weeks reading recent PRs and not enough time reading the evals that had been quietly broken for months. Some of those broken evals were the most informative artifacts in the repo, just nobody was looking at them.
+
+Otherwise the engagement has been one of the cleanest of my career. Senior engineers, clear scope, NDA boundaries everyone understands, and the kind of problems where doing the work right is its own reward.
+
+If you're a frontier lab or applied AI team that needs an IC who'll ship and respect the wall, get in touch.
