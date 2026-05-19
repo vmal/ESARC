@@ -1,6 +1,5 @@
 import { useId } from 'react'
 import { type Metadata } from 'next'
-import Link from 'next/link'
 
 import { Border } from '@/components/Border'
 import { Button } from '@/components/Button'
@@ -30,6 +29,48 @@ function TextInput({
       >
         {label}
       </label>
+    </div>
+  )
+}
+
+function SelectInput({
+  label,
+  options,
+  ...props
+}: React.ComponentPropsWithoutRef<'select'> & {
+  label: string
+  options: { value: string; label: string }[]
+}) {
+  let id = useId()
+
+  return (
+    <div className="group relative z-0 transition-all focus-within:z-10">
+      <select
+        id={id}
+        {...props}
+        defaultValue=""
+        className="peer block w-full appearance-none border border-neutral-300 bg-transparent px-6 pb-4 pt-9 text-base/6 text-neutral-950 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5 group-first:rounded-t-2xl group-last:rounded-b-2xl"
+      >
+        <option value="" disabled hidden></option>
+        {options.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+      <label
+        htmlFor={id}
+        className="pointer-events-none absolute left-6 top-3 text-xs font-semibold text-neutral-950"
+      >
+        {label}
+      </label>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 20 20"
+        className="pointer-events-none absolute right-6 top-1/2 h-4 w-4 -translate-y-1/2 fill-neutral-500"
+      >
+        <path d="M5 8l5 5 5-5z" />
+      </svg>
     </div>
   )
 }
@@ -89,9 +130,20 @@ function ContactForm() {
             name="role"
             autoComplete="organization-title"
           />
+          <SelectInput
+            label="Project type"
+            name="projectType"
+            required
+            options={[
+              { value: 'ai-sprint', label: 'AI Sprint (4-6 weeks)' },
+              { value: 'fractional', label: 'Fractional Principal (3 mo min)' },
+              { value: 'audit', label: 'AI Audit & Roadmap (2 weeks)' },
+              { value: 'enterprise', label: 'Enterprise AI Program (6 mo+)' },
+              { value: 'other', label: 'Other / not sure yet' },
+            ]}
+          />
           <TextArea label="What are you trying to ship?" name="message" required />
         </div>
-        {/* TODO: wire /api/contact -> Resend, per Decision #6 */}
         <Button type="submit" className="mt-10">
           Send
         </Button>
@@ -153,7 +205,13 @@ export const metadata: Metadata = {
     'Tell us about the engagement, or book a 30-minute intro call. ESARC pairs a principal engineer with a fleet of in-house AI agents.',
 }
 
-export default function Contact() {
+export default function Contact({
+  searchParams,
+}: {
+  searchParams?: { sent?: string }
+}) {
+  let sent = searchParams?.sent === '1'
+
   return (
     <>
       <PageIntro eyebrow="Contact" title="Let&rsquo;s talk about what you&rsquo;re shipping.">
@@ -164,6 +222,18 @@ export default function Contact() {
       </PageIntro>
 
       <Container className="mt-24 sm:mt-32 lg:mt-40">
+        {sent && (
+          <FadeIn>
+            <div className="mb-12 rounded-2xl border border-accent/30 bg-accent/5 p-6">
+              <p className="font-display text-base font-semibold text-neutral-950">
+                Got it. We&rsquo;ll reply within one business day.
+              </p>
+              <p className="mt-1 text-sm text-neutral-600">
+                If you need to move faster, book a 30-minute intro on the right.
+              </p>
+            </div>
+          </FadeIn>
+        )}
         <div className="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
           <ContactForm />
           <ContactDetails />
