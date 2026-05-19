@@ -90,7 +90,21 @@ function CaseStudies({
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'Selected AI engineering work by Vic Malhotra at ESARC. Some engagements are public; others I can describe in a call.',
+    'Selected AI engineering work by Vaibhav Malhotra at ESARC. Some engagements are public; others I can describe in a call.',
+  alternates: { canonical: '/work' },
+  openGraph: {
+    type: 'website',
+    url: '/work',
+    title: 'Work — ESARC',
+    description:
+      'Selected AI engineering work: voice agents, multi-agent pipelines, RAG over regulated data, evals at scale.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Work — ESARC',
+    description:
+      'AI systems that earned their keep. Case studies from Meta, Amazon, Scrubs Co-Pilot, Stuf, and more.',
+  },
 }
 
 export default async function Work() {

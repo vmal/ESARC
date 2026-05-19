@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   title: 'Process',
   description:
     'How an ESARC engagement actually runs: discovery, scope, sprint, ship, handoff. Roles, agents, deliverables, and durations for each phase.',
+  alternates: { canonical: '/process' },
+  openGraph: {
+    type: 'website',
+    url: '/process',
+    title: 'Process — ESARC',
+    description:
+      'Five phases, written down, predictable. Discovery, scope, sprint, ship, handoff. No black box.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Process — ESARC',
+    description:
+      'How an ESARC engagement runs end-to-end. PRs, evals, dashboards in real time.',
+  },
 }
 
 const steps = [
