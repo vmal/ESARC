@@ -1,0 +1,60 @@
+import logo from '@/images/clients/springhouse/logo.png'
+
+export const caseStudy = {
+  client: 'Springhouse',
+  title: 'Multi-agent food planning on Pydantic AI and FastAPI',
+  description:
+    'A multi-agent backend that turns messy human food preferences into structured weekly plans, recipes, and shopping lists. Built on Pydantic AI, FastAPI, and Postgres.',
+  summary: [
+    'Springhouse is an LLM-driven food planning product. The brief was to take the "what do I cook this week" problem and answer it with real recipes, real macros, and real shopping lists that respect a household\'s constraints.',
+    'ESARC owns the backend. That means the agent orchestration, the recipe ingest pipeline, the calorie math, and the API the app talks to.',
+  ],
+  logo,
+  image: { src: logo },
+  date: '2026-01',
+  service: 'Multi-agent backend, recipe pipelines, FastAPI/Postgres',
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## The problem
+
+Food planning is a deceptively hard product. A user says "I want healthy dinners this week, my partner doesn't eat pork, I have salmon in the freezer, and I'm trying to hit around 2,000 calories." Every clause in that sentence is a constraint the model needs to honor across seven meals, fourteen if you count lunches, and the answer has to feel like a real meal plan a person would actually cook, not a CSV.
+
+The first generation of the product leaned on a single big prompt. It worked until it didn't. The plans were generic, the macros were vibes-based, and the recipes were hallucinated more often than anyone wanted to admit. When the team asked ESARC to come in, the asks were specific. Make the macros real. Make the recipes pull from a verifiable corpus. Make the system explain itself when a user pushes back. And do all of this without the latency blowing up to the point where the app feels broken.
+
+## What we shipped
+
+A multi-agent backend on Pydantic AI, talking to a FastAPI surface, backed by Postgres. The shape of it:
+
+- A planner agent that owns the week-level structure and constraint satisfaction. It doesn't generate recipes itself. It calls a recipe-search tool against our own ingested corpus.
+- A nutrition agent that computes per-meal and per-day macros against a USDA-derived ingredient table. The LLM doesn't do the arithmetic. It calls a deterministic tool.
+- A substitution agent that handles "I don't have shiitakes, what should I use" without breaking the plan's macro budget.
+- An ingestion pipeline that parses public recipes into a typed Pydantic schema, with ingredient normalization against the same ingredient table the nutrition agent uses.
+
+Pydantic AI is doing a lot of the heavy lifting here. Typed outputs at every boundary mean the planner can't hand the nutrition agent a half-baked meal object. When the model hallucinates a field that doesn't fit the schema, the call fails loudly instead of poisoning the database. That alone killed an entire class of bugs we'd been chasing.
+
+## How we built it
+
+I started by drawing the boundaries on a napkin. Where does the LLM get to be creative, and where does it have to call a tool? The rule of thumb I keep coming back to: if the answer needs to be reproducible across two runs, it's not an LLM job. So macros are arithmetic, ingredient matching is a database lookup, and the planner only gets to make decisions about composition and variety.
+
+The ingestion pipeline was the unglamorous half of the work. Recipes on the open web are a disaster. JSON-LD when you're lucky, free-text when you're not, and ingredient strings like "1/2 cup parmesan, freshly grated (or pecorino in a pinch)." We parse, normalize, deduplicate against the ingredient table, and only then is a recipe eligible to enter the corpus. The first pass was rule-based with an LLM fallback for the hard cases. After a few weeks of tuning, the LLM fallback rate dropped enough that we could afford to run the slow path on the whole backlog.
+
+On the API side, FastAPI is doing what FastAPI is good at. Pydantic schemas at every endpoint, no surprise serialization. The agents stream tokens to the client, but tool calls are buffered and emitted as discrete events the frontend can render as "Springhouse is checking your fridge" or "computing macros." That kind of feedback turned out to matter more for trust than the latency win we got from streaming itself.
+
+Postgres holds the recipe corpus, the ingredient table, user plans, and a vector index for recipe similarity. Nothing exotic. We considered a separate vector DB and decided we didn't need one until the corpus gets ten times bigger.
+
+## Outcome
+
+The qualitative shift is what the team cared about. Meal plans now reference real recipes from our own corpus, not invented ones. Macros are arithmetic, so they're correct or they're a bug, never "approximately." Substitutions don't break the plan because the substitution agent has the same nutrition tool the planner uses.
+
+On the engineering side, the typed-output discipline cut our "the model returned garbage" incident rate to roughly zero. When something goes wrong now, it's a logic bug, not a parsing bug. That's a much better class of problem to have.
+
+## What I'd do differently
+
+Pushed harder on observability earlier. We added structured agent traces about a month in, and I wish we'd had them from day one. Half the time you don't know which agent is the slow one or the wrong one until you can replay a session end-to-end. If you're starting a multi-agent project, build the trace viewer before you build the third agent.
+
+Otherwise, the architecture has held up. The team is shipping features on top of it without ESARC in the loop for every change, which is the metric I actually care about.
