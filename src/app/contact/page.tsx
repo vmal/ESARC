@@ -5,6 +5,7 @@ import { Border } from '@/components/Border'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
+import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 import { SocialMedia } from '@/components/SocialMedia'
 
@@ -205,6 +206,26 @@ export const metadata: Metadata = {
     'Tell us about the engagement, or book a 30-minute intro call. ESARC pairs a principal engineer with a fleet of in-house AI agents.',
 }
 
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact ESARC',
+  url: 'https://esarc.dev/contact',
+  description:
+    'Send a note or book a 30-minute intro with ESARC. Same-day reply on weekdays.',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'ESARC',
+    url: 'https://esarc.dev',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      availableLanguage: ['English'],
+      url: 'https://calendly.com/vbvmalhotra/vaibhav-interview',
+    },
+  },
+}
+
 export default function Contact({
   searchParams,
 }: {
@@ -214,6 +235,7 @@ export default function Contact({
 
   return (
     <>
+      <JsonLd data={contactJsonLd} />
       <PageIntro eyebrow="Contact" title="Let&rsquo;s talk about what you&rsquo;re shipping.">
         <p>
           Send a note or book a 30-minute intro. Either works. We reply same

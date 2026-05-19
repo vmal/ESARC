@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 
+import { JsonLd } from '@/components/JsonLd'
 import { RootLayout } from '@/components/RootLayout'
 
 import '@/styles/tailwind.css'
@@ -39,6 +40,7 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: 'ESARC',
   url: SITE_URL,
+  logo: `${SITE_URL}/favicon.ico`,
   description:
     'AI engineering consultancy. Principal engineers paired with an in-house fleet of AI agents.',
   founder: {
@@ -55,14 +57,20 @@ const organizationJsonLd = {
   ],
 }
 
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'ESARC',
+  url: SITE_URL,
+  publisher: { '@type': 'Organization', name: 'ESARC' },
+}
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="h-full bg-neutral-950 text-base antialiased">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
+        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={websiteJsonLd} />
       </head>
       <body className="flex min-h-full flex-col">
         <RootLayout>{children}</RootLayout>
