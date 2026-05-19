@@ -268,12 +268,12 @@ Track each phase as a PR off `esarc/v1` worktree branch. **No PR is merged witho
 - [x] Founder photo committed to `public/vaibhav.jpg`
 - [ ] Replace remaining stock images on case-study + about + process pages (Phase 3+)
 
-### Phase 3 — Content pages (no case studies yet)
-- [ ] Home (`/`) — hero, positioning, featured 3 (with placeholders), services tease, contact CTA
-- [ ] About (`/about`) — founder bio, principles, named clients strip, photo
-- [ ] Services (`/services`) — engagement models, scope examples, pricing ranges, FAQ
-- [ ] Process (`/process`) — how an engagement runs (4–5 steps)
-- [ ] Contact (`/contact`) — form + email + Cal.com link
+### Phase 3 — Content pages (no case studies yet) ✅ (merged to main 2026-05-18, commits 8b76162 → 56acdfd)
+- [x] Home (`/`) — hero, positioning, featured 3 (with placeholders), services tease, contact CTA
+- [x] About (`/about`) — founder bio, principles, named clients strip, photo
+- [x] Services (`/services`) — engagement detail, cost calculator, FAQ (no fixed pricing per decision 7)
+- [x] Process (`/process`) — five-phase engagement breakdown
+- [x] Contact (`/contact`) — form + Calendly link + /api/contact via Resend
 
 ### Phase 4 — Case studies (one PR each, or batched 2–3 per PR)
 - [ ] `/work/meta-superintelligence` (subject to NDA review)
