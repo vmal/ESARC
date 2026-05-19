@@ -1,0 +1,58 @@
+import logo from '@/images/clients/clearprop/logo.svg'
+
+export const caseStudy = {
+  client: 'ClearProp (own product)',
+  title: 'A pilot logbook I actually want to use',
+  description:
+    'A full-stack pilot logbook app I build for myself as a working pilot, with plans to commercialize. Used as the proving ground for ESARC\'s engineering taste.',
+  summary: [
+    'ClearProp is what I build when I build for myself. It is a digital pilot logbook for general aviation pilots, designed around the boring parts of the job: getting your hours in correctly, tracking currency, and producing the export your medical examiner or chief flight instructor actually wants.',
+    'It\'s a side project today and a product I plan to commercialize. It also doubles as ESARC\'s internal proving ground for new patterns before they show up on client work.',
+  ],
+  logo,
+  image: { src: logo },
+  date: '2025-11',
+  service: 'Solo founder, full-stack, mobile',
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## The problem
+
+Pilot logbooks are a paperwork tax on an otherwise great hobby. Every flight produces a row of fields. Date, aircraft, tail number, departure, destination, total time, pilot-in-command time, dual time, instrument time, landings (day and night), approaches. Most apps in this market are either too rigid for the way real pilots fly, or they're so flexible they make a simple flight take five minutes to enter. Neither is what I want at 9pm after a long day at the field.
+
+I started ClearProp because nothing on my phone got the flow right. I'd rather build the tool than keep being annoyed by the tools that exist.
+
+## What we shipped
+
+A working app I use for my own flying, with the boring fundamentals done well first:
+
+- Fast entry. The most common flight types are one-tap presets. The rare ones still have a path, but they don't get in the way of the common case.
+- Correct currency math. Day and night currency, instrument currency with the six-month and twelve-month rules, biennial flight review tracking. The math is unit-tested against a small library of real scenarios because the rules have edge cases and the cost of getting them wrong is "you find out at the worst possible moment."
+- Export. CSV for tax season. The exact format my flight school wanted for proof of recent experience. PDF for anyone who needs a sharable summary.
+- Sync without surprises. Local-first storage, sync to a backend when there's a connection, conflict resolution that prefers the more recent edit. No screens of "merge changes" dialogs.
+
+What I haven't shipped yet, and where the commercial plans go, is the part where ClearProp talks to other systems. Aircraft maintenance schedules. School-side dashboards for instructors to see student currency. Insurance-friendly summaries. Those are the features I want to charge for. The free version is the logbook I'd already pay for.
+
+## How I built it
+
+This is a solo project, so the technology choices are entirely about velocity and longevity. I use the stack I know well rather than reaching for whatever's new this month. The backend pieces share patterns with what I ship to clients, just with no committee in the way.
+
+The mobile flow is the heart of the product. I prototype every new screen on my phone, in the wild, before I write the data model behind it. If I can't enter a flight in under a minute with one thumb, the design is wrong. That rule has killed more "neat ideas" than I can count.
+
+Currency tracking is the part I'm proudest of. I wrote a small rules engine that takes a set of completed flights and answers questions like "am I current for night passenger carriage today, and when do I lose currency next." The rules are codified once and tested against scenarios drawn from FAA examples. When the rules change (and they do), I update them in one place and the rest of the app reflects it.
+
+I treat the codebase the same way I'd treat a client codebase. Typed end-to-end, tested where the math gets thorny, boring where it can be boring. That discipline is the thing that makes ClearProp a useful proving ground for ESARC. When I want to try a new pattern (typed agents, a new sync primitive, a new way to handle background tasks), it lands here first.
+
+## Outcome
+
+I use it. That's the first outcome. My logbook is in ClearProp, not in a spreadsheet, and not in the app I was using before. A handful of pilots in my circle use it too, mostly people who got tired of hearing me complain about the alternatives.
+
+Commercial outcomes are a Phase 2 problem. The plan is to start charging once the differentiator features (maintenance, instructor dashboards) are mature enough to be worth a subscription. Until then, ClearProp earns its keep as a personal tool and as the place I prototype before client work.
+
+## What I'd do differently
+
+Spent less time picking the stack at the start. I went back and forth between a couple of choices for a few weeks that didn't matter. The right answer for a solo project is "the stack you can move fastest on." I knew that. I still let myself shop. Lesson re-learned.

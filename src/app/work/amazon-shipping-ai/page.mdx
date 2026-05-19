@@ -1,0 +1,62 @@
+import logo from '@/images/clients/amazon-shipping-ai/logo.svg'
+
+export const caseStudy = {
+  client: 'Amazon',
+  title: 'A million requests a day and a shipping bill that got smaller',
+  description:
+    'SDE work on Amazon\'s shipping cost pipeline. 1M+ requests per day, $100K+ in annualized savings from a single data-map redesign, 50% latency cut on cart building after a Native AWS migration.',
+  summary: [
+    'I spent three years and change at Amazon as a Software Development Engineer working on services in the shipping cost path. The systems were Java, the scale was high, and the work was a mix of "make this faster" and "make this cheaper."',
+    'The three pieces that show up below are the ones that mattered most: a data-map redesign that cut latency and cost together, a price-prediction pipeline in Python, and a legacy-to-Native-AWS migration that meaningfully shortened cart times for customers.',
+  ],
+  logo,
+  image: { src: logo },
+  date: '2023-07',
+  service: 'Java backend, AWS infra, ML pipelines',
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## The problem
+
+Shipping cost calculation is one of those quiet load-bearing systems inside Amazon. Every cart, every checkout, every shipping options page hits it. At a million-plus requests per day on the slice I worked on, even small improvements in latency or cost compound into real money and a noticeably better customer experience.
+
+When I joined the team, the systems worked, but two things were nagging. The shipping cost path was making more round trips to upstream data sources than it needed to. And the model that predicted shipping prices for certain edge cases lived in a stack that nobody was excited to maintain.
+
+## What we shipped
+
+Three pieces. They're separate efforts and they happened over a few years, but they're the ones I'd put on a resume because they're the ones the team kept benefiting from after I left.
+
+A data-map for shipping cost calculations that consolidated several upstream lookups into a single derived structure. Same correctness guarantees, far fewer round trips. Latency on the affected paths dropped by roughly half, and the cost savings came out to $100K-plus annualized once the infra team did the math on the upstream services we were no longer hammering. Not glamorous engineering. Just careful inventory of what data we actually needed at request time and what we could precompute.
+
+A shipping price prediction pipeline in Python. The previous model lived behind a service that was painful to update. We ported the model and the training pipeline into something the team could actually iterate on. The model itself wasn't novel. The maintenance story being sane was the win.
+
+A migration of a legacy cart-building service to Native AWS. Cart build time dropped 50% on the surfaces we migrated. The interesting part of the migration was not the move itself. It was the decision to be aggressive about killing config and code that was dead weight, instead of doing a like-for-like port. Migrations are the rare moment when the political cost of deletion is lowest. We used that.
+
+## How we built it
+
+For the data-map, the approach was almost entirely about reading. I spent the first month understanding which upstream calls were made on every request, which were cacheable, which were genuinely per-request, and which were "we made this call in 2017 and nobody ever questioned it." Then we drew the new shape on a whiteboard, validated the math on a few high-traffic categories, and shipped behind a feature flag with shadow-mode comparisons against the old path. We ramped to 100% over a couple of weeks. The infra graphs were the cleanest part of the whole thing.
+
+The price prediction pipeline was a model-port plus a tooling rewrite. The old service had a one-off training harness that nobody wanted to touch. We rebuilt it on the team's standard Python tooling, with a model registry, a deterministic training reproduction, and integration tests that ran against frozen request fixtures. The model accuracy was roughly flat. The team's velocity on it went up by an order of magnitude.
+
+The Native AWS migration was the work I learned the most from. The codebase had two of everything. Two retry strategies. Two config systems. Two competing ideas about where caching belonged. The honest review of which ones to keep and which ones to delete is what produced the latency win. Native AWS gave us better defaults. The 50% cart-build reduction came from picking the right defaults and removing what fought them.
+
+## Outcome
+
+The numbers, which were team-reported and stand up:
+
+- 1M+ requests per day handled on the services I was on-call for.
+- $100K+ in annualized savings from the data-map redesign.
+- Latency cut in half on the affected shipping cost paths.
+- 50% reduction in cart building time after the Native AWS migration.
+
+The career outcome is that I spent three years at Amazon learning how to operate systems at scale, and most of what I do now in AI infra (latency budgets, retries, observability, careful migrations) comes from that period. The model has gotten flashier. The discipline is the same.
+
+## What I'd do differently
+
+I would have started talking to customers of the price prediction model earlier. The model lived in a backend service, but its consumers were product teams who had opinions about edge cases I never knew existed until late in the project. The closer you can get to the people who'll use your work, the less time you spend optimizing the wrong thing.
+
+The other thing I'd do differently is be louder about the data-map work. It's the kind of project that's easy to undersell because the change is "we made it smaller and faster." Internally, those are the projects worth shouting about. Externally too.
