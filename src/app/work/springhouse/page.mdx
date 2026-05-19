@@ -18,6 +18,18 @@ export const caseStudy = {
 export const metadata = {
   title: `${caseStudy.client} Case Study`,
   description: caseStudy.description,
+  alternates: { canonical: '/work/springhouse' },
+  openGraph: {
+    type: 'article',
+    url: '/work/springhouse',
+    title: caseStudy.title,
+    description: caseStudy.description,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: caseStudy.title,
+    description: caseStudy.description,
+  },
 }
 
 ## The problem

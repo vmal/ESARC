@@ -204,6 +204,20 @@ export const metadata: Metadata = {
   title: 'Contact',
   description:
     'Tell us about the engagement, or book a 30-minute intro call. ESARC pairs a principal engineer with a fleet of in-house AI agents.',
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    type: 'website',
+    url: '/contact',
+    title: 'Contact ESARC',
+    description:
+      'Send a note or book a 30-minute intro. Same-day reply on weekdays.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact ESARC',
+    description:
+      'Send a note or book a 30-minute intro. Same-day reply on weekdays.',
+  },
 }
 
 const contactJsonLd = {

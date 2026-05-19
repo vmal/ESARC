@@ -18,6 +18,20 @@ import logoStuf from '@/../public/logos/stuf.svg'
 export const metadata: Metadata = {
   description:
     'AI engineering consultancy. Senior engineers paired with an in-house fleet of AI agents. Production AI in weeks, not quarters, at a fraction of Big-4 cost.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: '/',
+    title: 'ESARC — Senior engineers, in-house AI agents',
+    description:
+      'Principal engineers paired with an in-house fleet of AI agents. Production AI in weeks, not quarters.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ESARC — Senior engineers, in-house AI agents',
+    description:
+      'Principal engineers paired with an in-house fleet of AI agents. Production AI in weeks, not quarters.',
+  },
 }
 
 function Hero() {

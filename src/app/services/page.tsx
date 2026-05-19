@@ -11,6 +11,20 @@ export const metadata: Metadata = {
   title: 'Services',
   description:
     'How we engage: AI Sprints, Fractional Principal, AI Audit & Roadmap, Enterprise AI Program. Senior engineers paired with in-house agents.',
+  alternates: { canonical: '/services' },
+  openGraph: {
+    type: 'website',
+    url: '/services',
+    title: 'Services — ESARC',
+    description:
+      'AI Sprints, Fractional Principal, AI Audit & Roadmap, Enterprise AI Program. Pick the shape that fits your problem.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Services — ESARC',
+    description:
+      'Four ways to engage. Principal-led AI engineering, in-house agents, production focus.',
+  },
 }
 
 const services = [

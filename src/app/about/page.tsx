@@ -22,6 +22,20 @@ export const metadata: Metadata = {
   title: 'About',
   description:
     'ESARC is a one-principal AI engineering shop run by Vaibhav Malhotra, currently shipping at Meta Superintelligence Labs.',
+  alternates: { canonical: '/about' },
+  openGraph: {
+    type: 'profile',
+    url: '/about',
+    title: 'About ESARC — Vaibhav Malhotra, Principal AI Engineer',
+    description:
+      'One principal. A fleet of agents. Vaibhav Malhotra on what changed about AI engineering teams and why ESARC exists.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About ESARC — Vaibhav Malhotra',
+    description:
+      'One principal. A fleet of agents. Why ESARC is a one-principal AI engineering shop.',
+  },
 }
 
 function Founder() {
