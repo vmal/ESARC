@@ -1,0 +1,63 @@
+import logo from '@/images/clients/scrubs-co-pilot/logo.png'
+
+export const caseStudy = {
+  client: 'Scrubs Co-Pilot',
+  title: 'Structured doctor notes from unstructured audio',
+  description:
+    'A medical workflow co-pilot that listens to clinical conversations, transcribes them, and produces structured notes a clinician can sign off on instead of typing from scratch.',
+  summary: [
+    'Scrubs Co-Pilot is a clinical documentation product I co-founded and shipped from zero to 100+ monthly users in three months. The pitch is simple: clinicians spend hours every day writing notes, and almost none of that time is the part they trained for.',
+    'The product ingests audio from a consult, transcribes it with Whisper, and runs it through an LLM+RAG pipeline that produces a structured note in the clinician\'s preferred format. The clinician reviews and signs. That\'s the loop.',
+  ],
+  logo,
+  image: { src: logo },
+  date: '2024-06',
+  service: 'Co-founder, full-stack, AI/LLM pipelines',
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## The problem
+
+Clinicians type. A lot. The administrative load on a working doctor or nurse practitioner is one of the most cited drivers of burnout in the field, and the math is grim. A 15-minute consult often turns into 20 minutes of documentation afterward. Multiply by a day of patients and you've spent more time at a keyboard than with people.
+
+The market had voice transcription tools and a few early ambient-AI products. What it didn't have, at the price point and quality bar that worked for small practices, was a co-pilot that produced a structured note a clinician trusted enough to sign without rewriting the whole thing. That trust gap was the actual problem. Anyone can transcribe. Producing a SOAP note that doesn't need surgical edits is the hard part.
+
+## What we shipped
+
+A web app built on Next.js, Node, and Postgres, with the LLM and audio pipeline behind a typed API. The flow:
+
+1. Clinician hits record (or uploads audio after a session).
+2. Whisper transcribes, with diarization to separate clinician from patient.
+3. An LLM pipeline structures the transcript into the clinician's preferred note format. Most of our users wanted SOAP, some wanted a more narrative style. The format is a parameter, not a fork.
+4. A RAG layer pulls in the patient's prior visit context and any relevant clinical references, so the note isn't generated in a vacuum.
+5. The clinician reviews in a side-by-side view: transcript on the left, structured note on the right. Edits are tracked. The signed-off note becomes part of the patient record.
+
+The structured-note step is where most of the engineering went. Naive prompting gave us hallucinated symptoms and invented dosages, which is unacceptable here. We constrained the output to fields that had to be present in the transcript, and we made the model cite its source span in the transcript for every claim. If the model couldn't cite, it had to leave the field blank. That single rule eliminated most of the dangerous failure modes.
+
+## How we built it
+
+Small team. Fast moves. The first version was up in about six weeks because we were ruthless about scope. No EMR integrations at launch. No fancy billing. Just the core "record, transcribe, structure, sign" loop, plus enough authentication and audit logging that a small practice could try it without getting fired.
+
+Audio handling was the first thing that bit us. Browser audio is a mess of codecs, sample rates, and microphone gain levels. We standardized on a server-side normalization step before Whisper even sees the file. Diarization went from "kind of works" to "reliable enough to ship" once we tuned segment lengths to the rhythm of an actual consultation, not the rhythm of a podcast.
+
+The RAG layer started ambitious and ended pragmatic. Early versions tried to pull from a broad clinical reference corpus. It turned out that the most useful context, by a wide margin, was just the patient's own prior visits. So we cut the corpus aggressively and leaned on the practice's own data. Better results, faster responses, less to maintain.
+
+On the LLM side, we used OpenAI through the whole arc. We considered self-hosting for cost reasons. The math never quite worked out at our scale, and the engineering load of running our own inference would have killed velocity. That decision aged well.
+
+## Outcome
+
+100+ monthly active users within three months of launch. Most of those users came through word of mouth in small-practice networks, not through a paid funnel. That was the most validating signal we got. Clinicians told other clinicians.
+
+The qualitative outcome that mattered more: the people who used it daily told us they were getting evenings back. That's the metric the product was actually optimizing for, and the one we couldn't easily put on a dashboard.
+
+## What I'd do differently
+
+Pushed harder on EMR integration earlier. We resisted it as scope creep, and we were right for the MVP, but it became the single biggest friction point once users committed. The next time I build something in a clinical workflow, the integration question gets asked on day one, not month six.
+
+I also wish we'd been more disciplined about the eval rubric for note quality. We had clinicians spot-check, which is fine for a small user base, and it's a bottleneck the day you grow. A structured rubric that catches "hallucinated dosage" before a human sees it would have given us more confidence to iterate quickly on the prompts.
+
+The company isn't what I work on day to day anymore, but the lessons from it sit underneath almost every AI product I've built since.
