@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
@@ -98,6 +100,33 @@ export default async function CaseStudyLayout({
         <Container className="mt-24 sm:mt-32 lg:mt-40">
           <FadeIn>
             <MDXComponents.wrapper>{children}</MDXComponents.wrapper>
+          </FadeIn>
+        </Container>
+
+        <Container className="mt-24 sm:mt-32 lg:mt-40">
+          <FadeIn>
+            <div className="rounded-4xl border border-neutral-950/10 p-8 sm:p-12">
+              <h2 className="font-display text-2xl font-semibold text-neutral-950 [text-wrap:balance] sm:text-3xl">
+                Want this kind of work for your team?
+              </h2>
+              <p className="mt-4 max-w-2xl text-base text-neutral-600">
+                See the{' '}
+                <Link
+                  href="/services"
+                  className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+                >
+                  engagement shapes
+                </Link>{' '}
+                ESARC offers, or{' '}
+                <Link
+                  href="/contact"
+                  className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+                >
+                  start a conversation
+                </Link>
+                .
+              </p>
+            </div>
           </FadeIn>
         </Container>
       </article>
