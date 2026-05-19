@@ -288,13 +288,13 @@ Track each phase as a PR off `esarc/v1` worktree branch. **No PR is merged witho
 - [x] Every case study run through `humanizer` skill
 - [ ] Every case study reviewed manually by Vic ⬅ blocking gate per study (post-launch)
 
-### Phase 5 — SEO / AEO pass
-- [ ] Sitemap + robots
-- [ ] All schema markup
-- [ ] Per-page metadata + OG images
-- [ ] Internal linking pass
-- [ ] llms.txt
-- [ ] Search Console + Bing Webmaster setup
+### Phase 5 — SEO / AEO pass ✅ (merged to main 2026-05-18, commits a59700c → 7496a98)
+- [x] Sitemap + robots
+- [x] All schema markup
+- [x] Per-page metadata + OG images
+- [x] Internal linking pass
+- [x] llms.txt
+- [ ] Search Console + Bing Webmaster setup (post-launch — needs verification codes)
 
 ### Phase 6 — QA & launch
 - [ ] Lighthouse mobile ≥ 95 across the board
