@@ -4,6 +4,7 @@ import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { CostCalculator } from '@/components/CostCalculator'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
+import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 
 export const metadata: Metadata = {
@@ -237,9 +238,50 @@ function FAQ() {
   )
 }
 
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'AI Engineering Consulting',
+  name: 'ESARC AI Engineering Services',
+  description:
+    'Principal-led AI engineering: AI Sprints, Fractional Principal, AI Audit & Roadmap, and Enterprise AI Programs.',
+  provider: {
+    '@type': 'Organization',
+    name: 'ESARC',
+    url: 'https://esarc.dev',
+  },
+  areaServed: 'Worldwide',
+  url: 'https://esarc.dev/services',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Engagement Models',
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      name: s.name,
+      description: s.summary,
+      url: `https://esarc.dev/services#${s.slug}`,
+    })),
+  },
+}
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+}
+
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={serviceJsonLd} />
+      <JsonLd data={faqJsonLd} />
       <PageIntro eyebrow="Services" title="Four ways we engage.">
         <p>
           Every engagement is led by a principal engineer and backed by our

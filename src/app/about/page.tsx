@@ -6,6 +6,7 @@ import { Button } from '@/components/Button'
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
+import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 
 import logoAmazon from '@/../public/logos/amazon.svg'
@@ -210,9 +211,34 @@ function ClientLogos() {
   )
 }
 
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Vaibhav Malhotra',
+  jobTitle: 'Principal AI Engineer',
+  url: 'https://esarc.dev/about',
+  image: 'https://esarc.dev/vaibhav.jpg',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'ESARC',
+    url: 'https://esarc.dev',
+  },
+  alumniOf: [
+    { '@type': 'Organization', name: 'Amazon' },
+    { '@type': 'Organization', name: 'Meta Superintelligence Labs' },
+    { '@type': 'Organization', name: 'Scrubs Co-Pilot' },
+    { '@type': 'Organization', name: 'Stuf Storage' },
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/mvaibhav/',
+    'https://github.com/vmal',
+  ],
+}
+
 export default function About() {
   return (
     <>
+      <JsonLd data={personJsonLd} />
       <PageIntro eyebrow="About" title="One principal. A fleet of agents.">
         <p>
           ESARC is a small, senior-only AI engineering shop. I run it. I built

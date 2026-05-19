@@ -2,6 +2,7 @@ import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { GrayscaleTransitionImage } from '@/components/GrayscaleTransitionImage'
+import { JsonLd } from '@/components/JsonLd'
 import { MDXComponents } from '@/components/MDXComponents'
 import { PageIntro } from '@/components/PageIntro'
 import { PageLinks } from '@/components/PageLinks'
@@ -19,8 +20,35 @@ export default async function CaseStudyLayout({
     .filter(({ metadata }) => metadata !== caseStudy)
     .slice(0, 2)
 
+  const datePublished = /^\d{4}-\d{2}$/.test(caseStudy.date)
+    ? `${caseStudy.date}-01`
+    : caseStudy.date
+
+  const caseStudyJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: caseStudy.title,
+    description: caseStudy.description,
+    datePublished,
+    author: {
+      '@type': 'Person',
+      name: 'Vaibhav Malhotra',
+      url: 'https://esarc.dev/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ESARC',
+      url: 'https://esarc.dev',
+    },
+    about: caseStudy.client,
+    mainEntityOfPage: `https://esarc.dev${caseStudy.href}`,
+    url: `https://esarc.dev${caseStudy.href}`,
+    image: `https://esarc.dev${caseStudy.href}/opengraph-image`,
+  }
+
   return (
     <>
+      <JsonLd data={caseStudyJsonLd} />
       <article className="mt-24 sm:mt-32 lg:mt-40">
         <header>
           <PageIntro eyebrow="Case Study" title={caseStudy.title} centered>
