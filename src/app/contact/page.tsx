@@ -106,11 +106,11 @@ function ContactForm() {
     <FadeIn className="lg:order-last">
       <form action="/api/contact" method="POST">
         <h2 className="font-display text-base font-semibold text-neutral-950">
-          Tell us about the engagement
+          Tell us about what you&rsquo;re shipping
         </h2>
         <p className="mt-2 text-sm text-neutral-600">
-          We reply within one business day. If you need to move faster, book
-          a 30-minute intro directly.
+          No budget question, no qualifying gate. Tell us the surface, the
+          shape, and the constraints. We reply within one business day.
         </p>
         <div className="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
           <TextInput label="Name" name="name" autoComplete="name" required />
@@ -132,18 +132,35 @@ function ContactForm() {
             autoComplete="organization-title"
           />
           <SelectInput
-            label="Project type"
+            label="Engagement shape"
             name="projectType"
-            required
             options={[
-              { value: 'ai-sprint', label: 'AI Sprint (4-6 weeks)' },
-              { value: 'fractional', label: 'Fractional Principal (3 mo min)' },
-              { value: 'audit', label: 'AI Audit & Roadmap (2 weeks)' },
-              { value: 'enterprise', label: 'Enterprise AI Program (6 mo+)' },
-              { value: 'other', label: 'Other / not sure yet' },
+              { value: 'diagnostic-sprint', label: 'AI Diagnostic Sprint (2 weeks, fixed-fee)' },
+              { value: 'build-sprint', label: 'Build Sprint (6 weeks, fixed-fee)' },
+              { value: 'embedded-team', label: 'Embedded AI Team (3-6 mo retainer)' },
+              { value: 'unsure', label: 'Not sure yet, let’s talk' },
             ]}
           />
-          <TextArea label="What are you trying to ship?" name="message" required />
+          <SelectInput
+            label="Timeline"
+            name="timeline"
+            options={[
+              { value: '2-weeks', label: '2 weeks' },
+              { value: '6-weeks', label: '6 weeks' },
+              { value: '3-6-months', label: '3-6 months' },
+              { value: 'unsure', label: 'Not sure yet' },
+            ]}
+          />
+          <TextArea
+            label="What surface are you trying to ship?"
+            name="message"
+            required
+          />
+          <TextArea
+            label="Stack constraints (cloud, models, frameworks, compliance)"
+            name="stackConstraints"
+            rows={3}
+          />
         </div>
         <Button type="submit" className="mt-10">
           Send

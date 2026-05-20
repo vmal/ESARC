@@ -9,6 +9,8 @@ type Payload = {
   company: string
   role: string
   projectType: string
+  timeline: string
+  stackConstraints: string
   message: string
 }
 
@@ -32,7 +34,8 @@ function buildHtml(p: Payload) {
     ['Email', p.email],
     ['Company', p.company || '(not provided)'],
     ['Role', p.role || '(not provided)'],
-    ['Project type', p.projectType || '(not provided)'],
+    ['Engagement shape', p.projectType || '(not provided)'],
+    ['Timeline', p.timeline || '(not provided)'],
   ]
   const rowsHtml = rows
     .map(
@@ -40,10 +43,14 @@ function buildHtml(p: Payload) {
         `<tr><td style="padding:4px 12px 4px 0;color:#737373;font-size:13px;">${escape(k)}</td><td style="padding:4px 0;color:#111;font-size:13px;">${escape(v)}</td></tr>`,
     )
     .join('')
+  const constraintsHtml = p.stackConstraints
+    ? `<div style="margin-top:16px;border-top:1px solid #e5e5e5;padding-top:12px;font-size:13px;color:#111;"><div style="color:#737373;margin-bottom:4px;">Stack constraints</div><div style="white-space:pre-wrap;">${escape(p.stackConstraints)}</div></div>`
+    : ''
   return `<div style="font-family:system-ui,sans-serif;max-width:560px;">
 <h2 style="margin:0 0 12px 0;font-size:18px;">New ESARC contact</h2>
 <table style="border-collapse:collapse;margin-bottom:16px;">${rowsHtml}</table>
 <div style="white-space:pre-wrap;border-top:1px solid #e5e5e5;padding-top:12px;font-size:14px;color:#111;">${escape(p.message)}</div>
+${constraintsHtml}
 </div>`
 }
 
@@ -65,6 +72,8 @@ async function readPayload(req: NextRequest): Promise<Payload> {
     company: data.company ?? '',
     role: data.role ?? '',
     projectType: data.projectType ?? '',
+    timeline: data.timeline ?? '',
+    stackConstraints: data.stackConstraints ?? '',
     message: data.message ?? '',
   }
 }
