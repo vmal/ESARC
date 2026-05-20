@@ -107,6 +107,55 @@ function ClientLogos() {
   )
 }
 
+const frontierLabs = [
+  { name: 'Anthropic', slug: 'anthropic' },
+  { name: 'OpenAI', slug: 'openai' },
+  { name: 'AWS', slug: 'amazonwebservices' },
+  { name: 'Vercel', slug: 'vercel' },
+  { name: 'NVIDIA', slug: 'nvidia' },
+  { name: 'Vapi', slug: 'vapi', fallback: true },
+]
+
+function FrontierLabs() {
+  return (
+    <Container className="mt-16 sm:mt-20">
+      <FadeIn>
+        <p className="font-display text-sm font-semibold tracking-wider text-neutral-500">
+          Built on
+        </p>
+      </FadeIn>
+      <FadeInStagger
+        className="mt-6 grid grid-cols-3 items-center gap-x-8 gap-y-8 sm:grid-cols-6"
+        faster
+      >
+        {frontierLabs.map(({ name, slug, fallback }) => (
+          <FadeIn key={name}>
+            <div
+              className="flex h-8 items-center justify-center"
+              title={name}
+              aria-label={name}
+            >
+              {fallback ? (
+                <span className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-neutral-400 transition hover:text-neutral-700">
+                  {name}
+                </span>
+              ) : (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={`https://cdn.simpleicons.org/${slug}/737373`}
+                  alt={`${name} logo`}
+                  loading="lazy"
+                  className="max-h-7 w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
+                />
+              )}
+            </div>
+          </FadeIn>
+        ))}
+      </FadeInStagger>
+    </Container>
+  )
+}
+
 const pillars = [
   {
     eyebrow: '01',
@@ -164,32 +213,22 @@ function Pillars() {
 
 const shapes = [
   {
-    slug: 'ai-sprint',
-    name: 'AI Sprint',
-    price: '$25-40K',
-    duration: '4-6 weeks',
-    body: 'One thing, shipped in weeks. LLM feature, voice POC, agent workflow, eval harness.',
+    slug: 'diagnostic-sprint',
+    name: 'AI Diagnostic Sprint',
+    duration: '2 weeks · fixed-fee',
+    body: 'Two-week deep dive. Written assessment, prioritized roadmap, exec readout. Pick when you need clarity before you commit.',
   },
   {
-    slug: 'fractional-principal',
-    name: 'Fractional Principal',
-    price: '$15-25K/mo',
-    duration: '3 month min',
-    body: 'Dedicated principal embedded in your repo and Slack. Multi-month builds, clean handoff.',
+    slug: 'build-sprint',
+    name: 'Build Sprint',
+    duration: '6 weeks · fixed-fee',
+    body: 'One thing, shipped. LLM feature, voice agent, eval harness, RAG system. Pick when scope is clear and the calendar is short.',
   },
   {
-    slug: 'ai-audit',
-    name: 'AI Audit & Roadmap',
-    price: '$5-15K',
-    duration: '2 weeks',
-    body: 'Two-week deep dive. Written report, prioritized roadmap, exec readout.',
-  },
-  {
-    slug: 'enterprise',
-    name: 'Enterprise AI Program',
-    price: '$150K+',
-    duration: '6+ months',
-    body: 'Principal lead, agent fleet, on-demand specialists with SLAs.',
+    slug: 'embedded-team',
+    name: 'Embedded AI Team',
+    duration: 'Monthly · 3-6 month min',
+    body: 'Principal plus agent fleet in your repo and Slack. Multi-month builds, clean handoff. Pick when AI is a roadmap, not a feature.',
   },
 ]
 
@@ -200,13 +239,13 @@ function EngagementShapes() {
         <Container>
           <FadeIn className="max-w-2xl">
             <h2 className="font-display text-sm font-semibold tracking-wider text-white">
-              Four ways we engage
+              Three ways we engage
             </h2>
             <p className="mt-4 font-display text-3xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-4xl">
               Pick the shape that matches your problem.
             </p>
           </FadeIn>
-          <FadeInStagger className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          <FadeInStagger className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 lg:grid-cols-3">
             {shapes.map((shape) => (
               <FadeIn key={shape.slug}>
                 <Link
@@ -214,7 +253,7 @@ function EngagementShapes() {
                   className="group block border-t border-white/10 pt-6 transition hover:border-accent"
                 >
                   <p className="font-mono text-xs uppercase tracking-wider text-accent">
-                    {shape.price} &middot; {shape.duration}
+                    {shape.duration}
                   </p>
                   <h3 className="mt-3 font-display text-lg font-semibold text-white group-hover:text-accent">
                     {shape.name}
@@ -371,15 +410,70 @@ function ProcessTeaser() {
   )
 }
 
+function FounderCard() {
+  return (
+    <Container className="mt-24 sm:mt-32 lg:mt-40">
+      <FadeIn>
+        <div className="grid grid-cols-1 items-center gap-10 rounded-3xl border border-neutral-950/10 bg-neutral-50 p-8 sm:p-12 lg:grid-cols-[auto,1fr]">
+          <div className="flex justify-center lg:justify-start">
+            <Image
+              src="/vaibhav.jpg"
+              alt="Vaibhav Malhotra, founder of ESARC"
+              width={140}
+              height={140}
+              className="h-32 w-32 rounded-full object-cover ring-1 ring-neutral-950/10"
+            />
+          </div>
+          <div>
+            <p className="font-mono text-xs uppercase tracking-wider text-accent">
+              Founder
+            </p>
+            <h3 className="mt-2 font-display text-2xl font-semibold text-neutral-950">
+              Vaibhav Malhotra
+            </h3>
+            <p className="mt-3 max-w-2xl text-base text-neutral-700">
+              Principal engineer. Shipped at Meta, Amazon, McGraw Hill. Founded
+              ESARC to pair senior engineers with an in-house agent fleet so a
+              small team can outship a large one.
+            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link
+                href="https://calendly.com/vbvmalhotra/vaibhav-interview"
+                className="text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
+              >
+                Book a 30-min intro &rarr;
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/vbvmalhotra/"
+                className="text-sm font-semibold text-neutral-700 underline-offset-4 hover:text-neutral-950 hover:underline"
+              >
+                LinkedIn
+              </Link>
+              <Link
+                href="/about"
+                className="text-sm font-semibold text-neutral-700 underline-offset-4 hover:text-neutral-950 hover:underline"
+              >
+                More about Vic
+              </Link>
+            </div>
+          </div>
+        </div>
+      </FadeIn>
+    </Container>
+  )
+}
+
 export default function Home() {
   return (
     <>
       <Hero />
       <ClientLogos />
+      <FrontierLabs />
       <Pillars />
       <EngagementShapes />
       <FeaturedWork />
       <ProcessTeaser />
+      <FounderCard />
       <ContactSection />
     </>
   )
