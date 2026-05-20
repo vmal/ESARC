@@ -8,6 +8,7 @@ import { Button } from '@/components/Button'
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
+import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 import { formatDate } from '@/lib/formatDate'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
@@ -107,11 +108,21 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://esarc.dev' },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://esarc.dev/work' },
+  ],
+}
+
 export default async function Work() {
   let caseStudies = await loadCaseStudies()
 
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd} />
       <PageIntro
         eyebrow="Selected work"
         title="AI systems that earned their keep."

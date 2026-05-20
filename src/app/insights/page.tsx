@@ -7,6 +7,7 @@ import { Button } from '@/components/Button'
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
+import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 import { formatDate } from '@/lib/formatDate'
 import { loadArticles } from '@/lib/mdx'
@@ -15,6 +16,23 @@ export const metadata: Metadata = {
   title: 'Insights',
   description:
     'Notes from the field on shipping production AI: agent design, evals, voice, infra, and the messy details between a demo and a live system.',
+  alternates: { canonical: '/insights' },
+  openGraph: {
+    type: 'website',
+    url: '/insights',
+    title: 'Insights — ESARC',
+    description:
+      'Notes from the field on shipping production AI. Agent design, evals, voice, infra.',
+  },
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://esarc.dev' },
+    { '@type': 'ListItem', position: 2, name: 'Insights', item: 'https://esarc.dev/insights' },
+  ],
 }
 
 export default async function Insights() {
@@ -22,6 +40,7 @@ export default async function Insights() {
 
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd} />
       <PageIntro eyebrow="Insights" title="Notes from the field">
         <p>
           What we learn building production AI for startups and enterprises.

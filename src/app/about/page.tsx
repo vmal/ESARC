@@ -288,10 +288,20 @@ const personJsonLd = {
   ],
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://esarc.dev' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://esarc.dev/about' },
+  ],
+}
+
 export default function About() {
   return (
     <>
       <JsonLd data={personJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <PageIntro eyebrow="About" title="One principal. A fleet of agents.">
         <p>
           ESARC is a small, senior-only AI engineering shop. I run it. I built

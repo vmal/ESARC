@@ -3,6 +3,7 @@ import { type Metadata } from 'next'
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
+import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 
 export const metadata: Metadata = {
@@ -139,9 +140,19 @@ function Closing() {
   )
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://esarc.dev' },
+    { '@type': 'ListItem', position: 2, name: 'Process', item: 'https://esarc.dev/process' },
+  ],
+}
+
 export default function Process() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd} />
       <PageIntro eyebrow="Process" title="How an engagement runs.">
         <p>
           Five phases, written down, predictable. No black box. You see the

@@ -240,6 +240,15 @@ const contactJsonLd = {
   },
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://esarc.dev' },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://esarc.dev/contact' },
+  ],
+}
+
 export default function Contact({
   searchParams,
 }: {
@@ -250,6 +259,7 @@ export default function Contact({
   return (
     <>
       <JsonLd data={contactJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <PageIntro eyebrow="Contact" title="Let&rsquo;s talk about what you&rsquo;re shipping.">
         <p>
           Send a note or book a 30-minute intro. Either works. We reply same
