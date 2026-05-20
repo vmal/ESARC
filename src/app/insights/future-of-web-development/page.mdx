@@ -1,20 +1,27 @@
-import imageChelseaHagon from '@/images/team/chelsea-hagon.jpg'
+import imageVaibhav from '@/images/team/vaibhav.jpg'
 
 export const article = {
   date: '2023-04-06',
   title: 'The Future of Web Development: Our Predictions for 2023',
   description:
-    'Let’s explore the latest trends in web development, and regurgitate some predictions we read on Twitter for how they will shape the industry in the coming year.',
+    'Notes on AI-assisted development, rendering patterns, and what changes in web engineering when half the work is being done by agents.',
   author: {
-    name: 'Chelsea Hagon',
-    role: 'Senior Developer',
-    image: { src: imageChelseaHagon },
+    name: 'Vaibhav Malhotra',
+    role: 'Principal, ESARC',
+    image: { src: imageVaibhav },
   },
 }
 
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: { canonical: '/insights/future-of-web-development' },
+  openGraph: {
+    type: 'article',
+    url: '/insights/future-of-web-development',
+    title: article.title,
+    description: article.description,
+  },
 }
 
 ## 1. AI Assisted Development

@@ -1,20 +1,27 @@
-import imageAngelaFisher from '@/images/team/angela-fisher.jpg'
+import imageVaibhav from '@/images/team/vaibhav.jpg'
 
 export const article = {
   date: '2022-12-01',
   title: 'A Short Guide to Component Naming',
   description:
-    'As a developer,  the most important aspect of your job is naming components. It’s not just about being descriptive and clear, but also about having fun and being creative.',
+    'Naming components is half the job. A short take on patterns that hold up as a codebase grows, and the shortcuts that look smart and bite you later.',
   author: {
-    name: 'Angela Fisher',
-    role: 'Front-end Developer',
-    image: { src: imageAngelaFisher },
+    name: 'Vaibhav Malhotra',
+    role: 'Principal, ESARC',
+    image: { src: imageVaibhav },
   },
 }
 
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: { canonical: '/insights/a-short-guide-to-component-naming' },
+  openGraph: {
+    type: 'article',
+    url: '/insights/a-short-guide-to-component-naming',
+    title: article.title,
+    description: article.description,
+  },
 }
 
 ## 1. Brevity is Key

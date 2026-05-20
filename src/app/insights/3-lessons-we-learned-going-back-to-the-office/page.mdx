@@ -1,20 +1,27 @@
-import imageLeslieAlexander from '@/images/team/leslie-alexander.jpg'
+import imageVaibhav from '@/images/team/vaibhav.jpg'
 
 export const article = {
   date: '2023-02-18',
   title: '3 Lessons We Learned Going Back to the Office',
   description:
-    'Earlier this year we made the bold decision to make everyone come back to the office full-time after two years working from a dressing table in the corner of their bedroom.',
+    'A short retrospective on what changed when a remote team moved back to a shared room, and which of those things were worth the move.',
   author: {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
-    image: { src: imageLeslieAlexander },
+    name: 'Vaibhav Malhotra',
+    role: 'Principal, ESARC',
+    image: { src: imageVaibhav },
   },
 }
 
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: { canonical: '/insights/3-lessons-we-learned-going-back-to-the-office' },
+  openGraph: {
+    type: 'article',
+    url: '/insights/3-lessons-we-learned-going-back-to-the-office',
+    title: article.title,
+    description: article.description,
+  },
 }
 
 ## 1. Efficiency is Hard to Measure
