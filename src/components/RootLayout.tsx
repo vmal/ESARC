@@ -151,7 +151,13 @@ function Navigation() {
       </NavigationRow>
       <NavigationRow>
         <NavigationItem href="/insights">Insights</NavigationItem>
+        <NavigationItem href="/canada">Canada</NavigationItem>
+      </NavigationRow>
+      <NavigationRow>
         <NavigationItem href="/contact">Contact</NavigationItem>
+        <NavigationItem href="https://calendly.com/vbvmalhotra/vaibhav-interview">
+          Book a call
+        </NavigationItem>
       </NavigationRow>
     </nav>
   )

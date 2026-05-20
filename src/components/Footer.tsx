@@ -20,6 +20,7 @@ const navigation = [
     links: [
       { title: 'About', href: '/about' },
       { title: 'Insights', href: '/insights' },
+      { title: 'Canada', href: '/canada' },
       { title: 'Contact', href: '/contact' },
     ],
   },

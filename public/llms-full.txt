@@ -3,7 +3,7 @@
 > Full text of all primary pages on esarc.dev, concatenated for LLM ingestion. Source of truth lives at the URLs noted in each section.
 
 Site: https://esarc.dev
-Last updated: 2026-05-18
+Last updated: 2026-05-20
 
 ---
 
@@ -15,6 +15,13 @@ AI engineering, with the receipts.
 Vaibhav Malhotra runs ESARC. Nine years engineering at Amazon, Scrubs Co-Pilot, Stuf Storage, and now Meta Superintelligence Labs. One principal in your repo, an in-house fleet of AI agents doing the rest, output on the order of a much bigger team. Two or three engagements at a time, never more.
 
 What we build: voice AI agents on Vapi and ElevenLabs. Multi-agent backends on Pydantic AI and FastAPI. RAG over regulated data, including EPIC-integrated clinical workflows. Eval and observability harnesses for production AI. AI audits and 90-day roadmaps for teams that are mid-build.
+
+How we engage:
+- AI Diagnostic Sprint (2 weeks, fixed-fee) — pick when you need clarity before you commit.
+- Build Sprint (6 weeks, fixed-fee) — pick when scope is clear and one surface needs to ship.
+- Embedded AI Team (monthly retainer, 3-6 month min) — pick when AI is a roadmap, not a feature.
+
+The Canada angle: CAD cost base, USD invoicing, SR&ED-backed R&D where the work qualifies. Vector Institute and Waterloo talent. EST and PT timezone coverage from a single country. Built for US enterprises that want senior accountability without a Big-4 invoice.
 
 ---
 
@@ -41,19 +48,22 @@ Five operating rules:
 ## Page: Services
 URL: https://esarc.dev/services
 
-Four ways we engage. Every engagement is led by a principal engineer and backed by our in-house AI agent fleet. The shape changes with the problem.
+Three ways we engage. Every engagement is led by a principal engineer and backed by our in-house AI agent fleet. The shape changes with the problem. Pricing is engagement-specific. We discuss numbers after we understand the scope.
 
-### AI Sprint — $25-40K, 4-6 weeks
-Ship one thing that moves a real number. LLM feature, voice POC, agent workflow, or eval harness. For you if you have a concrete AI feature in mind and want it in production this quarter, not next year.
+### AI Diagnostic Sprint — 2 weeks, fixed-fee
+A short, written assessment of an AI surface or a roadmap you're trying to commit to. We read the code, talk to the team, and ship a prioritized roadmap with an exec readout. Pick this when you need clarity before you commit to a build.
 
-### Fractional Principal — $15-25K/month, 3 month minimum
-A principal embedded in your team, week in, week out. Multi-month builds with a clean handoff. For you if you have ongoing AI work, no senior engineer to own it, and you do not want to hire one in a panic.
+What you get: written audit (20-40 pages), prioritized 90-day plan, recorded readout, eval rubric for the top two opportunities.
 
-### AI Audit & Roadmap — $5-15K, 2 weeks
-A two-week deep dive. We read the code, talk to the team, then tell you what to ship and what to kill. A written audit (20-40 pages), prioritized 90-day roadmap, recorded exec readout.
+### Build Sprint — 6 weeks, fixed-fee
+One AI surface, shipped. LLM feature, voice agent, eval harness, RAG system, or agentic backend. Daily PRs against a feature branch, eval gate before merge, working build behind a feature flag at week four, staged rollout by week six. Pick this when scope is clear.
 
-### Enterprise AI Program — $150K+, 6+ months
-Principal lead, agent fleet, on-demand specialists, SLAs. For programs that touch production data and real users. Regulated industries, public companies, Series C+ with material AI exposure.
+What you get: production build behind a flag, eval suite checked into your repo, dashboards, runbook, 30 days of post-engagement on-call.
+
+### Embedded AI Team — Monthly retainer, 3-6 month minimum
+Principal plus agent fleet inside your repo and your Slack. Output on the order of a team of senior engineers, billed as one retainer. For roadmaps that have more than one surface to build. Pick this when AI is a roadmap, not a feature.
+
+What you get: principal in standups, daily PRs, monthly written review, named scope per month, clean handoff at the end.
 
 ### FAQ
 
@@ -61,17 +71,19 @@ Q: Who owns the IP? A: You do. Standard work-for-hire, signed before the first P
 
 Q: Where do the agents run? A: Two options. Default: in our cloud, against your repo via a scoped GitHub app and a tight allowlist. Enterprise: inside your VPC, on your provider, with your audit logs.
 
-Q: What models do you use? A: Whatever fits the job. Claude Opus and Sonnet for code and reasoning, GPT-4o and 4.1 for general work, Llama for self-hosted, ElevenLabs for voice.
+Q: What models do you use? A: Whatever fits the job. Claude Opus and Sonnet for code and reasoning, GPT-4o and 4.1 for general work, Llama for self-hosted, ElevenLabs and Vapi for voice.
 
-Q: How does the handoff work? A: Last two weeks of any engagement are handoff. Runbook, evals checked into your repo, on-call playbook, a recorded walkthrough. We stay on call for 30 days after we leave, no extra cost.
+Q: How does the handoff work? A: Last two weeks of any engagement are handoff. Runbook, evals checked into your repo, on-call playbook, a recorded walkthrough. We stay on call for 30 days after we leave.
 
 Q: What about security and compliance? A: We sign MSAs, NDAs, and BAAs where applicable. SOC 2 documentation is in progress. We have shipped against EPIC, HIPAA-scoped data, and AWS production at Amazon-scale.
 
-Q: What time zone do you work in? A: Pacific Time, Vancouver, BC. We cover 9-5 PT and overlap with most of North America and Europe.
+Q: What time zone do you work in? A: We cover EST and PT from Canada. That's the entire North American working day on a single contract.
 
 Q: How many engagements do you run at once? A: Two or three at a time, never more.
 
-Q: What if it does not work out? A: Sprints have a kill clause at week two. Fractional and Enterprise have 30-day notice.
+Q: What if it does not work out? A: Diagnostic Sprints are fixed-fee, no surprises. Build Sprints have a checkpoint at week two. Embedded engagements have 30-day notice.
+
+Q: How does pricing work? A: Engagement-specific. We scope first, then quote. We don't publish rate cards because the work isn't a rate card.
 
 ---
 
@@ -94,6 +106,41 @@ Staged rollout. Internal users first, then 1%, 10%, 50%, 100%. Observability das
 
 ### 05. Handoff (1-2 weeks)
 Last phase is for your team, not ours. Runbook walkthrough, recorded code tour, eval suite explanation, a list of known gaps and follow-ups. 30 days of post-engagement on-call, no extra invoice.
+
+---
+
+## Page: Canada
+URL: https://esarc.dev/canada
+
+A Canadian AI engineering shop, serving US enterprises.
+
+ESARC is built in Canada on purpose. The structural advantages compound for US buyers. Cost base in CAD, invoicing in USD. Senior AI talent inside an hour of Vector Institute and Waterloo. EST and PT coverage from a single country. Data residency conversations that have already been had.
+
+### The cost wedge
+Salaries, leases, infrastructure all run on a CAD cost base. Invoices are in USD. The arbitrage shows up in the work you get for the same dollar. We're not cheap. We're a senior shop with a structural cost edge, which is a different story.
+
+### SR&ED makes R&D-shaped work cheaper still
+Canada's Scientific Research and Experimental Development credit returns up to 35% on qualifying R&D effort. Most net-new AI engineering qualifies. Evals, novel agent architectures, model integration work, prompt research, the boring R&D pieces that look like engineering. When an engagement is R&D-shaped, you're effectively paying about 65 cents on the dollar after credits flow through. We help you structure scope so that the qualifying portion is visible to your accountants.
+
+### Talent funnel
+We hire and partner from the Vector Institute, Waterloo CS, U of T, McGill, and UBC. The Canadian AI talent pool has been growing for a decade because the universities have been good at it for longer than that. The senior end of that pool stays in Canada, because compensation here has caught up to a level where leaving for the Bay is no longer obvious.
+
+### Time zone overlap
+EST and PT in one country. We run mornings on EST hours for east coast clients and afternoons on PT for west coast. A single Slack workspace, a single contract, a single point of accountability across the whole North American working day.
+
+### Data residency
+US enterprises with Canadian customers, or with privacy-regulated workloads, already need Canadian data residency conversations. We've had them. Our default deployment patterns keep data in your cloud, in your region, with our agents reaching in over scoped credentials. Cross-border data flows are an explicit design choice, not an accident.
+
+### Hire-friendly contracting
+We're set up to invoice US entities directly. No intermediary, no W-8BEN dance for your AP team, USD wire or ACH, NET 30. MSA + SOW takes a week most months.
+
+How we structure engagements for US buyers:
+- Where we are: Vancouver, BC. Working hours overlap with the entire continental US.
+- Who we serve: US enterprises and series A through C startups with material AI surface area.
+- How you pay us: USD invoices, NET 30, US-friendly contracts.
+- Where the work lives: Your repo, your cloud, your audit logs. We bring agents and senior accountability.
+- Why R&D credits matter: When the work qualifies for SR&ED, our cost base shrinks further. We help you scope to make qualifying effort visible.
+- Where our people come from: Vector Institute, Waterloo CS, U of T, McGill, UBC. Senior practitioners with frontier-lab adjacent experience.
 
 ---
 

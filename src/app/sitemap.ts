@@ -27,6 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       { url: `${SITE_URL}/process`, priority: 0.8, changeFrequency: 'monthly' },
       { url: `${SITE_URL}/work`, priority: 0.9, changeFrequency: 'weekly' },
       { url: `${SITE_URL}/insights`, priority: 0.7, changeFrequency: 'weekly' },
+      { url: `${SITE_URL}/canada`, priority: 0.85, changeFrequency: 'monthly' },
       { url: `${SITE_URL}/contact`, priority: 0.8, changeFrequency: 'yearly' },
     ] satisfies MetadataRoute.Sitemap
   ).map((route) => ({ ...route, lastModified: DEFAULT_LASTMOD }))

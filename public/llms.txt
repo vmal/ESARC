@@ -1,15 +1,20 @@
 # ESARC
 
-> ESARC is a one-principal AI engineering consultancy run by Vaibhav Malhotra. One senior engineer paired with an in-house fleet of AI coding agents, shipping production AI systems for companies that want senior accountability without a Big-4 invoice.
+> ESARC is a Canadian AI engineering consultancy run by Vaibhav Malhotra. Senior engineers paired with an in-house fleet of AI coding agents, shipping production AI systems for US and Canadian companies that want senior accountability without a Big-4 invoice.
 
-ESARC takes a small number of engagements per year. Every line that ships is reviewed by a principal engineer. The agent fleet drafts, tests, and reviews under that direction. Output is measured in PRs, evals, and dashboards — not slide decks.
+ESARC takes a small number of engagements per year. Every line that ships is reviewed by a principal engineer. The agent fleet drafts, tests, and reviews under that direction. Output is measured in PRs, evals, and dashboards, not slide decks. ESARC bills US clients in USD from a Canadian cost base, with SR&ED-backed R&D where the work qualifies.
 
-## Services
+## Engagement shapes
 
-- [AI Sprint](https://esarc.dev/services#ai-sprint): Ship one AI feature in 4-6 weeks. $25-40K fixed.
-- [Fractional Principal](https://esarc.dev/services#fractional-principal): Embedded principal engineer, 3-month minimum. $15-25K/month.
-- [AI Audit & Roadmap](https://esarc.dev/services#ai-audit): Two-week written audit and 90-day roadmap. $5-15K.
-- [Enterprise AI Program](https://esarc.dev/services#enterprise): Multi-surface AI programs with SLAs and named specialists. $150K+, 6+ months.
+- [AI Diagnostic Sprint](https://esarc.dev/services#diagnostic-sprint): Two-week written assessment, prioritized roadmap, exec readout. Fixed-fee. Pick when you need clarity before you commit.
+- [Build Sprint](https://esarc.dev/services#build-sprint): Six-week fixed-fee build of one AI surface. LLM feature, voice agent, eval harness, RAG system. Pick when scope is clear.
+- [Embedded AI Team](https://esarc.dev/services#embedded-team): Monthly retainer, three to six month minimum. Principal plus agent fleet inside your repo and Slack. Pick when AI is a roadmap, not a feature.
+
+Pricing is engagement-specific. We discuss numbers after we understand the scope.
+
+## Canada wedge for US buyers
+
+- [Canada for US buyers](https://esarc.dev/canada): How a Canadian AI team serves US enterprises. CAD cost base with USD invoicing, SR&ED-backed R&D at up to 35%, Vector Institute and Waterloo talent, EST and PT timezone coverage, Canadian data residency tailwinds.
 
 ## Case studies
 
@@ -28,14 +33,14 @@ ESARC takes a small number of engagements per year. Every line that ships is rev
 
 ## Process
 
-- [How an engagement runs](https://esarc.dev/process): Five phases — discovery, scope, sprint, ship, handoff. Daily PRs, written deliverables, no Friday surprises.
+- [How an engagement runs](https://esarc.dev/process): Five phases, discovery, scope, sprint, ship, handoff. Daily PRs, written deliverables, no Friday surprises.
 
 ## Contact
 
-- [Contact ESARC](https://esarc.dev/contact): Send a note or book a 30-minute intro call. Same-day reply on weekdays.
+- [Contact ESARC](https://esarc.dev/contact): Tell us what you are trying to ship, or grab a 30-minute intro on the calendar. Same-day reply on weekdays.
 
 ## Optional
 
 - [Sitemap](https://esarc.dev/sitemap.xml)
-- [Founder LinkedIn](https://www.linkedin.com/in/mvaibhav)
+- [Founder LinkedIn](https://www.linkedin.com/in/vbvmalhotra/)
 - [Founder GitHub](https://github.com/vmal)
