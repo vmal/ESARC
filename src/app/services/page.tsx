@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
-import { CostCalculator } from '@/components/CostCalculator'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
@@ -11,108 +10,94 @@ import { PageIntro } from '@/components/PageIntro'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'How we engage: AI Sprints, Fractional Principal, AI Audit & Roadmap, Enterprise AI Program. Senior engineers paired with in-house agents.',
+    'How we engage. AI Diagnostic Sprint, Build Sprint, Embedded AI Team. Principal-led AI engineering for US and Canadian companies.',
   alternates: { canonical: '/services' },
   openGraph: {
     type: 'website',
     url: '/services',
     title: 'Services — ESARC',
     description:
-      'AI Sprints, Fractional Principal, AI Audit & Roadmap, Enterprise AI Program. Pick the shape that fits your problem.',
+      'AI Diagnostic Sprint, Build Sprint, Embedded AI Team. Three shapes. Pick the one that fits the problem.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Services — ESARC',
     description:
-      'Four ways to engage. Principal-led AI engineering, in-house agents, production focus.',
+      'Three engagement shapes. Principal-led AI engineering, in-house agent fleet, production focus.',
   },
 }
 
 const services = [
   {
-    slug: 'ai-sprint',
-    name: 'AI Sprint',
-    price: '$25-40K',
-    duration: '4-6 weeks',
+    slug: 'diagnostic-sprint',
+    name: 'AI Diagnostic Sprint',
+    duration: '2 weeks · fixed-fee',
     summary:
-      'Ship one thing that moves a real number. LLM feature, voice POC, agent workflow, or eval harness.',
+      'A short, written assessment of an AI surface or roadmap. We read the code, talk to the team, ship a prioritised plan with an exec readout.',
     forWho:
-      'You have a concrete AI feature in mind. You want it in production this quarter, not next year.',
+      'You’re mid-build, or about to start, and you want a senior outside read before you commit a quarter of engineering time.',
     youGet: [
-      'A principal in your repo from day one',
-      'Daily PRs with clear scope and tests',
-      'A working build in 4-6 weeks',
-      'Evals and a runbook before we hand off',
+      'A written audit, 20 to 40 pages, not a slide deck',
+      'A prioritised 90-day roadmap with effort estimates',
+      'A 60-minute exec readout, recorded',
+      'A draft eval rubric for the top two opportunities',
+      'A short list of what to stop doing',
     ],
     scope:
-      'Single feature, single surface. Voice agent, RAG search, LLM-assisted workflow, model eval. We turn down work outside that scope.',
+      'Architecture, model choice, eval coverage, latency, cost, security, team gaps. We don’t write production code on this engagement. We write down what to build next.',
+    pickWhen:
+      'You need clarity before you commit. Or your board wants a sober second opinion on the AI roadmap before they greenlight the spend.',
+    relatedWork: [{ slug: 'mcgraw-hill', label: 'McGraw Hill' }],
+  },
+  {
+    slug: 'build-sprint',
+    name: 'Build Sprint',
+    duration: '6 weeks · fixed-fee',
+    summary:
+      'One AI surface, shipped. LLM feature, voice agent, eval harness, RAG system, or agentic backend. Daily PRs, eval gate, staged rollout.',
+    forWho:
+      'You have a concrete AI feature in mind and you want it in production this quarter, not next year. Scope is clear enough to fix-price.',
+    youGet: [
+      'A principal in your repo from day one',
+      'Daily PRs against a feature branch with eval gates',
+      'A working build behind a feature flag by week four',
+      'Staged rollout (1%, 10%, 50%, 100%) by week six',
+      'Eval suite, dashboards, runbook checked into your repo',
+      '30 days of post-engagement on-call',
+    ],
+    scope:
+      'Single surface, single outcome. Voice agent, RAG search, LLM-assisted workflow, model eval harness, agentic backend. We turn down scope creep, on purpose.',
+    pickWhen:
+      'Scope is clear. You’ve picked the surface. You want it shipped and instrumented in six weeks, not adopted into a multi-quarter program.',
     relatedWork: [
       { slug: 'stuf-sidney-ai', label: 'Stuf — Sidney Voice AI' },
       { slug: 'scrubs-co-pilot', label: 'Scrubs Co-Pilot' },
     ],
   },
   {
-    slug: 'fractional-principal',
-    name: 'Fractional Principal',
-    price: '$15-25K/mo',
-    duration: '3 month minimum',
+    slug: 'embedded-team',
+    name: 'Embedded AI Team',
+    duration: 'Monthly retainer · 3-6 month minimum',
     summary:
-      'A principal embedded in your team, week in, week out. Multi-month builds with a clean handoff.',
+      'Principal plus agent fleet inside your repo and your Slack. Output on the order of a team of senior engineers, billed as one retainer.',
     forWho:
-      'You have ongoing AI work, no senior engineer to own it, and you don’t want to hire one in a panic.',
+      'You have an AI roadmap, not a single feature. Multiple surfaces, ongoing work, no senior engineer to own it, and you don’t want to hire one in a panic.',
     youGet: [
       'A dedicated principal in your Slack and standups',
       'An agent fleet running on your repo with your guardrails',
-      'A written technical roadmap, updated monthly',
-      'Quarterly readouts with your exec team',
+      'Daily PRs, weekly written review, monthly readout',
+      'A rolling technical roadmap, updated monthly',
+      'Quarterly exec reviews',
+      'Clean written handoff at the end of the engagement',
     ],
     scope:
-      'Owning a real product surface. Voice, agents, RAG, evals, infra. You set priority, we set sequence.',
+      'Owning a real product surface across months. Voice, agents, RAG, evals, infra. You set priority, we set sequence. Output is measured in PRs, evals, and dashboards, not status reports.',
+    pickWhen:
+      'AI is a roadmap, not a feature. You need senior accountability on the work week in and week out, and you want output that scales past one principal’s hours.',
     relatedWork: [
       { slug: 'mymethod', label: 'MyMethod' },
       { slug: 'springhouse', label: 'Springhouse' },
-    ],
-  },
-  {
-    slug: 'ai-audit',
-    name: 'AI Audit & Roadmap',
-    price: '$5-15K',
-    duration: '2 weeks',
-    summary:
-      'A two-week deep dive. We read the code, talk to the team, then tell you what to ship and what to kill.',
-    forWho:
-      'Your team is mid-build on AI features and you want a second pair of senior eyes before the next quarter.',
-    youGet: [
-      'A written audit (20-40 pages), not a slide deck',
-      'A prioritized 90-day roadmap with effort estimates',
-      'A 60-minute exec readout, recorded',
-      'A short list of what to stop doing',
-    ],
-    scope:
-      'Architecture, model choice, eval coverage, latency, cost, security, team gaps. We don’t write code on this engagement.',
-    relatedWork: [{ slug: 'mcgraw-hill', label: 'McGraw Hill' }],
-  },
-  {
-    slug: 'enterprise',
-    name: 'Enterprise AI Program',
-    price: '$150K+',
-    duration: '6+ months',
-    summary:
-      'Principal lead, agent fleet, on-demand specialists, SLAs. For programs that touch production data and real users.',
-    forWho:
-      'You’re a regulated industry, a public company, or a Series C+ with material AI exposure on the roadmap.',
-    youGet: [
-      'A principal lead with a named backup',
-      'An agent fleet running inside your VPC if you need it',
-      'Specialists on call: security, evals, infra, voice',
-      'Quarterly reviews with your CTO or board',
-      'Signed MSA, signed BAA where applicable',
-    ],
-    scope:
-      'Multi-surface programs. Voice agents at call-center scale, multi-agent orchestration, RAG over regulated data, custom evals.',
-    relatedWork: [
       { slug: 'meta-superintelligence', label: 'Meta Superintelligence Labs' },
-      { slug: 'amazon-shipping-ai', label: 'Amazon' },
     ],
   },
 ]
@@ -130,12 +115,20 @@ function Services() {
               <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-16">
                 <div>
                   <p className="font-mono text-xs uppercase tracking-wider text-accent">
-                    {s.price} &middot; {s.duration}
+                    {s.duration}
                   </p>
                   <h2 className="mt-3 font-display text-3xl font-semibold text-neutral-950">
                     {s.name}
                   </h2>
                   <p className="mt-4 text-base text-neutral-600">{s.summary}</p>
+                  <div className="mt-6">
+                    <Link
+                      href="/contact"
+                      className="inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800"
+                    >
+                      Start this engagement
+                    </Link>
+                  </div>
                 </div>
 
                 <div className="lg:col-span-2">
@@ -149,6 +142,14 @@ function Services() {
                       </dd>
                     </div>
                     <div>
+                      <dt className="font-display text-sm font-semibold text-neutral-950">
+                        Pick this when
+                      </dt>
+                      <dd className="mt-2 text-sm text-neutral-600">
+                        {s.pickWhen}
+                      </dd>
+                    </div>
+                    <div className="sm:col-span-2">
                       <dt className="font-display text-sm font-semibold text-neutral-950">
                         Typical scope
                       </dt>
@@ -203,25 +204,11 @@ function Services() {
   )
 }
 
-function Calculator() {
-  return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
-      <FadeIn>
-        <h2 className="font-display text-base font-semibold tracking-wider text-neutral-950">
-          What it actually costs
-        </h2>
-        <p className="mt-4 max-w-2xl font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
-          Compare an ESARC build to a Big-4 quote.
-        </p>
-      </FadeIn>
-      <FadeIn className="mt-12">
-        <CostCalculator />
-      </FadeIn>
-    </Container>
-  )
-}
-
 const faq = [
+  {
+    q: 'How does pricing work?',
+    a: 'Engagement-specific. We scope first, then quote. We don’t publish a rate card because the work isn’t a rate card. The Diagnostic Sprint and the Build Sprint are fixed-fee. The Embedded AI Team is a monthly retainer. Numbers come after a scoping call.',
+  },
   {
     q: 'Who owns the IP?',
     a: 'You do. Standard work-for-hire, signed before the first PR. Code, prompts, evals, weights you fine-tune on your data, all yours.',
@@ -232,27 +219,27 @@ const faq = [
   },
   {
     q: 'What models do you use?',
-    a: 'Whatever fits the job. Claude Opus and Sonnet for code and reasoning, GPT-4o and 4.1 for general work, Llama for self-hosted, ElevenLabs for voice. We pick per task and tell you what we picked.',
+    a: 'Whatever fits the job. Claude Opus and Sonnet for code and reasoning, GPT-4o and 4.1 for general work, Llama for self-hosted, ElevenLabs and Vapi for voice. We pick per task and tell you what we picked.',
   },
   {
     q: 'How does the handoff work?',
-    a: 'Last two weeks of any engagement are handoff. Runbook, evals checked into your repo, on-call playbook, a recorded walkthrough. We stay on call for 30 days after we leave, no extra cost.',
+    a: 'Last phase of every engagement is handoff. Runbook, evals checked into your repo, on-call playbook, a recorded walkthrough. We stay on call for 30 days after we leave.',
   },
   {
     q: 'What about security and compliance?',
-    a: 'We sign MSAs, NDAs, and BAAs where applicable. SOC 2 documentation is in progress. For regulated work we run agents inside your environment, never ours. We have shipped against EPIC, HIPAA-scoped data, and AWS production at Amazon-scale.',
+    a: 'We sign MSAs, NDAs, and BAAs where applicable. SOC 2 documentation is in progress. For regulated work we run agents inside your environment, never ours. We’ve shipped against EPIC, HIPAA-scoped data, and AWS production at Amazon-scale.',
   },
   {
     q: 'What time zone do you work in?',
-    a: 'Pacific Time, Vancouver, BC. We cover 9-5 PT and overlap with most of North America and Europe. Async-first by default, so timezone usually does not matter as much as people think.',
+    a: 'EST and PT, from Canada. That covers the entire North American working day on a single contract. Most ongoing work is async-first, so timezone usually matters less than people think.',
   },
   {
     q: 'How many engagements do you run at once?',
     a: 'Two or three at a time, never more. If you have a real engagement, you get real attention.',
   },
   {
-    q: 'What if it does not work out?',
-    a: 'Sprints have a kill clause at week two. Fractional and Enterprise have 30-day notice. We would rather you leave clean than stay unhappy.',
+    q: 'What if it doesn’t work out?',
+    a: 'Diagnostic Sprints are fixed-fee and short, so the answer is simply done. Build Sprints have a checkpoint at week two where either side can walk. Embedded engagements have 30-day notice. We’d rather you leave clean than stay unhappy.',
   },
 ]
 
@@ -290,17 +277,20 @@ const serviceJsonLd = {
   serviceType: 'AI Engineering Consulting',
   name: 'ESARC AI Engineering Services',
   description:
-    'Principal-led AI engineering: AI Sprints, Fractional Principal, AI Audit & Roadmap, and Enterprise AI Programs.',
+    'Principal-led AI engineering, paired with an in-house agent fleet. Three engagement shapes: AI Diagnostic Sprint, Build Sprint, Embedded AI Team.',
   provider: {
     '@type': 'Organization',
     name: 'ESARC',
     url: 'https://esarc.dev',
   },
-  areaServed: 'Worldwide',
+  areaServed: [
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'Canada' },
+  ],
   url: 'https://esarc.dev/services',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Engagement Models',
+    name: 'Engagement Shapes',
     itemListElement: services.map((s) => ({
       '@type': 'Offer',
       name: s.name,
@@ -323,20 +313,41 @@ const faqJsonLd = {
   })),
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://esarc.dev/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: 'https://esarc.dev/services',
+    },
+  ],
+}
+
 export default function ServicesPage() {
   return (
     <>
       <JsonLd data={serviceJsonLd} />
       <JsonLd data={faqJsonLd} />
-      <PageIntro eyebrow="Services" title="Four ways we engage.">
+      <JsonLd data={breadcrumbJsonLd} />
+      <PageIntro eyebrow="Services" title="Three ways we engage.">
         <p>
           Every engagement is led by a principal engineer and backed by our
-          in-house AI agent fleet. The shape changes with the problem.
+          in-house AI agent fleet. The shape changes with the problem. Pricing
+          is engagement-specific. We discuss numbers after we understand the
+          scope.
         </p>
       </PageIntro>
 
       <Services />
-      <Calculator />
       <FAQ />
       <ContactSection />
     </>
