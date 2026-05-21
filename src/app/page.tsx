@@ -444,7 +444,7 @@ function FounderCard() {
                 href="/about"
                 className="text-sm font-semibold text-neutral-700 underline-offset-4 hover:text-neutral-950 hover:underline"
               >
-                More about Vic
+                More about Vaibhav
               </Link>
             </div>
           </div>
