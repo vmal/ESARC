@@ -88,3 +88,18 @@ Live on Vercel (personal team `vaibhav-malhotras-projects-ef440d56`) as of 2026-
 - [ ] **LinkedIn announce** — post the launch with a link to a flagship case study (`/work/meta-superintelligence` recommended) and pin it to the company page.
 
 Everything code-side is green. Ship when DNS + Resend land.
+
+## v2 improvements (2026-05-20)
+
+Live on https://esarc.dev. Eight stories shipped, each committed and pushed to `main` (Vercel auto-deploys).
+
+- **Story 1 — Frontier-lab badges.** Grayscale "Built on" strip under the hero (Anthropic, OpenAI, AWS, Vercel, NVIDIA, Vapi) alongside the existing client logos strip. Two strips serve two jobs: client trust + stack credibility.
+- **Story 2 — `/canada` page.** New route with the structural advantage to US prospects: CAD cost / USD invoice, SR&ED 35% credit on R&D-shaped work, Vector Institute / Waterloo / U of T / McGill / UBC talent funnel, EST+PST overlap, data residency. Full Service JSON-LD. Added to nav, footer, sitemap, llms.txt, llms-full.txt.
+- **Story 3 — Engagement shapes on `/services`.** Three shapes laid out clearly: AI Diagnostic Sprint (2wk, fixed), Build Sprint (6wk, fixed), Embedded AI Team (3-6mo retainer). No prices anywhere. CTA to /contact on each.
+- **Story 4 — SEO + AEO hardening.** Organization JSON-LD in RootLayout (sameAs + founder), Person schema on /about, Article schema on every /work/* and /insights/*, FAQPage on /services with six buyer FAQs, BreadcrumbList across sub-pages. Canonical links verified per route.
+- **Story 5 — Founder voice + bylines.** Vic's name + photo byline confirmed on every /insights/* post (no anonymous "ESARC team"). Founder card on the homepage with photo, two-line bio, LinkedIn, Calendly.
+- **Story 6 — Tribe-pattern case studies.** Every /work/* page now carries client + sector + engagement length + named stack (LLM, cloud, framework) + headline metric (or "under NDA" honestly). Wrapper renders the new fields conditionally.
+- **Story 7 — Discovery form on /contact.** No budget gate. Added "what surface are you trying to ship?", timeline (2wk / 6wk / 3-6mo / unsure), stack constraints (textarea). /api/contact extended to read and render the new fields in the Resend email. Calendly CTA kept prominent as the alternative path.
+- **Story 8 — Build, verify, ship.** `npm run build` clean. Live verification via `curl -sI` returns HTTP/2 200 on `/`, `/canada`, `/services`, `/contact`, `/work`, plus content markers confirmed via grep (engagement shapes on /services, SR&ED + Vector Institute on /canada, Sector/Engagement/Headline on work pages, Vaibhav Malhotra byline on insights). Screenshots in `.claude/qa-screenshots-v2/`.
+
+No pricing anywhere on the public site. The only answer to "what does it cost" is "we'll talk."
