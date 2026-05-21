@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 import localFont from 'next/font/local'
+import { Analytics } from '@vercel/analytics/next'
 
 import { JsonLd } from '@/components/JsonLd'
 import { RootLayout } from '@/components/RootLayout'
@@ -88,6 +89,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="flex min-h-full flex-col">
         <RootLayout>{children}</RootLayout>
+        <Analytics />
       </body>
     </html>
   )
