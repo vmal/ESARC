@@ -17,9 +17,9 @@ Vaibhav Malhotra runs ESARC. Nine years engineering at Amazon, Scrubs Co-Pilot, 
 What we build: voice AI agents on Vapi and ElevenLabs. Multi-agent backends on Pydantic AI and FastAPI. RAG over regulated data, including EPIC-integrated clinical workflows. Eval and observability harnesses for production AI. AI audits and 90-day roadmaps for teams that are mid-build.
 
 How we engage:
-- AI Diagnostic Sprint (2 weeks, fixed-fee) — pick when you need clarity before you commit.
-- Build Sprint (6 weeks, fixed-fee) — pick when scope is clear and one surface needs to ship.
-- Embedded AI Team (monthly retainer, 3-6 month min) — pick when AI is a roadmap, not a feature.
+- AI Diagnostic Sprint (2 weeks) — pick when you need clarity before you commit.
+- Build Sprint (6 weeks) — pick when scope is clear and one surface needs to ship.
+- Embedded AI Team (3-6 months) — pick when AI is a roadmap, not a feature.
 
 The Canada angle: CAD cost base, USD invoicing, SR&ED-backed R&D where the work qualifies. Vector Institute and Waterloo talent. EST and PT timezone coverage from a single country. Built for US enterprises that want senior accountability without a Big-4 invoice.
 
@@ -48,20 +48,20 @@ Five operating rules:
 ## Page: Services
 URL: https://esarc.dev/services
 
-Three ways we engage. Every engagement is led by a principal engineer and backed by our in-house AI agent fleet. The shape changes with the problem. Pricing is engagement-specific. We discuss numbers after we understand the scope.
+Three ways we engage. Every engagement is led by a principal engineer and backed by our in-house AI agent fleet. The shape changes with the problem: diagnostic, focused build, or embedded AI team.
 
-### AI Diagnostic Sprint — 2 weeks, fixed-fee
+### AI Diagnostic Sprint — 2 weeks
 A short, written assessment of an AI surface or a roadmap you're trying to commit to. We read the code, talk to the team, and ship a prioritized roadmap with an exec readout. Pick this when you need clarity before you commit to a build.
 
 What you get: written audit (20-40 pages), prioritized 90-day plan, recorded readout, eval rubric for the top two opportunities.
 
-### Build Sprint — 6 weeks, fixed-fee
+### Build Sprint — 6 weeks
 One AI surface, shipped. LLM feature, voice agent, eval harness, RAG system, or agentic backend. Daily PRs against a feature branch, eval gate before merge, working build behind a feature flag at week four, staged rollout by week six. Pick this when scope is clear.
 
 What you get: production build behind a flag, eval suite checked into your repo, dashboards, runbook, 30 days of post-engagement on-call.
 
-### Embedded AI Team — Monthly retainer, 3-6 month minimum
-Principal plus agent fleet inside your repo and your Slack. Output on the order of a team of senior engineers, billed as one retainer. For roadmaps that have more than one surface to build. Pick this when AI is a roadmap, not a feature.
+### Embedded AI Team — 3-6 months
+Principal plus agent fleet inside your repo and your Slack. Output on the order of a team of senior engineers, with one accountable owner. For roadmaps that have more than one surface to build. Pick this when AI is a roadmap, not a feature.
 
 What you get: principal in standups, daily PRs, monthly written review, named scope per month, clean handoff at the end.
 
@@ -81,9 +81,7 @@ Q: What time zone do you work in? A: We cover EST and PT from Canada. That's the
 
 Q: How many engagements do you run at once? A: Two or three at a time, never more.
 
-Q: What if it does not work out? A: Diagnostic Sprints are fixed-fee, no surprises. Build Sprints have a checkpoint at week two. Embedded engagements have 30-day notice.
-
-Q: How does pricing work? A: Engagement-specific. We scope first, then quote. We don't publish rate cards because the work isn't a rate card.
+Q: What if it does not work out? A: Diagnostic Sprints are short and bounded. Build Sprints have a checkpoint at week two. Embedded engagements have 30-day notice.
 
 ---
 
@@ -96,7 +94,7 @@ How an engagement runs. Five phases, written down, predictable. No black box. Yo
 The principal reads your code and talks to the people closest to the problem. Engineers, PMs, customer support, whoever has the receipts. Deliverable: a one-pager — problem statement, current state, three options with rough sizing.
 
 ### 02. Scope (2-5 days)
-We pick an option together and write it down. Hard scope, soft scope, explicit non-goals. A draft eval suite so we agree on what success means before we write a line of code. Deliverable: signed scope doc, draft eval set, target metrics, fixed quote.
+We pick an option together and write it down. Hard scope, soft scope, explicit non-goals. A draft eval suite so we agree on what success means before we write a line of code. Deliverable: signed scope doc, draft eval set, target metrics.
 
 ### 03. Sprint (2-6 weeks)
 Principal plus agent fleet in your repo. Daily PRs against a feature branch. A 5-line update every morning: what landed, what is in review, what is blocked. Deliverable: a working build behind a feature flag, green eval suite, real latency and cost numbers.
@@ -502,4 +500,3 @@ The other outcome that doesn't show up cleanly in numbers: the team got their ph
 Started the eval harness sooner. We had spot-check workflows for a long time before we had anything like a proper eval suite, and it cost us in iteration speed once the agent got non-trivial. The pattern I now bring into every voice project (and applied to MyMethod after this) is to build the eval loop before you build the third dialogue node.
 
 Otherwise the team and the product hit the milestones we set, the trade show was a win, and Sidney is still picking up calls.
-

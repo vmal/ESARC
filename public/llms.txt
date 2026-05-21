@@ -6,11 +6,9 @@ ESARC takes a small number of engagements per year. Every line that ships is rev
 
 ## Engagement shapes
 
-- [AI Diagnostic Sprint](https://esarc.dev/services#diagnostic-sprint): Two-week written assessment, prioritized roadmap, exec readout. Fixed-fee. Pick when you need clarity before you commit.
-- [Build Sprint](https://esarc.dev/services#build-sprint): Six-week fixed-fee build of one AI surface. LLM feature, voice agent, eval harness, RAG system. Pick when scope is clear.
-- [Embedded AI Team](https://esarc.dev/services#embedded-team): Monthly retainer, three to six month minimum. Principal plus agent fleet inside your repo and Slack. Pick when AI is a roadmap, not a feature.
-
-Pricing is engagement-specific. We discuss numbers after we understand the scope.
+- [AI Diagnostic Sprint](https://esarc.dev/services#diagnostic-sprint): Two-week written assessment, prioritized roadmap, exec readout. Pick when you need clarity before you commit.
+- [Build Sprint](https://esarc.dev/services#build-sprint): Six-week build of one AI surface. LLM feature, voice agent, eval harness, RAG system. Pick when scope is clear.
+- [Embedded AI Team](https://esarc.dev/services#embedded-team): Three to six month embedded team. Principal plus agent fleet inside your repo and Slack. Pick when AI is a roadmap, not a feature.
 
 ## Canada wedge for US buyers
 

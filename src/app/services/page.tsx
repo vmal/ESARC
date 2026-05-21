@@ -31,7 +31,7 @@ const services = [
   {
     slug: 'diagnostic-sprint',
     name: 'AI Diagnostic Sprint',
-    duration: '2 weeks · fixed-fee',
+    duration: '2 weeks · fixed scope',
     summary:
       'A short, written assessment of an AI surface or roadmap. We read the code, talk to the team, ship a prioritised plan with an exec readout.',
     forWho:
@@ -52,11 +52,11 @@ const services = [
   {
     slug: 'build-sprint',
     name: 'Build Sprint',
-    duration: '6 weeks · fixed-fee',
+    duration: '6 weeks · fixed scope',
     summary:
       'One AI surface, shipped. LLM feature, voice agent, eval harness, RAG system, or agentic backend. Daily PRs, eval gate, staged rollout.',
     forWho:
-      'You have a concrete AI feature in mind and you want it in production this quarter, not next year. Scope is clear enough to fix-price.',
+      'You have a concrete AI feature in mind and you want it in production this quarter, not next year. Scope is clear enough to lock.',
     youGet: [
       'A principal in your repo from day one',
       'Daily PRs against a feature branch with eval gates',
@@ -77,9 +77,9 @@ const services = [
   {
     slug: 'embedded-team',
     name: 'Embedded AI Team',
-    duration: 'Monthly retainer · 3-6 month minimum',
+    duration: '3-6 month embedded team',
     summary:
-      'Principal plus agent fleet inside your repo and your Slack. Output on the order of a team of senior engineers, billed as one retainer.',
+      'Principal plus agent fleet inside your repo and your Slack. Output on the order of a team of senior engineers, with one accountable owner.',
     forWho:
       'You have an AI roadmap, not a single feature. Multiple surfaces, ongoing work, no senior engineer to own it, and you don’t want to hire one in a panic.',
     youGet: [
@@ -206,10 +206,6 @@ function Services() {
 
 const faq = [
   {
-    q: 'How does pricing work?',
-    a: 'Engagement-specific. We scope first, then quote. We don’t publish a rate card because the work isn’t a rate card. The Diagnostic Sprint and the Build Sprint are fixed-fee. The Embedded AI Team is a monthly retainer. Numbers come after a scoping call.',
-  },
-  {
     q: 'Who owns the IP?',
     a: 'You do. Standard work-for-hire, signed before the first PR. Code, prompts, evals, weights you fine-tune on your data, all yours.',
   },
@@ -239,7 +235,7 @@ const faq = [
   },
   {
     q: 'What if it doesn’t work out?',
-    a: 'Diagnostic Sprints are fixed-fee and short, so the answer is simply done. Build Sprints have a checkpoint at week two where either side can walk. Embedded engagements have 30-day notice. We’d rather you leave clean than stay unhappy.',
+    a: 'Diagnostic Sprints are short, so the answer is simply done. Build Sprints have a checkpoint at week two where either side can walk. Embedded engagements have 30-day notice. We’d rather you leave clean than stay unhappy.',
   },
 ]
 
@@ -341,9 +337,8 @@ export default function ServicesPage() {
       <PageIntro eyebrow="Services" title="Three ways we engage.">
         <p>
           Every engagement is led by a principal engineer and backed by our
-          in-house AI agent fleet. The shape changes with the problem. Pricing
-          is engagement-specific. We discuss numbers after we understand the
-          scope.
+          in-house AI agent fleet. The shape changes with the problem, from a
+          short diagnostic to a focused build to an embedded AI team.
         </p>
       </PageIntro>
 

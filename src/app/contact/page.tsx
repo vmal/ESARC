@@ -135,9 +135,9 @@ function ContactForm() {
             label="Engagement shape"
             name="projectType"
             options={[
-              { value: 'diagnostic-sprint', label: 'AI Diagnostic Sprint (2 weeks, fixed-fee)' },
-              { value: 'build-sprint', label: 'Build Sprint (6 weeks, fixed-fee)' },
-              { value: 'embedded-team', label: 'Embedded AI Team (3-6 mo retainer)' },
+              { value: 'diagnostic-sprint', label: 'AI Diagnostic Sprint (2 weeks)' },
+              { value: 'build-sprint', label: 'Build Sprint (6 weeks)' },
+              { value: 'embedded-team', label: 'Embedded AI Team (3-6 mo)' },
               { value: 'unsure', label: 'Not sure yet, let’s talk' },
             ]}
           />

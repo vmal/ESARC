@@ -43,7 +43,7 @@ const steps = [
     body: 'We pick an option together and write it down. Hard scope, soft scope, explicit non-goals. A draft eval suite so we agree on what success means before we write a line of code. If we cannot agree, this is where we walk away clean.',
     who: 'Principal leads. Eval agent drafts the test cases. You approve.',
     deliverable:
-      'Signed scope doc, draft eval set, target metrics, a fixed quote.',
+      'Signed scope doc, draft eval set, target metrics, named non-goals.',
   },
   {
     num: '03',

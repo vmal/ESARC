@@ -17,7 +17,7 @@ import logoStuf from '@/../public/logos/stuf.svg'
 
 export const metadata: Metadata = {
   description:
-    'AI engineering consultancy. Senior engineers paired with an in-house fleet of AI agents. Production AI in weeks, not quarters, at a fraction of Big-4 cost.',
+    'AI engineering consultancy. Senior engineers paired with an in-house fleet of AI agents. Production AI in weeks, not quarters.',
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
@@ -50,8 +50,7 @@ function Hero() {
           </h1>
           <p className="mt-8 max-w-2xl text-xl text-neutral-600">
             ESARC pairs principal engineers with a fleet of in-house AI agents
-            so a small team can outship a large one, at a fraction of Big-4
-            cost.
+            so a small team can outship a large one without the Big-4 drag.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Button href="/work">See our work</Button>
@@ -166,8 +165,8 @@ const pillars = [
   {
     eyebrow: '02',
     title: 'AI-native delivery',
-    body: 'Our in-house agent fleet writes, reviews, and tests code alongside our principals. The result is throughput a 10-person team would charge for.',
-    proof: 'A 4-agent fleet runs $200/day. A junior dev runs $700.',
+    body: 'Our in-house agent fleet writes, reviews, and tests code alongside our principals. The result is senior throughput without turning the engagement into a staffing pyramid.',
+    proof: 'Agents draft, test, review, and keep the principal focused on hard calls.',
   },
   {
     eyebrow: '03',
@@ -215,13 +214,13 @@ const shapes = [
   {
     slug: 'diagnostic-sprint',
     name: 'AI Diagnostic Sprint',
-    duration: '2 weeks · fixed-fee',
+    duration: '2 weeks · fixed scope',
     body: 'Two-week deep dive. Written assessment, prioritized roadmap, exec readout. Pick when you need clarity before you commit.',
   },
   {
     slug: 'build-sprint',
     name: 'Build Sprint',
-    duration: '6 weeks · fixed-fee',
+    duration: '6 weeks · fixed scope',
     body: 'One thing, shipped. LLM feature, voice agent, eval harness, RAG system. Pick when scope is clear and the calendar is short.',
   },
   {

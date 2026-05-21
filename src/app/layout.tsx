@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: 'ESARC — AI engineering consultancy. Senior engineers + in-house agents.',
   },
   description:
-    'ESARC is an AI engineering consultancy. Principal engineers paired with an in-house fleet of AI agents. Ship production AI in weeks, not quarters, at a fraction of Big-4 cost.',
+    'ESARC is an AI engineering consultancy. Principal engineers paired with an in-house fleet of AI agents. Ship production AI in weeks, not quarters.',
   openGraph: {
     type: 'website',
     siteName: 'ESARC',
