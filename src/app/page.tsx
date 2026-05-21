@@ -108,8 +108,8 @@ function ClientLogos() {
 
 const frontierLabs = [
   { name: 'Anthropic', slug: 'anthropic' },
-  { name: 'OpenAI', slug: 'openai' },
-  { name: 'AWS', slug: 'amazonwebservices' },
+  { name: 'OpenAI', slug: 'openai', fallback: true },
+  { name: 'AWS', slug: 'amazonwebservices', fallback: true },
   { name: 'Vercel', slug: 'vercel' },
   { name: 'NVIDIA', slug: 'nvidia' },
   { name: 'Vapi', slug: 'vapi', fallback: true },
@@ -226,7 +226,7 @@ const shapes = [
   {
     slug: 'embedded-team',
     name: 'Embedded AI Team',
-    duration: 'Monthly · 3-6 month min',
+    duration: '3-6 month embedded team',
     body: 'Principal plus agent fleet in your repo and Slack. Multi-month builds, clean handoff. Pick when AI is a roadmap, not a feature.',
   },
 ]
