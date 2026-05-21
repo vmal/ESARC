@@ -16,17 +16,6 @@ export function Logomark({
         <rect x="2" y="14" width="14" height="4" />
         <rect x="2" y="24" width="20" height="4" />
       </g>
-      <rect
-        x="24"
-        y="20"
-        width="6"
-        height="6"
-        className={clsx(
-          'transition-opacity duration-300',
-          filled ? 'opacity-100' : 'opacity-100 group-hover/logo:opacity-100',
-          'fill-accent',
-        )}
-      />
     </svg>
   )
 }
@@ -44,7 +33,7 @@ export function Logo({
 }) {
   return (
     <svg
-      viewBox="0 0 200 32"
+      viewBox="0 0 96 32"
       aria-label="ESARC"
       role="img"
       className={clsx(fillOnHover && 'group/logo', className)}
@@ -62,7 +51,6 @@ export function Logo({
       >
         ESARC
       </text>
-      <rect x="158" y="20" width="6" height="6" className="fill-accent" />
     </svg>
   )
 }

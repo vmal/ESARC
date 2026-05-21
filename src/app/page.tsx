@@ -8,12 +8,8 @@ import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 
 import logoAmazon from '@/../public/logos/amazon.svg'
-import logoMcGrawHill from '@/../public/logos/mcgraw-hill.svg'
 import logoMeta from '@/../public/logos/meta.svg'
-import logoMyMethod from '@/../public/logos/mymethod.png'
-import logoScrubs from '@/../public/logos/scrubs-co-pilot.png'
 import logoSpringhouse from '@/../public/logos/springhouse.png'
-import logoStuf from '@/../public/logos/stuf.svg'
 
 export const metadata: Metadata = {
   description:
@@ -68,13 +64,13 @@ function Hero() {
 }
 
 const clientLogos = [
-  { name: 'Meta', logo: logoMeta },
-  { name: 'Amazon', logo: logoAmazon },
-  { name: 'McGraw Hill', logo: logoMcGrawHill },
-  { name: 'Stuf Storage', logo: logoStuf },
-  { name: 'Scrubs Co-Pilot', logo: logoScrubs },
-  { name: 'Springhouse', logo: logoSpringhouse },
-  { name: 'MyMethod', logo: logoMyMethod },
+  { name: 'Meta', logo: logoMeta, imageClassName: 'max-h-8 max-w-36' },
+  { name: 'Amazon', logo: logoAmazon, imageClassName: 'max-h-9 max-w-36' },
+  { name: 'McGraw Hill', label: 'McGraw Hill' },
+  { name: 'Stuf Storage', label: 'Stuf Storage' },
+  { name: 'Scrubs Co-Pilot', label: 'Scrubs Co-Pilot' },
+  { name: 'Springhouse', logo: logoSpringhouse, imageClassName: 'max-h-5 max-w-40' },
+  { name: 'MyMethod', label: 'MyMethod' },
 ]
 
 function ClientLogos() {
@@ -89,15 +85,21 @@ function ClientLogos() {
         className="mt-10 grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-7"
         faster
       >
-        {clientLogos.map(({ name, logo }) => (
+        {clientLogos.map(({ name, logo, label, imageClassName }) => (
           <FadeIn key={name}>
-            <div className="flex h-12 items-center justify-center">
-              <Image
-                src={logo}
-                alt={name}
-                sizes="(min-width:1024px) 140px, (min-width:640px) 220px, 160px"
-                className="max-h-10 w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
-              />
+            <div className="flex h-14 items-center justify-center px-2">
+              {logo ? (
+                <Image
+                  src={logo}
+                  alt={name}
+                  sizes="(min-width:1024px) 150px, (min-width:640px) 220px, 160px"
+                  className={`${imageClassName} w-auto object-contain opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0`}
+                />
+              ) : (
+                <span className="text-center font-display text-base font-semibold leading-tight tracking-tight text-neutral-500 transition hover:text-neutral-900">
+                  {label}
+                </span>
+              )}
             </div>
           </FadeIn>
         ))}
@@ -107,12 +109,12 @@ function ClientLogos() {
 }
 
 const frontierLabs = [
-  { name: 'Anthropic', slug: 'anthropic' },
-  { name: 'OpenAI', slug: 'openai', fallback: true },
-  { name: 'AWS', slug: 'amazonwebservices', fallback: true },
-  { name: 'Vercel', slug: 'vercel' },
-  { name: 'NVIDIA', slug: 'nvidia' },
-  { name: 'Vapi', slug: 'vapi', fallback: true },
+  'Anthropic',
+  'OpenAI',
+  'AWS',
+  'Vercel',
+  'NVIDIA',
+  'Vapi',
 ]
 
 function FrontierLabs() {
@@ -127,26 +129,16 @@ function FrontierLabs() {
         className="mt-6 grid grid-cols-3 items-center gap-x-8 gap-y-8 sm:grid-cols-6"
         faster
       >
-        {frontierLabs.map(({ name, slug, fallback }) => (
+        {frontierLabs.map((name) => (
           <FadeIn key={name}>
             <div
               className="flex h-8 items-center justify-center"
               title={name}
               aria-label={name}
             >
-              {fallback ? (
-                <span className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-neutral-400 transition hover:text-neutral-700">
-                  {name}
-                </span>
-              ) : (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={`https://cdn.simpleicons.org/${slug}/737373`}
-                  alt={`${name} logo`}
-                  loading="lazy"
-                  className="max-h-7 w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
-                />
-              )}
+              <span className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-neutral-400 transition hover:text-neutral-700">
+                {name}
+              </span>
             </div>
           </FadeIn>
         ))}
