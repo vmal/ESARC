@@ -33,7 +33,7 @@ export function Logo({
 }) {
   return (
     <svg
-      viewBox="0 0 96 32"
+      viewBox="0 0 128 32"
       aria-label="ESARC"
       role="img"
       className={clsx(fillOnHover && 'group/logo', className)}
