@@ -60,4 +60,4 @@ Source research: Rex Automaton homepage, services, case studies, blog, booking f
 - [x] Verify copied links restore the same calculator state.
 - [x] Verify no ESARC pricing is exposed.
 - [x] Verify page titles, descriptions, canonical URLs, JSON-LD, and sitemap output.
-- [ ] Verify live deployment after pushing.
+- [x] Verify live deployment after pushing.
