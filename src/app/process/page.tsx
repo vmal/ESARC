@@ -127,12 +127,12 @@ function Closing() {
       <FadeIn>
         <div className="rounded-4xl border border-neutral-950/10 p-8 sm:p-12">
           <h2 className="font-display text-2xl font-semibold text-neutral-950 [text-wrap:balance] sm:text-3xl">
-            One principal stays on the call from week one to handoff.
+            A senior partner stays on the call from week one to handoff.
           </h2>
           <p className="mt-4 max-w-2xl text-base text-neutral-600">
-            Not a sales engineer who hands off to a junior. Not a partner who
-            shows up for the kickoff and disappears. The person who scopes the
-            work is the person who ships the work.
+            Not a sales engineer who hands off to a junior. Not a kickoff-only
+            advisor who disappears after scope. The person who scopes the work
+            is the person who ships the work.
           </p>
         </div>
       </FadeIn>
@@ -144,8 +144,18 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://esarc.dev' },
-    { '@type': 'ListItem', position: 2, name: 'Process', item: 'https://esarc.dev/process' },
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://esarc.dev',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Process',
+      item: 'https://esarc.dev/process',
+    },
   ],
 }
 
@@ -155,9 +165,9 @@ export default function Process() {
       <JsonLd data={breadcrumbJsonLd} />
       <PageIntro eyebrow="Process" title="How an engagement runs.">
         <p>
-          Five phases, written down, predictable. No black box. You see the
-          PRs, the evals, and the dashboards in real time. We tell you what
-          broke before you find out from your users.
+          Five phases, written down, predictable. No black box. You see the PRs,
+          the evals, and the dashboards in real time. We tell you what broke
+          before you find out from your users.
         </p>
       </PageIntro>
 

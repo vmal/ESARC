@@ -93,7 +93,7 @@ const services = [
     scope:
       'Owning a real product surface across months. Voice, agents, RAG, evals, infra. You set priority, we set sequence. Output is measured in PRs, evals, and dashboards, not status reports.',
     pickWhen:
-      'AI is a roadmap, not a feature. You need senior accountability on the work week in and week out, and you want output that scales past one principal’s hours.',
+      'AI is a roadmap, not a feature. You need senior accountability on the work week in and week out, and you want output that scales past a single partner’s hours.',
     relatedWork: [
       { slug: 'mymethod', label: 'MyMethod' },
       { slug: 'springhouse', label: 'Springhouse' },

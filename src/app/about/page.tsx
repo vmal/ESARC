@@ -2,12 +2,12 @@ import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '@/components/Button'
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
+import { partners } from '@/lib/partners'
 
 import logoAmazon from '@/../public/logos/amazon.svg'
 import logoMcGrawHill from '@/../public/logos/mcgraw-hill.svg'
@@ -16,144 +16,124 @@ import logoMyMethod from '@/../public/logos/mymethod.png'
 import logoScrubs from '@/../public/logos/scrubs-co-pilot.png'
 import logoSpringhouse from '@/../public/logos/springhouse.png'
 import logoStuf from '@/../public/logos/stuf.svg'
-import vaibhavPhoto from '@/../public/vaibhav.jpg'
 
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'ESARC is a one-principal AI engineering shop run by Vaibhav Malhotra, currently shipping at Meta Superintelligence Labs.',
+    'ESARC is a senior-only AI engineering shop led by Vaibhav Malhotra and Bhimesh Chauhan, pairing principal engineers with in-house AI agents.',
   alternates: { canonical: '/about' },
   openGraph: {
     type: 'profile',
     url: '/about',
-    title: 'About ESARC — Vaibhav Malhotra, Principal AI Engineer',
+    title: 'About ESARC — senior AI engineering partners',
     description:
-      'One principal. A fleet of agents. Vaibhav Malhotra on what changed about AI engineering teams and why ESARC exists.',
+      'Vaibhav Malhotra and Bhimesh Chauhan on what changed about AI engineering teams and why ESARC exists.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About ESARC — Vaibhav Malhotra',
+    title: 'About ESARC — senior AI engineering partners',
     description:
-      'One principal. A fleet of agents. Why ESARC is a one-principal AI engineering shop.',
+      'Senior AI engineering partners paired with an in-house agent fleet.',
   },
 }
 
-function Founder() {
+function Partners() {
   return (
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <FadeIn>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[200px_1fr] lg:gap-16">
-          <div>
-            <div className="overflow-hidden rounded-3xl bg-neutral-100">
-              <Image
-                src={vaibhavPhoto}
-                alt="Vaibhav Malhotra"
-                width={400}
-                height={400}
-                className="h-auto w-full"
-                placeholder="blur"
-              />
-            </div>
-            <p className="mt-6 font-display text-base font-semibold text-neutral-950">
-              Vaibhav Malhotra
-            </p>
-            <p className="text-sm text-neutral-600">
-              Founder, Principal Engineer
-            </p>
-            <p className="mt-3 font-mono text-xs uppercase tracking-wider text-neutral-500">
-              Vancouver, BC
-            </p>
-            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-              <Link
-                href="https://www.linkedin.com/in/mvaibhav"
-                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
-              >
-                LinkedIn
-              </Link>
-              <Link
-                href="https://github.com/vmal"
-                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
-              >
-                GitHub
-              </Link>
-            </div>
-          </div>
+        <h2 className="font-display text-base font-semibold tracking-wider text-neutral-950">
+          Partners
+        </h2>
+        <p className="mt-4 max-w-3xl font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
+          Two senior engineers, one agent-native delivery model.
+        </p>
+      </FadeIn>
 
-          <div className="space-y-6 text-base text-neutral-700">
-            <p className="font-display text-2xl font-medium text-neutral-950">
-              I started ESARC after a year of watching AI agents do the work
-              that used to take a full team.
-            </p>
-            <p>
-              I&rsquo;ve been an engineer for 9 years.{' '}
-              <Link
-                href="/work/amazon-shipping-ai"
-                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
-              >
-                Amazon
-              </Link>{' '}
-              for four (shipping pricing services at 1M requests a day, $100K
-              saved on a data map rewrite, half the latency on the cart
-              pipeline).{' '}
-              <Link
-                href="/work/scrubs-co-pilot"
-                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
-              >
-                Scrubs Co-Pilot
-              </Link>{' '}
-              for two (RAG over EHR data, EPIC integration, live in 5+
-              clinics).{' '}
-              <Link
-                href="/work/stuf-sidney-ai"
-                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
-              >
-                Stuf Storage
-              </Link>{' '}
-              for one (Sidney Voice AI, an autonomous sales agent that books
-              leads on inbound calls).
-            </p>
-            <p>
-              Today I&rsquo;m embedded with{' '}
-              <Link
-                href="/work/meta-superintelligence"
-                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
-              >
-                Meta&rsquo;s AI Pathfinding team
-              </Link>{' '}
-              inside Meta Superintelligence Labs. Tool-using agents on Llama
-              and Claude. A multi-agent pipeline that writes, tests, and
-              iterates VR game logic from a product spec.
-            </p>
-            <p>
-              Working at that level taught me something the consulting world
-              hasn&rsquo;t caught up to yet: one senior engineer with a fleet
-              of well-orchestrated agents now ships what a team of six used to
-              ship. The economics break the Big-4 model entirely.
-            </p>
-            <p>
-              That&rsquo;s what ESARC is. Senior engineer in your repo, agent
-              fleet doing the rest, output on the order of a much bigger team.
-              I take a small number of{' '}
-              <Link
-                href="/services"
-                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
-              >
-                engagements
-              </Link>{' '}
-              a year so each one gets the real attention. See the{' '}
-              <Link
-                href="/work"
-                className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
-              >
-                recent work
-              </Link>{' '}
-              for the receipts.
-            </p>
-            <div className="pt-4">
-              <Button href="/contact">Work with me</Button>
-            </div>
-          </div>
-        </div>
+      <FadeInStagger className="mt-16 grid grid-cols-1 gap-x-12 gap-y-16 lg:grid-cols-2">
+        {partners.map((partner) => (
+          <FadeIn key={partner.name}>
+            <article className="border-t border-neutral-950/10 pt-8">
+              <div className="flex items-start gap-6">
+                {'image' in partner ? (
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    width={120}
+                    height={120}
+                    className="h-24 w-24 rounded-full object-cover ring-1 ring-neutral-950/10"
+                  />
+                ) : (
+                  <div
+                    aria-hidden="true"
+                    className="flex h-24 w-24 flex-none items-center justify-center rounded-full bg-neutral-950 font-display text-2xl font-semibold text-white"
+                  >
+                    {partner.initials}
+                  </div>
+                )}
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-wider text-accent">
+                    {partner.role}
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl font-semibold text-neutral-950">
+                    {partner.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-neutral-500">
+                    {partner.location}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 space-y-5 text-base text-neutral-700">
+                <p className="font-display text-xl font-medium text-neutral-950">
+                  {partner.shortBio}
+                </p>
+                <p>{partner.bio}</p>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                {partner.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="mt-6">
+                <p className="font-mono text-xs uppercase tracking-wider text-neutral-500">
+                  Company experience
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {partner.companies.map((company) => (
+                    <span
+                      key={company}
+                      className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-600"
+                    >
+                      {company}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          </FadeIn>
+        ))}
+      </FadeInStagger>
+
+      <FadeIn className="mt-12">
+        <p className="max-w-3xl text-base text-neutral-700">
+          ESARC stays senior-only. Experienced engineers own the hard calls, and
+          the in-house agent fleet increases throughput without creating a
+          junior relay layer.
+        </p>
+        <Link
+          href="/work"
+          className="mt-5 inline-block text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
+        >
+          See the receipts &rarr;
+        </Link>
       </FadeIn>
     </Container>
   )
@@ -168,7 +148,7 @@ const principles = [
   {
     num: '02',
     title: 'AI-native',
-    body: 'Agents draft, test, and review. The principal sets direction and owns the call. Throughput like a team of ten, accountability of one.',
+    body: 'Agents draft, test, and review. A senior partner sets direction and owns the call. Throughput like a team of ten, principal accountability throughout.',
   },
   {
     num: '03',
@@ -264,53 +244,59 @@ function ClientLogos() {
   )
 }
 
-const personJsonLd = {
+const partnersJsonLd = partners.map((partner) => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Vaibhav Malhotra',
-  jobTitle: 'Principal AI Engineer',
+  name: partner.name,
+  jobTitle: partner.role,
   url: 'https://esarc.dev/about',
-  image: 'https://esarc.dev/vaibhav.jpg',
+  image: 'image' in partner ? 'https://esarc.dev/vaibhav.jpg' : undefined,
   worksFor: {
     '@type': 'Organization',
     name: 'ESARC',
     url: 'https://esarc.dev',
   },
-  alumniOf: [
-    { '@type': 'Organization', name: 'Amazon' },
-    { '@type': 'Organization', name: 'Meta Superintelligence Labs' },
-    { '@type': 'Organization', name: 'Scrubs Co-Pilot' },
-    { '@type': 'Organization', name: 'Stuf Storage' },
-  ],
-  sameAs: [
-    'https://www.linkedin.com/in/mvaibhav/',
-    'https://github.com/vmal',
-  ],
-}
+  alumniOf: partner.companies.map((company) => ({
+    '@type': 'Organization',
+    name: company,
+  })),
+  sameAs: partner.links.map((link) => link.href),
+}))
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://esarc.dev' },
-    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://esarc.dev/about' },
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://esarc.dev',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'About',
+      item: 'https://esarc.dev/about',
+    },
   ],
 }
 
 export default function About() {
   return (
     <>
-      <JsonLd data={personJsonLd} />
+      <JsonLd data={partnersJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
-      <PageIntro eyebrow="About" title="One principal. A fleet of agents.">
+      <PageIntro eyebrow="About" title="Senior partners. A fleet of agents.">
         <p>
-          ESARC is a small, senior-only AI engineering shop. I run it. I built
-          it because the math on AI-native teams changed last year, and most
-          consultancies haven&rsquo;t noticed yet.
+          ESARC is a small, senior-only AI engineering shop led by Vaibhav
+          Malhotra and Bhimesh Chauhan. We built it because the math on
+          AI-native teams changed last year, and most consultancies
+          haven&rsquo;t noticed yet.
         </p>
       </PageIntro>
 
-      <Founder />
+      <Partners />
       <Principles />
       <ClientLogos />
       <ContactSection />

@@ -337,7 +337,7 @@ export function RoiCalculator() {
           </div>
         </div>
 
-        <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-5">
+        <dl className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 xl:grid-cols-3">
           <ResultMetric
             label="Hours reclaimed"
             value={`${formatNumber(result.annualHoursReclaimed)} hrs`}
@@ -494,11 +494,11 @@ function Slider({
 
 function ResultMetric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bg-neutral-950 p-4">
+    <div className="min-w-0 bg-neutral-950 p-4">
       <dt className="font-mono text-[0.68rem] uppercase tracking-wider text-neutral-400">
         {label}
       </dt>
-      <dd className="mt-2 font-display text-xl font-semibold text-white">
+      <dd className="mt-2 break-words font-display text-[clamp(1.15rem,2vw,1.5rem)] font-semibold leading-tight text-white">
         {value}
       </dd>
     </div>

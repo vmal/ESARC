@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       'ESARC — AI engineering consultancy. Senior engineers + in-house agents.',
   },
   description:
-    'ESARC is an AI engineering consultancy. Principal engineers paired with an in-house fleet of AI agents. Ship production AI in weeks, not quarters.',
+    'ESARC is an AI engineering consultancy. Senior AI engineering partners paired with an in-house fleet of AI agents. Ship production AI in weeks, not quarters.',
   openGraph: {
     type: 'website',
     siteName: 'ESARC',
@@ -55,7 +55,7 @@ const organizationJsonLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/favicon.ico`,
   description:
-    'AI engineering consultancy. Principal engineers paired with an in-house fleet of AI agents.',
+    'AI engineering consultancy. Senior AI engineering partners paired with an in-house fleet of AI agents.',
   founder: {
     '@type': 'Person',
     name: 'Vaibhav Malhotra',
@@ -64,7 +64,21 @@ const organizationJsonLd = {
       'https://github.com/vmal',
     ],
   },
-  sameAs: ['https://www.linkedin.com/in/mvaibhav/', 'https://github.com/vmal'],
+  employee: {
+    '@type': 'Person',
+    name: 'Bhimesh Chauhan',
+    jobTitle: 'Partner, AI Engineering',
+    sameAs: [
+      'https://www.linkedin.com/in/bhimeshchauhan/',
+      'https://bhimeshchauhan.github.io/',
+    ],
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/mvaibhav/',
+    'https://github.com/vmal',
+    'https://www.linkedin.com/in/bhimeshchauhan/',
+    'https://bhimeshchauhan.github.io/',
+  ],
 }
 
 const websiteJsonLd = {
@@ -88,6 +102,16 @@ const professionalServiceJsonLd = {
     '@type': 'Person',
     name: 'Vaibhav Malhotra',
     url: `${SITE_URL}/about`,
+  },
+  employee: {
+    '@type': 'Person',
+    name: 'Bhimesh Chauhan',
+    jobTitle: 'Partner, AI Engineering',
+    url: `${SITE_URL}/about`,
+    sameAs: [
+      'https://www.linkedin.com/in/bhimeshchauhan/',
+      'https://bhimeshchauhan.github.io/',
+    ],
   },
   address: {
     '@type': 'PostalAddress',

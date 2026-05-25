@@ -6,10 +6,15 @@ import { Button } from '@/components/Button'
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
+import { JsonLd } from '@/components/JsonLd'
+import { RoiCalculator } from '@/components/RoiCalculator'
+import { partners } from '@/lib/partners'
 
 import logoAmazon from '@/../public/logos/amazon.svg'
 import logoMeta from '@/../public/logos/meta.svg'
 import logoSpringhouse from '@/../public/logos/springhouse.png'
+
+const SITE_URL = 'https://esarc.dev'
 
 export const metadata: Metadata = {
   description:
@@ -49,7 +54,7 @@ function Hero() {
             so a small team can outship a large one without the Big-4 drag.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Button href="/roi">Estimate AI ROI</Button>
+            <Button href="#roi">Estimate AI ROI</Button>
             <Link
               href="/work"
               className="text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
@@ -66,6 +71,48 @@ function Hero() {
         </div>
       </Container>
     </div>
+  )
+}
+
+const homeRoiJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'ESARC AI ROI Calculator',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: `${SITE_URL}/#roi`,
+  description:
+    'Pricing-free calculator for estimating annual hours reclaimed, opportunity cost, rework savings, complexity, confidence, and engagement shape for production AI workflows.',
+  provider: {
+    '@type': 'Organization',
+    name: 'ESARC',
+    url: SITE_URL,
+  },
+}
+
+function HomeRoiSection() {
+  return (
+    <Container id="roi" className="mt-24 scroll-mt-24 sm:mt-32 lg:mt-40">
+      <JsonLd data={homeRoiJsonLd} />
+      <FadeIn>
+        <div className="max-w-3xl">
+          <h2 className="font-display text-base font-semibold tracking-wider text-neutral-950">
+            Estimate AI ROI
+          </h2>
+          <p className="mt-4 font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
+            Put one AI workflow into business-case math before you book a call.
+          </p>
+          <p className="mt-6 text-base text-neutral-600">
+            Model the annual value of reclaimed time, avoided rework,
+            opportunity cost, delivery complexity, and the engagement shape that
+            fits. No ESARC rates or public pricing.
+          </p>
+        </div>
+      </FadeIn>
+      <FadeIn className="mt-10 sm:mt-12">
+        <RoiCalculator />
+      </FadeIn>
+    </Container>
   )
 }
 
@@ -267,7 +314,7 @@ function EngagementShapes() {
                 See the full breakdown &rarr;
               </Link>
               <Link
-                href="/roi"
+                href="#roi"
                 className="text-sm font-semibold text-white underline-offset-4 hover:underline"
               >
                 Model the business case &rarr;
@@ -433,54 +480,92 @@ function ProcessTeaser() {
   )
 }
 
-function FounderCard() {
+function PartnersSection() {
   return (
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <FadeIn>
-        <div className="grid grid-cols-1 items-center gap-10 rounded-3xl border border-neutral-950/10 bg-neutral-50 p-8 sm:p-12 lg:grid-cols-[auto,1fr]">
-          <div className="flex justify-center lg:justify-start">
-            <Image
-              src="/vaibhav.jpg"
-              alt="Vaibhav Malhotra, founder of ESARC"
-              width={140}
-              height={140}
-              className="h-32 w-32 rounded-full object-cover ring-1 ring-neutral-950/10"
-            />
-          </div>
-          <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-accent">
-              Founder
-            </p>
-            <h3 className="mt-2 font-display text-2xl font-semibold text-neutral-950">
-              Vaibhav Malhotra
-            </h3>
-            <p className="mt-3 max-w-2xl text-base text-neutral-700">
-              Principal engineer. Shipped at Meta, Amazon, McGraw Hill. Founded
-              ESARC to pair senior engineers with an in-house agent fleet so a
-              small team can outship a large one.
-            </p>
-            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Link
-                href="https://calendly.com/vbvmalhotra/vaibhav-interview"
-                className="text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
-              >
-                Book a 30-min intro &rarr;
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/vbvmalhotra/"
-                className="text-sm font-semibold text-neutral-700 underline-offset-4 hover:text-neutral-950 hover:underline"
-              >
-                LinkedIn
-              </Link>
-              <Link
-                href="/about"
-                className="text-sm font-semibold text-neutral-700 underline-offset-4 hover:text-neutral-950 hover:underline"
-              >
-                More about Vaibhav
-              </Link>
+        <h2 className="font-display text-base font-semibold tracking-wider text-neutral-950">
+          Partners
+        </h2>
+        <p className="mt-4 max-w-3xl font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
+          Senior operators behind the work, not a staffing pyramid behind a
+          pitch.
+        </p>
+      </FadeIn>
+      <FadeInStagger className="mt-12 grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-2">
+        {partners.map((partner) => (
+          <FadeIn key={partner.name}>
+            <div className="border-t border-neutral-950/10 pt-8">
+              <div className="flex items-start gap-5">
+                {'image' in partner ? (
+                  <Image
+                    src={partner.image}
+                    alt={`${partner.name}, ${partner.role}`}
+                    width={96}
+                    height={96}
+                    className="h-20 w-20 rounded-full object-cover ring-1 ring-neutral-950/10"
+                  />
+                ) : (
+                  <div
+                    aria-hidden="true"
+                    className="flex h-20 w-20 flex-none items-center justify-center rounded-full bg-neutral-950 font-display text-xl font-semibold text-white"
+                  >
+                    {partner.initials}
+                  </div>
+                )}
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-wider text-accent">
+                    {partner.role}
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl font-semibold text-neutral-950">
+                    {partner.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-neutral-500">
+                    {partner.location}
+                  </p>
+                </div>
+              </div>
+              <p className="mt-6 text-base text-neutral-700">
+                {partner.shortBio}
+              </p>
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                {partner.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <Link
+                  href="/about"
+                  className="font-semibold text-neutral-700 underline-offset-4 hover:text-neutral-950 hover:underline"
+                >
+                  More about the partners
+                </Link>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {partner.companies.map((company) => (
+                  <span
+                    key={company}
+                    className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-600"
+                  >
+                    {company}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        </div>
+          </FadeIn>
+        ))}
+      </FadeInStagger>
+      <FadeIn className="mt-10">
+        <Link
+          href="https://calendly.com/vbvmalhotra/vaibhav-interview"
+          className="text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
+        >
+          Book a 30-min intro &rarr;
+        </Link>
       </FadeIn>
     </Container>
   )
@@ -490,13 +575,14 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <HomeRoiSection />
       <ClientLogos />
       <FrontierLabs />
       <Pillars />
       <EngagementShapes />
       <FeaturedWork />
       <ProcessTeaser />
-      <FounderCard />
+      <PartnersSection />
       <ContactSection />
     </>
   )

@@ -36,7 +36,7 @@ ESARC takes a small number of engagements per year. Every line that ships is rev
 
 ## About
 
-- [About ESARC](https://esarc.dev/about): Vaibhav Malhotra. 9 years engineering at Amazon, Scrubs Co-Pilot, Stuf Storage, and now Meta Superintelligence Labs. Why one principal plus a fleet of agents ships what a team of six used to ship.
+- [About ESARC](https://esarc.dev/about): Vaibhav Malhotra and Bhimesh Chauhan. Senior AI engineering partners with experience across Meta, Amazon, BenchSci, Scrubs Co-Pilot, KitchenMate / MicroMart, Preply, DataRobot, Pitchly, Nebullam, Sodima Solutions, and Solum Labs / Climate Corporation.
 
 ## Process
 
@@ -49,5 +49,7 @@ ESARC takes a small number of engagements per year. Every line that ships is rev
 ## Optional
 
 - [Sitemap](https://esarc.dev/sitemap.xml)
-- [Founder LinkedIn](https://www.linkedin.com/in/vbvmalhotra/)
-- [Founder GitHub](https://github.com/vmal)
+- [Vaibhav LinkedIn](https://www.linkedin.com/in/vbvmalhotra/)
+- [Vaibhav GitHub](https://github.com/vmal)
+- [Bhimesh LinkedIn](https://www.linkedin.com/in/bhimeshchauhan/)
+- [Bhimesh Portfolio](https://bhimeshchauhan.github.io/)

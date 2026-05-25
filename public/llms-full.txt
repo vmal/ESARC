@@ -12,7 +12,7 @@ URL: https://esarc.dev/
 
 AI engineering, with the receipts.
 
-Vaibhav Malhotra runs ESARC. Nine years engineering at Amazon, Scrubs Co-Pilot, Stuf Storage, and now Meta Superintelligence Labs. One principal in your repo, an in-house fleet of AI agents doing the rest, output on the order of a much bigger team. Two or three engagements at a time, never more.
+Vaibhav Malhotra and Bhimesh Chauhan lead ESARC. Vaibhav brings production AI and engineering experience across Meta, Amazon, McGraw Hill, Scrubs Co-Pilot, Stuf Storage, Springhouse, and MyMethod. Bhimesh brings 10+ years across AI-powered products, clinical documentation, biomedical data infrastructure, IoT platforms, personalization, and enterprise ML integrations, with work across BenchSci, Scrubs Co-Pilot, KitchenMate / MicroMart, Preply, DataRobot, Pitchly, Nebullam, Sodima Solutions, and Solum Labs / Climate Corporation. Senior partners stay in the repo with an in-house fleet of AI agents doing the rest, producing output on the order of a much bigger team.
 
 What we build: voice AI agents on Vapi and ElevenLabs. Multi-agent backends on Pydantic AI and FastAPI. RAG over regulated data, including EPIC-integrated clinical workflows. Eval and observability harnesses for production AI. AI audits and 90-day roadmaps for teams that are mid-build.
 
@@ -29,7 +29,7 @@ The Canada angle: CAD cost base, USD invoicing, SR&ED-backed R&D where the work 
 ## Page: About
 URL: https://esarc.dev/about
 
-One principal. A fleet of agents.
+Senior partners. A fleet of agents.
 
 ESARC is a small, senior-only AI engineering shop. Vaibhav Malhotra runs it. He built it because the math on AI-native teams changed last year, and most consultancies haven't noticed yet.
 
