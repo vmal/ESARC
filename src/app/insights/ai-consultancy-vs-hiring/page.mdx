@@ -1,0 +1,60 @@
+import imageVaibhav from '@/images/team/vaibhav.jpg'
+
+export const article = {
+  date: '2026-05-24',
+  title: 'Should you hire an AI engineer or use an AI consultancy?',
+  description:
+    'A practical decision guide for choosing between hiring an internal AI engineer, using a senior AI consultancy, or combining both.',
+  author: {
+    name: 'Vaibhav Malhotra',
+    role: 'Principal, ESARC',
+    image: { src: imageVaibhav },
+  },
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: { canonical: '/insights/ai-consultancy-vs-hiring' },
+  openGraph: {
+    type: 'article',
+    url: '/insights/ai-consultancy-vs-hiring',
+    title: article.title,
+    description: article.description,
+  },
+}
+
+## Short answer
+
+Hire when AI is becoming a durable internal capability and you know exactly what role you need. Use a senior AI consultancy when the first problem is judgment: what to build, how to ship it safely, and what production bar the internal team should inherit.
+
+The two choices are not opposites. ESARC often helps teams ship the first production surface, leave behind evals and runbooks, then make the next hire more precise. Use the [AI ROI calculator](/roi) to decide whether the opportunity is large enough to justify either path.
+
+## When should you hire?
+
+Hire when you have a clear roadmap, a manager who can evaluate AI engineering work, and enough ongoing work to keep a senior person focused for a year. Hiring is strongest when the system is already core to the company and the maintenance load belongs inside the team.
+
+You should also hire when the AI surface is deeply coupled to proprietary product decisions that cannot be handed to an outside team for long.
+
+## When should you use a consultancy?
+
+Use a consultancy when speed and production judgment matter before org design is settled:
+
+- You need a working build in weeks, not after a full hiring loop.
+- You need evals, observability, and handoff discipline from the start.
+- You need a principal engineer who has shipped voice, RAG, agents, and production AI before.
+- You need to know which hire to make next.
+
+ESARC's [services](/services) are shaped around that: diagnostic sprint for clarity, build sprint for one production surface, embedded team for a multi-month roadmap.
+
+## What risks should you watch?
+
+The bad consultancy pattern is a demo that your team cannot operate. The bad hiring pattern is a lonely AI engineer asked to invent strategy, infrastructure, evals, product requirements, and production support at the same time.
+
+The better pattern is explicit handoff. ESARC ships with runbooks, eval suites, traces, and a named owner on the client side. The goal is not dependency. The goal is production momentum your team can keep.
+
+## Which case studies map to this decision?
+
+For a single high-leverage voice surface, read [Stuf Storage Sidney](/work/stuf-sidney-ai). For regulated RAG and documentation workflows, read [Scrubs Co-Pilot](/work/scrubs-co-pilot). For an embedded senior IC model inside a frontier AI team, read [Meta Superintelligence Labs](/work/meta-superintelligence). For eval-gated multi-tenant voice releases, read [MyMethod](/work/mymethod).
+
+The right answer depends on the workflow and the risk. Start with the business case, then choose the team shape.

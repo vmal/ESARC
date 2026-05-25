@@ -1,0 +1,65 @@
+import imageVaibhav from '@/images/team/vaibhav.jpg'
+
+export const article = {
+  date: '2026-05-24',
+  title: 'How do voice agents earn ROI in real operations?',
+  description:
+    'Voice-agent ROI comes from answered calls, qualified leads, cleaner handoffs, and fewer repetitive operator interruptions, not from replacing every human conversation.',
+  author: {
+    name: 'Vaibhav Malhotra',
+    role: 'Principal, ESARC',
+    image: { src: imageVaibhav },
+  },
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: { canonical: '/insights/voice-agent-roi' },
+  openGraph: {
+    type: 'article',
+    url: '/insights/voice-agent-roi',
+    title: article.title,
+    description: article.description,
+  },
+}
+
+## Short answer
+
+Voice agents earn ROI when they take repetitive calls reliably, qualify the right handoffs, and turn every call into useful operational data. The goal is not to replace every human conversation. The goal is to stop wasting human attention on calls that a well-instrumented agent can handle.
+
+Start with the [AI ROI calculator](/roi), then read the [Sidney Voice AI case study](/work/stuf-sidney-ai) for a concrete production pattern.
+
+## Which calls are good candidates?
+
+Good candidates have clear intent categories and structured next steps:
+
+- Hours, availability, location, and booking questions.
+- Lead qualification and appointment scheduling.
+- Intake calls that collect information before a human review.
+- Repetitive support calls where escalation rules are clear.
+
+Bad candidates require negotiation, emotional judgment, or unclear policy. Those should route to a human early.
+
+## What metrics should a voice-agent business case use?
+
+Use operational metrics, not demo metrics:
+
+- Answered calls outside staffed hours.
+- Qualified leads or completed bookings.
+- Fallback prompts and repair turns.
+- Transfer accuracy.
+- Average handling time where shorter is actually better.
+- Post-call data completeness.
+
+In the [Stuf Storage Sidney launch](/work/stuf-sidney-ai), the public numbers were concrete: 150+ qualified leads at ISS Vegas, a 25% demo-success lift, and a 60% reduction in fallback prompts after the dialogue-graph refactor.
+
+## Why do evals matter for voice ROI?
+
+Voice is unforgiving. A slow tool call sounds like awkward silence. A bad route becomes a frustrated customer. A hallucinated promise becomes an operational mess.
+
+That is why ESARC treats voice agents as production systems: transcript capture, tool-call logs, latency budgets, deterministic checks where possible, and LLM-as-judge only where the rubric is tight.
+
+## What engagement shape fits?
+
+If you do not know which call types are safe to automate, start with an [AI Diagnostic Sprint](/services#diagnostic-sprint). If the flow is clear and integrations are ready, a [Build Sprint](/services#build-sprint) can ship one production surface behind a feature flag. If voice is becoming a product line, use the [Embedded AI Team](/services#embedded-team).

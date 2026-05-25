@@ -1,0 +1,62 @@
+import imageVaibhav from '@/images/team/vaibhav.jpg'
+
+export const article = {
+  date: '2026-05-24',
+  title: 'When does RAG or internal search produce ROI?',
+  description:
+    'RAG ROI is strongest when high-value teams repeatedly search trusted internal knowledge and need cited answers faster than a human can assemble them.',
+  author: {
+    name: 'Vaibhav Malhotra',
+    role: 'Principal, ESARC',
+    image: { src: imageVaibhav },
+  },
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: { canonical: '/insights/rag-internal-search-roi' },
+  openGraph: {
+    type: 'article',
+    url: '/insights/rag-internal-search-roi',
+    title: article.title,
+    description: article.description,
+  },
+}
+
+## Short answer
+
+RAG pays back when the knowledge is valuable, fragmented, and used often. It does not pay back because embeddings are fashionable. It pays back when expensive people stop searching five systems, stop asking the same expert, and stop making decisions from stale documents.
+
+Model your own numbers in the [AI ROI calculator](/roi), then compare the workflow against ESARC's [build sprint and embedded team options](/services).
+
+## What work should RAG replace?
+
+Good RAG candidates have repeated retrieval work:
+
+- Clinicians or operators need prior context before writing or approving a note.
+- Support teams need policy, account, or product context before responding.
+- Sales engineers need a cited answer from docs, contracts, or implementation notes.
+- Internal teams need a safe way to ask questions across private knowledge.
+
+The [Scrubs Co-Pilot workflow](/work/scrubs-co-pilot) is a useful pattern: RAG was not a generic search box. It pulled patient context into a structured documentation loop and required source grounding before the clinician reviewed the output.
+
+## What changes the ROI?
+
+Three things move the return:
+
+First, answer frequency. A system used by 40 people every day can justify more engineering than a system used by one team once a month.
+
+Second, trust cost. If every answer needs a human to re-check the source manually, the system has not reclaimed much time. Citations, source spans, freshness rules, and refusal behavior matter.
+
+Third, integration depth. Internal search has more ROI when it lands inside the place people already work instead of becoming another tab.
+
+## What should the eval harness measure?
+
+Measure retrieval quality before answer quality. Did the system fetch the right source? Was the source current? Did it cite the sentence that supports the answer? Did it refuse when the corpus was silent?
+
+Once those are stable, add task-level evals: time to answer, rework avoided, and confidence lift for the team using it.
+
+## When is RAG the wrong answer?
+
+RAG is weak when the source material is low quality, contradictory, rarely used, or politically impossible to clean up. In that case, a diagnostic sprint should start with knowledge architecture and governance before anyone builds a chat surface.

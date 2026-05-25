@@ -20,6 +20,7 @@ How we engage:
 - AI Diagnostic Sprint (2 weeks) — pick when you need clarity before you commit.
 - Build Sprint (6 weeks) — pick when scope is clear and one surface needs to ship.
 - Embedded AI Team (3-6 months) — pick when AI is a roadmap, not a feature.
+- AI ROI Calculator — pricing-free business-case model for production AI workflows. Estimates hours reclaimed, opportunity cost, rework/error savings, implementation complexity, confidence level, and recommended engagement shape.
 
 The Canada angle: CAD cost base, USD invoicing, SR&ED-backed R&D where the work qualifies. Vector Institute and Waterloo talent. EST and PT timezone coverage from a single country. Built for US enterprises that want senior accountability without a Big-4 invoice.
 
@@ -160,6 +161,50 @@ What happens next:
 URL: https://esarc.dev/work
 
 Selected work. AI systems that earned their keep. A few of the things shipped, with the engineering decisions that mattered. Some engagements are public. Others can be described in a call. Where a study reads short, the work was real and the details are under NDA.
+
+The work index is metric-led where client-approved numbers exist. Public examples include Stuf Storage Sidney Voice AI with 150+ qualified leads at ISS Vegas, +25% demo success, and -60% fallback prompts; Amazon shipping systems with 1M+ requests/day, $100K+ annualized savings, and 50% latency reduction; Scrubs Co-Pilot with zero to 100+ monthly clinician users in 3 months. NDA-sensitive work is marked as NDA scope rather than padded with invented metrics.
+
+---
+
+## Page: AI ROI Calculator
+URL: https://esarc.dev/roi
+
+Pricing-free ROI calculator for production AI workflows. Models workflow type, hours per week, people affected, loaded hourly cost, error/rework rate, automation coverage, and risk/compliance sensitivity. Outputs annual hours reclaimed, opportunity cost, rework/error savings, implementation complexity, confidence level, and recommended ESARC engagement shape. Intended for voice agents, RAG/internal search, support triage, internal ops agents, eval harnesses, document workflows, and legacy AI modernization.
+
+---
+
+## Insight: How do you calculate AI ROI for a production system?
+URL: https://esarc.dev/insights/ai-roi-for-production-systems
+
+AI ROI for production systems starts with the workflow: hours reclaimed, defects avoided, faster cycle time, and risk reduced. The article links the ROI model to voice agents, RAG/internal search, eval harnesses, `/roi`, `/services`, Stuf Storage Sidney, and Scrubs Co-Pilot.
+
+---
+
+## Insight: When does RAG or internal search produce ROI?
+URL: https://esarc.dev/insights/rag-internal-search-roi
+
+RAG and internal-search ROI is strongest when high-value teams repeatedly search trusted internal knowledge and need cited answers faster than a human can assemble them. The article covers retrieval quality, citation requirements, source freshness, workflow integration, `/roi`, `/services`, and Scrubs Co-Pilot.
+
+---
+
+## Insight: How do voice agents earn ROI in real operations?
+URL: https://esarc.dev/insights/voice-agent-roi
+
+Voice-agent ROI comes from answered calls, qualified leads, cleaner handoffs, fewer repetitive operator interruptions, and post-call data. The article uses Stuf Storage Sidney as the public case-study anchor and links to `/roi` and `/services`.
+
+---
+
+## Insight: What is the ROI of an AI eval harness?
+URL: https://esarc.dev/insights/eval-harness-roi
+
+Eval-harness ROI comes from fewer regressions, faster model-change reviews, less manual QA, and better debugging artifacts. The article covers deterministic checks, LLM judges, release gates, avoided rework, `/roi`, `/services`, and MyMethod.
+
+---
+
+## Insight: Should you hire an AI engineer or use an AI consultancy?
+URL: https://esarc.dev/insights/ai-consultancy-vs-hiring
+
+Hire when AI is a durable internal capability with a clear role. Use a senior AI consultancy when production judgment, speed, evals, observability, and handoff matter before org design is settled. The article links to `/roi`, `/services`, and ESARC case studies for voice, RAG, frontier-lab, and eval-gated work.
 
 ---
 

@@ -49,7 +49,13 @@ function Hero() {
             so a small team can outship a large one without the Big-4 drag.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Button href="/work">See our work</Button>
+            <Button href="/roi">Estimate AI ROI</Button>
+            <Link
+              href="/work"
+              className="text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
+            >
+              See our work &rarr;
+            </Link>
             <Link
               href="https://calendly.com/vbvmalhotra/vaibhav-interview"
               className="text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
@@ -69,7 +75,11 @@ const clientLogos = [
   { name: 'McGraw Hill', label: 'McGraw Hill' },
   { name: 'Stuf Storage', label: 'Stuf Storage' },
   { name: 'Scrubs Co-Pilot', label: 'Scrubs Co-Pilot' },
-  { name: 'Springhouse', logo: logoSpringhouse, imageClassName: 'max-h-5 max-w-40' },
+  {
+    name: 'Springhouse',
+    logo: logoSpringhouse,
+    imageClassName: 'max-h-5 max-w-40',
+  },
   { name: 'MyMethod', label: 'MyMethod' },
 ]
 
@@ -108,14 +118,7 @@ function ClientLogos() {
   )
 }
 
-const frontierLabs = [
-  'Anthropic',
-  'OpenAI',
-  'AWS',
-  'Vercel',
-  'NVIDIA',
-  'Vapi',
-]
+const frontierLabs = ['Anthropic', 'OpenAI', 'AWS', 'Vercel', 'NVIDIA', 'Vapi']
 
 function FrontierLabs() {
   return (
@@ -158,7 +161,8 @@ const pillars = [
     eyebrow: '02',
     title: 'AI-native delivery',
     body: 'Our in-house agent fleet writes, reviews, and tests code alongside our principals. The result is senior throughput without turning the engagement into a staffing pyramid.',
-    proof: 'Agents draft, test, review, and keep the principal focused on hard calls.',
+    proof:
+      'Agents draft, test, review, and keep the principal focused on hard calls.',
   },
   {
     eyebrow: '03',
@@ -255,12 +259,20 @@ function EngagementShapes() {
             ))}
           </FadeInStagger>
           <FadeIn className="mt-12">
-            <Link
-              href="/services"
-              className="text-sm font-semibold text-white underline-offset-4 hover:underline"
-            >
-              See the full breakdown &rarr;
-            </Link>
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              <Link
+                href="/services"
+                className="text-sm font-semibold text-white underline-offset-4 hover:underline"
+              >
+                See the full breakdown &rarr;
+              </Link>
+              <Link
+                href="/roi"
+                className="text-sm font-semibold text-white underline-offset-4 hover:underline"
+              >
+                Model the business case &rarr;
+              </Link>
+            </div>
           </FadeIn>
         </Container>
       </div>
@@ -272,7 +284,10 @@ const featuredWork = [
   {
     title: 'Voice AI for self-storage',
     client: 'Stuf Storage',
-    tag: 'Sidney Voice AI',
+    sector: 'Self-storage / proptech',
+    service: 'Voice AI',
+    metric: '150+ qualified leads',
+    outcome: '+25% demo success and -60% fallback prompts',
     href: '/work/stuf-sidney-ai',
     blurb:
       'Sidney books, reschedules, and answers tenants 24/7 across Stuf locations. Built on Vapi with our own eval harness.',
@@ -280,7 +295,10 @@ const featuredWork = [
   {
     title: 'Clinical RAG over EHR data',
     client: 'Scrubs Co-Pilot',
-    tag: 'RAG + EHR integration',
+    sector: 'Digital health',
+    service: 'RAG + EHR workflow',
+    metric: '100+ monthly clinician users',
+    outcome: 'Structured notes clinicians could review and sign',
     href: '/work/scrubs-co-pilot',
     blurb:
       'A RAG system clinicians actually trust. Cites the chart, not the model. Built for the realities of EHR data.',
@@ -288,7 +306,10 @@ const featuredWork = [
   {
     title: 'Multi-agent VR pipeline',
     client: 'Meta Superintelligence Labs',
-    tag: 'Agent orchestration',
+    sector: 'Frontier AI lab',
+    service: 'Agent evals + tooling',
+    metric: 'Scope under NDA',
+    outcome: 'Faster eval signal for next-gen conversational AI',
     href: '/work/meta-superintelligence',
     blurb:
       'A multi-agent pipeline for VR content production. Shipped under NDA inside Meta Superintelligence Labs.',
@@ -322,16 +343,27 @@ function FeaturedWork() {
               className="group relative block overflow-hidden rounded-3xl border border-neutral-950/10 bg-neutral-50 transition hover:border-neutral-950/30"
             >
               <div className="aspect-[4/3] w-full bg-gradient-to-br from-neutral-100 to-neutral-200">
-                <div className="flex h-full items-center justify-center px-8">
-                  <p className="font-display text-xl font-medium text-neutral-700 [text-wrap:balance]">
-                    {work.title}
+                <div className="flex h-full flex-col justify-between px-8 py-8">
+                  <p className="font-mono text-xs uppercase tracking-wider text-neutral-500">
+                    {work.service}
                   </p>
+                  <div>
+                    <p className="font-display text-4xl font-semibold tracking-tight text-neutral-950 [text-wrap:balance]">
+                      {work.metric}
+                    </p>
+                    <p className="mt-3 text-sm font-semibold text-neutral-700">
+                      {work.outcome}
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className="border-t border-neutral-950/10 p-6">
                 <p className="font-mono text-xs uppercase tracking-wider text-accent">
-                  {work.client} &middot; {work.tag}
+                  {work.client} &middot; {work.sector}
                 </p>
+                <h3 className="mt-3 font-display text-xl font-semibold text-neutral-950">
+                  {work.title}
+                </h3>
                 <p className="mt-3 text-sm text-neutral-600">{work.blurb}</p>
                 <p className="mt-4 text-sm font-semibold text-neutral-950 underline-offset-4 group-hover:underline">
                   Read case study &rarr;

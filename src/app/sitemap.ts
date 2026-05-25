@@ -23,7 +23,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     [
       { url: `${SITE_URL}/`, priority: 1.0, changeFrequency: 'monthly' },
       { url: `${SITE_URL}/about`, priority: 0.9, changeFrequency: 'monthly' },
-      { url: `${SITE_URL}/services`, priority: 0.9, changeFrequency: 'monthly' },
+      {
+        url: `${SITE_URL}/services`,
+        priority: 0.9,
+        changeFrequency: 'monthly',
+      },
+      { url: `${SITE_URL}/roi`, priority: 0.85, changeFrequency: 'monthly' },
       { url: `${SITE_URL}/process`, priority: 0.8, changeFrequency: 'monthly' },
       { url: `${SITE_URL}/work`, priority: 0.9, changeFrequency: 'weekly' },
       { url: `${SITE_URL}/insights`, priority: 0.7, changeFrequency: 'weekly' },

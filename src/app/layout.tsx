@@ -23,7 +23,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     template: '%s — ESARC',
-    default: 'ESARC — AI engineering consultancy. Senior engineers + in-house agents.',
+    default:
+      'ESARC — AI engineering consultancy. Senior engineers + in-house agents.',
   },
   description:
     'ESARC is an AI engineering consultancy. Principal engineers paired with an in-house fleet of AI agents. Ship production AI in weeks, not quarters.',
@@ -63,10 +64,7 @@ const organizationJsonLd = {
       'https://github.com/vmal',
     ],
   },
-  sameAs: [
-    'https://www.linkedin.com/in/mvaibhav/',
-    'https://github.com/vmal',
-  ],
+  sameAs: ['https://www.linkedin.com/in/mvaibhav/', 'https://github.com/vmal'],
 }
 
 const websiteJsonLd = {
@@ -75,6 +73,63 @@ const websiteJsonLd = {
   name: 'ESARC',
   url: SITE_URL,
   publisher: { '@type': 'Organization', name: 'ESARC' },
+}
+
+const professionalServiceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'ESARC',
+  url: SITE_URL,
+  image: `${SITE_URL}/opengraph-image`,
+  logo: `${SITE_URL}/favicon.ico`,
+  description:
+    'Principal-led AI engineering consultancy for production AI systems, including voice agents, RAG and internal search, eval harnesses, agentic backends, and AI modernization.',
+  founder: {
+    '@type': 'Person',
+    name: 'Vaibhav Malhotra',
+    url: `${SITE_URL}/about`,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Vancouver',
+    addressRegion: 'BC',
+    addressCountry: 'CA',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'Canada' },
+  ],
+  serviceType: [
+    'AI engineering consulting',
+    'Production AI implementation',
+    'Voice agent engineering',
+    'RAG and internal search',
+    'AI evaluation harnesses',
+  ],
+  knowsAbout: [
+    'Large language models',
+    'Retrieval-augmented generation',
+    'Voice AI agents',
+    'Agent evaluation',
+    'Production AI systems',
+  ],
+  makesOffer: [
+    {
+      '@type': 'Offer',
+      name: 'AI Diagnostic Sprint',
+      url: `${SITE_URL}/services#diagnostic-sprint`,
+    },
+    {
+      '@type': 'Offer',
+      name: 'Build Sprint',
+      url: `${SITE_URL}/services#build-sprint`,
+    },
+    {
+      '@type': 'Offer',
+      name: 'Embedded AI Team',
+      url: `${SITE_URL}/services#embedded-team`,
+    },
+  ],
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -86,6 +141,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
+        <JsonLd data={professionalServiceJsonLd} />
       </head>
       <body className="flex min-h-full flex-col">
         <RootLayout>{children}</RootLayout>

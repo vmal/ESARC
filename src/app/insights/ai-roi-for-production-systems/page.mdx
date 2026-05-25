@@ -1,0 +1,61 @@
+import imageVaibhav from '@/images/team/vaibhav.jpg'
+
+export const article = {
+  date: '2026-05-24',
+  title: 'How do you calculate AI ROI for a production system?',
+  description:
+    'A practical AI ROI model for production systems: count time reclaimed, error reduction, risk, adoption, and the engineering work needed to keep the system reliable.',
+  author: {
+    name: 'Vaibhav Malhotra',
+    role: 'Principal, ESARC',
+    image: { src: imageVaibhav },
+  },
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: { canonical: '/insights/ai-roi-for-production-systems' },
+  openGraph: {
+    type: 'article',
+    url: '/insights/ai-roi-for-production-systems',
+    title: article.title,
+    description: article.description,
+  },
+}
+
+## Short answer
+
+AI ROI is not "model cost versus subscription cost." For production systems, the useful math starts with the workflow: hours reclaimed, defects avoided, faster cycle time, and risk reduced. Then subtract the implementation complexity needed to make the system safe enough to run without a principal engineer watching every response.
+
+Use the [AI ROI calculator](/roi) to model the business case, then compare the result against the [ESARC engagement shapes](/services).
+
+## What should go into the ROI model?
+
+Start with five inputs:
+
+- Hours spent on the workflow today.
+- People affected by the workflow.
+- Loaded hourly cost for the people doing the work.
+- Error or rework rate caused by the current process.
+- Automation coverage you can defend after a pilot.
+
+The answer is not a single magic number. It is a range with confidence attached. A workflow with high volume, low judgment, and measurable rework can support a stronger ROI claim than a strategic workflow where the main benefit is faster decision-making.
+
+## Which production AI systems usually show ROI first?
+
+Voice agents show up quickly when they replace repetitive inbound calls or qualify leads outside business hours. The Stuf Storage Sidney work produced [150+ qualified leads at ISS Vegas](/work/stuf-sidney-ai) and improved demo success after the dialogue-graph refactor.
+
+RAG and internal search show ROI when skilled people spend too much time hunting through trusted documents. Clinical and regulated workflows need citations, auditability, and refusal behavior before the time savings are real. The [Scrubs Co-Pilot case study](/work/scrubs-co-pilot) is the shape of that problem.
+
+Eval harnesses show ROI by preventing bad releases. The benefit is partly avoided incidents and partly faster shipping because teams stop arguing about whether a model change helped.
+
+## What makes the ROI claim credible?
+
+Credible ROI claims name the operational outcome, not just the feature. "A chatbot" is not an outcome. "Support triage resolves routine intake without waking up a senior operator" is an outcome. "RAG" is not an outcome. "Field teams find the current policy with a citation in under a minute" is.
+
+ESARC scopes production AI around those operational outcomes. The model can be impressive, but the business case lives in the workflow.
+
+## When should you talk to ESARC?
+
+Talk to ESARC when the ROI depends on shipping the system into a real environment: customer calls, clinical data, internal tools, compliance-sensitive operations, or codebases where a demo is not enough. Start with the [calculator](/roi), then use the result to decide whether a diagnostic sprint, build sprint, or embedded team fits.

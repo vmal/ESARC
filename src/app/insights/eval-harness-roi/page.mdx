@@ -1,0 +1,65 @@
+import imageVaibhav from '@/images/team/vaibhav.jpg'
+
+export const article = {
+  date: '2026-05-24',
+  title: 'What is the ROI of an AI eval harness?',
+  description:
+    'An eval harness pays back by catching regressions before release, shortening model-change cycles, and giving teams evidence instead of vibes.',
+  author: {
+    name: 'Vaibhav Malhotra',
+    role: 'Principal, ESARC',
+    image: { src: imageVaibhav },
+  },
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: { canonical: '/insights/eval-harness-roi' },
+  openGraph: {
+    type: 'article',
+    url: '/insights/eval-harness-roi',
+    title: article.title,
+    description: article.description,
+  },
+}
+
+## Short answer
+
+An AI eval harness earns ROI by preventing regressions and making releases faster. The obvious benefit is fewer bad model or prompt changes in production. The quieter benefit is that engineers stop spending days arguing from anecdotes.
+
+Use the [AI ROI calculator](/roi) to model avoided rework and incident cost, then compare the work to ESARC's [service shapes](/services).
+
+## Where does the return come from?
+
+The return usually comes from four places:
+
+- Fewer production incidents caused by prompt, model, or retrieval changes.
+- Faster release reviews because the team has repeatable evidence.
+- Less manual QA on every model swap.
+- Better debugging because failed evals produce artifacts, traces, and examples.
+
+The [MyMethod case study](/work/mymethod) shows the pattern in voice AI: eval-gated releases, transcript pipelines, and observability made multi-tenant agent changes less fragile.
+
+## What should the harness test?
+
+Start with the failure modes that would embarrass the business:
+
+- Did the agent call the right tool?
+- Did it route the user correctly?
+- Did it cite or refuse when required?
+- Did it stay inside policy?
+- Did latency stay inside the budget?
+- Did a known customer scenario still pass after the model changed?
+
+Do not begin with a giant benchmark. Begin with the regression set that blocks unsafe releases.
+
+## How do you calculate eval ROI?
+
+Count the time spent on manual review, the number of release delays caused by uncertainty, the incident cost of bad AI behavior, and the rework after every prompt change. Then estimate how much of that can be replaced by automated checks plus focused human review.
+
+The confidence level matters. Deterministic checks like "tool X was called" support stronger ROI claims than subjective checks like "tone felt right." Use LLM judges where they help, but keep irreversible decisions in human hands.
+
+## When should ESARC build the harness?
+
+Bring ESARC in when the model surface is already important enough that a bad release costs money, customer trust, or clinical/operator time. Eval harnesses are not polish. They are the release machinery for production AI.

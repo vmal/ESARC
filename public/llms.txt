@@ -9,6 +9,7 @@ ESARC takes a small number of engagements per year. Every line that ships is rev
 - [AI Diagnostic Sprint](https://esarc.dev/services#diagnostic-sprint): Two-week written assessment, prioritized roadmap, exec readout. Pick when you need clarity before you commit.
 - [Build Sprint](https://esarc.dev/services#build-sprint): Six-week build of one AI surface. LLM feature, voice agent, eval harness, RAG system. Pick when scope is clear.
 - [Embedded AI Team](https://esarc.dev/services#embedded-team): Three to six month embedded team. Principal plus agent fleet inside your repo and Slack. Pick when AI is a roadmap, not a feature.
+- [AI ROI Calculator](https://esarc.dev/roi): Pricing-free business-case model for production AI workflows. Estimates hours reclaimed, opportunity cost, rework/error savings, implementation complexity, confidence level, and recommended engagement shape.
 
 ## Canada wedge for US buyers
 
@@ -16,14 +17,22 @@ ESARC takes a small number of engagements per year. Every line that ships is rev
 
 ## Case studies
 
-- [Meta Superintelligence Labs](https://esarc.dev/work/meta-superintelligence): Applied AI engineering inside Meta's Superintelligence Labs. Tool-calling, MCP integration, agent evaluation for next-gen conversational AI.
+- [Meta Superintelligence Labs](https://esarc.dev/work/meta-superintelligence): Applied AI engineering inside Meta's Superintelligence Labs. NDA scope; tool-calling, MCP integration, and agent evaluation for next-gen conversational AI.
 - [Amazon](https://esarc.dev/work/amazon-shipping-ai): SDE work on Amazon's shipping cost pipeline. 1M+ requests per day, $100K+ annualized savings, 50% latency cut on cart building.
-- [Scrubs Co-Pilot](https://esarc.dev/work/scrubs-co-pilot): Clinical documentation co-pilot. Whisper transcription plus LLM+RAG pipeline producing structured doctor notes a clinician signs off on.
+- [Scrubs Co-Pilot](https://esarc.dev/work/scrubs-co-pilot): Clinical documentation co-pilot. Zero to 100+ monthly clinician users in 3 months; Whisper plus LLM+RAG producing structured doctor notes.
 - [Stuf Storage — Sidney Voice AI](https://esarc.dev/work/stuf-sidney-ai): Voice AI for self-storage operations. 150+ qualified leads at ISS Vegas, +25% demo success, -60% fallback prompts.
 - [MyMethod](https://esarc.dev/work/mymethod): Multi-tenant voice AI agents on Vapi with the eval and observability work to keep quality from drifting between releases.
 - [Springhouse](https://esarc.dev/work/springhouse): Multi-agent food planning backend on Pydantic AI, FastAPI, and Postgres. Recipe ingest, calorie math, household constraints.
 - [McGraw Hill](https://esarc.dev/work/mcgraw-hill): Senior AI engineering consulting for an education publisher. Scope details under NDA.
 - [ClearProp](https://esarc.dev/work/clearprop): A full-stack pilot logbook app built as an own product. ESARC's internal proving ground for new patterns before they show up on client work.
+
+## Production AI ROI articles
+
+- [How do you calculate AI ROI for a production system?](https://esarc.dev/insights/ai-roi-for-production-systems): ROI model for time reclaimed, rework avoided, risk reduction, adoption, and implementation complexity.
+- [When does RAG or internal search produce ROI?](https://esarc.dev/insights/rag-internal-search-roi): RAG ROI criteria for high-value internal knowledge workflows with citations and freshness rules.
+- [How do voice agents earn ROI in real operations?](https://esarc.dev/insights/voice-agent-roi): Voice-agent ROI from answered calls, qualified leads, handoffs, fallback prompts, and post-call data.
+- [What is the ROI of an AI eval harness?](https://esarc.dev/insights/eval-harness-roi): Eval ROI from fewer regressions, faster releases, and evidence-backed model changes.
+- [Should you hire an AI engineer or use an AI consultancy?](https://esarc.dev/insights/ai-consultancy-vs-hiring): Decision guide for hiring, using ESARC, or combining both.
 
 ## About
 

@@ -54,8 +54,49 @@ function CaseStudies({
                   </div>
                 </div>
                 <div className="col-span-full lg:col-span-2 lg:max-w-2xl">
+                  <dl className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div className="border-t border-neutral-950/10 pt-4">
+                      <dt className="font-mono text-xs uppercase tracking-wider text-neutral-500">
+                        Client
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold text-neutral-950">
+                        {caseStudy.client}
+                      </dd>
+                    </div>
+                    {caseStudy.sector && (
+                      <div className="border-t border-neutral-950/10 pt-4">
+                        <dt className="font-mono text-xs uppercase tracking-wider text-neutral-500">
+                          Sector
+                        </dt>
+                        <dd className="mt-1 text-sm font-semibold text-neutral-950">
+                          {caseStudy.sector}
+                        </dd>
+                      </div>
+                    )}
+                    <div className="border-t border-neutral-950/10 pt-4">
+                      <dt className="font-mono text-xs uppercase tracking-wider text-neutral-500">
+                        Service
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold text-neutral-950">
+                        {caseStudy.service}
+                      </dd>
+                    </div>
+                    {caseStudy.metric && (
+                      <div className="border-t border-accent pt-4">
+                        <dt className="font-mono text-xs uppercase tracking-wider text-accent">
+                          Headline metric
+                        </dt>
+                        <dd className="mt-1 text-sm font-semibold text-neutral-950">
+                          {caseStudy.metric}
+                        </dd>
+                      </div>
+                    )}
+                  </dl>
                   <p className="font-display text-4xl font-medium text-neutral-950">
                     <Link href={caseStudy.href}>{caseStudy.title}</Link>
+                  </p>
+                  <p className="mt-4 font-mono text-xs uppercase tracking-wider text-neutral-500">
+                    Operational outcome
                   </p>
                   <div className="mt-6 space-y-6 text-base text-neutral-600">
                     {caseStudy.summary.map((paragraph) => (
@@ -112,8 +153,18 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://esarc.dev' },
-    { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://esarc.dev/work' },
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://esarc.dev',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Work',
+      item: 'https://esarc.dev/work',
+    },
   ],
 }
 
@@ -129,9 +180,9 @@ export default async function Work() {
       >
         <p>
           A few of the things I&apos;ve shipped, with the engineering decisions
-          that mattered. Some engagements are public. Others I can describe in
-          a call. Where a study reads short, the work was real and the details
-          are under NDA. See the{' '}
+          that mattered. Some engagements are public. Others I can describe in a
+          call. Where a study reads short, the work was real and the details are
+          under NDA. See the{' '}
           <Link
             href="/services"
             className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
