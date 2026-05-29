@@ -22,6 +22,8 @@ const navigation = [
       { title: 'Insights', href: '/insights' },
       { title: 'Canada', href: '/canada' },
       { title: 'Contact', href: '/contact' },
+      { title: 'Privacy', href: '/privacy' },
+      { title: 'Terms', href: '/terms' },
     ],
   },
 ]

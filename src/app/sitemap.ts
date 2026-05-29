@@ -34,6 +34,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       { url: `${SITE_URL}/insights`, priority: 0.7, changeFrequency: 'weekly' },
       { url: `${SITE_URL}/canada`, priority: 0.85, changeFrequency: 'monthly' },
       { url: `${SITE_URL}/contact`, priority: 0.8, changeFrequency: 'yearly' },
+      { url: `${SITE_URL}/privacy`, priority: 0.3, changeFrequency: 'yearly' },
+      { url: `${SITE_URL}/terms`, priority: 0.3, changeFrequency: 'yearly' },
+      {
+        url: `${SITE_URL}/quickbooks/disconnect`,
+        priority: 0.2,
+        changeFrequency: 'yearly',
+      },
     ] satisfies MetadataRoute.Sitemap
   ).map((route) => ({ ...route, lastModified: DEFAULT_LASTMOD }))
 
