@@ -22,6 +22,12 @@ export default {
         '4xl': '2.5rem',
       },
       colors: {
+        // Redesign palette (docs/redesign/inspiration.md). neutral-950 is
+        // remapped to graphite ink so existing dark surfaces pick it up.
+        neutral: { 950: '#1A1D29' },
+        paper: '#F2F3EF',
+        blueprint: '#DCE0FF',
+        redline: '#E5484D',
         accent: {
           DEFAULT: '#2C39FF',
           50: '#EEF0FF',
@@ -42,6 +48,20 @@ export default {
           ['var(--font-mona-sans)', ...defaultTheme.fontFamily.sans],
           { fontVariationSettings: '"wdth" 125' },
         ],
+        // Condensed cut for labels and annotations, in place of mono labels.
+        condensed: [
+          ['var(--font-mona-sans)', ...defaultTheme.fontFamily.sans],
+          { fontVariationSettings: '"wdth" 75' },
+        ],
+      },
+      keyframes: {
+        widen: {
+          from: { fontVariationSettings: '"wdth" 75' },
+          to: { fontVariationSettings: '"wdth" 125' },
+        },
+      },
+      animation: {
+        widen: 'widen 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both',
       },
     },
   },

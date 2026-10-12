@@ -189,10 +189,10 @@ export function RoiCalculator() {
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr]">
       <section
         aria-label="ROI inputs"
-        className="rounded-3xl border border-neutral-950/10 bg-white p-6 sm:p-8"
+        className="rounded-md border border-neutral-950/15 bg-white p-6 sm:p-8"
       >
         <div>
-          <p className="font-display text-sm font-semibold tracking-wider text-neutral-950">
+          <p className="font-display text-sm font-semibold text-neutral-950">
             What kind of AI surface?
           </p>
           <p className="mt-2 text-sm text-neutral-600">
@@ -217,8 +217,8 @@ export function RoiCalculator() {
                 }
                 className={
                   active
-                    ? 'rounded-2xl border-2 border-accent bg-accent/5 p-4 text-left'
-                    : 'rounded-2xl border border-neutral-950/10 bg-neutral-50 p-4 text-left transition hover:border-neutral-950/30'
+                    ? 'rounded border-2 border-accent bg-accent-50 p-4 text-left'
+                    : 'rounded border border-neutral-950/15 bg-paper p-4 text-left transition hover:border-neutral-950/40'
                 }
               >
                 <span className="block font-display text-sm font-semibold text-neutral-950">
@@ -277,7 +277,7 @@ export function RoiCalculator() {
         </div>
 
         <fieldset className="mt-8">
-          <legend className="font-display text-sm font-semibold tracking-wider text-neutral-950">
+          <legend className="font-display text-sm font-semibold text-neutral-950">
             Risk profile
           </legend>
           <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -288,8 +288,8 @@ export function RoiCalculator() {
                 onClick={() => updateInput('risk', risk.slug)}
                 className={
                   risk.slug === inputs.risk
-                    ? 'rounded-2xl border-2 border-accent bg-accent/5 p-4 text-left'
-                    : 'rounded-2xl border border-neutral-950/10 bg-neutral-50 p-4 text-left transition hover:border-neutral-950/30'
+                    ? 'rounded border-2 border-accent bg-accent-50 p-4 text-left'
+                    : 'rounded border border-neutral-950/15 bg-paper p-4 text-left transition hover:border-neutral-950/40'
                 }
               >
                 <span className="block font-display text-sm font-semibold text-neutral-950">
@@ -306,11 +306,11 @@ export function RoiCalculator() {
 
       <section
         aria-label="ROI results"
-        className="rounded-3xl border border-neutral-950/10 bg-neutral-950 p-6 text-white sm:p-8"
+        className="rounded-md border border-neutral-950 bg-neutral-950 p-6 text-white sm:p-8"
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-accent">
+            <p className="font-condensed text-sm font-semibold text-accent-300">
               Annual business case
             </p>
             <p
@@ -324,8 +324,8 @@ export function RoiCalculator() {
               rework. It is not ESARC pricing.
             </p>
           </div>
-          <div className="rounded-2xl border border-white/10 px-4 py-3 text-sm">
-            <p className="font-mono text-xs uppercase tracking-wider text-neutral-400">
+          <div className="rounded border border-white/15 px-4 py-3 text-sm">
+            <p className="font-condensed text-sm font-medium text-neutral-400">
               Recommended first step
             </p>
             <Link
@@ -337,7 +337,7 @@ export function RoiCalculator() {
           </div>
         </div>
 
-        <dl className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 xl:grid-cols-3">
+        <dl className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded border border-white/15 bg-white/15 sm:grid-cols-2 xl:grid-cols-3">
           <ResultMetric
             label="Hours reclaimed"
             value={`${formatNumber(result.annualHoursReclaimed)} hrs`}
@@ -357,7 +357,7 @@ export function RoiCalculator() {
           <ResultMetric label="Confidence" value={`${result.confidence}%`} />
         </dl>
 
-        <div className="mt-8 rounded-2xl border border-white/10 p-5">
+        <div className="mt-8 rounded border border-white/15 p-5">
           <h3 className="font-display text-lg font-semibold">
             How the math works
           </h3>
@@ -393,7 +393,7 @@ export function RoiCalculator() {
           </dl>
         </div>
 
-        <div className="mt-8 rounded-2xl border border-white/10 p-5">
+        <div className="mt-8 rounded border border-white/15 p-5">
           <h3 className="font-display text-lg font-semibold">
             Why this engagement shape
           </h3>
@@ -419,7 +419,7 @@ export function RoiCalculator() {
 
         {result.workflow.relatedWork.length > 0 && (
           <div className="mt-8">
-            <p className="font-mono text-xs uppercase tracking-wider text-neutral-400">
+            <p className="font-condensed text-sm font-medium text-neutral-400">
               Related ESARC work
             </p>
             <div className="mt-3 flex flex-wrap gap-3">
@@ -463,7 +463,7 @@ function Slider({
         <label className="font-display text-sm font-semibold text-neutral-950">
           {label}
         </label>
-        <span className="font-mono text-sm text-neutral-950">
+        <span className="font-condensed text-base font-semibold tabular-nums text-neutral-950">
           {prefix}
           {value}
           {suffix.startsWith('/') ? suffix : ` ${suffix}`}
@@ -478,7 +478,7 @@ function Slider({
         className="mt-3 w-full accent-accent"
         aria-label={label}
       />
-      <div className="mt-1 flex justify-between font-mono text-xs text-neutral-500">
+      <div className="mt-1 flex justify-between font-condensed text-xs tabular-nums text-neutral-500">
         <span>
           {prefix}
           {min}
@@ -495,7 +495,7 @@ function Slider({
 function ResultMetric({ label, value }: { label: string; value: string }) {
   return (
     <div className="min-w-0 bg-neutral-950 p-4">
-      <dt className="font-mono text-[0.68rem] uppercase tracking-wider text-neutral-400">
+      <dt className="font-condensed text-sm font-medium text-neutral-400">
         {label}
       </dt>
       <dd className="mt-2 break-words font-display text-[clamp(1.15rem,2vw,1.5rem)] font-semibold leading-tight text-white">
@@ -522,7 +522,7 @@ function FormulaRow({
         </dt>
         <dd className="mt-1 text-xs leading-5 text-neutral-400">{formula}</dd>
       </div>
-      <dd className="text-right font-mono text-sm text-white">{value}</dd>
+      <dd className="text-right font-condensed text-base font-semibold tabular-nums text-white">{value}</dd>
     </div>
   )
 }
