@@ -50,6 +50,17 @@ export async function renderMarkdown(source: string): Promise<string> {
   return String(await markdown.process(stripTodoLines(source)))
 }
 
+/**
+ * The metric to lead a listing row with: the first published metric that has
+ * a number in it. Descriptive metrics ("Live deployments") stay on the detail
+ * page. Returns undefined when there's no number yet.
+ */
+export function headlineMetric(
+  doc: Pick<CaseStudyDocument, 'publishedMetrics'>,
+): CaseStudyMetric | undefined {
+  return doc.publishedMetrics.find((metric) => /\d/.test(metric.value))
+}
+
 export async function listCaseStudyFiles(
   dir: string = CASE_STUDY_CONTENT_DIR,
 ): Promise<Array<string>> {

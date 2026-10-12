@@ -17,8 +17,9 @@ import { PointOfView, ShippedFor } from '@/components/home/PointOfView'
 import { Principal } from '@/components/home/Principal'
 import { ProcessSteps } from '@/components/home/ProcessSteps'
 import { SectionHeader } from '@/components/home/SectionHeader'
+import { ShipsSafely } from '@/components/home/ShipsSafely'
 import { isProductionDeploy } from '@/config/site'
-import { loadCaseStudyDocuments } from '@/lib/case-studies/load'
+import { headlineMetric, loadCaseStudyDocuments } from '@/lib/case-studies/load'
 import { loadArticles, loadCaseStudies } from '@/lib/mdx'
 
 const SITE_URL = 'https://esarc.dev'
@@ -105,7 +106,7 @@ async function loadCaseStudyRows(production: boolean) {
       title: doc.title,
       client: doc.client,
       industry: doc.industry,
-      metric: doc.publishedMetrics[0],
+      metric: headlineMetric(doc),
       showResults: true,
       draft: doc.draft,
     }))
@@ -126,7 +127,7 @@ async function loadCaseStudyRows(production: boolean) {
       title: doc.title,
       client: doc.client,
       industry: doc.industry,
-      metric: doc.publishedMetrics[0],
+      metric: headlineMetric(doc),
       showResults: true,
       draft: false,
     })),
@@ -155,11 +156,12 @@ export default async function Home() {
       <ShippedFor />
       <PointOfView />
       <ModelDiagram />
+      <ShipsSafely production={production} />
       <Capabilities industries={industries} />
       <CaseStudyIndex rows={rows} />
       <Engagements production={production} />
       <HomeRoiSection />
-      <ProcessSteps production={production} />
+      <ProcessSteps />
       <Principal />
       <InsightsStrip articles={articles} />
       <HomeContact />

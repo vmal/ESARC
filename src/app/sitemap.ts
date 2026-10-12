@@ -1,5 +1,6 @@
 import { type MetadataRoute } from 'next'
 
+import { loadCaseStudyDocuments } from '@/lib/case-studies/load'
 import { loadArticles, loadCaseStudies } from '@/lib/mdx'
 
 const SITE_URL = 'https://esarc.dev'
@@ -58,5 +59,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  return [...staticRoutes, ...caseStudyRoutes, ...articleRoutes]
+  // Published data-driven studies only; drafts are never in the sitemap.
+  const mdxHrefs = new Set(caseStudies.map((study) => study.href))
+  const documentRoutes: MetadataRoute.Sitemap = (
+    await loadCaseStudyDocuments({ includeDrafts: false })
+  )
+    .filter((doc) => !mdxHrefs.has(doc.href))
+    .map((doc) => ({
+      url: `${SITE_URL}${doc.href}`,
+      lastModified: `${doc.year}-01-01`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
+
+  return [
+    ...staticRoutes,
+    ...caseStudyRoutes,
+    ...documentRoutes,
+    ...articleRoutes,
+  ]
 }

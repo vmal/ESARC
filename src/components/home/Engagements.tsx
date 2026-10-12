@@ -101,19 +101,19 @@ function HireComparison({ production }: { production: boolean }) {
           <tr className="border-neutral-950/15 border-b">
             <th
               scope="col"
-              className="w-1/4 px-5 py-3 font-condensed font-medium text-neutral-500"
+              className="w-1/5 px-3 py-3 font-condensed font-medium text-neutral-500 sm:w-1/4 sm:px-5"
             >
               <span className="sr-only">Measure</span>
             </th>
             <th
               scope="col"
-              className="px-5 py-3 font-condensed font-semibold text-neutral-700"
+              className="px-3 py-3 font-condensed font-semibold text-neutral-700 sm:px-5"
             >
               {hire.label}
             </th>
             <th
               scope="col"
-              className="px-5 py-3 font-condensed font-semibold text-accent"
+              className="px-3 py-3 font-condensed font-semibold text-accent sm:px-5"
             >
               {esarc.label}
             </th>
@@ -123,20 +123,20 @@ function HireComparison({ production }: { production: boolean }) {
           <tr className="border-neutral-950/15 border-b align-top">
             <th
               scope="row"
-              className="px-5 py-4 font-condensed font-medium text-neutral-500"
+              className="px-3 py-4 font-condensed font-medium text-neutral-500 sm:px-5"
             >
               Cost
             </th>
-            <td className="px-5 py-4">
-              <span className="block font-display text-2xl font-semibold text-neutral-950">
+            <td className="px-3 py-4 sm:px-5">
+              <span className="block font-display text-lg font-semibold text-neutral-950 sm:text-2xl">
                 {hire.cost}
               </span>
               <span className="mt-1 block text-neutral-600">
                 {hire.costNote}
               </span>
             </td>
-            <td className="px-5 py-4">
-              <span className="block font-display text-2xl font-semibold text-neutral-950">
+            <td className="px-3 py-4 sm:px-5">
+              <span className="block font-display text-lg font-semibold text-neutral-950 sm:text-2xl">
                 {esarcPrice.label}
               </span>
               <span className="mt-1 block text-neutral-600">
@@ -147,20 +147,20 @@ function HireComparison({ production }: { production: boolean }) {
           <tr className="align-top">
             <th
               scope="row"
-              className="px-5 py-4 font-condensed font-medium text-neutral-500"
+              className="px-3 py-4 font-condensed font-medium text-neutral-500 sm:px-5"
             >
               Time to start
             </th>
-            <td className="px-5 py-4">
-              <span className="block font-display text-2xl font-semibold text-neutral-950">
+            <td className="px-3 py-4 sm:px-5">
+              <span className="block font-display text-lg font-semibold text-neutral-950 sm:text-2xl">
                 {hire.time}
               </span>
               <span className="mt-1 block text-neutral-600">
                 {hire.timeNote}
               </span>
             </td>
-            <td className="px-5 py-4">
-              <span className="block font-display text-2xl font-semibold text-neutral-950">
+            <td className="px-3 py-4 sm:px-5">
+              <span className="block font-display text-lg font-semibold text-neutral-950 sm:text-2xl">
                 {esarc.time}
               </span>
               <span className="mt-1 block text-neutral-600">
@@ -200,7 +200,7 @@ function OfferLadder({ production }: { production: boolean }) {
             <p className="mt-2 flex flex-wrap items-center gap-2 text-sm font-semibold text-neutral-950">
               {prices.length === 0
                 ? 'Free'
-                : prices.map((price) => price.label).join(' or ')}
+                : joinPriceLabels(prices.map((price) => price.label))}
               {isDraft && <DraftBadge>Draft price</DraftBadge>}
             </p>
             <p className="mt-2 text-sm text-neutral-600">{rung.detail}</p>
@@ -209,6 +209,19 @@ function OfferLadder({ production }: { production: boolean }) {
       })}
     </ol>
   )
+}
+
+/**
+ * "From $22K" and "From $32K" become "From $22K or $32K". Repeats are dropped,
+ * since production shows the same fallback label for every package.
+ */
+function joinPriceLabels(labels: Array<string>) {
+  let unique = Array.from(new Set(labels))
+  let [first, ...rest] = unique
+  if (first?.startsWith('From ')) {
+    rest = rest.map((label) => label.replace(/^From /, ''))
+  }
+  return [first, ...rest].join(' or ')
 }
 
 export function Engagements({ production }: { production: boolean }) {

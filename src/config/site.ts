@@ -7,7 +7,7 @@ export const siteConfig = {
   /** TODO(owner): set up hello@esarc.dev (e.g. Cloudflare Email Routing) before launch. */
   contactEmail: 'hello@esarc.dev',
   bookingUrl: 'https://calendly.com/vbvmalhotra/vaibhav-interview',
-  bookingLabel: 'Book a 30-minute intro',
+  bookingLabel: 'Book a free 30-minute review',
   principal: {
     name: 'Vaibhav Malhotra',
     shortName: 'V. Malhotra',

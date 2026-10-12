@@ -1,12 +1,11 @@
 import { Container } from '@/components/Container'
-import { DraftBadge } from '@/components/DraftBadge'
 import { SectionHeader } from '@/components/home/SectionHeader'
 
 const steps = [
   {
-    title: 'A 30-minute call',
+    title: 'A free 30-minute architecture review',
     detail:
-      'We talk through what you want to ship. If we’re not the right fit, you’ll hear it on the call.',
+      'We look at what you want to ship and send a short written readout. It’s yours to keep either way. If we’re not the right fit, we’ll say so.',
   },
   {
     title: 'One week of paid discovery',
@@ -26,21 +25,12 @@ const steps = [
   {
     title: 'Hand over or keep going',
     detail:
-      'Thirty days of support after launch. Then take it in-house, or keep building with us month to month.',
+      'Thirty days of support after launch. Then take it in-house, or keep building with us month to month. Stopping takes 6 weeks’ notice.',
   },
 ]
 
-/**
- * TODO(owner): confirm each statement before it can go to production. Until
- * then this block only renders on preview builds, with a draft badge.
- */
-const dataHandling = [
-  'Code lives in your repositories and your cloud accounts.',
-  'Agents only get the access a task needs.',
-  'Where a model provider offers it, training on your data is switched off.',
-]
-
-export function ProcessSteps({ production }: { production: boolean }) {
+/** Code and data handling now lives in ShipsSafely. */
+export function ProcessSteps() {
   return (
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <SectionHeader title="How a project runs" />
@@ -48,7 +38,7 @@ export function ProcessSteps({ production }: { production: boolean }) {
         {steps.map((step, index) => (
           <li
             key={step.title}
-            className="grid grid-cols-[3rem_1fr] gap-x-4 border-b border-neutral-950/15 py-6 sm:grid-cols-[5rem_minmax(0,22rem)_1fr] sm:gap-x-8"
+            className="border-neutral-950/15 grid grid-cols-[3rem_1fr] gap-x-4 border-b py-6 sm:grid-cols-[5rem_minmax(0,22rem)_1fr] sm:gap-x-8"
           >
             <span className="font-display text-2xl font-semibold tabular-nums text-accent">
               {index + 1}
@@ -62,21 +52,6 @@ export function ProcessSteps({ production }: { production: boolean }) {
           </li>
         ))}
       </ol>
-
-      {!production && (
-        <div className="mt-12 grid grid-cols-1 gap-6 border border-neutral-950 bg-white/70 p-6 sm:grid-cols-[5rem_minmax(0,22rem)_1fr] sm:gap-x-8">
-          <span className="hidden sm:block" />
-          <h3 className="flex flex-wrap items-center gap-3 font-display text-xl font-semibold text-neutral-950">
-            Your code and data
-            <DraftBadge>Needs sign-off</DraftBadge>
-          </h3>
-          <ul className="space-y-2 text-base text-neutral-700">
-            {dataHandling.map((line) => (
-              <li key={line}>{line}</li>
-            ))}
-          </ul>
-        </div>
-      )}
     </Container>
   )
 }

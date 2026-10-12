@@ -261,7 +261,8 @@ export interface PriceDisplay {
 }
 
 function formatAmount(amount: number, currency: PackagePrice['currency']) {
-  if (amount >= 10000) {
+  // $5K and up read as thousands, so the monthly tiers line up ($5K, $11K).
+  if (amount >= 5000) {
     let thousands = amount / 1000
     return `$${Number.isInteger(thousands) ? thousands : thousands.toFixed(1)}K`
   }

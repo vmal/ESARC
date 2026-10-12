@@ -163,3 +163,22 @@ test('studies keep the live esarc.dev URLs', async () => {
     assert.ok(slugs.has(slug), `missing study for live URL /work/${slug}`)
   }
 })
+
+test('listing rows lead with a numeric metric or none at all', async () => {
+  const { headlineMetric } = await import('../src/lib/case-studies/load')
+  assert.equal(
+    headlineMetric({
+      publishedMetrics: [
+        { label: 'Shipped on', value: 'Instagram and Facebook' },
+        { label: 'Better conversion', value: '90%' },
+      ],
+    })?.value,
+    '90%',
+  )
+  assert.equal(
+    headlineMetric({
+      publishedMetrics: [{ label: 'Status', value: 'Live deployments' }],
+    }),
+    undefined,
+  )
+})

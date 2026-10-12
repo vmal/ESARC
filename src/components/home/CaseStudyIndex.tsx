@@ -17,27 +17,39 @@ export interface CaseStudyRow {
   draft: boolean
 }
 
-export function CaseStudyIndex({ rows }: { rows: Array<CaseStudyRow> }) {
+export function CaseStudyIndex({
+  rows,
+  title = 'Selected work',
+  showAllLink = true,
+  className = 'mt-24 sm:mt-32 lg:mt-40',
+}: {
+  rows: Array<CaseStudyRow>
+  title?: string
+  showAllLink?: boolean
+  className?: string
+}) {
   return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
+    <Container className={className}>
       <div className="flex flex-wrap items-end justify-between gap-6">
-        <SectionHeader title="Selected work">
+        <SectionHeader title={title}>
           <p>
             What was built, for whom, and what changed. Where we don’t have a
             number we can stand behind yet, we say so.
           </p>
         </SectionHeader>
-        <Link
-          href="/work"
-          className="text-sm font-semibold text-neutral-950 underline decoration-neutral-950/30 underline-offset-4 hover:decoration-neutral-950"
-        >
-          All work
-        </Link>
+        {showAllLink && (
+          <Link
+            href="/work"
+            className="text-sm font-semibold text-neutral-950 underline decoration-neutral-950/30 underline-offset-4 hover:decoration-neutral-950"
+          >
+            All work
+          </Link>
+        )}
       </div>
 
       <ul className="mt-12 border-t border-neutral-950">
         {rows.map((row) => (
-          <li key={row.href} className="border-b border-neutral-950/15">
+          <li key={row.href} className="border-neutral-950/15 border-b">
             <Link
               href={row.href}
               className="group grid grid-cols-[3.5rem_1fr] gap-x-4 gap-y-3 py-7 sm:grid-cols-[5rem_1fr] lg:grid-cols-[5rem_minmax(0,1fr)_16rem] lg:gap-x-10"

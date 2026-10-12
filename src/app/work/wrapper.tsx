@@ -8,6 +8,9 @@ import { JsonLd } from '@/components/JsonLd'
 import { MDXComponents } from '@/components/MDXComponents'
 import { PageIntro } from '@/components/PageIntro'
 import { PageLinks } from '@/components/PageLinks'
+import { CaseStudyDocumentPage } from '@/components/case-study/CaseStudyDocumentPage'
+import { isProductionDeploy } from '@/config/site'
+import { findVisibleCaseStudy } from '@/lib/case-studies/visible'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
 
 export default async function CaseStudyLayout({
@@ -17,6 +20,21 @@ export default async function CaseStudyLayout({
   caseStudy: MDXEntry<CaseStudy>
   children: React.ReactNode
 }) {
+  // Previews only: a draft data-driven study that shares this URL replaces
+  // the MDX page, so the owner can review it at the live link. Production
+  // keeps rendering the MDX page below until the study is published.
+  if (!isProductionDeploy) {
+    // The MDX layout gets the page's raw `caseStudy` export, which has no
+    // href, so look the URL up from the loaded entries.
+    let entry = (await loadCaseStudies()).find(
+      ({ metadata }) => metadata === caseStudy,
+    )
+    let draft = entry && (await findVisibleCaseStudy(entry.href))
+    if (draft?.doc.draft) {
+      return <CaseStudyDocumentPage doc={draft.doc} more={draft.more} />
+    }
+  }
+
   let allCaseStudies = await loadCaseStudies()
   let moreCaseStudies = allCaseStudies
     .filter(({ metadata }) => metadata !== caseStudy)
