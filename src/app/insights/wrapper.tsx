@@ -15,6 +15,10 @@ export default async function BlogArticleWrapper({
   children: React.ReactNode
 }) {
   let allArticles = await loadArticles()
+  // The raw `article` export has no href; take it from the loaded entry.
+  let href =
+    allArticles.find(({ metadata }) => metadata === article)?.href ??
+    '/insights'
   let moreArticles = allArticles
     .filter(({ metadata }) => metadata !== article)
     .slice(0, 2)
@@ -43,8 +47,8 @@ export default async function BlogArticleWrapper({
         url: 'https://esarc.dev/favicon.ico',
       },
     },
-    mainEntityOfPage: `https://esarc.dev${article.href}`,
-    url: `https://esarc.dev${article.href}`,
+    mainEntityOfPage: `https://esarc.dev${href}`,
+    url: `https://esarc.dev${href}`,
   }
 
   const breadcrumbJsonLd = {
@@ -53,7 +57,7 @@ export default async function BlogArticleWrapper({
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://esarc.dev' },
       { '@type': 'ListItem', position: 2, name: 'Insights', item: 'https://esarc.dev/insights' },
-      { '@type': 'ListItem', position: 3, name: article.title, item: `https://esarc.dev${article.href}` },
+      { '@type': 'ListItem', position: 3, name: article.title, item: `https://esarc.dev${href}` },
     ],
   }
 

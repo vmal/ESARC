@@ -3,9 +3,9 @@ import { SectionHeader } from '@/components/home/SectionHeader'
 
 const steps = [
   {
-    title: 'A free 30-minute architecture review',
+    title: 'A free 30-minute call',
     detail:
-      'We look at what you want to ship and send a short written readout. It’s yours to keep either way. If we’re not the right fit, we’ll say so.',
+      'We talk through what you want to ship and how we’d build it. No pitch deck, no homework. If we’re not the right fit, we’ll say so.',
   },
   {
     title: 'One week of paid discovery',

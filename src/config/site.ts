@@ -7,7 +7,7 @@ export const siteConfig = {
   /** TODO(owner): set up hello@esarc.dev (e.g. Cloudflare Email Routing) before launch. */
   contactEmail: 'hello@esarc.dev',
   bookingUrl: 'https://calendly.com/vbvmalhotra/vaibhav-interview',
-  bookingLabel: 'Book a free 30-minute review',
+  bookingLabel: 'Book a free 30-minute call',
   principal: {
     name: 'Vaibhav Malhotra',
     shortName: 'V. Malhotra',
@@ -16,7 +16,8 @@ export const siteConfig = {
 } as const
 
 /**
- * True on Vercel production deployments only. Drafts, TODO badges and mock
+ * True on production deployments only (SITE_ENV=production, set by the
+ * production deploy job and in wrangler.jsonc). Drafts, TODO badges and mock
  * content are hidden when this is true.
  */
-export const isProductionDeploy = process.env.VERCEL_ENV === 'production'
+export const isProductionDeploy = process.env.SITE_ENV === 'production'

@@ -105,8 +105,13 @@ export async function POST(req: NextRequest) {
 
   const key = process.env.RESEND_API_KEY
   if (!key) {
-    console.log('[contact] RESEND_API_KEY missing, logging only:', payload)
-    return successResponse(req)
+    // Never log the submission itself: it holds the visitor's personal data.
+    // Fail loudly so a missing secret can't silently drop leads.
+    console.error('[contact] RESEND_API_KEY missing, message not sent')
+    return NextResponse.json(
+      { ok: false, error: 'Send failed.' },
+      { status: 503 },
+    )
   }
 
   try {

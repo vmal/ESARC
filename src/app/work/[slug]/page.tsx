@@ -26,9 +26,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  let found = await findVisibleCaseStudy(`/work/${params.slug}`)
+  let { slug } = await params
+  let found = await findVisibleCaseStudy(`/work/${slug}`)
   if (!found) return {}
   let { doc } = found
   let title = `${doc.client}: ${doc.title}`
@@ -54,11 +55,12 @@ export async function generateMetadata({
 export default async function CaseStudyPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
   let mdx = await listMdxCaseStudySlugs()
-  if (mdx.has(params.slug)) notFound()
-  let found = await findVisibleCaseStudy(`/work/${params.slug}`)
+  let { slug } = await params
+  if (mdx.has(slug)) notFound()
+  let found = await findVisibleCaseStudy(`/work/${slug}`)
   if (!found) notFound()
   return <CaseStudyDocumentPage doc={found.doc} more={found.more} />
 }

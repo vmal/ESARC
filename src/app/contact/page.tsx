@@ -266,12 +266,12 @@ const breadcrumbJsonLd = {
   ],
 }
 
-export default function Contact({
+export default async function Contact({
   searchParams,
 }: {
-  searchParams?: { sent?: string }
+  searchParams: Promise<{ sent?: string }>
 }) {
-  let sent = searchParams?.sent === '1'
+  let sent = (await searchParams).sent === '1'
 
   return (
     <>
