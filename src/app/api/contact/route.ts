@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
-const TO_EMAIL = 'vbvmalhotra@gmail.com'
+const TO_EMAIL = 'vaibhav@esarc.dev'
 const FROM_EMAIL = 'ESARC <onboarding@resend.dev>'
 
 type Payload = {
