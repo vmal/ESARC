@@ -39,3 +39,8 @@ next-env.d.ts
 /.idea/
 /artifacts/
 /research/
+
+# cloudflare / opennext
+/.open-next/
+/.wrangler/
+.dev.vars*

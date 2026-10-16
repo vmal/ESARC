@@ -54,7 +54,7 @@ function Header({
   icon: React.ComponentType<{ className?: string }>
   expanded: boolean
   onToggle: () => void
-  toggleRef: React.RefObject<HTMLButtonElement>
+  toggleRef: React.RefObject<HTMLButtonElement | null>
   invert?: boolean
 }) {
   let { logoHovered, setLogoHovered } = useContext(RootLayoutContext)!
@@ -271,14 +271,14 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
       <motion.div
         layout
         style={{ borderTopLeftRadius: 40, borderTopRightRadius: 40 }}
-        className="relative flex flex-auto overflow-hidden bg-white pt-14"
+        className="relative flex flex-auto overflow-hidden bg-paper pt-14"
       >
         <motion.div
           layout
           className="relative isolate flex w-full flex-col pt-9"
         >
           <GridPattern
-            className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]"
+            className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-blueprint/40 stroke-accent-500/[0.08] [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]"
             yOffset={-96}
             interactive
           />

@@ -10,6 +10,10 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
+import { CaseStudyIndex } from '@/components/home/CaseStudyIndex'
+import { isProductionDeploy } from '@/config/site'
+import { headlineMetric } from '@/lib/case-studies/load'
+import { loadVisibleCaseStudies } from '@/lib/case-studies/visible'
 import { formatDate } from '@/lib/formatDate'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
 
@@ -170,6 +174,14 @@ const breadcrumbJsonLd = {
 
 export default async function Work() {
   let caseStudies = await loadCaseStudies()
+  // Previews list the draft data-driven studies first. An MDX study whose URL
+  // a draft has taken over is left out of the older list below. Production
+  // renders exactly as before until a study is published.
+  let drafts = isProductionDeploy
+    ? []
+    : (await loadVisibleCaseStudies()).filter((doc) => doc.draft)
+  let replaced = new Set(drafts.map((doc) => doc.href))
+  let olderStudies = caseStudies.filter((study) => !replaced.has(study.href))
 
   return (
     <>
@@ -200,7 +212,25 @@ export default async function Work() {
         </p>
       </PageIntro>
 
-      <CaseStudies caseStudies={caseStudies} />
+      {drafts.length > 0 && (
+        <CaseStudyIndex
+          title="Case studies"
+          showAllLink={false}
+          className="mt-24 sm:mt-32"
+          rows={drafts.map((doc) => ({
+            href: doc.href,
+            year: String(doc.year),
+            title: doc.title,
+            client: doc.client,
+            industry: doc.industry,
+            metric: headlineMetric(doc),
+            showResults: true,
+            draft: doc.draft,
+          }))}
+        />
+      )}
+
+      <CaseStudies caseStudies={olderStudies} />
 
       <ContactSection />
     </>

@@ -16,6 +16,19 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   async redirects() {
     return [
+      // Case study slugs from the case study pipeline point at the URLs the
+      // site already uses (see SLUGS in scripts/import-case-studies.mjs).
+      ...[
+        ['big-tech-ai-lab-agentic-automations', 'meta-superintelligence'],
+        ['meal-planning-agent-memory', 'springhouse'],
+        ['voice-agents-service-businesses', 'mymethod'],
+        ['edtech-graphql-backend-ai-search', 'mcgraw-hill'],
+        ['ai-character-platform-moderation', 'spicychat-moderation'],
+      ].map(([from, to]) => ({
+        source: `/work/${from}`,
+        destination: `/work/${to}`,
+        permanent: false,
+      })),
       {
         source: '/blog',
         destination: '/insights',
@@ -81,7 +94,9 @@ export default async function config() {
         [
           unifiedConditional,
           [
-            new RegExp(`^${escapeStringRegexp(path.resolve('src/app/insights'))}`),
+            new RegExp(
+              `^${escapeStringRegexp(path.resolve('src/app/insights'))}`,
+            ),
             [[remarkMDXLayout, '@/app/insights/wrapper', 'article']],
           ],
           [
