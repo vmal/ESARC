@@ -194,15 +194,14 @@ export interface OfferRung {
 
 /**
  * The order a client moves through. Each step can be the last one.
- * TODO(owner): confirm the free review and the 6-week notice period.
  */
 export const offerLadder: Array<OfferRung> = [
   {
     id: 'review',
-    name: 'Free 30-minute architecture review',
+    name: 'Free 30-minute call',
     packageIds: [],
     detail:
-      'We look at what you have and what you want to ship. You keep the written readout whether or not we work together.',
+      'We talk through what you have and what you want to ship, and tell you straight whether we’re the right team for it.',
   },
   {
     id: 'discovery',

@@ -36,6 +36,10 @@ export default async function CaseStudyLayout({
   }
 
   let allCaseStudies = await loadCaseStudies()
+  // The raw `caseStudy` export has no href; take it from the loaded entry.
+  let href =
+    allCaseStudies.find(({ metadata }) => metadata === caseStudy)?.href ??
+    '/work'
   let moreCaseStudies = allCaseStudies
     .filter(({ metadata }) => metadata !== caseStudy)
     .slice(0, 2)
@@ -61,9 +65,9 @@ export default async function CaseStudyLayout({
       url: 'https://esarc.dev',
     },
     about: caseStudy.client,
-    mainEntityOfPage: `https://esarc.dev${caseStudy.href}`,
-    url: `https://esarc.dev${caseStudy.href}`,
-    image: `https://esarc.dev${caseStudy.href}/opengraph-image`,
+    mainEntityOfPage: `https://esarc.dev${href}`,
+    url: `https://esarc.dev${href}`,
+    image: `https://esarc.dev${href}/opengraph-image`,
   }
 
   return (

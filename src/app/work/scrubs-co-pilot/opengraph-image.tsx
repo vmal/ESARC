@@ -1,6 +1,5 @@
 import { ogContentType, ogSize, renderOgImage } from '@/lib/og'
 
-export const runtime = 'edge'
 export const alt = 'Scrubs Co-Pilot — Structured doctor notes from unstructured audio'
 export const size = ogSize
 export const contentType = ogContentType

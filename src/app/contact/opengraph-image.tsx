@@ -1,6 +1,5 @@
 import { ogContentType, ogSize, renderOgImage } from '@/lib/og'
 
-export const runtime = 'edge'
 export const alt = 'Contact ESARC'
 export const size = ogSize
 export const contentType = ogContentType

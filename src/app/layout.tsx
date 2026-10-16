@@ -1,11 +1,14 @@
 import { type Metadata } from 'next'
 import localFont from 'next/font/local'
-import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 
 import { JsonLd } from '@/components/JsonLd'
 import { RootLayout } from '@/components/RootLayout'
 
 import '@/styles/tailwind.css'
+
+/** Cloudflare Web Analytics site token. Unset means no beacon. */
+const cfAnalyticsToken = process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN
 
 const monaSans = localFont({
   src: '../fonts/Mona-Sans.var.woff2',
@@ -169,7 +172,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="flex min-h-full flex-col">
         <RootLayout>{children}</RootLayout>
-        <Analytics />
+        {cfAnalyticsToken ? (
+          <Script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: cfAnalyticsToken })}
+            strategy="afterInteractive"
+          />
+        ) : null}
       </body>
     </html>
   )
