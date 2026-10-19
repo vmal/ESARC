@@ -1,6 +1,6 @@
 # ESARC: full site summary for LLMs
 
-> We don't build AI slop. We use AI to move fast. ESARC is two senior engineers in Vancouver, Canada, building production AI products for startups and small teams across North America. Agent-built, partner-reviewed.
+> We don't build AI slop. We use AI to move fast. ESARC is a senior AI engineering team in Vancouver, Canada, building production AI products for startups and small teams across North America. Agent-built, partner-reviewed.
 
 Site: https://esarc.dev
 Contact: vaibhav@esarc.dev
@@ -11,10 +11,10 @@ Last updated: 2026-10-19
 ## Who we are
 URL: https://esarc.dev/about
 
-ESARC is two partners:
+ESARC is led by its partners:
 
-- Vaibhav Malhotra, founder and principal engineer. He has built production systems at Meta and Amazon and for startups including Stuf Storage, Springhouse, MyMethod and Scrubs Co-Pilot: voice agents, RAG over clinical notes, agent memory, backends and eval loops. LinkedIn: https://www.linkedin.com/in/mvaibhav/
-- Bhimesh Chauhan, partner. He co-founded Scrubs Co-Pilot and has built AI products, RAG systems and data infrastructure for startups and scale-ups. He leads the build of Wrangle, a consumer travel app the two partners are building from zero. LinkedIn: https://www.linkedin.com/in/bhimeshchauhan/
+- Vaibhav Malhotra, founder, partner and principal AI engineer. He has built production systems at Meta and Amazon and for startups including Stuf Storage, Springhouse, MyMethod and Scrubs Co-Pilot: voice agents, RAG over clinical notes, agent memory, backends and eval loops. LinkedIn: https://www.linkedin.com/in/mvaibhav/
+- Bhimesh Chauhan, partner and principal AI engineer. He co-founded Scrubs Co-Pilot and has built AI products, RAG systems and data infrastructure for startups and scale-ups. He leads the build of Wrangle, a consumer travel app ESARC is building from zero. LinkedIn: https://www.linkedin.com/in/bhimeshchauhan/
 
 How we work: agent-built, partner-reviewed. AI agents draft, test and check the work in parallel. A senior partner sets direction, reads every diff and owns the call. Nothing merges until a partner has reviewed it. The result is a production system you can run, not a vibe-coded prototype.
 
@@ -55,7 +55,7 @@ How an engagement runs:
 Common questions:
 - What does it cost? Discovery week is $2,500. A 4-week pilot is $18K-$24K and a 6-week MVP is $32K-$45K, fixed price. Retainers are $5K, $11K or $19K per month.
 - Where are you based? Vancouver, Canada. We work on Pacific time, remotely with clients across North America.
-- Who is on the team? The two partners, Vaibhav Malhotra and Bhimesh Chauhan, with AI agents doing the drafting. A partner reviews every change.
+- Who is on the team? Senior engineers led by partners Vaibhav Malhotra and Bhimesh Chauhan, with AI agents doing the drafting. A partner reviews every change.
 - Where does the code live? In your repositories. Agents never hold production credentials.
 - How do you keep AI-written code safe? Agents draft and test; a senior partner reads every diff before it merges, and evals run before release.
 - What if it doesn't work out? Discovery is one week. Sprints have a week-two checkpoint. Retainers are month to month with 6 weeks' notice.
@@ -79,7 +79,7 @@ Some of this was ESARC client work and some was the partners' earlier employment
 
 - Stuf Storage, Sidney voice agent (https://esarc.dev/work/stuf-sidney-ai). A voice agent that handles inbound sales calls, qualifies leads and books tours for self-storage operators, plus an internal tool that mines archived sales calls. Results: 150+ qualified leads at the industry's biggest trade show, 90% better conversion of leads into customers, +25% demo success and 60% fewer fallback prompts.
 - Scrubs Co-Pilot (https://esarc.dev/work/scrubs-co-pilot). Records a clinical visit, transcribes it and produces a structured note a clinician reviews and signs. Results: 60% less time spent finishing documentation and 85% better documentation accuracy.
-- Wrangle (https://esarc.dev/work/wrangle). A consumer mobile app that turns camera-roll photos into short travel guides. Built from zero by the two ESARC partners: Expo and React Native app, NestJS API and a Python AI photo pipeline.
+- Wrangle (https://esarc.dev/work/wrangle). A consumer mobile app that turns camera-roll photos into short travel guides. Built from zero by ESARC: Expo and React Native app, NestJS API and a Python AI photo pipeline.
 - MyMethod (https://esarc.dev/work/mymethod). Multi-tenant voice agents on Vapi with an eval harness that gates releases and a transcript pipeline into Supabase.
 - Springhouse (https://esarc.dev/work/springhouse). A multi-agent meal-planning backend on Pydantic AI, FastAPI and Postgres, with deterministic nutrition math and a typed recipe corpus.
 - Meta Superintelligence Labs (https://esarc.dev/work/meta-superintelligence). Tool calling, MCP integration and agent evaluation for conversational AI. Details under NDA.

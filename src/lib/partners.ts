@@ -16,7 +16,7 @@ export const partners = [
     /** Matches the Person @id in the site-wide JSON-LD (/about#vaibhav). */
     id: 'vaibhav',
     name: 'Vaibhav Malhotra',
-    role: 'Founder & Partner, Principal Engineer',
+    role: 'Founder & Partner, Principal AI Engineer',
     location: 'Vancouver, BC',
     image: '/vaibhav.jpg',
     initials: 'VM',
@@ -26,7 +26,7 @@ export const partners = [
     ],
     shortBio:
       'Principal engineer with production AI work across Meta, Amazon, McGraw Hill, Scrubs Co-Pilot, Stuf Storage, Springhouse, and MyMethod.',
-    bio: 'Vaibhav founded ESARC so a small senior team could ship production AI fast: AI agents write the code, and a partner reviews every change. He has shipped pricing services, voice agents, RAG over EHR data, multi-agent eval loops, and production AI systems inside startups and frontier AI teams.',
+    bio: 'Vaibhav founded ESARC so senior engineers could ship production AI fast: AI agents write the code, and a partner reviews every change. He has shipped pricing services, voice agents, RAG over EHR data, multi-agent eval loops, and production AI systems inside startups and frontier AI teams.',
     companies: [
       'Meta',
       'Amazon',
@@ -40,7 +40,7 @@ export const partners = [
   {
     id: 'bhimesh',
     name: 'Bhimesh Chauhan',
-    role: 'Partner, AI Engineering',
+    role: 'Partner, Principal AI Engineer',
     location: 'Vancouver, BC',
     image: '/bhimesh.jpg',
     initials: 'BC',

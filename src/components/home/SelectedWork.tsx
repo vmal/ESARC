@@ -26,7 +26,7 @@ const featured = [
     kind: 'Consumer mobile app',
     title: 'A travel app that turns camera-roll photos into guides',
     outcome:
-      'Built from zero by the two ESARC partners: mobile app, API and AI photo pipeline.',
+      'Built from zero by ESARC: mobile app, API and AI photo pipeline.',
   },
 ]
 

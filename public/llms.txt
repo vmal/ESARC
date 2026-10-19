@@ -1,10 +1,10 @@
 # ESARC
 
-> We don't build AI slop. We use AI to move fast. ESARC is two senior engineers in Vancouver, Canada, building production AI products for startups and small teams across North America. Agent-built, partner-reviewed: AI agents write the code in parallel, and a partner reviews every change before it ships.
+> We don't build AI slop. We use AI to move fast. ESARC is a senior AI engineering team in Vancouver, Canada, building production AI products for startups and small teams across North America. Agent-built, partner-reviewed: AI agents write the code in parallel, and a partner reviews every change before it ships.
 
 Last updated: 2026-10-19
 
-ESARC is Vaibhav Malhotra (founder, principal engineer) and Bhimesh Chauhan (partner). We build AI agents and voice agents, search and answers over your data (RAG), and make existing AI reliable with evals, monitoring and cost control. We work remotely on Pacific time and reply within one business day.
+ESARC is Vaibhav Malhotra (founder and partner, principal AI engineer) and Bhimesh Chauhan (partner, principal AI engineer). We build AI agents and voice agents, search and answers over your data (RAG), and make existing AI reliable with evals, monitoring and cost control. We work remotely on Pacific time and reply within one business day.
 
 ## How to work with us
 
@@ -20,7 +20,7 @@ ESARC is Vaibhav Malhotra (founder, principal engineer) and Bhimesh Chauhan (par
 
 - [Stuf Storage: Sidney voice agent](https://esarc.dev/work/stuf-sidney-ai): Voice agent for self-storage sales calls. 150+ qualified leads at the industry's biggest trade show, 90% better lead-to-customer conversion, +25% demo success, 60% fewer fallback prompts.
 - [Scrubs Co-Pilot](https://esarc.dev/work/scrubs-co-pilot): Structured clinical notes from recorded visits. 60% less time finishing documentation and 85% better documentation accuracy.
-- [Wrangle](https://esarc.dev/work/wrangle): Consumer travel app built from zero by the two ESARC partners: mobile app, API and AI photo pipeline. Bhimesh Chauhan leads the build.
+- [Wrangle](https://esarc.dev/work/wrangle): Consumer travel app built from zero by ESARC: mobile app, API and AI photo pipeline. Bhimesh Chauhan leads the build.
 - [MyMethod](https://esarc.dev/work/mymethod): Multi-tenant voice agents on Vapi, with eval-gated releases and call transcripts in Supabase.
 - [Springhouse](https://esarc.dev/work/springhouse): Multi-agent meal-planning backend on Pydantic AI, FastAPI and Postgres.
 - [Meta Superintelligence Labs](https://esarc.dev/work/meta-superintelligence): Tool calling, MCP integration and agent evaluation for conversational AI. Details under NDA.
@@ -38,7 +38,7 @@ ESARC is Vaibhav Malhotra (founder, principal engineer) and Bhimesh Chauhan (par
 
 ## About
 
-- [About ESARC](https://esarc.dev/about): The two partners, how we work, and the rules we don't bend on.
+- [About ESARC](https://esarc.dev/about): The partners, how we work, and the rules we don't bend on.
 - [Canada](https://esarc.dev/canada): Based in Vancouver, working with clients across North America. Some R&D-shaped work may qualify for Canada's SR&ED tax credit; we'll tell you early if yours might. We don't promise a number.
 
 ## Contact

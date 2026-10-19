@@ -10,7 +10,7 @@ const bios: Record<string, string> = {
   'Vaibhav Malhotra':
     'Vaibhav has built production systems at Meta and Amazon and for startups including Stuf Storage, Springhouse and MyMethod, from voice agents to RAG over clinical notes. He founded ESARC and reviews what ships on every project.',
   'Bhimesh Chauhan':
-    'Bhimesh co-founded Scrubs Co-Pilot and has spent his career building AI products, RAG systems and data infrastructure for startups and scale-ups. He leads the build of Wrangle, a consumer travel app the two partners are building from zero.',
+    'Bhimesh co-founded Scrubs Co-Pilot and has spent his career building AI products, RAG systems and data infrastructure for startups and scale-ups. He leads the build of Wrangle, a consumer travel app ESARC is building from zero.',
 }
 
 export function Partners() {
