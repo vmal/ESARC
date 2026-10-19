@@ -12,23 +12,23 @@ const SITE_URL = 'https://esarc.dev'
 
 export const dynamic = 'force-dynamic'
 
+const description =
+  'Estimate the yearly value of one AI workflow: hours reclaimed, rework avoided, risk and confidence. The estimate uses your numbers, not our prices.'
+
 export const metadata: Metadata = {
-  title: 'AI ROI Calculator',
-  description:
-    'Estimate annual hours reclaimed, opportunity cost, rework savings, risk, confidence, and engagement shape for production AI workflows.',
+  title: 'AI ROI calculator',
+  description,
   alternates: { canonical: '/roi' },
   openGraph: {
     type: 'website',
     url: '/roi',
-    title: 'AI ROI Calculator — ESARC',
-    description:
-      'A pricing-free ROI calculator for voice agents, RAG, support triage, evals, document workflows, internal ops agents, and legacy AI modernization.',
+    title: 'AI ROI calculator | ESARC',
+    description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI ROI Calculator — ESARC',
-    description:
-      'Estimate the operating value of one production AI workflow without exposing ESARC pricing.',
+    title: 'AI ROI calculator | ESARC',
+    description,
   },
 }
 
@@ -42,8 +42,8 @@ const faq = [
     a: 'Yes. The calculator keeps the workflow and assumptions in the URL query string, so a copied link restores the same scenario without a login or stored account state.',
   },
   {
-    q: 'Why does the calculator avoid ESARC pricing?',
-    a: 'The model is meant to estimate operational value, not price an engagement. ESARC scopes work after reviewing the workflow, systems, data access, risk, and rollout path.',
+    q: 'Does the estimate include what ESARC charges?',
+    a: 'No. The estimate uses your numbers, not our prices. Our prices are on the services page: a $2,500 discovery week, fixed-price sprints and monthly retainers.',
   },
   {
     q: 'When should we talk to ESARC?',
@@ -176,13 +176,8 @@ const webApplicationJsonLd = {
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
   url: `${SITE_URL}/roi`,
-  description:
-    'Pricing-free calculator for estimating annual hours reclaimed, opportunity cost, rework savings, complexity, confidence, and engagement shape for production AI workflows.',
-  provider: {
-    '@type': 'Organization',
-    name: 'ESARC',
-    url: SITE_URL,
-  },
+  description,
+  provider: { '@id': `${SITE_URL}/#org` },
 }
 
 const faqJsonLd = {
@@ -228,9 +223,9 @@ export default function RoiPage() {
         title="Put one AI workflow into business-case math."
       >
         <p>
-          Estimate annual hours reclaimed, avoided rework, opportunity cost,
-          implementation complexity, confidence, and the engagement shape that
-          fits the work. No ESARC rates or public pricing.
+          Estimate the hours reclaimed, rework avoided, complexity and
+          confidence for one AI workflow, and the first step that fits. The
+          estimate uses your numbers, not our prices.
         </p>
       </PageIntro>
 

@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'Privacy policy for ESARC services, including QuickBooks Online API access.',
+  alternates: { canonical: '/privacy' },
+  openGraph: {
+    type: 'website',
+    siteName: 'ESARC',
+    url: '/privacy',
+    title: 'Privacy Policy',
+    description:
+      'Privacy policy for ESARC services, including QuickBooks Online API access.',
+  },
 }
 
 export default function PrivacyPolicy() {

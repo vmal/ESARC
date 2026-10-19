@@ -4,6 +4,7 @@ import Script from 'next/script'
 
 import { JsonLd } from '@/components/JsonLd'
 import { RootLayout } from '@/components/RootLayout'
+import { isProductionDeploy, siteConfig } from '@/config/site'
 
 import '@/styles/tailwind.css'
 
@@ -22,139 +23,149 @@ const monaSans = localFont({
 
 const SITE_URL = 'https://esarc.dev'
 
+const title = 'ESARC | Applied-AI engineering in Vancouver, Canada'
+const description =
+  "We don't build AI slop. We use AI to move fast. ESARC is two senior engineers in Vancouver shipping production AI products for teams across North America. Agent-built, partner-reviewed."
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    template: '%s — ESARC',
-    default:
-      'ESARC — AI engineering consultancy. Senior engineers + in-house agents.',
+    template: '%s | ESARC',
+    default: title,
   },
-  description:
-    'ESARC is an AI engineering consultancy. Senior AI engineering partners paired with an in-house fleet of AI agents. Ship production AI in weeks, not quarters.',
+  description,
   openGraph: {
     type: 'website',
     siteName: 'ESARC',
-    title: 'ESARC — AI engineering consultancy',
-    description:
-      'Principal engineers + in-house AI agents. Production AI in weeks, not quarters.',
+    title,
+    description,
     url: SITE_URL,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ESARC — AI engineering consultancy',
-    description:
-      'Principal engineers + in-house AI agents. Production AI in weeks, not quarters.',
+    title,
+    description,
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  // Staging and previews stay out of search results.
+  robots: isProductionDeploy
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 }
 
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'ESARC',
-  url: SITE_URL,
-  logo: `${SITE_URL}/favicon.ico`,
-  description:
-    'AI engineering consultancy. Senior AI engineering partners paired with an in-house fleet of AI agents.',
-  founder: {
-    '@type': 'Person',
-    name: 'Vaibhav Malhotra',
-    sameAs: [
-      'https://www.linkedin.com/in/mvaibhav/',
-      'https://github.com/vmal',
-    ],
-  },
-  employee: {
-    '@type': 'Person',
-    name: 'Bhimesh Chauhan',
-    jobTitle: 'Partner, AI Engineering',
-    sameAs: [
-      'https://www.linkedin.com/in/bhimeshchauhan/',
-      'https://bhimeshchauhan.github.io/',
-    ],
-  },
-  sameAs: [
-    'https://www.linkedin.com/in/mvaibhav/',
-    'https://github.com/vmal',
-    'https://www.linkedin.com/in/bhimeshchauhan/',
-    'https://bhimeshchauhan.github.io/',
-  ],
+const ORG_ID = `${SITE_URL}/#org`
+const VAIBHAV_ID = `${SITE_URL}/about#vaibhav`
+const BHIMESH_ID = `${SITE_URL}/about#bhimesh`
+
+function offer(
+  name: string,
+  anchor: string,
+  price: { min: number; max?: number; monthly?: boolean },
+) {
+  return {
+    '@type': 'Offer',
+    name,
+    url: `${SITE_URL}/services#${anchor}`,
+    priceSpecification: {
+      '@type': price.monthly ? 'UnitPriceSpecification' : 'PriceSpecification',
+      priceCurrency: 'USD',
+      ...(price.max
+        ? { minPrice: price.min, maxPrice: price.max }
+        : { price: price.min }),
+      ...(price.monthly ? { unitText: 'MONTH' } : {}),
+    },
+  }
 }
 
-const websiteJsonLd = {
+/**
+ * One graph for the whole site. Prices mirror src/config/pricing.ts; the
+ * Person @ids are shared with the About page.
+ */
+const siteJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'ESARC',
-  url: SITE_URL,
-  publisher: { '@type': 'Organization', name: 'ESARC' },
-}
-
-const professionalServiceJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'ESARC',
-  url: SITE_URL,
-  image: `${SITE_URL}/opengraph-image`,
-  logo: `${SITE_URL}/favicon.ico`,
-  description:
-    'Principal-led AI engineering consultancy for production AI systems, including voice agents, RAG and internal search, eval harnesses, agentic backends, and AI modernization.',
-  founder: {
-    '@type': 'Person',
-    name: 'Vaibhav Malhotra',
-    url: `${SITE_URL}/about`,
-  },
-  employee: {
-    '@type': 'Person',
-    name: 'Bhimesh Chauhan',
-    jobTitle: 'Partner, AI Engineering',
-    url: `${SITE_URL}/about`,
-    sameAs: [
-      'https://www.linkedin.com/in/bhimeshchauhan/',
-      'https://bhimeshchauhan.github.io/',
-    ],
-  },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Vancouver',
-    addressRegion: 'BC',
-    addressCountry: 'CA',
-  },
-  areaServed: [
-    { '@type': 'Country', name: 'United States' },
-    { '@type': 'Country', name: 'Canada' },
-  ],
-  serviceType: [
-    'AI engineering consulting',
-    'Production AI implementation',
-    'Voice agent engineering',
-    'RAG and internal search',
-    'AI evaluation harnesses',
-  ],
-  knowsAbout: [
-    'Large language models',
-    'Retrieval-augmented generation',
-    'Voice AI agents',
-    'Agent evaluation',
-    'Production AI systems',
-  ],
-  makesOffer: [
+  '@graph': [
     {
-      '@type': 'Offer',
-      name: 'AI Diagnostic Sprint',
-      url: `${SITE_URL}/services#diagnostic-sprint`,
+      '@type': 'ProfessionalService',
+      '@id': ORG_ID,
+      name: 'ESARC',
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
+      image: `${SITE_URL}/opengraph-image`,
+      email: siteConfig.contactEmail,
+      slogan: "We don't build AI slop. We use AI to move fast.",
+      description:
+        'Two senior engineers in Vancouver building production AI products: AI and voice agents, search and answers over your data (RAG), and evals, monitoring and cost control for existing AI. Agent-built, partner-reviewed.',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Vancouver',
+        addressRegion: 'BC',
+        addressCountry: 'CA',
+      },
+      areaServed: [
+        { '@type': 'Country', name: 'United States' },
+        { '@type': 'Country', name: 'Canada' },
+      ],
+      founder: { '@id': VAIBHAV_ID },
+      employee: [{ '@id': VAIBHAV_ID }, { '@id': BHIMESH_ID }],
+      knowsAbout: [
+        'AI agents',
+        'Voice AI agents',
+        'Retrieval-augmented generation',
+        'LLM evaluation',
+        'Production AI systems',
+      ],
+      makesOffer: [
+        {
+          '@type': 'Offer',
+          name: 'Free 30-minute call',
+          url: siteConfig.bookingUrl,
+          price: 0,
+          priceCurrency: 'USD',
+        },
+        offer('Discovery week', 'discovery', { min: 2500 }),
+        offer('4-week pilot sprint', 'pilot-sprint', {
+          min: 18000,
+          max: 24000,
+        }),
+        offer('6-week MVP sprint', 'mvp-sprint', { min: 32000, max: 45000 }),
+        offer('Monthly retainer', 'build-partner', {
+          min: 5000,
+          max: 19000,
+          monthly: true,
+        }),
+      ],
     },
     {
-      '@type': 'Offer',
-      name: 'Build Sprint',
-      url: `${SITE_URL}/services#build-sprint`,
+      '@type': 'Person',
+      '@id': VAIBHAV_ID,
+      name: 'Vaibhav Malhotra',
+      jobTitle: 'Founder and principal engineer',
+      url: `${SITE_URL}/about`,
+      image: `${SITE_URL}/vaibhav.jpg`,
+      worksFor: { '@id': ORG_ID },
+      sameAs: [
+        'https://www.linkedin.com/in/vbvmalhotra/',
+        'https://github.com/vmal',
+      ],
     },
     {
-      '@type': 'Offer',
-      name: 'Embedded AI Team',
-      url: `${SITE_URL}/services#embedded-team`,
+      '@type': 'Person',
+      '@id': BHIMESH_ID,
+      name: 'Bhimesh Chauhan',
+      jobTitle: 'Partner',
+      url: `${SITE_URL}/about`,
+      image: `${SITE_URL}/bhimesh.jpg`,
+      worksFor: { '@id': ORG_ID },
+      sameAs: [
+        'https://www.linkedin.com/in/bhimeshchauhan/',
+        'https://bhimeshchauhan.github.io/',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: 'ESARC',
+      url: SITE_URL,
+      publisher: { '@id': ORG_ID },
     },
   ],
 }
@@ -166,9 +177,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       className={`${monaSans.variable} h-full bg-neutral-950 text-base antialiased`}
     >
       <head>
-        <JsonLd data={organizationJsonLd} />
-        <JsonLd data={websiteJsonLd} />
-        <JsonLd data={professionalServiceJsonLd} />
+        <JsonLd data={siteJsonLd} />
       </head>
       <body className="flex min-h-full flex-col">
         <RootLayout>{children}</RootLayout>

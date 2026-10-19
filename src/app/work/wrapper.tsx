@@ -56,6 +56,7 @@ export default async function CaseStudyLayout({
     datePublished,
     author: {
       '@type': 'Person',
+      '@id': 'https://esarc.dev/about#vaibhav',
       name: 'Vaibhav Malhotra',
       url: 'https://esarc.dev/about',
     },
@@ -150,19 +151,12 @@ export default async function CaseStudyLayout({
                 Want this kind of work for your team?
               </h2>
               <p className="mt-4 max-w-2xl text-base text-neutral-600">
-                See the{' '}
+                See{' '}
                 <Link
                   href="/services"
                   className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
                 >
-                  engagement shapes
-                </Link>{' '}
-                ESARC offers, or{' '}
-                <Link
-                  href="/contact"
-                  className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
-                >
-                  start a conversation
+                  how we work and what it costs
                 </Link>
                 .
               </p>

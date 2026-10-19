@@ -7,7 +7,7 @@ export const article = {
     'A practical AI ROI model for production systems: count time reclaimed, error reduction, risk, adoption, and the engineering work needed to keep the system reliable.',
   author: {
     name: 'Vaibhav Malhotra',
-    role: 'Principal, ESARC',
+    role: 'Founder and principal engineer, ESARC',
     image: { src: imageVaibhav },
   },
 }
@@ -22,13 +22,18 @@ export const metadata = {
     title: article.title,
     description: article.description,
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
 }
 
 ## Short answer
 
 AI ROI is not "model cost versus subscription cost." For production systems, the useful math starts with the workflow: hours reclaimed, defects avoided, faster cycle time, and risk reduced. Then subtract the implementation complexity needed to make the system safe enough to run without a principal engineer watching every response.
 
-Use the [AI ROI calculator](/roi) to model the business case, then compare the result against the [ESARC engagement shapes](/services).
+Use the [AI ROI calculator](/roi) to model the business case, then compare the result against [ESARC's services and pricing](/services).
 
 ## What should go into the ROI model?
 
@@ -58,4 +63,4 @@ ESARC scopes production AI around those operational outcomes. The model can be i
 
 ## When should you talk to ESARC?
 
-Talk to ESARC when the ROI depends on shipping the system into a real environment: customer calls, clinical data, internal tools, compliance-sensitive operations, or codebases where a demo is not enough. Start with the [calculator](/roi), then use the result to decide whether a diagnostic sprint, build sprint, or embedded team fits.
+Talk to ESARC when the ROI depends on shipping the system into a real environment: customer calls, clinical data, internal tools, compliance-sensitive operations, or codebases where a demo is not enough. Start with the [calculator](/roi), then use the result to decide whether a discovery week, a pilot or MVP sprint, or a monthly retainer fits.

@@ -13,6 +13,8 @@ export const partnerCompanies = [
 
 export const partners = [
   {
+    /** Matches the Person @id in the site-wide JSON-LD (/about#vaibhav). */
+    id: 'vaibhav',
     name: 'Vaibhav Malhotra',
     role: 'Founder & Partner, Principal Engineer',
     location: 'Vancouver, BC',
@@ -24,7 +26,7 @@ export const partners = [
     ],
     shortBio:
       'Principal engineer with production AI work across Meta, Amazon, McGraw Hill, Scrubs Co-Pilot, Stuf Storage, Springhouse, and MyMethod.',
-    bio: 'Vaibhav founded ESARC to pair senior engineers with an in-house agent fleet. He has shipped pricing services, voice agents, RAG over EHR data, multi-agent eval loops, and production AI systems inside startups and frontier AI teams.',
+    bio: 'Vaibhav founded ESARC so a small senior team could ship production AI fast: AI agents write the code, and a partner reviews every change. He has shipped pricing services, voice agents, RAG over EHR data, multi-agent eval loops, and production AI systems inside startups and frontier AI teams.',
     companies: [
       'Meta',
       'Amazon',
@@ -36,9 +38,10 @@ export const partners = [
     ],
   },
   {
+    id: 'bhimesh',
     name: 'Bhimesh Chauhan',
     role: 'Partner, AI Engineering',
-    location: 'AI systems and engineering leadership',
+    location: 'Vancouver, BC',
     image: '/bhimesh.jpg',
     initials: 'BC',
     links: [
@@ -50,7 +53,7 @@ export const partners = [
     ],
     shortBio:
       'Engineering leader for AI-powered products, clinical documentation, RAG systems, biomedical data infrastructure, IoT platforms, and enterprise ML integrations.',
-    bio: 'Bhimesh brings 10+ years across startups and scale-ups, with recent work leading AI data infrastructure at BenchSci and co-founding Scrubs Co-Pilot. He is the architect of Wrangle, a consumer travel app built at ESARC. His background spans RAG, LLM systems, real-time clinical documentation, IoT operations, personalization, and AutoML integrations.',
+    bio: 'Bhimesh brings 10+ years across startups and scale-ups, with recent work leading AI data infrastructure at BenchSci and co-founding Scrubs Co-Pilot. He designed Wrangle, a consumer travel app built at ESARC, and owns most of its codebase. His background spans RAG, LLM systems, real-time clinical documentation, IoT operations, personalization, and AutoML integrations.',
     companies: partnerCompanies,
   },
 ] as const

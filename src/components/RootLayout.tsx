@@ -19,6 +19,15 @@ import { Footer } from '@/components/Footer'
 import { GridPattern } from '@/components/GridPattern'
 import { Logo } from '@/components/Logo'
 import { SocialMedia } from '@/components/SocialMedia'
+import { siteConfig } from '@/config/site'
+
+/** Desktop shows these inline; the mobile menu shows the same items. */
+const navItems = [
+  { title: 'Work', href: '/work' },
+  { title: 'Services', href: '/services' },
+  { title: 'About', href: '/about' },
+  { title: 'Insights', href: '/insights' },
+]
 
 const RootLayoutContext = createContext<{
   logoHovered: boolean
@@ -68,15 +77,30 @@ function Header({
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
-          <Logo
-            className="h-8 w-auto"
-            invert={invert}
-            filled={logoHovered}
-          />
+          <Logo className="h-8 w-auto" invert={invert} filled={logoHovered} />
         </Link>
-        <div className="flex items-center gap-x-8">
-          <Button href="/contact" invert={invert}>
-            Contact us
+        <div className="flex items-center gap-x-5 sm:gap-x-8">
+          <nav aria-label="Main" className="hidden lg:block">
+            <ul role="list" className="flex items-center gap-x-8">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={clsx(
+                      'text-sm font-semibold transition',
+                      invert
+                        ? 'text-white hover:text-neutral-300'
+                        : 'text-neutral-950 hover:text-neutral-600',
+                    )}
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <Button href={siteConfig.bookingUrl} invert={invert}>
+            Book a free call
           </Button>
           <button
             ref={toggleRef}
@@ -85,7 +109,7 @@ function Header({
             aria-expanded={expanded ? 'true' : 'false'}
             aria-controls={panelId}
             className={clsx(
-              'group -m-2.5 rounded-full p-2.5 transition',
+              'group -m-2.5 rounded-full p-2.5 transition lg:hidden',
               invert ? 'hover:bg-white/10' : 'hover:bg-neutral-950/10',
             )}
             aria-label="Toggle navigation"
@@ -136,24 +160,15 @@ function NavigationItem({
 function Navigation() {
   return (
     <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
-      <NavigationRow>
-        <NavigationItem href="/work">Work</NavigationItem>
-        <NavigationItem href="/services">Services</NavigationItem>
-      </NavigationRow>
-      <NavigationRow>
-        <NavigationItem href="/about">About</NavigationItem>
-        <NavigationItem href="/process">Process</NavigationItem>
-      </NavigationRow>
-      <NavigationRow>
-        <NavigationItem href="/insights">Insights</NavigationItem>
-        <NavigationItem href="/canada">Canada</NavigationItem>
-      </NavigationRow>
-      <NavigationRow>
-        <NavigationItem href="/contact">Contact</NavigationItem>
-        <NavigationItem href="https://calendly.com/vbvmalhotra/vaibhav-interview">
-          Book a call
-        </NavigationItem>
-      </NavigationRow>
+      {[navItems.slice(0, 2), navItems.slice(2, 4)].map((row) => (
+        <NavigationRow key={row[0].href}>
+          {row.map((item) => (
+            <NavigationItem key={item.href} href={item.href}>
+              {item.title}
+            </NavigationItem>
+          ))}
+        </NavigationRow>
+      ))}
     </nav>
   )
 }
@@ -183,14 +198,36 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
+  useEffect(() => {
+    if (!expanded) return
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setExpanded(false)
+        window.setTimeout(() => openRef.current?.focus({ preventScroll: true }))
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [expanded])
+
   return (
     <MotionConfig transition={shouldReduceMotion ? { duration: 0 } : undefined}>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-neutral-950"
+      >
+        Skip to content
+      </a>
       <header>
         <div
           className="absolute left-0 right-0 top-2 z-40 pt-14"
           aria-hidden={expanded ? 'true' : undefined}
-          // @ts-ignore (https://github.com/facebook/react/issues/17157)
-          inert={expanded ? '' : undefined}
+          inert={expanded}
         >
           <Header
             panelId={panelId}
@@ -212,8 +249,8 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
           style={{ height: expanded ? 'auto' : '0.5rem' }}
           className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
           aria-hidden={expanded ? undefined : 'true'}
-          // @ts-ignore (https://github.com/facebook/react/issues/17157)
-          inert={expanded ? undefined : ''}
+          // React 19 treats inert as a boolean; '' would leave it focusable.
+          inert={!expanded}
         >
           <motion.div layout className="bg-neutral-800">
             <div ref={navRef} className="bg-neutral-950 pb-16 pt-14">
@@ -240,18 +277,18 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
                       Talk to us
                     </h2>
                     <p className="mt-6 text-base text-neutral-300">
-                      Tell us what you&rsquo;re shipping, or grab a 30-minute
-                      intro on the calendar.
+                      A partner reads every message. We reply within one
+                      business day.
                     </p>
                     <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-                      <Button href="/contact" invert>
-                        Contact us
+                      <Button href={siteConfig.bookingUrl} invert>
+                        Book a free call
                       </Button>
                       <Link
-                        href="https://calendly.com/vbvmalhotra/vaibhav-interview"
+                        href="/contact"
                         className="text-sm font-semibold text-white underline-offset-4 hover:underline"
                       >
-                        Book a 30-min intro &rarr;
+                        Or send us a note
                       </Link>
                     </div>
                   </div>
@@ -283,7 +320,13 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
             interactive
           />
 
-          <main className="w-full flex-auto">{children}</main>
+          <main
+            id="main"
+            tabIndex={-1}
+            className="w-full flex-auto focus:outline-none"
+          >
+            {children}
+          </main>
 
           <Footer />
         </motion.div>

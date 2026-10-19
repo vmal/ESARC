@@ -7,6 +7,6 @@ export const contentType = ogContentType
 export default function OgImage() {
   return renderOgImage({
     eyebrow: 'Contact',
-    title: "Let's talk about what you're shipping.",
+    title: 'Tell us what you want to build.',
   })
 }

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Disconnect QuickBooks',
   description:
     'Instructions for disconnecting ESARC QuickBooks Online API access.',
+  robots: { index: false, follow: false },
 }
 
 export default function QuickBooksDisconnect() {

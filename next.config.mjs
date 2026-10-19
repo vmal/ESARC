@@ -17,8 +17,31 @@ const nextConfig = {
   // Case-study pages request logos at quality 90; Next 15 rejects any
   // quality not listed here with a 400.
   images: { qualities: [75, 90] },
+  async headers() {
+    let headers = [
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+      {
+        key: 'Permissions-Policy',
+        value: 'camera=(), microphone=(), geolocation=()',
+      },
+    ]
+    // SITE_ENV is set at build time by the deploy job. Anything that isn't
+    // the production build (staging, previews, local) stays out of search.
+    if (process.env.SITE_ENV !== 'production') {
+      headers.push({ key: 'X-Robots-Tag', value: 'noindex, nofollow' })
+    }
+    return [{ source: '/:path*', headers }]
+  },
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.esarc.dev' }],
+        destination: 'https://esarc.dev/:path*',
+        statusCode: 301,
+      },
       // Case study slugs from the case study pipeline point at the URLs the
       // site already uses (see SLUGS in scripts/import-case-studies.mjs).
       ...[
@@ -26,11 +49,31 @@ const nextConfig = {
         ['meal-planning-agent-memory', 'springhouse'],
         ['voice-agents-service-businesses', 'mymethod'],
         ['edtech-graphql-backend-ai-search', 'mcgraw-hill'],
-        ['ai-character-platform-moderation', 'spicychat-moderation'],
       ].map(([from, to]) => ({
         source: `/work/${from}`,
         destination: `/work/${to}`,
         permanent: false,
+      })),
+      // There's no public Spicychat case study.
+      {
+        source: '/work/ai-character-platform-moderation',
+        destination: '/work',
+        permanent: true,
+      },
+      {
+        source: '/process',
+        destination: '/services#how-it-works',
+        permanent: true,
+      },
+      // Template posts that were removed.
+      ...[
+        'a-short-guide-to-component-naming',
+        '3-lessons-we-learned-going-back-to-the-office',
+        'future-of-web-development',
+      ].map((slug) => ({
+        source: `/insights/${slug}`,
+        destination: '/insights',
+        permanent: true,
       })),
       {
         source: '/blog',

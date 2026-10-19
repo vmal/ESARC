@@ -8,6 +8,12 @@ import { FadeIn } from '@/components/FadeIn'
 import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 import { SocialMedia } from '@/components/SocialMedia'
+import { findPackage, formatPackagePrice } from '@/config/pricing'
+import { isProductionDeploy, siteConfig } from '@/config/site'
+
+const discoveryPrice = formatPackagePrice(findPackage('discovery')!.price, {
+  production: isProductionDeploy,
+}).label
 
 function TextInput({
   label,
@@ -22,7 +28,7 @@ function TextInput({
         id={id}
         {...props}
         placeholder=" "
-        className="peer block w-full border border-neutral-300 bg-transparent px-6 pb-4 pt-12 text-base/6 text-neutral-950 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5 group-first:rounded-t-2xl group-last:rounded-b-2xl"
+        className="peer block w-full border border-neutral-300 bg-transparent px-6 pb-4 pt-12 text-base/6 text-neutral-950 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-accent/40 group-first:rounded-t-2xl group-last:rounded-b-2xl"
       />
       <label
         htmlFor={id}
@@ -50,7 +56,7 @@ function SelectInput({
         id={id}
         {...props}
         defaultValue=""
-        className="peer block w-full appearance-none border border-neutral-300 bg-transparent px-6 pb-4 pt-9 text-base/6 text-neutral-950 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5 group-first:rounded-t-2xl group-last:rounded-b-2xl"
+        className="peer block w-full appearance-none border border-neutral-300 bg-transparent px-6 pb-4 pt-9 text-base/6 text-neutral-950 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-accent/40 group-first:rounded-t-2xl group-last:rounded-b-2xl"
       >
         <option value="" disabled hidden></option>
         {options.map((opt) => (
@@ -89,7 +95,7 @@ function TextArea({
         rows={4}
         {...props}
         placeholder=" "
-        className="peer block w-full resize-y border border-neutral-300 bg-transparent px-6 pb-4 pt-12 text-base/6 text-neutral-950 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5 group-first:rounded-t-2xl group-last:rounded-b-2xl"
+        className="peer block w-full resize-y border border-neutral-300 bg-transparent px-6 pb-4 pt-12 text-base/6 text-neutral-950 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-accent/40 group-first:rounded-t-2xl group-last:rounded-b-2xl"
       />
       <label
         htmlFor={id}
@@ -106,11 +112,11 @@ function ContactForm() {
     <FadeIn className="lg:order-last">
       <form action="/api/contact" method="POST">
         <h2 className="font-display text-base font-semibold text-neutral-950">
-          Tell us about what you&rsquo;re shipping
+          Send us a note
         </h2>
         <p className="mt-2 text-sm text-neutral-600">
-          No budget question, no qualifying gate. Tell us the surface, the
-          shape, and the constraints. We reply within one business day.
+          Tell us what you want to build and anything we should know. We reply
+          within one business day.
         </p>
         <div className="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
           <TextInput label="Name" name="name" autoComplete="name" required />
@@ -122,44 +128,20 @@ function ContactForm() {
             required
           />
           <TextInput
-            label="Company"
+            label="Company (optional)"
             name="company"
             autoComplete="organization"
           />
-          <TextInput
-            label="Role / title"
-            name="role"
-            autoComplete="organization-title"
-          />
+          <TextArea label="What do you want to build?" name="message" required />
           <SelectInput
-            label="Engagement shape"
-            name="projectType"
-            options={[
-              { value: 'diagnostic-sprint', label: 'AI Diagnostic Sprint (2 weeks)' },
-              { value: 'build-sprint', label: 'Build Sprint (6 weeks)' },
-              { value: 'embedded-team', label: 'Embedded AI Team (3-6 mo)' },
-              { value: 'unsure', label: 'Not sure yet, let’s talk' },
-            ]}
-          />
-          <SelectInput
-            label="Timeline"
+            label="When would you like to start? (optional)"
             name="timeline"
             options={[
-              { value: '2-weeks', label: '2 weeks' },
-              { value: '6-weeks', label: '6 weeks' },
-              { value: '3-6-months', label: '3-6 months' },
-              { value: 'unsure', label: 'Not sure yet' },
-            ]}
-          />
-          <TextArea
-            label="What surface are you trying to ship?"
-            name="message"
-            required
-          />
-          <TextArea
-            label="Stack constraints (cloud, models, frameworks, compliance)"
-            name="stackConstraints"
-            rows={3}
+              'ASAP',
+              'In the next month',
+              'In 1-3 months',
+              'Just exploring',
+            ].map((value) => ({ value, label: value }))}
           />
         </div>
         <Button type="submit" className="mt-10">
@@ -174,18 +156,42 @@ function ContactDetails() {
   return (
     <FadeIn>
       <h2 className="font-display text-base font-semibold text-neutral-950">
-        Book a 30-min intro
+        Prefer to talk?
       </h2>
       <p className="mt-6 text-base text-neutral-600">
-        Fastest path. We&rsquo;ll talk through the problem, the stack, and what
-        a senior + agent fleet could ship for you in the first 30 days.
+        Book a free 30-minute call. We&rsquo;ll talk through what you want to
+        build and tell you straight whether we&rsquo;re the right team for it.
       </p>
-      <Button
-        href="https://calendly.com/vbvmalhotra/vaibhav-interview"
-        className="mt-8"
-      >
-        Book on Calendly
+      <Button href={siteConfig.bookingUrl} className="mt-8">
+        {siteConfig.bookingLabel}
       </Button>
+
+      <Border className="mt-16 pt-16">
+        <h2 className="font-display text-base font-semibold text-neutral-950">
+          Where we are
+        </h2>
+        <dl className="mt-6 space-y-4 text-base text-neutral-600">
+          <div>
+            <dt className="font-semibold text-neutral-950">Email</dt>
+            <dd>
+              <a
+                href={`mailto:${siteConfig.contactEmail}`}
+                className="underline-offset-4 hover:underline"
+              >
+                {siteConfig.contactEmail}
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-neutral-950">Based in</dt>
+            <dd>Vancouver, Canada (Pacific time)</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-neutral-950">Work with</dt>
+            <dd>Clients remotely across North America</dd>
+          </div>
+        </dl>
+      </Border>
 
       <Border className="mt-16 pt-16">
         <h2 className="font-display text-base font-semibold text-neutral-950">
@@ -193,16 +199,17 @@ function ContactDetails() {
         </h2>
         <ol className="mt-6 space-y-4 text-base text-neutral-600">
           <li>
-            <span className="font-semibold text-neutral-950">1. Intro call.</span>{' '}
-            Thirty minutes. We figure out if this is something we should take on.
+            <span className="font-semibold text-neutral-950">1. We reply.</span>{' '}
+            A partner reads every message and replies within one business day.
           </li>
           <li>
-            <span className="font-semibold text-neutral-950">2. Scoping.</span>{' '}
-            A short written proposal: outcome, approach, team shape, timeline.
+            <span className="font-semibold text-neutral-950">2. A short call.</span>{' '}
+            Thirty minutes, free, to understand what you want to build.
           </li>
           <li>
-            <span className="font-semibold text-neutral-950">3. Kickoff.</span>{' '}
-            Principal in your repo and Slack inside a week.
+            <span className="font-semibold text-neutral-950">3. A next step.</span>{' '}
+            If it&rsquo;s a fit, we suggest a next step, usually a one-week
+            discovery ({discoveryPrice}, credited to your sprint).
           </li>
         </ol>
       </Border>
@@ -217,23 +224,23 @@ function ContactDetails() {
   )
 }
 
+const description =
+  'Tell us what you want to build, or book a free 30-minute call. Two senior engineers in Vancouver. We reply within one business day.'
+
 export const metadata: Metadata = {
   title: 'Contact',
-  description:
-    'Tell us about the engagement, or book a 30-minute intro call. ESARC pairs a principal engineer with a fleet of in-house AI agents.',
+  description,
   alternates: { canonical: '/contact' },
   openGraph: {
     type: 'website',
     url: '/contact',
     title: 'Contact ESARC',
-    description:
-      'Send a note or book a 30-minute intro. Same-day reply on weekdays.',
+    description,
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Contact ESARC',
-    description:
-      'Send a note or book a 30-minute intro. Same-day reply on weekdays.',
+    description,
   },
 }
 
@@ -242,17 +249,20 @@ const contactJsonLd = {
   '@type': 'ContactPage',
   name: 'Contact ESARC',
   url: 'https://esarc.dev/contact',
-  description:
-    'Send a note or book a 30-minute intro with ESARC. Same-day reply on weekdays.',
+  description,
   mainEntity: {
     '@type': 'Organization',
+    '@id': 'https://esarc.dev/#org',
     name: 'ESARC',
     url: 'https://esarc.dev',
+    email: siteConfig.contactEmail,
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
+      email: siteConfig.contactEmail,
       availableLanguage: ['English'],
-      url: 'https://calendly.com/vbvmalhotra/vaibhav-interview',
+      areaServed: ['US', 'CA'],
+      url: siteConfig.bookingUrl,
     },
   },
 }
@@ -269,34 +279,50 @@ const breadcrumbJsonLd = {
 export default async function Contact({
   searchParams,
 }: {
-  searchParams: Promise<{ sent?: string }>
+  searchParams: Promise<{ sent?: string; error?: string }>
 }) {
-  let sent = (await searchParams).sent === '1'
+  let params = await searchParams
+  let sent = params.sent === '1'
+  let error =
+    params.error === 'invalid'
+      ? 'Please fill in your name, a valid email address and what you want to build.'
+      : params.error
+        ? `Something went wrong and your message wasn’t sent. Please try again, or email ${siteConfig.contactEmail}.`
+        : null
 
   return (
     <>
       <JsonLd data={contactJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
-      <PageIntro eyebrow="Contact" title="Let&rsquo;s talk about what you&rsquo;re shipping.">
+      <PageIntro eyebrow="Contact" title="Tell us what you want to build.">
         <p>
-          Send a note or book a 30-minute intro. Either works. We reply same
-          day on weekdays.
+          Send a note or book a free 30-minute call. Either works. We reply
+          within one business day.
         </p>
       </PageIntro>
 
       <Container className="mt-24 sm:mt-32 lg:mt-40">
-        {sent && (
-          <FadeIn>
+        <div role="status" aria-live="polite">
+          {sent && (
             <div className="mb-12 rounded-2xl border border-accent/30 bg-accent/5 p-6">
               <p className="font-display text-base font-semibold text-neutral-950">
                 Got it. We&rsquo;ll reply within one business day.
               </p>
               <p className="mt-1 text-sm text-neutral-600">
-                If you need to move faster, book a 30-minute intro on the right.
+                If you need to move faster, book a free 30-minute call.
               </p>
             </div>
-          </FadeIn>
-        )}
+          )}
+        </div>
+        <div role="alert">
+          {error && (
+            <div className="mb-12 rounded-2xl border border-red-700/40 bg-red-50 p-6">
+              <p className="font-display text-base font-semibold text-red-800">
+                {error}
+              </p>
+            </div>
+          )}
+        </div>
         <div className="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
           <ContactForm />
           <ContactDetails />

@@ -7,7 +7,7 @@ export const article = {
     'RAG ROI is strongest when high-value teams repeatedly search trusted internal knowledge and need cited answers faster than a human can assemble them.',
   author: {
     name: 'Vaibhav Malhotra',
-    role: 'Principal, ESARC',
+    role: 'Founder and principal engineer, ESARC',
     image: { src: imageVaibhav },
   },
 }
@@ -22,13 +22,18 @@ export const metadata = {
     title: article.title,
     description: article.description,
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
 }
 
 ## Short answer
 
 RAG pays back when the knowledge is valuable, fragmented, and used often. It does not pay back because embeddings are fashionable. It pays back when expensive people stop searching five systems, stop asking the same expert, and stop making decisions from stale documents.
 
-Model your own numbers in the [AI ROI calculator](/roi), then compare the workflow against ESARC's [build sprint and embedded team options](/services).
+Model your own numbers in the [AI ROI calculator](/roi), then compare the workflow against ESARC's [sprint and retainer options](/services).
 
 ## What work should RAG replace?
 
@@ -59,4 +64,4 @@ Once those are stable, add task-level evals: time to answer, rework avoided, and
 
 ## When is RAG the wrong answer?
 
-RAG is weak when the source material is low quality, contradictory, rarely used, or politically impossible to clean up. In that case, a diagnostic sprint should start with knowledge architecture and governance before anyone builds a chat surface.
+RAG is weak when the source material is low quality, contradictory, rarely used, or politically impossible to clean up. In that case, a discovery week should start with knowledge structure and governance before anyone builds a chat surface.

@@ -24,10 +24,13 @@ export default {
       colors: {
         // Redesign palette (docs/redesign/inspiration.md). neutral-950 is
         // remapped to graphite ink so existing dark surfaces pick it up.
-        neutral: { 950: '#1A1D29' },
+        // neutral-500 is darkened from #737373 so small grey text passes AA
+        // (4.5:1) on paper.
+        neutral: { 500: '#525252', 950: '#1A1D29' },
         paper: '#F2F3EF',
         blueprint: '#DCE0FF',
-        redline: '#E5484D',
+        // Darker than Radix red9 so small red text passes AA on paper.
+        redline: '#C2292E',
         accent: {
           DEFAULT: '#2C39FF',
           50: '#EEF0FF',
@@ -53,15 +56,6 @@ export default {
           ['var(--font-mona-sans)', ...defaultTheme.fontFamily.sans],
           { fontVariationSettings: '"wdth" 75' },
         ],
-      },
-      keyframes: {
-        widen: {
-          from: { fontVariationSettings: '"wdth" 75' },
-          to: { fontVariationSettings: '"wdth" 125' },
-        },
-      },
-      animation: {
-        widen: 'widen 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both',
       },
     },
   },
