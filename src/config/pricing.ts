@@ -1,14 +1,9 @@
 /**
  * Every engagement price shown on the site comes from this file.
  *
- * DRAFT VALUES: the figures below are proposals from pricing research and
- * have not been approved by the owner. Each price has `draft: true`.
- * - Preview and local builds show the figure with a "Draft price" badge.
- * - Production shows the package's `fallbackLabel` instead, so an unapproved
- *   figure can't go live by accident.
- * TODO(owner): approve or change each figure, then set `draft: false`.
- *
- * TODO(owner): package names, durations and "includes" lists are drafts too.
+ * Figures approved by the owner on 2026-10-14: discovery $2,500, pilot
+ * $18-24K, MVP $32-45K, retainers $5K / $11K / $19K a month. A price with
+ * `draft: true` shows its `fallbackLabel` in production instead.
  *
  * Never put an hourly rate here. Packages are priced per project or per month.
  */
@@ -60,12 +55,11 @@ export const engagementGroups: Array<EngagementGroup> = [
         name: 'Paid discovery',
         duration: '1 week',
         price: {
-          amount: 3500,
+          amount: 2500,
           currency: 'USD',
           unit: 'project',
-          prefix: 'From',
           fallbackLabel: 'Fixed fee, credited toward a sprint',
-          draft: true,
+          draft: false,
           note: 'Credited toward a sprint',
         },
         bestFor: 'You have an idea and need to know what it takes.',
@@ -80,12 +74,13 @@ export const engagementGroups: Array<EngagementGroup> = [
         name: 'Pilot sprint',
         duration: '4 weeks',
         price: {
-          amount: 22000,
+          amount: 18000,
           currency: 'USD',
           unit: 'project',
           prefix: 'From',
           fallbackLabel: 'Fixed price, quoted after discovery',
-          draft: true,
+          draft: false,
+          note: '$18K to $24K, depending on scope',
         },
         bestFor: 'One AI feature or workflow, proven with real users.',
         includes: [
@@ -104,7 +99,8 @@ export const engagementGroups: Array<EngagementGroup> = [
           unit: 'project',
           prefix: 'From',
           fallbackLabel: 'Fixed price, quoted after discovery',
-          draft: true,
+          draft: false,
+          note: '$32K to $45K, depending on scope',
         },
         bestFor: 'A whole first version: web and/or mobile, live.',
         includes: [
@@ -132,7 +128,7 @@ export const engagementGroups: Array<EngagementGroup> = [
           unit: 'month',
           prefix: 'From',
           fallbackLabel: 'Monthly, quoted per roadmap',
-          draft: true,
+          draft: false,
         },
         bestFor:
           'Your team builds; you want an architect steering the AI work.',
@@ -152,7 +148,7 @@ export const engagementGroups: Array<EngagementGroup> = [
           unit: 'month',
           prefix: 'From',
           fallbackLabel: 'Monthly, quoted per roadmap',
-          draft: true,
+          draft: false,
         },
         bestFor: 'A live product that needs features shipped every week.',
         includes: [
@@ -171,11 +167,11 @@ export const engagementGroups: Array<EngagementGroup> = [
           unit: 'month',
           prefix: 'From',
           fallbackLabel: 'Monthly, quoted per roadmap',
-          draft: true,
+          draft: false,
         },
         bestFor: 'You need a founding engineer now, not in four months.',
         includes: [
-          'Principal engineer on your product full-time',
+          'A senior partner on your product full-time',
           'Agent crew running in parallel',
           'Hiring help when you build your own team',
         ],

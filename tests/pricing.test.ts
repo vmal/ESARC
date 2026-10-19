@@ -11,17 +11,17 @@ import {
 
 const allPackages = engagementGroups.flatMap((group) => group.packages)
 
-test('preview builds show draft prices as "from" figures with a draft flag', () => {
-  const pilot = findPackage('pilot-sprint')!
-  assert.deepEqual(formatPackagePrice(pilot.price, { production: false }), {
-    label: 'From $22K',
+test('preview builds flag draft prices', () => {
+  const pilot = { ...findPackage('pilot-sprint')!.price, draft: true }
+  assert.deepEqual(formatPackagePrice(pilot, { production: false }), {
+    label: 'From $18K',
     isDraft: true,
-    note: undefined,
+    note: '$18K to $24K, depending on scope',
   })
   assert.equal(
     formatPackagePrice(findPackage('discovery')!.price, { production: false })
       .label,
-    'From $3,500',
+    '$2,500',
   )
   assert.equal(
     formatPackagePrice(findPackage('build-partner')!.price, {
@@ -33,8 +33,9 @@ test('preview builds show draft prices as "from" figures with a draft flag', () 
 
 test('production never shows an unapproved figure', () => {
   for (const pkg of allPackages) {
-    const shown = formatPackagePrice(pkg.price, { production: true })
-    if (pkg.price.draft || pkg.price.amount == null) {
+    const price = { ...pkg.price, draft: true }
+    const shown = formatPackagePrice(price, { production: true })
+    {
       assert.equal(shown.label, pkg.price.fallbackLabel, pkg.id)
       assert.equal(shown.isDraft, false)
       assert.doesNotMatch(shown.label, /\$\d/, pkg.id)
@@ -43,26 +44,26 @@ test('production never shows an unapproved figure', () => {
 })
 
 test('approved prices render in production', () => {
-  const price = { ...findPackage('pilot-sprint')!.price, draft: false }
+  const price = findPackage('pilot-sprint')!.price
   assert.equal(
     formatPackagePrice(price, { production: true }).label,
-    'From $22K',
+    'From $18K',
   )
 })
 
-test('the draft figures from the owner brief are in the config', () => {
+test('the prices the owner approved on 2026-10-14 are in the config', () => {
   const amounts = Object.fromEntries(
     allPackages.map((pkg) => [pkg.id, pkg.price.amount]),
   )
   assert.deepEqual(amounts, {
-    discovery: 3500,
-    'pilot-sprint': 22000,
+    discovery: 2500,
+    'pilot-sprint': 18000,
     'mvp-sprint': 32000,
     'fractional-ai-lead': 5000,
     'build-partner': 11000,
     'full-time-build-partner': 19000,
   })
-  assert.ok(allPackages.every((pkg) => pkg.price.draft))
+  assert.ok(allPackages.every((pkg) => !pkg.price.draft))
   assert.ok(findPackage(hireComparison.esarc.cost.packageId))
 })
 
