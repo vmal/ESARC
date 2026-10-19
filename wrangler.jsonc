@@ -14,7 +14,7 @@
   "vars": { "SITE_ENV": "development" },
 
   // Secrets (set with `wrangler secret put <NAME> --env <env>`, never here):
-  // RESEND_API_KEY, QUICKBOOKS_CLIENT_ID, QUICKBOOKS_CLIENT_SECRET,
+  // BREVO_API_KEY, QUICKBOOKS_CLIENT_ID, QUICKBOOKS_CLIENT_SECRET,
   // QUICKBOOKS_OAUTH_STATE_SECRET, QUICKBOOKS_SETUP_TOKEN, plus any other
   // QUICKBOOKS_* settings read in src/lib (see .env.example if present)
   "env": {
