@@ -1,7 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 const TO_EMAIL = 'vaibhav@esarc.dev'
-const FROM_EMAIL = 'ESARC <onboarding@resend.dev>'
+// esarc.dev is an authenticated sender domain in Brevo (shared with ClearProp's account).
+const FROM = { name: 'ESARC website', email: 'contact@esarc.dev' }
+const BREVO_SEND_URL = 'https://api.brevo.com/v3/smtp/email'
 
 type Payload = {
   name: string
@@ -132,36 +134,39 @@ export async function POST(req: NextRequest) {
     return errorResponse(req, 400, 'Invalid email address.', 'invalid')
   }
 
-  const key = process.env.RESEND_API_KEY
+  const key = process.env.BREVO_API_KEY
   if (!key) {
     // Never log the submission itself: it holds the visitor's personal data.
     // Fail loudly so a missing secret can't silently drop leads.
-    console.error('[contact] RESEND_API_KEY missing, message not sent')
+    console.error('[contact] BREVO_API_KEY missing, message not sent')
     return errorResponse(req, 503, 'Send failed.', 'failed')
   }
 
   try {
-    const res = await fetch('https://api.resend.com/emails', {
+    const res = await fetch(BREVO_SEND_URL, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        authorization: `Bearer ${key}`,
+        accept: 'application/json',
+        'api-key': key,
       },
       body: JSON.stringify({
-        from: FROM_EMAIL,
-        to: TO_EMAIL,
-        reply_to: payload.email,
+        sender: FROM,
+        to: [{ email: TO_EMAIL }],
+        replyTo: { email: payload.email, name: payload.name },
         subject: `ESARC contact: ${payload.name}${payload.company ? ` (${payload.company})` : ''}`,
-        html: buildHtml(payload),
+        htmlContent: buildHtml(payload),
       }),
     })
     if (!res.ok) {
+      // Brevo's error body names the problem (e.g. an unverified sender)
+      // and never echoes the submission.
       const body = await res.text()
-      console.error('[contact] resend send failed', res.status, body)
+      console.error('[contact] brevo send failed', res.status, body)
       return errorResponse(req, 502, 'Send failed.', 'failed')
     }
   } catch (err) {
-    console.error('[contact] resend error', err)
+    console.error('[contact] brevo error', err)
     return errorResponse(req, 502, 'Send failed.', 'failed')
   }
 

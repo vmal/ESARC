@@ -39,7 +39,7 @@ are prerendered.
 4. Set runtime secrets per environment:
 
    ```sh
-   npx wrangler secret put RESEND_API_KEY --env production
+   npx wrangler secret put BREVO_API_KEY --env production
    npx wrangler secret put QUICKBOOKS_CLIENT_ID --env production
    # ...and the other QUICKBOOKS_* values the QuickBooks routes need
    ```
