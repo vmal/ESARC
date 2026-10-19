@@ -31,13 +31,16 @@ export function renderOgImage({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div
-            style={{
-              width: 24,
-              height: 24,
-              background: '#FFFFFF',
-            }}
-          />
+          <svg width="44" height="44" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="17" fill="#FFFFFF" />
+            <path
+              d="M82.04 31.5A37 37 0 1 1 62.65 15.23"
+              stroke="#FFFFFF"
+              strokeWidth="9"
+              fill="none"
+            />
+            <circle cx="73.78" cy="21.66" r="9" fill="#1A1D29" />
+          </svg>
           <div
             style={{
               fontSize: 28,
