@@ -1,4 +1,5 @@
 export const partnerCompanies = [
+  'Wrangle',
   'BenchSci',
   'Scrubs Co-Pilot',
   'KitchenMate / MicroMart',
@@ -38,6 +39,7 @@ export const partners = [
     name: 'Bhimesh Chauhan',
     role: 'Partner, AI Engineering',
     location: 'AI systems and engineering leadership',
+    image: '/bhimesh.jpg',
     initials: 'BC',
     links: [
       {
@@ -48,7 +50,7 @@ export const partners = [
     ],
     shortBio:
       'Engineering leader for AI-powered products, clinical documentation, RAG systems, biomedical data infrastructure, IoT platforms, and enterprise ML integrations.',
-    bio: 'Bhimesh brings 10+ years across startups and scale-ups, with recent work leading AI data infrastructure at BenchSci and co-founding Scrubs Co-Pilot. His background spans RAG, LLM systems, real-time clinical documentation, IoT operations, personalization, and AutoML integrations.',
+    bio: 'Bhimesh brings 10+ years across startups and scale-ups, with recent work leading AI data infrastructure at BenchSci and co-founding Scrubs Co-Pilot. He is the architect of Wrangle, a consumer travel app built at ESARC. His background spans RAG, LLM systems, real-time clinical documentation, IoT operations, personalization, and AutoML integrations.',
     companies: partnerCompanies,
   },
 ] as const

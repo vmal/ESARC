@@ -9,6 +9,7 @@ import logoScrubs from '@/../public/logos/scrubs-co-pilot-mark.png'
 import logoSpicychat from '@/../public/logos/spicychat.png'
 import logoSpringhouse from '@/../public/logos/springhouse.png'
 import logoStuf from '@/../public/logos/stuf.svg'
+import logoWrangle from '@/../public/logos/wrangle.png'
 import logoAnthropic from '@/../public/logos/vendors/anthropic.svg'
 import logoAws from '@/../public/logos/vendors/aws.svg'
 import logoNvidia from '@/../public/logos/vendors/nvidia.svg'
@@ -21,6 +22,8 @@ type Logo = {
   logo: StaticImageData
   /** Square or stacked marks need more height to read at the same weight. */
   stacked?: boolean
+  /** Shown beside marks that don't include the company name. */
+  wordmark?: string
 }
 
 /**
@@ -37,6 +40,7 @@ const shippedFor: Array<Logo> = [
   { name: 'Spicychat', logo: logoSpicychat },
   { name: 'Stuf Storage', logo: logoStuf },
   { name: 'Scrubs Co-Pilot', logo: logoScrubs, stacked: true },
+  { name: 'Wrangle', logo: logoWrangle, wordmark: 'Wrangle' },
 ]
 
 /**
@@ -60,15 +64,20 @@ export function ShippedFor() {
           Vaibhav has shipped production systems for
         </h2>
         <ul className="mt-6 flex flex-wrap items-center gap-x-9 gap-y-5 sm:gap-x-11">
-          {shippedFor.map(({ name, logo, stacked }) => (
-            <li key={name} className="flex h-12 items-center">
+          {shippedFor.map(({ name, logo, stacked, wordmark }) => (
+            <li key={name} className="flex h-12 items-center gap-2">
               <Image
                 src={logo}
-                alt={name}
+                alt={wordmark ? '' : name}
                 title={name}
                 unoptimized
-                className={`w-auto max-w-[10rem] object-contain opacity-85 brightness-0 ${stacked ? 'h-11 sm:h-12' : 'h-6 sm:h-7'}`}
+                className={`w-auto max-w-[10rem] object-contain opacity-85 brightness-0 ${stacked ? 'h-11 sm:h-12' : wordmark ? 'h-5 sm:h-6' : 'h-6 sm:h-7'}`}
               />
+              {wordmark && (
+                <span className="font-display text-xl font-semibold tracking-tight text-neutral-950/85 sm:text-2xl">
+                  {wordmark}
+                </span>
+              )}
             </li>
           ))}
         </ul>

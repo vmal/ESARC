@@ -54,22 +54,13 @@ function Partners() {
           <FadeIn key={partner.name}>
             <article className="border-t border-neutral-950/10 pt-8">
               <div className="flex items-start gap-6">
-                {'image' in partner ? (
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    width={120}
-                    height={120}
-                    className="h-24 w-24 rounded-full object-cover ring-1 ring-neutral-950/10"
-                  />
-                ) : (
-                  <div
-                    aria-hidden="true"
-                    className="flex h-24 w-24 flex-none items-center justify-center rounded-full bg-neutral-950 font-display text-2xl font-semibold text-white"
-                  >
-                    {partner.initials}
-                  </div>
-                )}
+                <Image
+                  src={partner.image}
+                  alt={partner.name}
+                  width={120}
+                  height={120}
+                  className="h-24 w-24 flex-none rounded-full object-cover ring-1 ring-neutral-950/10"
+                />
                 <div>
                   <p className="font-mono text-xs uppercase tracking-wider text-accent">
                     {partner.role}
@@ -250,7 +241,7 @@ const partnersJsonLd = partners.map((partner) => ({
   name: partner.name,
   jobTitle: partner.role,
   url: 'https://esarc.dev/about',
-  image: 'image' in partner ? 'https://esarc.dev/vaibhav.jpg' : undefined,
+  image: `https://esarc.dev${partner.image}`,
   worksFor: {
     '@type': 'Organization',
     name: 'ESARC',

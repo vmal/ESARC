@@ -14,6 +14,9 @@ import { unifiedConditional } from 'unified-conditional'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  // Case-study pages request logos at quality 90; Next 15 rejects any
+  // quality not listed here with a 400.
+  images: { qualities: [75, 90] },
   async redirects() {
     return [
       // Case study slugs from the case study pipeline point at the URLs the

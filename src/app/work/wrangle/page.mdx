@@ -1,0 +1,58 @@
+import logo from '@/images/clients/wrangle/logo.png'
+
+export const caseStudy = {
+  client: 'Wrangle',
+  title: 'Wrangle: a consumer mobile app that turns travel photos into guides',
+  description:
+    'A 0-to-1 consumer app built by two ESARC partners. Expo and React Native on the phone, a NestJS API, and a Python AI worker that picks the best photos and drafts ranked micro-guides.',
+  summary: [
+    'Wrangle turns the photos already sitting in your camera roll into short, ranked travel guides you can share. No typing, no tagging. Bhimesh Chauhan is the architect; Vaibhav Malhotra builds alongside him.',
+    'It is a 0-to-1 build: mobile app, API, AI pipeline and release tooling, designed and shipped by two partners driving AI agents instead of a ten-person team.',
+  ],
+  logo,
+  image: { src: logo },
+  date: '2026-02',
+  service: 'Expo / React Native, NestJS + Fastify, Python AI worker, Supabase',
+  sector: 'Consumer travel app',
+  length: 'February 2026 to present',
+  metric: 'Consumer mobile app from zero, with an AI photo-curation pipeline',
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+  alternates: { canonical: '/work/wrangle' },
+  openGraph: {
+    type: 'article',
+    url: '/work/wrangle',
+    title: caseStudy.title,
+    description: caseStudy.description,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: caseStudy.title,
+    description: caseStudy.description,
+  },
+}
+
+## The problem
+
+Everyone comes home from a trip with hundreds of photos and nothing to show for them. The good shots are buried between screenshots and duplicates, and writing up "where we ate, what we saw" is a chore nobody finishes. Wrangle's bet is that the camera roll already contains the guide. The app's job is to find it.
+
+That is a hard product to build well. It needs a fast, native-feeling mobile app, a backend that can handle large photo uploads, and an AI pipeline that makes good choices about which photos matter and how to group them, without the user doing any tagging.
+
+## What we shipped
+
+A cross-platform mobile app built with Expo and React Native, with development and release builds produced through EAS.
+
+An API in NestJS on Fastify, with shared Zod contracts so the app and the API agree on every request and response shape.
+
+A Python worker for the image and AI jobs. Its newest feature, AI Auto Discover, looks through a trip's photos, picks the strongest ones, plans the guides, and drafts each one with a tagline and per-photo captions for the user to review.
+
+Supabase for auth, storage and Postgres, so the team spends its time on the product instead of on infrastructure.
+
+## How we built it
+
+Bhimesh designed the architecture and owns most of the codebase: a pnpm and Turborepo monorepo with the mobile app, the API, the worker and the shared contracts side by side. One repository and one set of types means a change to an API shape shows up as a type error in the app before it ships.
+
+The build runs on the same model ESARC sells. AI agents draft the code, tests and migrations in parallel, and a partner reviews every change before it merges. That is how two people cover a mobile app, a backend and an AI pipeline at once.
