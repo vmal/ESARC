@@ -5,7 +5,7 @@
 export const siteConfig = {
   url: 'https://esarc.dev',
   contactEmail: 'vaibhav@esarc.dev',
-  bookingUrl: 'https://calendly.com/vbvmalhotra/vaibhav-interview',
+  bookingUrl: 'https://calendar.app.google/CBkrn5jbmDoRDjoz6',
   bookingLabel: 'Book a free 30-minute call',
   principal: {
     name: 'Vaibhav Malhotra',
