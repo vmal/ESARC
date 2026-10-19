@@ -40,7 +40,7 @@ function CaseStudies({
                       src={caseStudy.logo}
                       alt={caseStudy.client}
                       sizes="64px"
-                      className="h-16 w-16 flex-none object-contain"
+                      className="h-10 w-auto max-w-[10rem] flex-none object-contain object-left brightness-0"
                     />
                     <h3 className="mt-6 text-sm font-semibold text-neutral-950 sm:mt-0 lg:mt-8">
                       {caseStudy.client}

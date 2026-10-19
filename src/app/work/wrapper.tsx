@@ -1,9 +1,9 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import { GrayscaleTransitionImage } from '@/components/GrayscaleTransitionImage'
 import { JsonLd } from '@/components/JsonLd'
 import { MDXComponents } from '@/components/MDXComponents'
 import { PageIntro } from '@/components/PageIntro'
@@ -125,12 +125,12 @@ export default async function CaseStudyLayout({
             </div>
 
             <div className="border-y border-neutral-200 bg-neutral-100">
-              <div className="-my-px mx-auto max-w-[76rem] bg-neutral-200">
-                <GrayscaleTransitionImage
-                  {...caseStudy.image}
-                  quality={90}
-                  className="w-full"
-                  sizes="(min-width: 1216px) 76rem, 100vw"
+              <div className="mx-auto flex max-w-[76rem] items-center justify-center px-6 py-12 sm:py-16">
+                <Image
+                  src={caseStudy.logo}
+                  alt={caseStudy.client}
+                  sizes="20rem"
+                  className="h-12 w-auto max-w-[16rem] object-contain brightness-0 sm:h-16"
                   priority
                 />
               </div>
