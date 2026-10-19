@@ -49,7 +49,7 @@ ESARC is Vaibhav Malhotra (founder, principal engineer) and Bhimesh Chauhan (par
 
 - [Full text for LLMs](https://esarc.dev/llms-full.txt)
 - [Sitemap](https://esarc.dev/sitemap.xml)
-- [Vaibhav Malhotra on LinkedIn](https://www.linkedin.com/in/vbvmalhotra/)
+- [Vaibhav Malhotra on LinkedIn](https://www.linkedin.com/in/mvaibhav/)
 - [Vaibhav Malhotra on GitHub](https://github.com/vmal)
 - [Bhimesh Chauhan on LinkedIn](https://www.linkedin.com/in/bhimeshchauhan/)
 - [Bhimesh Chauhan portfolio](https://bhimeshchauhan.github.io/)

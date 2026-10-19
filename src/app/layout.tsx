@@ -143,7 +143,7 @@ const siteJsonLd = {
       image: `${SITE_URL}/vaibhav.jpg`,
       worksFor: { '@id': ORG_ID },
       sameAs: [
-        'https://www.linkedin.com/in/vbvmalhotra/',
+        'https://www.linkedin.com/in/mvaibhav/',
         'https://github.com/vmal',
       ],
     },

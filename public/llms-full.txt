@@ -13,7 +13,7 @@ URL: https://esarc.dev/about
 
 ESARC is two partners:
 
-- Vaibhav Malhotra, founder and principal engineer. He has built production systems at Meta and Amazon and for startups including Stuf Storage, Springhouse, MyMethod and Scrubs Co-Pilot: voice agents, RAG over clinical notes, agent memory, backends and eval loops. LinkedIn: https://www.linkedin.com/in/vbvmalhotra/
+- Vaibhav Malhotra, founder and principal engineer. He has built production systems at Meta and Amazon and for startups including Stuf Storage, Springhouse, MyMethod and Scrubs Co-Pilot: voice agents, RAG over clinical notes, agent memory, backends and eval loops. LinkedIn: https://www.linkedin.com/in/mvaibhav/
 - Bhimesh Chauhan, partner. He co-founded Scrubs Co-Pilot and has built AI products, RAG systems and data infrastructure for startups and scale-ups. He leads the build of Wrangle, a consumer travel app the two partners are building from zero. LinkedIn: https://www.linkedin.com/in/bhimeshchauhan/
 
 How we work: agent-built, partner-reviewed. AI agents draft, test and check the work in parallel. A senior partner sets direction, reads every diff and owns the call. Nothing merges until a partner has reviewed it. The result is a production system you can run, not a vibe-coded prototype.

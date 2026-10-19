@@ -21,7 +21,7 @@ export const partners = [
     image: '/vaibhav.jpg',
     initials: 'VM',
     links: [
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vbvmalhotra/' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mvaibhav/' },
       { label: 'GitHub', href: 'https://github.com/vmal' },
     ],
     shortBio:
