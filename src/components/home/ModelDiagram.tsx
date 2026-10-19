@@ -21,7 +21,6 @@ const steps: Array<{
   lane: Lane
   title: string
   detail: string
-  redline?: boolean
 }> = [
   {
     lane: 'you',
@@ -40,9 +39,8 @@ const steps: Array<{
   },
   {
     lane: 'architect',
-    title: 'Review and redline',
+    title: 'Review',
     detail: 'Every diff gets read. Anything off is marked up and sent back.',
-    redline: true,
   },
   {
     lane: 'agents',
@@ -123,11 +121,6 @@ export function ModelDiagram() {
               <p className="mt-2 text-sm leading-6 text-neutral-600">
                 {step.detail}
               </p>
-              {step.redline && (
-                <p className="mt-3 inline-block -rotate-2 border-b-2 border-redline font-condensed text-sm font-semibold text-redline">
-                  Sent back: fix before merge
-                </p>
-              )}
             </li>
           ))}
         </ol>
