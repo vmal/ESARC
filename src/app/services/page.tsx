@@ -237,7 +237,7 @@ const faq: Array<{
   },
   {
     q: 'Who is on the team?',
-    a: 'Two senior engineers: Vaibhav Malhotra, founder and principal engineer, and Bhimesh Chauhan, partner. AI agents write code in parallel, and a partner reviews every change before it ships.',
+    a: 'ESARC is led by principal AI engineers Vaibhav Malhotra (founder and partner) and Bhimesh Chauhan (partner). Senior engineers run every project, AI agents write code in parallel, and a partner reviews every change before it ships.',
     link: { href: '/about', label: 'Meet the partners' },
   },
   {

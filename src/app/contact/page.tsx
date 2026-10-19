@@ -225,7 +225,7 @@ function ContactDetails() {
 }
 
 const description =
-  'Tell us what you want to build, or book a free 30-minute call. Two senior engineers in Vancouver. We reply within one business day.'
+  'Tell us what you want to build, or book a free 30-minute call. A senior AI engineering team in Vancouver. We reply within one business day.'
 
 export const metadata: Metadata = {
   title: 'Contact',

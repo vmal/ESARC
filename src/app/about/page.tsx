@@ -20,7 +20,7 @@ import logoStuf from '@/../public/logos/stuf.svg'
 import logoWrangle from '@/../public/logos/wrangle.png'
 
 const description =
-  'ESARC is two senior engineers in Vancouver, Vaibhav Malhotra and Bhimesh Chauhan. AI agents write the code in parallel; a partner reviews every change before it ships.'
+  'ESARC is a senior AI engineering team in Vancouver, led by Vaibhav Malhotra and Bhimesh Chauhan. AI agents write the code in parallel; a partner reviews every change before it ships.'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -29,12 +29,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'profile',
     url: '/about',
-    title: 'About ESARC | Two senior engineers in Vancouver',
+    title: 'About ESARC | Senior AI engineers in Vancouver',
     description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About ESARC | Two senior engineers in Vancouver',
+    title: 'About ESARC | Senior AI engineers in Vancouver',
     description,
   },
 }
@@ -131,7 +131,7 @@ const principles = [
   {
     num: '01',
     title: 'A partner on every project',
-    body: 'One of us is on your project from the first call to the handover. Nothing gets passed down to junior staff.',
+    body: 'A senior engineer is on your project from the first call to the handover. Nothing gets passed down to junior staff.',
   },
   {
     num: '02',
@@ -288,11 +288,11 @@ export default function About() {
       <JsonLd data={breadcrumbJsonLd} />
       <PageIntro
         eyebrow="About"
-        title="Two senior engineers. Agent-built, partner-reviewed."
+        title="Senior engineers. Agent-built, partner-reviewed."
       >
         <p>
-          ESARC is Vaibhav Malhotra and Bhimesh Chauhan, two senior engineers in
-          Vancouver. We build production AI products for startups and small
+          ESARC is a senior AI engineering team in Vancouver, led by partners
+          Vaibhav Malhotra and Bhimesh Chauhan. We build production AI products for startups and small
           teams across North America. AI agents write the code in parallel; a
           partner reviews every change before it ships.
         </p>

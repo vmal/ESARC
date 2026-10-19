@@ -7,7 +7,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 
 const description =
-  'ESARC is two senior AI engineers in Vancouver working with US and Canadian teams. USD invoicing, Pacific time, a standard MSA, and SR&ED where the work qualifies.'
+  'ESARC is a senior AI engineering team in Vancouver working with US and Canadian teams. USD invoicing, Pacific time, a standard MSA, and SR&ED where the work qualifies.'
 
 export const metadata: Metadata = {
   title: 'Canadian AI engineering for US teams',
@@ -30,7 +30,7 @@ const reasons = [
   {
     eyebrow: '01',
     title: 'CAD costs, USD invoice',
-    body: 'Our costs are in Canadian dollars and we invoice US clients in USD. It is part of how two senior engineers can offer fixed prices that make sense for a startup.',
+    body: 'Our costs are in Canadian dollars and we invoice US clients in USD. It is part of how we can offer fixed prices that make sense for a startup.',
   },
   {
     eyebrow: '02',
@@ -175,7 +175,7 @@ export default function CanadaPage() {
       <JsonLd data={breadcrumbJsonLd} />
       <PageIntro eyebrow="Canada" title="A Canadian AI team for US companies.">
         <p>
-          ESARC is two senior engineers in Vancouver. We work remotely with
+          ESARC is a senior AI engineering team in Vancouver. We work remotely with
           clients across North America, invoice in USD, and keep your working
           hours.
         </p>

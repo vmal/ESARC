@@ -13,7 +13,7 @@ export function HomeHero() {
 
       <div className="mt-8 max-w-2xl lg:mt-12">
         <p className="text-base text-neutral-700 sm:text-lg lg:text-xl">
-          ESARC is two senior engineers in Vancouver building production AI
+          ESARC is a senior AI engineering team in Vancouver building production AI
           products for startups and small teams across North America. AI agents
           write the code in parallel; a partner reviews every change before it
           ships. You get a system you can run, not a vibe-coded prototype.

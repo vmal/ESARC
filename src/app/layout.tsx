@@ -25,7 +25,7 @@ const SITE_URL = 'https://esarc.dev'
 
 const title = 'ESARC | Applied-AI engineering in Vancouver, Canada'
 const description =
-  "We don't build AI slop. We use AI to move fast. ESARC is two senior engineers in Vancouver shipping production AI products for teams across North America. Agent-built, partner-reviewed."
+  "We don't build AI slop. We use AI to move fast. ESARC is a senior AI engineering team in Vancouver shipping production AI products for teams across North America. Agent-built, partner-reviewed."
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -93,7 +93,7 @@ const siteJsonLd = {
       email: siteConfig.contactEmail,
       slogan: "We don't build AI slop. We use AI to move fast.",
       description:
-        'Two senior engineers in Vancouver building production AI products: AI and voice agents, search and answers over your data (RAG), and evals, monitoring and cost control for existing AI. Agent-built, partner-reviewed.',
+        'A senior AI engineering team in Vancouver building production AI products: AI and voice agents, search and answers over your data (RAG), and evals, monitoring and cost control for existing AI. Agent-built, partner-reviewed.',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Vancouver',
@@ -138,7 +138,7 @@ const siteJsonLd = {
       '@type': 'Person',
       '@id': VAIBHAV_ID,
       name: 'Vaibhav Malhotra',
-      jobTitle: 'Founder and principal engineer',
+      jobTitle: 'Founder and principal AI engineer',
       url: `${SITE_URL}/about`,
       image: `${SITE_URL}/vaibhav.jpg`,
       worksFor: { '@id': ORG_ID },
@@ -151,7 +151,7 @@ const siteJsonLd = {
       '@type': 'Person',
       '@id': BHIMESH_ID,
       name: 'Bhimesh Chauhan',
-      jobTitle: 'Partner',
+      jobTitle: 'Partner and principal AI engineer',
       url: `${SITE_URL}/about`,
       image: `${SITE_URL}/bhimesh.jpg`,
       worksFor: { '@id': ORG_ID },
