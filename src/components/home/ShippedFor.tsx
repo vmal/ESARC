@@ -24,19 +24,58 @@ type Logo = {
  * Companies the partners have shipped production systems for. Some of this
  * was employment rather than ESARC client work, hence the label. Several only
  * ship white or boxed logos, so every logo is drawn as a solid dark
- * silhouette (brightness-0) to keep the row consistent.
+ * silhouette (brightness-0) to keep the rows consistent. Household names get
+ * the large top row; the startups sit in a smaller row underneath.
  */
-const shippedFor: Array<Logo> = [
+const featured: Array<Logo> = [
   { name: 'Meta', logo: logoMeta },
   { name: 'Amazon', logo: logoAmazon },
   { name: 'McGraw Hill', logo: logoMcGrawHill, stacked: true },
+]
+
+const startups: Array<Logo> = [
+  { name: 'Stuf Storage', logo: logoStuf },
   { name: 'Springhouse', logo: logoSpringhouse },
   { name: 'MyMethod', logo: logoMyMethod, stacked: true },
-  { name: 'Spicychat', logo: logoSpicychat },
-  { name: 'Stuf Storage', logo: logoStuf },
   { name: 'Scrubs Co-Pilot', logo: logoScrubs, stacked: true },
   { name: 'Wrangle', logo: logoWrangle, wordmark: 'Wrangle' },
+  { name: 'Spicychat', logo: logoSpicychat },
 ]
+
+function LogoItem({
+  name,
+  logo,
+  stacked,
+  wordmark,
+  size,
+}: Logo & { size: 'large' | 'small' }) {
+  let height =
+    size === 'large'
+      ? stacked
+        ? 'h-12 sm:h-16'
+        : 'h-7 sm:h-10'
+      : stacked
+      ? 'h-10 sm:h-12'
+      : wordmark
+      ? 'h-4 sm:h-5'
+      : 'h-4 sm:h-6'
+  return (
+    <li className="flex items-center justify-center gap-2 px-2">
+      <Image
+        src={logo}
+        alt={wordmark ? '' : name}
+        title={name}
+        unoptimized
+        className={`opacity-85 w-auto max-w-full object-contain brightness-0 ${height}`}
+      />
+      {wordmark && (
+        <span className="text-neutral-950/85 font-display text-base font-semibold tracking-tight sm:text-xl">
+          {wordmark}
+        </span>
+      )}
+    </li>
+  )
+}
 
 export function ShippedFor() {
   return (
@@ -45,31 +84,17 @@ export function ShippedFor() {
         <h2 className="text-center font-condensed text-sm font-semibold text-neutral-600">
           Our partners have shipped production systems for
         </h2>
-        <ul className="mt-6 flex flex-wrap justify-center gap-y-4">
-          {shippedFor.map(({ name, logo, stacked, wordmark }) => (
-            <li
-              key={name}
-              className="flex h-16 basis-1/3 items-center justify-center gap-2 px-2 sm:basis-1/5"
-            >
-              <Image
-                src={logo}
-                alt={wordmark ? '' : name}
-                title={name}
-                unoptimized
-                className={`opacity-85 w-auto max-w-full object-contain brightness-0 ${
-                  stacked
-                    ? 'h-10 sm:h-12'
-                    : wordmark
-                    ? 'h-5 sm:h-6'
-                    : 'h-5 sm:h-7'
-                }`}
-              />
-              {wordmark && (
-                <span className="text-neutral-950/85 font-display text-lg font-semibold tracking-tight sm:text-2xl">
-                  {wordmark}
-                </span>
-              )}
-            </li>
+        <ul className="mt-8 grid grid-cols-3 items-center gap-x-6">
+          {featured.map((item) => (
+            <LogoItem key={item.name} {...item} size="large" />
+          ))}
+        </ul>
+        <p className="mt-10 text-center font-condensed text-sm font-semibold text-neutral-600">
+          and startups including
+        </p>
+        <ul className="mt-5 grid grid-cols-3 items-center gap-x-4 gap-y-5 sm:grid-cols-6">
+          {startups.map((item) => (
+            <LogoItem key={item.name} {...item} size="small" />
           ))}
         </ul>
       </div>
