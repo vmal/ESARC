@@ -268,23 +268,23 @@ export function calculateRoi(inputs: RoiInputs): RoiResult {
   const recommendedEngagement =
     complexityScore >= 6
       ? {
-          name: 'Embedded AI Team',
-          href: '/services#embedded-team',
+          name: 'Monthly retainer',
+          href: '/services#build-partner',
           reason:
-            'The surface area is broad enough that sequence, rollout, and ownership matter more than a single feature push.',
+            'The surface area is broad enough that steady weekly shipping, rollout and ownership matter more than a single feature push.',
         }
       : annualBusinessCase >= 250000
       ? {
-          name: 'Build Sprint',
-          href: '/services#build-sprint',
+          name: 'Pilot or MVP sprint',
+          href: '/services#pilot-sprint',
           reason:
-            'The business case is concrete enough to pick one production surface and ship it behind an eval gate.',
+            'The business case is concrete enough to pick one workflow and ship it at a fixed price, with evals in place.',
         }
       : {
-          name: 'AI Diagnostic Sprint',
-          href: '/services#diagnostic-sprint',
+          name: 'Discovery week ($2,500)',
+          href: '/services#discovery',
           reason:
-            'The next useful step is a focused technical readout that ranks the automation paths before build scope is locked.',
+            'The next useful step is a one-week discovery that turns the idea into a spec and a fixed quote before anything is built.',
         }
 
   return {

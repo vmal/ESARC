@@ -1,5 +1,4 @@
 import { type Metadata } from 'next'
-import Link from 'next/link'
 
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
@@ -7,82 +6,74 @@ import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 
+const description =
+  'ESARC is two senior AI engineers in Vancouver working with US and Canadian teams. USD invoicing, Pacific time, a standard MSA, and SR&ED where the work qualifies.'
+
 export const metadata: Metadata = {
-  title: 'Canada AI engineering for US buyers',
-  description:
-    'ESARC is a Canadian AI engineering team that bills US enterprises in USD. CAD cost base, SR&ED-backed R&D, and Vector Institute talent in your timezone.',
+  title: 'Canadian AI engineering for US teams',
+  description,
   alternates: { canonical: '/canada' },
   openGraph: {
     type: 'website',
     url: '/canada',
-    title: 'Canada AI engineering for US buyers — ESARC',
-    description:
-      'CAD cost base, SR&ED-backed R&D, Vector Institute and Waterloo talent, EST and PT coverage, data residency for US enterprises.',
+    title: 'Canadian AI engineering for US teams | ESARC',
+    description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Canada AI engineering for US buyers — ESARC',
-    description:
-      'CAD cost, USD invoice, SR&ED-backed R&D, frontier talent in your timezone.',
+    title: 'Canadian AI engineering for US teams | ESARC',
+    description,
   },
 }
 
-const wedges = [
+const reasons = [
   {
     eyebrow: '01',
-    title: 'CAD cost base, USD invoice',
-    body: 'We pay our team in Canadian dollars. You pay us in USD. The currency gap is the simplest wedge in the deal. Same caliber of senior engineer, lower all-in burn, no offshore handoffs.',
+    title: 'CAD costs, USD invoice',
+    body: 'Our costs are in Canadian dollars and we invoice US clients in USD. It is part of how two senior engineers can offer fixed prices that make sense for a startup.',
   },
   {
     eyebrow: '02',
-    title: 'SR&ED-backed R&D',
-    body: 'When the work is R&D-shaped, our Canadian engineering hours qualify for the SR&ED tax credit at up to 35%. We do the paperwork. The effect for you: roughly 65 cents on the dollar for novel AI work that would otherwise cost full freight in California.',
+    title: 'SR&ED, where it fits',
+    body: 'Some R&D-shaped work may qualify for Canada’s SR&ED tax credit; we’ll tell you early if yours might. We don’t promise a number.',
   },
   {
     eyebrow: '03',
-    title: 'Vector, Waterloo, UofT, McGill, UBC',
-    body: 'The Canadian AI talent funnel runs straight through Vector Institute (Toronto), Waterloo CS, the University of Toronto, McGill, and UBC. Same researchers your favourite frontier lab tries to hire. We hire from the same pool, in the same country, with no visa overhead.',
+    title: 'Your working hours',
+    body: 'We work Pacific time from Vancouver, which overlaps with the working day across North America. Calls and demos happen live, not across a 12-hour gap.',
   },
   {
     eyebrow: '04',
-    title: 'Your timezone, both coasts',
-    body: 'EST in Toronto, PT in Vancouver. One country, two time zones, full overlap with US business hours from open to close. Standups happen in real time. No 12-hour async lag.',
+    title: 'Canadian data, handled early',
+    body: 'If you have Canadian customers, we can run the work in Canadian cloud regions and plan for data residency from the first design, not after legal asks.',
   },
   {
     eyebrow: '05',
-    title: 'Data residency tailwinds',
-    body: 'For US enterprises with Canadian customers, data residency is going from nice-to-have to procurement-blocker. Building with a Canadian team that already runs in Canadian regions gets PIPEDA, Quebec Law 25, and provincial residency questions out of the way before legal asks them.',
-  },
-  {
-    eyebrow: '06',
-    title: 'Hire-friendly, not hire-blocking',
-    body: 'Cross-border consulting is the cleanest legal structure. Standard MSA, no immigration, no PE risk if we run it right. Most US enterprises we work with have a Canadian vendor template already.',
+    title: 'Simple to contract',
+    body: 'A standard cross-border services agreement. We sign your MSA and NDA, and there is no immigration paperwork.',
   },
 ]
 
-function Wedges() {
+function Reasons() {
   return (
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <FadeIn>
-        <h2 className="font-display text-base font-semibold tracking-wider text-neutral-950">
-          The structural advantage
+        <h2 className="max-w-2xl font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
+          Why US teams work with us from Canada
         </h2>
-        <p className="mt-4 max-w-2xl font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
-          Six reasons US enterprises hire Canadian AI teams.
-        </p>
       </FadeIn>
       <FadeInStagger className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 lg:grid-cols-2">
-        {wedges.map((w) => (
-          <FadeIn key={w.eyebrow}>
+        {reasons.map((r) => (
+          <FadeIn key={r.eyebrow}>
             <div className="relative border-t border-neutral-950/10 pt-8">
               <span className="absolute -top-px left-0 h-px w-12 bg-accent" />
               <p className="font-mono text-sm font-semibold tracking-wider text-accent">
-                {w.eyebrow}
+                {r.eyebrow}
               </p>
               <h3 className="mt-4 font-display text-2xl font-semibold text-neutral-950">
-                {w.title}
+                {r.title}
               </h3>
-              <p className="mt-4 text-base text-neutral-600">{w.body}</p>
+              <p className="mt-4 text-base text-neutral-600">{r.body}</p>
             </div>
           </FadeIn>
         ))}
@@ -91,14 +82,14 @@ function Wedges() {
   )
 }
 
-const proofPoints = [
+const details = [
   {
     label: 'Where we are',
-    value: 'Vancouver, BC. Remote across Canada.',
+    value: 'Vancouver, BC, on Pacific time.',
   },
   {
     label: 'Where our clients are',
-    value: 'New York, San Francisco, Boston, Seattle, Toronto.',
+    value: 'Across North America. We work remotely.',
   },
   {
     label: 'How we invoice',
@@ -106,78 +97,40 @@ const proofPoints = [
   },
   {
     label: 'How we contract',
-    value: 'Delaware-friendly MSA. Standard US enterprise template.',
+    value: 'Your MSA or ours. NDAs and BAAs where needed.',
   },
   {
     label: 'Where the work runs',
     value: 'Your cloud, your region. Canadian regions on request.',
   },
   {
-    label: 'Where the team trained',
-    value: 'Waterloo, UofT, UBC. Shipped at Meta, Amazon, McGraw Hill.',
+    label: 'Where we’ve shipped',
+    value: 'Meta, Amazon, McGraw Hill, and startups like Stuf Storage and Scrubs Co-Pilot.',
   },
 ]
 
-function ProofPoints() {
+function Details() {
   return (
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <FadeIn>
-        <h2 className="font-display text-base font-semibold tracking-wider text-neutral-950">
-          The boring details
+        <h2 className="max-w-2xl font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
+          The practical details
         </h2>
-        <p className="mt-4 max-w-2xl font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
-          What procurement asks before they sign.
-        </p>
       </FadeIn>
-      <FadeInStagger className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-        {proofPoints.map((p) => (
-          <FadeIn key={p.label}>
-            <div className="border-t border-neutral-950/10 pt-6">
-              <dt className="font-mono text-xs uppercase tracking-wider text-accent">
-                {p.label}
-              </dt>
-              <dd className="mt-3 text-base text-neutral-700">{p.value}</dd>
-            </div>
-          </FadeIn>
-        ))}
+      <FadeInStagger className="mt-12">
+        <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {details.map((d) => (
+            <FadeIn key={d.label}>
+              <div className="border-t border-neutral-950/10 pt-6">
+                <dt className="font-mono text-xs uppercase tracking-wider text-accent">
+                  {d.label}
+                </dt>
+                <dd className="mt-3 text-base text-neutral-700">{d.value}</dd>
+              </div>
+            </FadeIn>
+          ))}
+        </dl>
       </FadeInStagger>
-    </Container>
-  )
-}
-
-function CallToAction() {
-  return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
-      <FadeIn>
-        <div className="rounded-3xl bg-neutral-950 p-10 sm:p-16">
-          <p className="font-display text-sm font-semibold tracking-wider text-accent">
-            Working with US teams
-          </p>
-          <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-4xl">
-            If you have an AI roadmap and a US procurement process, we already
-            know the dance.
-          </h2>
-          <p className="mt-6 max-w-2xl text-base text-neutral-300">
-            We bill in USD, sign your MSA, and join your Slack. The Canadian
-            piece is a structural advantage on the back end. The engineering
-            looks the same as any senior US team. Better, in most cases.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Link
-              href="/contact"
-              className="inline-flex rounded-full bg-accent px-4 py-1.5 text-sm font-semibold text-neutral-950 transition hover:bg-accent/80"
-            >
-              Start a conversation
-            </Link>
-            <Link
-              href="https://calendly.com/vbvmalhotra/vaibhav-interview"
-              className="text-sm font-semibold text-white underline-offset-4 hover:underline"
-            >
-              Book a 30-min intro &rarr;
-            </Link>
-          </div>
-        </div>
-      </FadeIn>
     </Container>
   )
 }
@@ -185,20 +138,10 @@ function CallToAction() {
 const serviceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  serviceType: 'AI engineering consulting in Canada for US enterprises',
-  name: 'ESARC Canada AI Engineering',
-  description:
-    'Canadian AI engineering team serving US enterprises. CAD cost base with USD invoicing, SR&ED-backed R&D, Vector Institute and Waterloo talent, full US business-hour overlap, and Canadian data residency.',
-  provider: {
-    '@type': 'Organization',
-    name: 'ESARC',
-    url: 'https://esarc.dev',
-    address: {
-      '@type': 'PostalAddress',
-      addressRegion: 'BC',
-      addressCountry: 'CA',
-    },
-  },
+  serviceType: 'AI engineering from Canada for US companies',
+  name: 'ESARC Canadian AI engineering',
+  description,
+  provider: { '@id': 'https://esarc.dev/#org' },
   areaServed: [
     { '@type': 'Country', name: 'United States' },
     { '@type': 'Country', name: 'Canada' },
@@ -230,21 +173,16 @@ export default function CanadaPage() {
     <>
       <JsonLd data={serviceJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
-      <PageIntro
-        eyebrow="Canada"
-        title="A Canadian AI team built for US buyers."
-      >
+      <PageIntro eyebrow="Canada" title="A Canadian AI team for US companies.">
         <p>
-          ESARC is headquartered in Vancouver. Most of our clients are in New
-          York, San Francisco, and Boston. The Canadian piece is structural,
-          not a marketing line. It changes cost, talent, residency, and how
-          fast we can move.
+          ESARC is two senior engineers in Vancouver. We work remotely with
+          clients across North America, invoice in USD, and keep your working
+          hours.
         </p>
       </PageIntro>
 
-      <Wedges />
-      <ProofPoints />
-      <CallToAction />
+      <Reasons />
+      <Details />
       <ContactSection />
     </>
   )

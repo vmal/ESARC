@@ -38,7 +38,7 @@ function CaseStudies({
                   <div className="sm:flex sm:items-center sm:gap-x-6 lg:block">
                     <Image
                       src={caseStudy.logo}
-                      alt=""
+                      alt={caseStudy.client}
                       sizes="64px"
                       className="h-16 w-16 flex-none object-contain"
                     />
@@ -88,7 +88,7 @@ function CaseStudies({
                     {caseStudy.metric && (
                       <div className="border-t border-accent pt-4">
                         <dt className="font-mono text-xs uppercase tracking-wider text-accent">
-                          Headline metric
+                          Outcome
                         </dt>
                         <dd className="mt-1 text-sm font-semibold text-neutral-950">
                           {caseStudy.metric}
@@ -98,9 +98,6 @@ function CaseStudies({
                   </dl>
                   <p className="font-display text-4xl font-medium text-neutral-950">
                     <Link href={caseStudy.href}>{caseStudy.title}</Link>
-                  </p>
-                  <p className="mt-4 font-mono text-xs uppercase tracking-wider text-neutral-500">
-                    Operational outcome
                   </p>
                   <div className="mt-6 space-y-6 text-base text-neutral-600">
                     {caseStudy.summary.map((paragraph) => (
@@ -133,23 +130,23 @@ function CaseStudies({
   )
 }
 
+const description =
+  'Selected work by the ESARC partners: voice agents, multi-agent backends, RAG over clinical data and agent evals, for Meta, Amazon, McGraw Hill and startups.'
+
 export const metadata: Metadata = {
   title: 'Work',
-  description:
-    'Selected AI engineering work by Vaibhav Malhotra at ESARC. Some engagements are public; others I can describe in a call.',
+  description,
   alternates: { canonical: '/work' },
   openGraph: {
     type: 'website',
     url: '/work',
-    title: 'Work — ESARC',
-    description:
-      'Selected AI engineering work: voice agents, multi-agent pipelines, RAG over regulated data, evals at scale.',
+    title: 'Selected work | ESARC',
+    description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Work — ESARC',
-    description:
-      'AI systems that earned their keep. Case studies from Meta, Amazon, Scrubs Co-Pilot, Stuf, and more.',
+    title: 'Selected work | ESARC',
+    description,
   },
 }
 
@@ -186,24 +183,20 @@ export default async function Work() {
   return (
     <>
       <JsonLd data={breadcrumbJsonLd} />
-      <PageIntro
-        eyebrow="Selected work"
-        title="AI systems that earned their keep."
-      >
+      <PageIntro eyebrow="Work" title="Selected work by the ESARC partners">
         <p>
-          A few of the things I&apos;ve shipped, with the engineering decisions
-          that mattered. Some engagements are public. Others I can describe in a
-          call. Where a study reads short, the work was real and the details are
-          under NDA. See the{' '}
+          Production systems we&rsquo;ve shipped, with the engineering decisions
+          that mattered. Where a study reads short, the work was real and the
+          details are under NDA. See{' '}
           <Link
             href="/services"
             className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
           >
-            engagement shapes
+            services and pricing
           </Link>{' '}
-          if you&rsquo;re looking for similar work, or read{' '}
+          or{' '}
           <Link
-            href="/process"
+            href="/services#how-it-works"
             className="font-semibold text-neutral-950 underline-offset-4 hover:underline"
           >
             how an engagement runs

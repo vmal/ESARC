@@ -1,55 +1,55 @@
 # ESARC
 
-> ESARC is a Canadian AI engineering consultancy run by Vaibhav Malhotra. Senior engineers paired with an in-house fleet of AI coding agents, shipping production AI systems for US and Canadian companies that want senior accountability without a Big-4 invoice.
+> We don't build AI slop. We use AI to move fast. ESARC is two senior engineers in Vancouver, Canada, building production AI products for startups and small teams across North America. Agent-built, partner-reviewed: AI agents write the code in parallel, and a partner reviews every change before it ships.
 
-ESARC takes a small number of engagements per year. Every line that ships is reviewed by a principal engineer. The agent fleet drafts, tests, and reviews under that direction. Output is measured in PRs, evals, and dashboards, not slide decks. ESARC bills US clients in USD from a Canadian cost base, with SR&ED-backed R&D where the work qualifies.
+Last updated: 2026-10-19
 
-## Engagement shapes
+ESARC is Vaibhav Malhotra (founder, principal engineer) and Bhimesh Chauhan (partner). We build AI agents and voice agents, search and answers over your data (RAG), and make existing AI reliable with evals, monitoring and cost control. We work remotely on Pacific time and reply within one business day.
 
-- [AI Diagnostic Sprint](https://esarc.dev/services#diagnostic-sprint): Two-week written assessment, prioritized roadmap, exec readout. Pick when you need clarity before you commit.
-- [Build Sprint](https://esarc.dev/services#build-sprint): Six-week build of one AI surface. LLM feature, voice agent, eval harness, RAG system. Pick when scope is clear.
-- [Embedded AI Team](https://esarc.dev/services#embedded-team): Three to six month embedded team. Principal plus agent fleet inside your repo and Slack. Pick when AI is a roadmap, not a feature.
-- [AI ROI Calculator](https://esarc.dev/roi): Pricing-free business-case model for production AI workflows. Estimates hours reclaimed, opportunity cost, rework/error savings, implementation complexity, confidence level, and recommended engagement shape.
+## How to work with us
 
-## Canada wedge for US buyers
+- [Free 30-minute call](https://esarc.dev/contact): Tell us what you want to build. We say honestly whether we're the right team.
+- [Discovery week](https://esarc.dev/services#discovery): $2,500, one week. Turns your idea into a spec and a fixed quote. The fee is credited to your sprint.
+- [4-week pilot sprint](https://esarc.dev/services#pilot-sprint): $18K-$24K fixed price. One AI feature or workflow in production with real users.
+- [6-week MVP sprint](https://esarc.dev/services#mvp-sprint): $32K-$45K fixed price. A whole first version, live.
+- [Monthly retainer](https://esarc.dev/services#build-partner): $5K, $11K or $19K per month. Keep shipping every week. Cancel with 6 weeks' notice.
+- [Services and pricing](https://esarc.dev/services): The full offer, how an engagement runs, and FAQ.
+- [AI ROI calculator](https://esarc.dev/roi): Estimate whether one workflow is worth automating. Uses your numbers, not our prices.
 
-- [Canada for US buyers](https://esarc.dev/canada): How a Canadian AI team serves US enterprises. CAD cost base with USD invoicing, SR&ED-backed R&D at up to 35%, Vector Institute and Waterloo talent, EST and PT timezone coverage, Canadian data residency tailwinds.
+## Selected work
 
-## Case studies
+- [Stuf Storage: Sidney voice agent](https://esarc.dev/work/stuf-sidney-ai): Voice agent for self-storage sales calls. 150+ qualified leads at the industry's biggest trade show, 90% better lead-to-customer conversion, +25% demo success, 60% fewer fallback prompts.
+- [Scrubs Co-Pilot](https://esarc.dev/work/scrubs-co-pilot): Structured clinical notes from recorded visits. 60% less time finishing documentation and 85% better documentation accuracy.
+- [Wrangle](https://esarc.dev/work/wrangle): Consumer travel app built from zero by the two ESARC partners: mobile app, API and AI photo pipeline. Bhimesh Chauhan leads the build.
+- [MyMethod](https://esarc.dev/work/mymethod): Multi-tenant voice agents on Vapi, with eval-gated releases and call transcripts in Supabase.
+- [Springhouse](https://esarc.dev/work/springhouse): Multi-agent meal-planning backend on Pydantic AI, FastAPI and Postgres.
+- [Meta Superintelligence Labs](https://esarc.dev/work/meta-superintelligence): Tool calling, MCP integration and agent evaluation for conversational AI. Details under NDA.
+- [Amazon](https://esarc.dev/work/amazon-shipping-ai): Services in Amazon's shipping cost path.
+- [McGraw Hill](https://esarc.dev/work/mcgraw-hill): AI engineering for an education publisher. Details under NDA.
+- [All work](https://esarc.dev/work)
 
-- [Meta Superintelligence Labs](https://esarc.dev/work/meta-superintelligence): Applied AI engineering inside Meta's Superintelligence Labs. NDA scope; tool-calling, MCP integration, and agent evaluation for next-gen conversational AI.
-- [Amazon](https://esarc.dev/work/amazon-shipping-ai): SDE work on Amazon's shipping cost pipeline. 1M+ requests per day, $100K+ annualized savings, 50% latency cut on cart building.
-- [Scrubs Co-Pilot](https://esarc.dev/work/scrubs-co-pilot): Clinical documentation co-pilot. Zero to 100+ monthly clinician users in 3 months; Whisper plus LLM+RAG producing structured doctor notes.
-- [Stuf Storage — Sidney Voice AI](https://esarc.dev/work/stuf-sidney-ai): Voice AI for self-storage operations. 150+ qualified leads at ISS Vegas, +25% demo success, -60% fallback prompts.
-- [MyMethod](https://esarc.dev/work/mymethod): Multi-tenant voice AI agents on Vapi with the eval and observability work to keep quality from drifting between releases.
-- [Springhouse](https://esarc.dev/work/springhouse): Multi-agent food planning backend on Pydantic AI, FastAPI, and Postgres. Recipe ingest, calorie math, household constraints.
-- [McGraw Hill](https://esarc.dev/work/mcgraw-hill): Senior AI engineering consulting for an education publisher. Scope details under NDA.
-- [ClearProp](https://esarc.dev/work/clearprop): A full-stack pilot logbook app built as an own product. ESARC's internal proving ground for new patterns before they show up on client work.
+## Insights
 
-## Production AI ROI articles
-
-- [How do you calculate AI ROI for a production system?](https://esarc.dev/insights/ai-roi-for-production-systems): ROI model for time reclaimed, rework avoided, risk reduction, adoption, and implementation complexity.
-- [When does RAG or internal search produce ROI?](https://esarc.dev/insights/rag-internal-search-roi): RAG ROI criteria for high-value internal knowledge workflows with citations and freshness rules.
-- [How do voice agents earn ROI in real operations?](https://esarc.dev/insights/voice-agent-roi): Voice-agent ROI from answered calls, qualified leads, handoffs, fallback prompts, and post-call data.
-- [What is the ROI of an AI eval harness?](https://esarc.dev/insights/eval-harness-roi): Eval ROI from fewer regressions, faster releases, and evidence-backed model changes.
-- [Should you hire an AI engineer or use an AI consultancy?](https://esarc.dev/insights/ai-consultancy-vs-hiring): Decision guide for hiring, using ESARC, or combining both.
+- [How do you calculate AI ROI for a production system?](https://esarc.dev/insights/ai-roi-for-production-systems)
+- [When does RAG or internal search produce ROI?](https://esarc.dev/insights/rag-internal-search-roi)
+- [How do voice agents earn ROI in real operations?](https://esarc.dev/insights/voice-agent-roi)
+- [What is the ROI of an AI eval harness?](https://esarc.dev/insights/eval-harness-roi)
+- [Should you hire an AI engineer or use an AI consultancy?](https://esarc.dev/insights/ai-consultancy-vs-hiring)
 
 ## About
 
-- [About ESARC](https://esarc.dev/about): Vaibhav Malhotra and Bhimesh Chauhan. Senior AI engineering partners with experience across Meta, Amazon, BenchSci, Scrubs Co-Pilot, KitchenMate / MicroMart, Preply, DataRobot, Pitchly, Nebullam, Sodima Solutions, and Solum Labs / Climate Corporation.
-
-## Process
-
-- [How an engagement runs](https://esarc.dev/process): Five phases, discovery, scope, sprint, ship, handoff. Daily PRs, written deliverables, no Friday surprises.
+- [About ESARC](https://esarc.dev/about): The two partners, how we work, and the rules we don't bend on.
+- [Canada](https://esarc.dev/canada): Based in Vancouver, working with clients across North America. Some R&D-shaped work may qualify for Canada's SR&ED tax credit; we'll tell you early if yours might. We don't promise a number.
 
 ## Contact
 
-- [Contact ESARC](https://esarc.dev/contact): Tell us what you are trying to ship, or grab a 30-minute intro on the calendar. Same-day reply on weekdays.
+- [Contact ESARC](https://esarc.dev/contact): Email vaibhav@esarc.dev or send a note. A partner reads every message. We reply within one business day.
 
 ## Optional
 
+- [Full text for LLMs](https://esarc.dev/llms-full.txt)
 - [Sitemap](https://esarc.dev/sitemap.xml)
-- [Vaibhav LinkedIn](https://www.linkedin.com/in/vbvmalhotra/)
-- [Vaibhav GitHub](https://github.com/vmal)
-- [Bhimesh LinkedIn](https://www.linkedin.com/in/bhimeshchauhan/)
-- [Bhimesh Portfolio](https://bhimeshchauhan.github.io/)
+- [Vaibhav Malhotra on LinkedIn](https://www.linkedin.com/in/mvaibhav/)
+- [Vaibhav Malhotra on GitHub](https://github.com/vmal)
+- [Bhimesh Chauhan on LinkedIn](https://www.linkedin.com/in/bhimeshchauhan/)
+- [Bhimesh Chauhan portfolio](https://bhimeshchauhan.github.io/)

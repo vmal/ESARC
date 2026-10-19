@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   title: 'Terms of Use',
   description:
     'Terms of use for ESARC services, including QuickBooks Online API access.',
+  alternates: { canonical: '/terms' },
+  openGraph: {
+    type: 'website',
+    siteName: 'ESARC',
+    url: '/terms',
+    title: 'Terms of Use',
+    description:
+      'Terms of use for ESARC services, including QuickBooks Online API access.',
+  },
 }
 
 export default function TermsOfUse() {

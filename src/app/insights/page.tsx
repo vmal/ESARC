@@ -20,7 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: '/insights',
-    title: 'Insights — ESARC',
+    title: 'Insights | ESARC',
+    description:
+      'Notes from the field on shipping production AI. Agent design, evals, voice, infra.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Insights | ESARC',
     description:
       'Notes from the field on shipping production AI. Agent design, evals, voice, infra.',
   },
@@ -43,7 +49,7 @@ export default async function Insights() {
       <JsonLd data={breadcrumbJsonLd} />
       <PageIntro eyebrow="Insights" title="Notes from the field">
         <p>
-          What we learn building production AI for startups and enterprises.
+          What we learn building production AI for startups and small teams.
           Agent design, evals, voice, infra, and the messy details between a
           demo and a live system.
         </p>

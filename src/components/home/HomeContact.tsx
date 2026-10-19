@@ -11,48 +11,21 @@ export function HomeContact() {
         <h2 className="max-w-3xl font-display text-4xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-5xl">
           Got something that needs to ship?
         </h2>
-        <dl className="mt-12 grid grid-cols-1 gap-10 border-t border-white/20 pt-10 md:grid-cols-2">
-          <div>
-            <dt className="font-display text-2xl font-semibold text-white">
-              Yes
-            </dt>
-            <dd className="mt-3 text-base text-neutral-300">
-              <p>
-                Book a call and bring the messy version. We’ll tell you what
-                the first sprint would cover.
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
-                <Button href={siteConfig.bookingUrl} invert>
-                  {siteConfig.bookingLabel}
-                </Button>
-                <Link
-                  href="/contact"
-                  className="text-sm font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
-                >
-                  Or send the details
-                </Link>
-              </div>
-            </dd>
-          </div>
-          <div>
-            <dt className="font-display text-2xl font-semibold text-white">
-              Not yet
-            </dt>
-            <dd className="mt-3 text-base text-neutral-300">
-              <p>
-                Email{' '}
-                <a
-                  href={`mailto:${siteConfig.contactEmail}`}
-                  className="font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
-                >
-                  {siteConfig.contactEmail}
-                </a>{' '}
-                with where you’re stuck. You’ll get a straight answer, not a
-                pitch.
-              </p>
-            </dd>
-          </div>
-        </dl>
+        <p className="mt-6 max-w-xl text-base text-neutral-300">
+          Bring the messy version. A partner reads every message. We reply
+          within one business day.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <Button href={siteConfig.bookingUrl} invert>
+            {siteConfig.bookingLabel}
+          </Button>
+          <Link
+            href="/contact"
+            className="text-sm font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+          >
+            Or send us a note
+          </Link>
+        </div>
       </div>
     </Container>
   )

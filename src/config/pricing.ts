@@ -1,14 +1,9 @@
 /**
  * Every engagement price shown on the site comes from this file.
  *
- * DRAFT VALUES: the figures below are proposals from pricing research and
- * have not been approved by the owner. Each price has `draft: true`.
- * - Preview and local builds show the figure with a "Draft price" badge.
- * - Production shows the package's `fallbackLabel` instead, so an unapproved
- *   figure can't go live by accident.
- * TODO(owner): approve or change each figure, then set `draft: false`.
- *
- * TODO(owner): package names, durations and "includes" lists are drafts too.
+ * Figures approved by the owner on 2026-10-14: discovery $2,500, pilot
+ * $18-24K, MVP $32-45K, retainers $5K / $11K / $19K a month. A price with
+ * `draft: true` shows its `fallbackLabel` in production instead.
  *
  * Never put an hourly rate here. Packages are priced per project or per month.
  */
@@ -18,6 +13,8 @@ export type PriceUnit = 'project' | 'month'
 export interface PackagePrice {
   /** Whole US dollars. `null` means the figure is still TODO. */
   amount: number | null
+  /** Top of the range, when the price is a range ("$18K-$24K"). */
+  maxAmount?: number
   currency: 'USD'
   unit: PriceUnit
   /** Shown before the amount, e.g. "From". */
@@ -26,7 +23,7 @@ export interface PackagePrice {
   fallbackLabel: string
   /** True until the owner approves the figure. */
   draft: boolean
-  /** Short note shown under the price, e.g. "Credited toward a sprint". */
+  /** Short note shown under the price, e.g. "Credited to your sprint". */
   note?: string
 }
 
@@ -50,28 +47,27 @@ export interface EngagementGroup {
 export const engagementGroups: Array<EngagementGroup> = [
   {
     id: 'fixed-scope',
-    name: 'Zero-to-one sprints',
+    name: 'Discovery and build sprints',
     description:
       'A fixed scope and a fixed price. You know what ships and what it costs before we start.',
-    cta: { label: 'Scope a sprint', href: '/contact' },
+    cta: { label: 'See services and pricing', href: '/services' },
     packages: [
       {
         id: 'discovery',
-        name: 'Paid discovery',
+        name: 'Discovery week',
         duration: '1 week',
         price: {
-          amount: 3500,
+          amount: 2500,
           currency: 'USD',
           unit: 'project',
-          prefix: 'From',
-          fallbackLabel: 'Fixed fee, credited toward a sprint',
-          draft: true,
-          note: 'Credited toward a sprint',
+          fallbackLabel: 'Fixed fee, credited to your sprint',
+          draft: false,
+          note: 'Credited to your sprint',
         },
         bestFor: 'You have an idea and need to know what it takes.',
         includes: [
-          'Written spec and architecture',
-          'Eval plan and a risk list',
+          'A spec and a technical plan',
+          'An eval plan and a list of risks',
           'A fixed quote for the build',
         ],
       },
@@ -80,12 +76,13 @@ export const engagementGroups: Array<EngagementGroup> = [
         name: 'Pilot sprint',
         duration: '4 weeks',
         price: {
-          amount: 22000,
+          amount: 18000,
+          maxAmount: 24000,
           currency: 'USD',
           unit: 'project',
-          prefix: 'From',
           fallbackLabel: 'Fixed price, quoted after discovery',
-          draft: true,
+          draft: false,
+          note: 'Fixed price, set in discovery',
         },
         bestFor: 'One AI feature or workflow, proven with real users.',
         includes: [
@@ -96,15 +93,16 @@ export const engagementGroups: Array<EngagementGroup> = [
       },
       {
         id: 'mvp-sprint',
-        name: '0→1 MVP sprint',
+        name: 'MVP sprint',
         duration: '6 weeks',
         price: {
           amount: 32000,
+          maxAmount: 45000,
           currency: 'USD',
           unit: 'project',
-          prefix: 'From',
           fallbackLabel: 'Fixed price, quoted after discovery',
-          draft: true,
+          draft: false,
+          note: 'Fixed price, set in discovery',
         },
         bestFor: 'A whole first version: web and/or mobile, live.',
         includes: [
@@ -117,10 +115,10 @@ export const engagementGroups: Array<EngagementGroup> = [
   },
   {
     id: 'monthly',
-    name: 'Build partner',
+    name: 'Monthly retainer',
     description:
-      "Senior engineering every week, with the agent crew attached. Month to month, cancel with 6 weeks' notice.",
-    cta: { label: 'Talk about a partnership', href: '/contact' },
+      "Senior engineering every week, with AI agents doing the typing. Month to month, cancel with 6 weeks' notice.",
+    cta: { label: 'See services and pricing', href: '/services' },
     packages: [
       {
         id: 'fractional-ai-lead',
@@ -130,14 +128,13 @@ export const engagementGroups: Array<EngagementGroup> = [
           amount: 5000,
           currency: 'USD',
           unit: 'month',
-          prefix: 'From',
           fallbackLabel: 'Monthly, quoted per roadmap',
-          draft: true,
+          draft: false,
         },
         bestFor:
-          'Your team builds; you want an architect steering the AI work.',
+          'Your team builds; you want a senior engineer steering the AI work.',
         includes: [
-          'Architecture and model choices',
+          'Technical and model choices',
           'Eval and review of AI pull requests',
           'A standing weekly call',
         ],
@@ -150,9 +147,8 @@ export const engagementGroups: Array<EngagementGroup> = [
           amount: 11000,
           currency: 'USD',
           unit: 'month',
-          prefix: 'From',
           fallbackLabel: 'Monthly, quoted per roadmap',
-          draft: true,
+          draft: false,
         },
         bestFor: 'A live product that needs features shipped every week.',
         includes: [
@@ -169,14 +165,13 @@ export const engagementGroups: Array<EngagementGroup> = [
           amount: 19000,
           currency: 'USD',
           unit: 'month',
-          prefix: 'From',
           fallbackLabel: 'Monthly, quoted per roadmap',
-          draft: true,
+          draft: false,
         },
         bestFor: 'You need a founding engineer now, not in four months.',
         includes: [
-          'Principal engineer on your product full-time',
-          'Agent crew running in parallel',
+          'A senior partner on your product full-time',
+          'AI agents working in parallel',
           'Hiring help when you build your own team',
         ],
       },
@@ -201,7 +196,7 @@ export const offerLadder: Array<OfferRung> = [
     name: 'Free 30-minute call',
     packageIds: [],
     detail:
-      'We talk through what you have and what you want to ship, and tell you straight whether we’re the right team for it.',
+      'We talk through what you want to build and tell you straight whether we’re the right team for it.',
   },
   {
     id: 'discovery',
@@ -219,33 +214,15 @@ export const offerLadder: Array<OfferRung> = [
   {
     id: 'retainer',
     name: 'Monthly retainer',
-    packageIds: ['fractional-ai-lead'],
+    packageIds: [
+      'fractional-ai-lead',
+      'build-partner',
+      'full-time-build-partner',
+    ],
     detail:
       "Keep shipping every week once people are using it. Cancel with 6 weeks' notice.",
   },
 ]
-
-/**
- * The "versus a full-time hire" comparison. Draft values.
- * TODO(owner): confirm the hire cost figure and keep a source for it.
- */
-export const hireComparison = {
-  draft: true,
-  hire: {
-    label: 'Hiring a senior engineer',
-    cost: '$290K+',
-    costNote: 'First-year cost, salary plus overhead and recruiting',
-    time: 'Months',
-    timeNote: 'To find, close and onboard someone',
-  },
-  esarc: {
-    label: 'ESARC build partner',
-    cost: { packageId: 'build-partner' },
-    costNote: 'Month to month, no recruiting fee',
-    time: 'About a week',
-    timeNote: 'From first call to first pull request',
-  },
-} as const
 
 const unitSuffix: Record<PriceUnit, string> = {
   project: '',
@@ -296,8 +273,13 @@ export function formatPackagePrice(
     }
   }
 
+  let range =
+    price.maxAmount != null
+      ? `-${formatAmount(price.maxAmount, price.currency)}`
+      : ''
+
   return {
-    label: `${prefix}${formatAmount(price.amount, price.currency)}${
+    label: `${prefix}${formatAmount(price.amount, price.currency)}${range}${
       unitSuffix[price.unit]
     }`,
     isDraft: price.draft,

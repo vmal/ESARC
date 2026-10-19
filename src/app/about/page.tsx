@@ -1,5 +1,5 @@
 import { type Metadata } from 'next'
-import Image from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
 
 import { ContactSection } from '@/components/ContactSection'
@@ -10,30 +10,32 @@ import { PageIntro } from '@/components/PageIntro'
 import { partners } from '@/lib/partners'
 
 import logoAmazon from '@/../public/logos/amazon.svg'
-import logoMcGrawHill from '@/../public/logos/mcgraw-hill.svg'
+import logoMcGrawHill from '@/../public/logos/mcgraw-hill-mark.svg'
 import logoMeta from '@/../public/logos/meta.svg'
 import logoMyMethod from '@/../public/logos/mymethod.png'
-import logoScrubs from '@/../public/logos/scrubs-co-pilot.png'
+import logoScrubs from '@/../public/logos/scrubs-co-pilot-mark.png'
+import logoSpicychat from '@/../public/logos/spicychat.png'
 import logoSpringhouse from '@/../public/logos/springhouse.png'
 import logoStuf from '@/../public/logos/stuf.svg'
+import logoWrangle from '@/../public/logos/wrangle.png'
+
+const description =
+  'ESARC is two senior engineers in Vancouver, Vaibhav Malhotra and Bhimesh Chauhan. AI agents write the code in parallel; a partner reviews every change before it ships.'
 
 export const metadata: Metadata = {
   title: 'About',
-  description:
-    'ESARC is a senior-only AI engineering shop led by Vaibhav Malhotra and Bhimesh Chauhan, pairing principal engineers with in-house AI agents.',
+  description,
   alternates: { canonical: '/about' },
   openGraph: {
     type: 'profile',
     url: '/about',
-    title: 'About ESARC — senior AI engineering partners',
-    description:
-      'Vaibhav Malhotra and Bhimesh Chauhan on what changed about AI engineering teams and why ESARC exists.',
+    title: 'About ESARC | Two senior engineers in Vancouver',
+    description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About ESARC — senior AI engineering partners',
-    description:
-      'Senior AI engineering partners paired with an in-house agent fleet.',
+    title: 'About ESARC | Two senior engineers in Vancouver',
+    description,
   },
 }
 
@@ -41,35 +43,26 @@ function Partners() {
   return (
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <FadeIn>
-        <h2 className="font-display text-base font-semibold tracking-wider text-neutral-950">
-          Partners
+        <h2 className="font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
+          Who you&rsquo;ll work with
         </h2>
-        <p className="mt-4 max-w-3xl font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
-          Two senior engineers, one agent-native delivery model.
-        </p>
       </FadeIn>
 
       <FadeInStagger className="mt-16 grid grid-cols-1 gap-x-12 gap-y-16 lg:grid-cols-2">
         {partners.map((partner) => (
           <FadeIn key={partner.name}>
-            <article className="border-t border-neutral-950/10 pt-8">
+            <article
+              id={partner.id}
+              className="scroll-mt-32 border-t border-neutral-950/10 pt-8"
+            >
               <div className="flex items-start gap-6">
-                {'image' in partner ? (
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    width={120}
-                    height={120}
-                    className="h-24 w-24 rounded-full object-cover ring-1 ring-neutral-950/10"
-                  />
-                ) : (
-                  <div
-                    aria-hidden="true"
-                    className="flex h-24 w-24 flex-none items-center justify-center rounded-full bg-neutral-950 font-display text-2xl font-semibold text-white"
-                  >
-                    {partner.initials}
-                  </div>
-                )}
+                <Image
+                  src={partner.image}
+                  alt={`Portrait of ${partner.name}`}
+                  width={120}
+                  height={120}
+                  className="h-24 w-24 flex-none rounded-full object-cover ring-1 ring-neutral-950/10"
+                />
                 <div>
                   <p className="font-mono text-xs uppercase tracking-wider text-accent">
                     {partner.role}
@@ -123,16 +116,11 @@ function Partners() {
       </FadeInStagger>
 
       <FadeIn className="mt-12">
-        <p className="max-w-3xl text-base text-neutral-700">
-          ESARC stays senior-only. Experienced engineers own the hard calls, and
-          the in-house agent fleet increases throughput without creating a
-          junior relay layer.
-        </p>
         <Link
           href="/work"
-          className="mt-5 inline-block text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
+          className="text-sm font-semibold text-neutral-950 underline-offset-4 hover:underline"
         >
-          See the receipts &rarr;
+          See our work &rarr;
         </Link>
       </FadeIn>
     </Container>
@@ -142,28 +130,28 @@ function Partners() {
 const principles = [
   {
     num: '01',
-    title: 'Senior-only',
-    body: 'Every line that ships is reviewed by a principal. No junior pyramid, no offshore relay, no learning curve on your dollar.',
+    title: 'A partner on every project',
+    body: 'One of us is on your project from the first call to the handover. Nothing gets passed down to junior staff.',
   },
   {
     num: '02',
-    title: 'AI-native',
-    body: 'Agents draft, test, and review. A senior partner sets direction and owns the call. Throughput like a team of ten, principal accountability throughout.',
+    title: 'Agent-built, partner-reviewed',
+    body: 'Agents draft, test and check the work. A senior partner sets direction, reads every diff and owns the call.',
   },
   {
     num: '03',
-    title: 'Receipts over slides',
-    body: 'You get pull requests, not status decks. Every claim has a commit. Every milestone has a working build.',
+    title: 'Working software over slides',
+    body: 'You get pull requests and a staging link, not status decks. Every milestone is something you can click.',
   },
   {
     num: '04',
-    title: 'Async-first',
-    body: 'Loom over Zoom. Notion over meetings. Standups are a daily PR list, not a calendar block. Your team keeps its day.',
+    title: 'Written updates, few meetings',
+    body: 'Progress shows up as pull requests, short written notes and staging demos, so your team keeps its day.',
   },
   {
     num: '05',
     title: 'Clean handoff',
-    body: 'Runbook, evals, on-call notes. When we leave, your team owns it on day one. We stay on call for 30 days, then we’re out.',
+    body: 'Code, evals and a runbook live in your repo. When we finish, your team can run it on day one.',
   },
 ]
 
@@ -172,19 +160,16 @@ function Principles() {
     <div className="mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-40">
       <Container>
         <FadeIn className="max-w-2xl">
-          <h2 className="font-display text-sm font-semibold tracking-wider text-white">
-            How we operate
+          <h2 className="font-display text-3xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-4xl">
+            Five rules we don&rsquo;t bend on
           </h2>
-          <p className="mt-4 font-display text-3xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-4xl">
-            Five rules I won&rsquo;t bend on.
-          </p>
         </FadeIn>
         <FadeInStagger className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {principles.map((p) => (
             <FadeIn key={p.num}>
               <div className="relative border-t border-white/10 pt-6">
                 <span className="absolute -top-px left-0 h-px w-12 bg-accent" />
-                <p className="font-mono text-sm font-semibold tracking-wider text-accent">
+                <p className="font-mono text-sm font-semibold tracking-wider text-accent-300">
                   {p.num}
                 </p>
                 <h3 className="mt-3 font-display text-xl font-semibold text-white">
@@ -200,68 +185,82 @@ function Principles() {
   )
 }
 
-const clientLogos = [
+type ClientLogo = {
+  name: string
+  logo: StaticImageData
+  /** Square or stacked marks need more height to read at the same weight. */
+  stacked?: boolean
+  /** Shown beside marks that don't include the company name. */
+  wordmark?: string
+}
+
+/**
+ * Drawn as solid dark silhouettes (brightness-0), like the homepage strip,
+ * so white or boxed logos stay visible and the row reads as one set.
+ */
+const clientLogos: Array<ClientLogo> = [
   { name: 'Meta', logo: logoMeta },
   { name: 'Amazon', logo: logoAmazon },
-  { name: 'McGraw Hill', logo: logoMcGrawHill },
-  { name: 'Stuf Storage', logo: logoStuf },
-  { name: 'Scrubs Co-Pilot', logo: logoScrubs },
+  { name: 'McGraw Hill', logo: logoMcGrawHill, stacked: true },
   { name: 'Springhouse', logo: logoSpringhouse },
-  { name: 'MyMethod', logo: logoMyMethod },
+  { name: 'MyMethod', logo: logoMyMethod, stacked: true },
+  { name: 'Spicychat', logo: logoSpicychat },
+  { name: 'Stuf Storage', logo: logoStuf },
+  { name: 'Scrubs Co-Pilot', logo: logoScrubs, stacked: true },
+  { name: 'Wrangle', logo: logoWrangle, wordmark: 'Wrangle' },
 ]
 
 function ClientLogos() {
   return (
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <FadeIn>
-        <h2 className="font-display text-base font-semibold tracking-wider text-neutral-950">
-          Who we&rsquo;ve shipped for
+        <h2 className="font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-4xl">
+          Teams our partners have built production systems for
         </h2>
         <p className="mt-4 max-w-2xl text-base text-neutral-600">
-          Companies that trusted the principal-led model, from billion-user
-          systems at Amazon and Meta to early-stage AI builds at Stuf and
-          Scrubs.
+          Some of this was client work through ESARC and some was in-house
+          work before it.
         </p>
       </FadeIn>
-      <FadeInStagger
-        className="mt-12 grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-7"
-        faster
-      >
-        {clientLogos.map(({ name, logo }) => (
-          <FadeIn key={name}>
-            <div className="flex h-12 items-center justify-center">
-              <Image
-                src={logo}
-                alt={name}
-                sizes="(min-width:1024px) 140px, (min-width:640px) 220px, 160px"
-                className="max-h-10 w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
-              />
-            </div>
-          </FadeIn>
+      <ul className="mt-12 grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+        {clientLogos.map(({ name, logo, stacked, wordmark }) => (
+          <li key={name} className="flex h-14 items-center justify-center gap-2">
+            <Image
+              src={logo}
+              alt={wordmark ? '' : name}
+              title={name}
+              unoptimized
+              className={`w-auto max-w-[9rem] object-contain opacity-85 brightness-0 ${stacked ? 'h-11 sm:h-12' : wordmark ? 'h-5 sm:h-6' : 'h-6 sm:h-7'}`}
+            />
+            {wordmark && (
+              <span className="font-display text-xl font-semibold tracking-tight text-neutral-950/85">
+                {wordmark}
+              </span>
+            )}
+          </li>
         ))}
-      </FadeInStagger>
+      </ul>
     </Container>
   )
 }
 
-const partnersJsonLd = partners.map((partner) => ({
+const partnersJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: partner.name,
-  jobTitle: partner.role,
-  url: 'https://esarc.dev/about',
-  image: 'image' in partner ? 'https://esarc.dev/vaibhav.jpg' : undefined,
-  worksFor: {
-    '@type': 'Organization',
-    name: 'ESARC',
-    url: 'https://esarc.dev',
-  },
-  alumniOf: partner.companies.map((company) => ({
-    '@type': 'Organization',
-    name: company,
+  '@graph': partners.map((partner) => ({
+    '@type': 'Person',
+    '@id': `https://esarc.dev/about#${partner.id}`,
+    name: partner.name,
+    jobTitle: partner.role,
+    url: `https://esarc.dev/about#${partner.id}`,
+    image: `https://esarc.dev${partner.image}`,
+    worksFor: { '@id': 'https://esarc.dev/#org' },
+    homeLocation: {
+      '@type': 'Place',
+      name: 'Vancouver, British Columbia, Canada',
+    },
+    sameAs: partner.links.map((link) => link.href),
   })),
-  sameAs: partner.links.map((link) => link.href),
-}))
+}
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -287,12 +286,15 @@ export default function About() {
     <>
       <JsonLd data={partnersJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
-      <PageIntro eyebrow="About" title="Senior partners. A fleet of agents.">
+      <PageIntro
+        eyebrow="About"
+        title="Two senior engineers. Agent-built, partner-reviewed."
+      >
         <p>
-          ESARC is a small, senior-only AI engineering shop led by Vaibhav
-          Malhotra and Bhimesh Chauhan. We built it because the math on
-          AI-native teams changed last year, and most consultancies
-          haven&rsquo;t noticed yet.
+          ESARC is Vaibhav Malhotra and Bhimesh Chauhan, two senior engineers in
+          Vancouver. We build production AI products for startups and small
+          teams across North America. AI agents write the code in parallel; a
+          partner reviews every change before it ships.
         </p>
       </PageIntro>
 

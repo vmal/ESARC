@@ -30,8 +30,8 @@ test('ROI deep-link example keeps its published numbers', () => {
   assert.equal(result.confidence, 74)
   assert.equal(formatNumber(result.annualManualHours), '3,000')
   assert.equal(Math.round(result.effectiveCoverage), 60)
-  assert.equal(result.recommendedEngagement.name, 'Build Sprint')
-  assert.equal(result.recommendedEngagement.href, '/services#build-sprint')
+  assert.equal(result.recommendedEngagement.name, 'Pilot or MVP sprint')
+  assert.equal(result.recommendedEngagement.href, '/services#pilot-sprint')
 })
 
 test('default calculator inputs match the documented example', () => {

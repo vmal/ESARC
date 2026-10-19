@@ -33,10 +33,11 @@ function buildHtml(p: Payload) {
     ['Name', p.name],
     ['Email', p.email],
     ['Company', p.company || '(not provided)'],
-    ['Role', p.role || '(not provided)'],
-    ['Engagement shape', p.projectType || '(not provided)'],
-    ['Timeline', p.timeline || '(not provided)'],
+    ['Start', p.timeline || '(not provided)'],
   ]
+  // The current form no longer asks for these; older clients may still send them.
+  if (p.role) rows.push(['Role', p.role])
+  if (p.projectType) rows.push(['Engagement shape', p.projectType])
   const rowsHtml = rows
     .map(
       ([k, v]) =>
@@ -58,8 +59,12 @@ async function readPayload(req: NextRequest): Promise<Payload> {
   const ct = req.headers.get('content-type') ?? ''
   let data: Record<string, string> = {}
   if (ct.includes('application/json')) {
-    const json = await req.json()
-    data = json ?? {}
+    const json: unknown = await req.json()
+    if (json && typeof json === 'object' && !Array.isArray(json)) {
+      for (const [k, v] of Object.entries(json)) {
+        if (typeof v === 'string') data[k] = v
+      }
+    }
   } else {
     const form = await req.formData()
     for (const [k, v] of form.entries()) {
@@ -86,6 +91,23 @@ function isFormPost(req: NextRequest) {
   )
 }
 
+// Form posts get sent back to the page so it can show the result; JSON
+// clients get a JSON error.
+function errorResponse(
+  req: NextRequest,
+  status: number,
+  error: string,
+  reason: 'invalid' | 'failed',
+) {
+  if (isFormPost(req)) {
+    const url = new URL(`/contact?error=${reason}`, req.url)
+    return NextResponse.redirect(url, { status: 303 })
+  }
+  return NextResponse.json({ ok: false, error }, { status })
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 function successResponse(req: NextRequest) {
   if (isFormPost(req)) {
     const url = new URL('/contact?sent=1', req.url)
@@ -95,12 +117,19 @@ function successResponse(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const payload = await readPayload(req)
-  if (!payload.email || !payload.name || !payload.message) {
-    return NextResponse.json(
-      { ok: false, error: 'Missing required fields.' },
-      { status: 400 },
-    )
+  let payload: Payload
+  try {
+    payload = await readPayload(req)
+  } catch {
+    // Empty or malformed body.
+    return errorResponse(req, 400, 'Invalid request body.', 'invalid')
+  }
+  payload.email = payload.email.trim()
+  if (!payload.email || !payload.name.trim() || !payload.message.trim()) {
+    return errorResponse(req, 400, 'Missing required fields.', 'invalid')
+  }
+  if (!EMAIL_RE.test(payload.email)) {
+    return errorResponse(req, 400, 'Invalid email address.', 'invalid')
   }
 
   const key = process.env.RESEND_API_KEY
@@ -108,10 +137,7 @@ export async function POST(req: NextRequest) {
     // Never log the submission itself: it holds the visitor's personal data.
     // Fail loudly so a missing secret can't silently drop leads.
     console.error('[contact] RESEND_API_KEY missing, message not sent')
-    return NextResponse.json(
-      { ok: false, error: 'Send failed.' },
-      { status: 503 },
-    )
+    return errorResponse(req, 503, 'Send failed.', 'failed')
   }
 
   try {
@@ -132,17 +158,11 @@ export async function POST(req: NextRequest) {
     if (!res.ok) {
       const body = await res.text()
       console.error('[contact] resend send failed', res.status, body)
-      return NextResponse.json(
-        { ok: false, error: 'Send failed.' },
-        { status: 502 },
-      )
+      return errorResponse(req, 502, 'Send failed.', 'failed')
     }
   } catch (err) {
     console.error('[contact] resend error', err)
-    return NextResponse.json(
-      { ok: false, error: 'Send failed.' },
-      { status: 502 },
-    )
+    return errorResponse(req, 502, 'Send failed.', 'failed')
   }
 
   return successResponse(req)

@@ -1,12 +1,12 @@
 import { ogContentType, ogSize, renderOgImage } from '@/lib/og'
 
-export const alt = 'About ESARC — senior AI engineering partners'
+export const alt = 'About ESARC: two senior engineers in Vancouver'
 export const size = ogSize
 export const contentType = ogContentType
 
 export default function OgImage() {
   return renderOgImage({
     eyebrow: 'About',
-    title: 'Senior partners. A fleet of agents.',
+    title: 'Two senior engineers. Agent-built, partner-reviewed.',
   })
 }

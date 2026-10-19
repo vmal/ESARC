@@ -123,20 +123,21 @@ function encodeInputs(inputs: RoiInputs) {
 
 export function RoiCalculator() {
   const [inputs, setInputs] = useState<RoiInputs>(defaultRoiInputs)
-  const [hydrated, setHydrated] = useState(false)
+  // Only write the scenario into the URL once the visitor changes something,
+  // so landing on /roi doesn't rewrite the address with default values.
+  const [touched, setTouched] = useState(false)
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     setInputs(parseInputs(new URLSearchParams(window.location.search)))
-    setHydrated(true)
   }, [])
 
   useEffect(() => {
-    if (!hydrated) return
+    if (!touched) return
     const params = encodeInputs(inputs)
     const nextUrl = `${window.location.pathname}?${params.toString()}`
     window.history.replaceState(null, '', nextUrl)
-  }, [hydrated, inputs])
+  }, [touched, inputs])
 
   const result = useMemo(() => calculateRoi(inputs), [inputs])
 
@@ -145,6 +146,7 @@ export function RoiCalculator() {
     value: RoiInputs[Key],
   ) {
     setInputs((current) => ({ ...current, [key]: value }))
+    setTouched(true)
     setCopied(false)
   }
 
@@ -208,13 +210,15 @@ export function RoiCalculator() {
               <button
                 key={workflow.slug}
                 type="button"
-                onClick={() =>
+                onClick={() => {
                   setInputs((current) => ({
                     ...current,
                     workflow: workflow.slug,
                     coverage: workflow.defaultCoverage,
                   }))
-                }
+                  setTouched(true)
+                  setCopied(false)
+                }}
                 className={
                   active
                     ? 'rounded border-2 border-accent bg-accent-50 p-4 text-left'
@@ -358,9 +362,9 @@ export function RoiCalculator() {
         </dl>
 
         <div className="mt-8 rounded border border-white/15 p-5">
-          <h3 className="font-display text-lg font-semibold">
+          <h2 className="font-display text-lg font-semibold">
             How the math works
-          </h3>
+          </h2>
           <dl className="mt-5 space-y-4">
             <FormulaRow
               label="Manual load"
@@ -394,9 +398,9 @@ export function RoiCalculator() {
         </div>
 
         <div className="mt-8 rounded border border-white/15 p-5">
-          <h3 className="font-display text-lg font-semibold">
-            Why this engagement shape
-          </h3>
+          <h2 className="font-display text-lg font-semibold">
+            Why this first step
+          </h2>
           <p className="mt-3 text-sm leading-6 text-neutral-300">
             {result.recommendedEngagement.reason}
           </p>
@@ -405,7 +409,7 @@ export function RoiCalculator() {
               href={result.recommendedEngagement.href}
               className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200"
             >
-              See the engagement
+              See the details
             </Link>
             <button
               type="button"
