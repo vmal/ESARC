@@ -13,6 +13,10 @@ deploys with `opennextjs-cloudflare deploy --env <env>`, then runs
 `scripts/smoke.mjs` against the live URL. If the smoke test fails it runs
 `wrangler rollback` for that environment.
 
+`cf:build` passes `--dangerouslyUseUnsupportedNextVersion` because OpenNext
+refuses to build Next.js 15 now that it is past its two-year support window
+(October 2026). The proper fix is upgrading to Next.js 16 and dropping the flag.
+
 Ship to production:
 
 ```sh
