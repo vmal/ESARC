@@ -1,5 +1,16 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
+import {
+  findTooLongField,
+  hasTooManyLinks,
+  hasValidRenderedAt,
+  isHoneypotFilled,
+  isTooFast,
+  readSpamFields,
+  verifyTurnstile,
+  type SpamFields,
+} from '@/lib/contact-spam'
+
 const TO_EMAIL = 'vaibhav@esarc.dev'
 // esarc.dev is an authenticated sender domain in Brevo (shared with ClearProp's account).
 const FROM = { name: 'ESARC website', email: 'contact@esarc.dev' }
@@ -57,7 +68,9 @@ ${constraintsHtml}
 </div>`
 }
 
-async function readPayload(req: NextRequest): Promise<Payload> {
+async function readPayload(
+  req: NextRequest,
+): Promise<Payload & { spam: SpamFields }> {
   const ct = req.headers.get('content-type') ?? ''
   let data: Record<string, string> = {}
   if (ct.includes('application/json')) {
@@ -82,6 +95,7 @@ async function readPayload(req: NextRequest): Promise<Payload> {
     timeline: data.timeline ?? '',
     stackConstraints: data.stackConstraints ?? '',
     message: data.message ?? '',
+    spam: readSpamFields(data),
   }
 }
 
@@ -99,7 +113,7 @@ function errorResponse(
   req: NextRequest,
   status: number,
   error: string,
-  reason: 'invalid' | 'failed',
+  reason: 'invalid' | 'failed' | 'links' | 'verify',
 ) {
   if (isFormPost(req)) {
     const url = new URL(`/contact?error=${reason}`, req.url)
@@ -119,19 +133,50 @@ function successResponse(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  let payload: Payload
+  let payload: Payload & { spam: SpamFields }
   try {
     payload = await readPayload(req)
   } catch {
     // Empty or malformed body.
     return errorResponse(req, 400, 'Invalid request body.', 'invalid')
   }
+
+  // Spam: a filled honeypot or a submission faster than a person could type
+  // gets a fake success so bots learn nothing. Nothing is sent.
+  if (isHoneypotFilled(payload.spam)) return successResponse(req)
+  if (!hasValidRenderedAt(payload.spam)) {
+    return errorResponse(req, 400, 'Invalid request body.', 'invalid')
+  }
+  if (isTooFast(payload.spam)) return successResponse(req)
   payload.email = payload.email.trim()
   if (!payload.email || !payload.name.trim() || !payload.message.trim()) {
     return errorResponse(req, 400, 'Missing required fields.', 'invalid')
   }
   if (!EMAIL_RE.test(payload.email)) {
     return errorResponse(req, 400, 'Invalid email address.', 'invalid')
+  }
+  if (findTooLongField(payload)) {
+    return errorResponse(req, 400, 'A field is too long.', 'invalid')
+  }
+  if (hasTooManyLinks(payload)) {
+    return errorResponse(req, 400, 'Too many links.', 'links')
+  }
+
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY
+  if (!turnstileSecret) {
+    // Fail closed, like a missing Brevo key: an unverified form is a spam hole.
+    console.error('[contact] TURNSTILE_SECRET_KEY missing, message not sent')
+    return errorResponse(req, 503, 'Send failed.', 'failed')
+  }
+  const verified = await verifyTurnstile(
+    payload.spam.turnstileToken,
+    turnstileSecret,
+    req.headers.get('cf-connecting-ip'),
+  )
+  if (!verified.ok) {
+    return verified.reason === 'unavailable'
+      ? errorResponse(req, 503, 'Verification unavailable.', 'failed')
+      : errorResponse(req, 400, 'Verification failed.', 'verify')
   }
 
   const key = process.env.BREVO_API_KEY
