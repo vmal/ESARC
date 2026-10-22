@@ -8,8 +8,10 @@ import { FadeIn } from '@/components/FadeIn'
 import { JsonLd } from '@/components/JsonLd'
 import { PageIntro } from '@/components/PageIntro'
 import { SocialMedia } from '@/components/SocialMedia'
+import { TurnstileWidget } from '@/components/TurnstileWidget'
 import { findPackage, formatPackagePrice } from '@/config/pricing'
 import { isProductionDeploy, siteConfig } from '@/config/site'
+import { HONEYPOT_FIELD, RENDERED_AT_FIELD } from '@/lib/contact-spam'
 
 const discoveryPrice = formatPackagePrice(findPackage('discovery')!.price, {
   production: isProductionDeploy,
@@ -107,7 +109,13 @@ function TextArea({
   )
 }
 
-function ContactForm() {
+function ContactForm({
+  renderedAt,
+  turnstileSiteKey,
+}: {
+  renderedAt: number
+  turnstileSiteKey?: string
+}) {
   return (
     <FadeIn className="lg:order-last">
       <form action="/api/contact" method="POST">
@@ -144,6 +152,27 @@ function ContactForm() {
             ].map((value) => ({ value, label: value }))}
           />
         </div>
+        {/* Spam protection: a honeypot people never see, the render time, and
+            Turnstile (invisible unless Cloudflare asks for a click). */}
+        <div
+          aria-hidden="true"
+          className="absolute -left-[10000px] h-px w-px overflow-hidden"
+        >
+          <label>
+            Leave this field empty
+            <input
+              type="text"
+              name={HONEYPOT_FIELD}
+              tabIndex={-1}
+              autoComplete="off"
+              defaultValue=""
+            />
+          </label>
+        </div>
+        <input type="hidden" name={RENDERED_AT_FIELD} value={renderedAt} />
+        {turnstileSiteKey && (
+          <TurnstileWidget siteKey={turnstileSiteKey} />
+        )}
         <Button type="submit" className="mt-10">
           Send
         </Button>
@@ -286,7 +315,11 @@ export default async function Contact({
   let error =
     params.error === 'invalid'
       ? 'Please fill in your name, a valid email address and what you want to build.'
-      : params.error
+      : params.error === 'links'
+        ? `Please send fewer links in your message, or email ${siteConfig.contactEmail}.`
+        : params.error === 'verify'
+          ? `We couldn’t verify you’re human. Please try again, or email ${siteConfig.contactEmail}.`
+          : params.error
         ? `Something went wrong and your message wasn’t sent. Please try again, or email ${siteConfig.contactEmail}.`
         : null
 
@@ -324,7 +357,10 @@ export default async function Contact({
           )}
         </div>
         <div className="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
-          <ContactForm />
+          <ContactForm
+            renderedAt={Date.now()}
+            turnstileSiteKey={process.env.TURNSTILE_SITE_KEY}
+          />
           <ContactDetails />
         </div>
       </Container>

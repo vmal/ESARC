@@ -11,10 +11,15 @@
   },
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "esarc" }],
   "observability": { "enabled": true },
-  "vars": { "SITE_ENV": "development" },
+  // TURNSTILE_SITE_KEY is public. Local runs use Cloudflare's always-pass
+  // test key; staging and production use the esarc.dev widget.
+  "vars": {
+    "SITE_ENV": "development",
+    "TURNSTILE_SITE_KEY": "1x00000000000000000000AA"
+  },
 
   // Secrets (set with `wrangler secret put <NAME> --env <env>`, never here):
-  // BREVO_API_KEY, QUICKBOOKS_CLIENT_ID, QUICKBOOKS_CLIENT_SECRET,
+  // BREVO_API_KEY, TURNSTILE_SECRET_KEY, QUICKBOOKS_CLIENT_ID, QUICKBOOKS_CLIENT_SECRET,
   // QUICKBOOKS_OAUTH_STATE_SECRET, QUICKBOOKS_SETUP_TOKEN, plus any other
   // QUICKBOOKS_* settings read in src/lib (see .env.example if present)
   "env": {
@@ -24,7 +29,10 @@
       "services": [
         { "binding": "WORKER_SELF_REFERENCE", "service": "esarc-staging" }
       ],
-      "vars": { "SITE_ENV": "staging" }
+      "vars": {
+        "SITE_ENV": "staging",
+        "TURNSTILE_SITE_KEY": "0x4AAAAAAFhEwQ1Y9Rbte6M_"
+      }
     },
     "production": {
       "name": "esarc-production",
@@ -35,7 +43,10 @@
       "services": [
         { "binding": "WORKER_SELF_REFERENCE", "service": "esarc-production" }
       ],
-      "vars": { "SITE_ENV": "production" }
+      "vars": {
+        "SITE_ENV": "production",
+        "TURNSTILE_SITE_KEY": "0x4AAAAAAFhEwQ1Y9Rbte6M_"
+      }
     }
   }
 }

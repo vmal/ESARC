@@ -44,6 +44,7 @@ are prerendered.
 
    ```sh
    npx wrangler secret put BREVO_API_KEY --env production
+   npx wrangler secret put TURNSTILE_SECRET_KEY --env production
    npx wrangler secret put QUICKBOOKS_CLIENT_ID --env production
    # ...and the other QUICKBOOKS_* values the QuickBooks routes need
    ```
@@ -54,3 +55,9 @@ are prerendered.
 npm run dev          # Next dev server
 npm run cf:preview   # build and run on the Workers runtime locally
 ```
+
+The contact form needs `TURNSTILE_SECRET_KEY`. For local runs put Cloudflare's
+always-pass test secret `1x0000000000000000000000000000000AA` in `.dev.vars`
+(gitignored); `wrangler.jsonc` already uses the matching test site key locally.
+The real site key (widget "esarc.dev contact form") is in `wrangler.jsonc` for
+staging and production.
